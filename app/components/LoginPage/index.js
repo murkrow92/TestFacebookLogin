@@ -13,10 +13,16 @@ export default class LoginPage extends Component {
         return (
             <PageWrapper>
                 <Image source={Background} style={styles.container}>
-                    <LoginBox/>
+                    <LoginBox
+                        onLoginSuccess={() => this.onLoginSuccess}
+                    />
                 </Image>
             </PageWrapper>
         );
+    }
+
+    onLoginSuccess() {
+        alert('Login rồi nhé');
     }
 }
 
