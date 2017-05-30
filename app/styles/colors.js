@@ -8,7 +8,8 @@ const colors = {
     textTitle: '#333333',
     toolbar: '#FFEBCD',
     textGrey: '#e7e7e7',
-    borderGrey:'#ececec'
+    borderGrey:'#ececec',
+    facebookBlue:'#4267B2',
 };
 
 export default colors;

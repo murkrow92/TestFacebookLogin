@@ -3,47 +3,31 @@
  */
 import PageWrapper from "../Commons/Wrapper";
 import React, {Component} from "react";
-import {Text, View} from "react-native";
-const FBSDK = require('react-native-fbsdk');
-const {
-    LoginButton,
-    AccessToken
-} = FBSDK;
+import {Image} from "react-native";
+
+import Background from '../../styles/images/bg.jpg';
+import LoginBox from "./LoginBox";
 
 export default class LoginPage extends Component {
     render() {
         return (
             <PageWrapper>
-                <Text>Hello World</Text>
-                <Login/>
+                <Image source={Background} style={styles.container}>
+                    <LoginBox/>
+                </Image>
             </PageWrapper>
         );
     }
 }
 
-let Login = React.createClass({
-    render: function () {
-        return (
-            <View>
-                <LoginButton
-                    publishPermissions={["publish_actions"]}
-                    onLoginFinished={
-                        (error, result) => {
-                            if (error) {
-                                alert("login has error: " + result.error);
-                            } else if (result.isCancelled) {
-                                alert("login is cancelled.");
-                            } else {
-                                AccessToken.getCurrentAccessToken().then(
-                                    (data) => {
-                                        alert(data.accessToken.toString())
-                                    }
-                                )
-                            }
-                        }
-                    }
-                    onLogoutFinished={() => alert("logout.")}/>
-            </View>
-        );
+
+const styles = {
+    container: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+        height: '100%',
+        flex: 1,
+        resizeMode: 'cover', //'cover' or 'stretch'
     }
-});
+};
