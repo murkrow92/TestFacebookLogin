@@ -31,7 +31,8 @@ export default class ChatPage extends Component {
             <PageWrapper>
                 <TopNavigationBarWithSideBar
                     title="Ask an astrologer"
-                    rightButton="shopping-cart" onLeftButtonPress={() => navigate('DrawerOpen')}/>
+                    rightButton="ios-card-outline"
+                    onLeftButtonPress={() => navigate('DrawerOpen')}/>
                 <ListMessage items={items}/>
                 <ChatBox/>
             </PageWrapper>

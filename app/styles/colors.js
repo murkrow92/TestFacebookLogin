@@ -10,7 +10,7 @@ const colors = {
     textTitle: '#333333',
     toolbar: 'white',
     textGrey: '#e7e7e7',
-    borderGrey: '#ececec',
+    borderGrey: '#DFDCD4',
     facebookBlue: '#4267B2',
     facebookLightBlue: '#8b9dc3',
     facebookWhiteBlue: '#dfe3ee'

@@ -10,6 +10,7 @@ import SettingPage from "./components/SettingPage/index";
 import ChatPage from "./components/ChatPage/index";
 import PurchasePage from "./components/PurchasePage/index";
 import LoginPage from "./components/LoginPage/index";
+import ProfilePage from "./components/ProfilePage/index";
 
 const HomePage = DrawerNavigator({
     Chat: {screen: ChatPage},
@@ -17,7 +18,8 @@ const HomePage = DrawerNavigator({
     OurAstrologers: {screen: OurAstrologersPage},
     Tutorial: {screen: TutorialPage},
     Setting: {screen: SettingPage},
-    Purchase: {screen: PurchasePage}
+    Purchase: {screen: PurchasePage},
+    Profile: {screen: ProfilePage}
 });
 
 const AppRoute = StackNavigator({

@@ -8,13 +8,12 @@ import {TouchableHighlight, View} from "react-native";
 import React, {Component, PropTypes} from "react";
 import LineDivider from "../LineDivider";
 import colors from "../../../styles/colors";
-import Icon from "react-native-vector-icons/FontAwesome";
+import Icon from "react-native-vector-icons/Ionicons";
 
 export default class TopNavigationBarWithSideBar extends Component {
 
     static propTypes = {
         title: PropTypes.string.isRequired,
-        rightButton: PropTypes.string.isRequired,
         onLeftButtonPress: PropTypes.func.isRequired
     };
 
@@ -33,10 +32,6 @@ export default class TopNavigationBarWithSideBar extends Component {
     }
 }
 
-const styles = {
-    container: {},
-};
-
 const title = (props) => {
     return ({
             title: props.title,
@@ -50,16 +45,28 @@ const title = (props) => {
 
 const leftButton = (props) => {
     return (
-        <TouchableHighlight onPress={() => props.onLeftButtonPress()} style={{justifyContent: 'center', marginLeft: 12}}>
-            <Icon name='align-justify' size={20} color={colors.icon}/>
+        <TouchableHighlight onPress={() => props.onLeftButtonPress()} style={styles.button}>
+            <Icon name='ios-menu-outline' size={24} color={colors.icon}/>
         </TouchableHighlight>);
 };
 
 const rightButton = (props) => {
-    return (
-        <View style={{justifyContent: 'center', marginRight: 12}}>
-            <Icon name={props.rightButton} size={20} color={colors.icon}/>
-        </View>);
+    if (typeof (props.rightButton) === "string") {
+        return (
+            <View style={{justifyContent: 'center', marginRight: 12}}>
+                <Icon name={props.rightButton} size={24} color={colors.icon}/>
+            </View>);
+    } else {
+        return props.rightButton;
+    }
+};
+
+const styles = {
+    container: {},
+    button: {
+        justifyContent: 'center',
+        marginLeft: 12
+    }
 };
 
 
