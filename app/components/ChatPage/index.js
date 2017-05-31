@@ -4,9 +4,9 @@
 
 import React, {Component} from "react";
 import PageWrapper from "../Commons/Wrapper";
-import TopNavigationBarFull from "../Commons/TopNavigationBar/TopNavigationBarFull";
 import ChatBox from "../Commons/ChatBox/index";
 import ListMessage from "./ListMessage";
+import TopNavigationBarWithSideBar from "../Commons/TopNavigationBar/TopNavigationBarWithSideBar";
 
 export default class ChatPage extends Component {
     render() {
@@ -26,12 +26,12 @@ export default class ChatPage extends Component {
             user: "System"
         };
         let items = [item1, item2, item3];
+        const {navigate} = this.props.navigation;
         return (
             <PageWrapper>
-                <TopNavigationBarFull
+                <TopNavigationBarWithSideBar
                     title="Ask an astrologer"
-                    leftButton="align-justify"
-                    rightButton="shopping-cart"/>
+                    rightButton="shopping-cart" onLeftButtonPress={() => navigate('DrawerOpen')}/>
                 <ListMessage items={items}/>
                 <ChatBox/>
             </PageWrapper>
