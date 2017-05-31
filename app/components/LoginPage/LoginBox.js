@@ -1,7 +1,7 @@
 /**
  * Created by Murkrow on 5/30/2017.
  */
-import React, {Component, PropTypes} from "react";
+import React, {Component} from "react";
 import {Text, View} from "react-native";
 import {LoginButton, AccessToken} from 'react-native-fbsdk';
 import colors from "../../styles/colors";
@@ -14,17 +14,13 @@ export default class LoginBox extends Component {
                 <Text style={styles.title}>Đăng nhập</Text>
                 <View style={styles.contentContainer}>
                     <Text style={styles.content}>Đăng nhập bằng Facebook để bắt đầu khám phá</Text>
-                    <Login onLoginSuccess={this.props.onLoginSuccess}/>
+                    <Login/>
                 </View>
             </View>);
     }
 }
 
 let Login = React.createClass({
-    propTypes: {
-        onLoginSuccess: PropTypes.func.isRequired
-    },
-
     render: function () {
         return (
             <View style={styles.loginContainer} underlayColor='#3b5998'>
@@ -32,7 +28,6 @@ let Login = React.createClass({
                     publishPermissions={["publish_actions"]}
                     onLoginFinished={
                         (error, result) => {
-                            alert('vào đây');
                             if (error) {
                                 alert("login has error: " + result.error);
                             } else if (result.isCancelled) {
@@ -44,7 +39,6 @@ let Login = React.createClass({
                                     }
                                 )
                             }
-                            this.props.onLoginSuccess();
                         }
                     }
                     onLogoutFinished={() => alert("logout.")}/>

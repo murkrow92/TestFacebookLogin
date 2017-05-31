@@ -3,26 +3,26 @@
  */
 import PageWrapper from "../Commons/Wrapper";
 import React, {Component} from "react";
-import {Image} from "react-native";
+import {Button, Image} from "react-native";
 
 import Background from '../../styles/images/bg.jpg';
 import LoginBox from "./LoginBox";
 
 export default class LoginPage extends Component {
     render() {
+        const {navigate} = this.props.navigation;
         return (
             <PageWrapper>
                 <Image source={Background} style={styles.container}>
-                    <LoginBox
-                        onLoginSuccess={() => this.onLoginSuccess}
-                    />
+                    <LoginBox/>
+                    <Button
+                        onPress={() => {
+                            navigate('Home')
+                        }}
+                        title="CLICK HERE"/>
                 </Image>
             </PageWrapper>
         );
-    }
-
-    onLoginSuccess() {
-        alert('Login rồi nhé');
     }
 }
 
