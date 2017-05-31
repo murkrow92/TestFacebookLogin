@@ -4,12 +4,15 @@
 
 const colors = {
     backgroundApp: 'white',
-    topBarTitle:'white',
+    icon:'#7373FA',
+    topBarTitle: '#333333',
     textTitle: '#333333',
-    toolbar: '#FFEBCD',
+    toolbar: 'white',
     textGrey: '#e7e7e7',
-    borderGrey:'#ececec',
-    facebookBlue:'#4267B2',
+    borderGrey: '#ececec',
+    facebookBlue: '#4267B2',
+    facebookLightBlue: '#8b9dc3',
+    facebookWhiteBlue: '#dfe3ee'
 };
 
 export default colors;
