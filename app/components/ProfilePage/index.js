@@ -5,6 +5,7 @@
 import React, {Component} from "react";
 import PageWrapper from "../Commons/Wrapper";
 import TopNavigationBarWithSideBar from "../Commons/TopNavigationBar/TopNavigationBarWithSideBar";
+import colors from "../../styles/colors";
 
 export default class ProfilePage extends Component {
 
@@ -14,9 +15,14 @@ export default class ProfilePage extends Component {
             <PageWrapper>
                 <TopNavigationBarWithSideBar
                     title="Cá nhân"
-                    rightButton={{title: 'Lưu lại'}}
+                    rightButton={rightButton}
                     onLeftButtonPress={() => navigate('DrawerOpen')}/>
             </PageWrapper>
         );
     }
 }
+
+const rightButton = {
+    title: 'Lưu lại' ,
+    tintColor: colors.icon
+};
