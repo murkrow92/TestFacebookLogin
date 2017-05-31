@@ -4,7 +4,8 @@
 
 const colors = {
     backgroundApp: 'white',
-    icon:'#7373FA',
+    blue:'#7373FA',
+    icon:'#9EBEFF',
     topBarTitle: '#333333',
     textTitle: '#333333',
     toolbar: 'white',

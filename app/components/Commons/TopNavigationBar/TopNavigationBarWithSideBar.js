@@ -51,14 +51,14 @@ const title = (props) => {
 const leftButton = (props) => {
     return (
         <TouchableHighlight onPress={() => props.onLeftButtonPress()} style={{justifyContent: 'center', marginLeft: 12}}>
-            <Icon name='align-justify' size={24} color={colors.icon}/>
+            <Icon name='align-justify' size={20} color={colors.icon}/>
         </TouchableHighlight>);
 };
 
 const rightButton = (props) => {
     return (
         <View style={{justifyContent: 'center', marginRight: 12}}>
-            <Icon name={props.rightButton} size={24} color={colors.icon}/>
+            <Icon name={props.rightButton} size={20} color={colors.icon}/>
         </View>);
 };
 
