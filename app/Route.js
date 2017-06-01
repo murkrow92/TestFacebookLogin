@@ -13,13 +13,13 @@ import LoginPage from "./components/LoginPage/index";
 import ProfilePage from "./components/ProfilePage/index";
 
 const HomePage = DrawerNavigator({
+    Profile: {screen: ProfilePage},
     Chat: {screen: ChatPage},
     About: {screen: AboutPage},
     OurAstrologers: {screen: OurAstrologersPage},
     Tutorial: {screen: TutorialPage},
     Setting: {screen: SettingPage},
-    Purchase: {screen: PurchasePage},
-    Profile: {screen: ProfilePage}
+    Purchase: {screen: PurchasePage}
 });
 
 const AppRoute = StackNavigator({

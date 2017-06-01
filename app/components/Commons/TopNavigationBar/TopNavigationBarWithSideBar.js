@@ -45,8 +45,15 @@ const title = (props) => {
 
 const leftButton = (props) => {
     return (
-        <TouchableHighlight onPress={() => props.onLeftButtonPress()} style={styles.button}>
-            <Icon name='ios-menu-outline' size={24} color={colors.icon}/>
+        <TouchableHighlight
+            onPress={() => props.onLeftButtonPress()}
+            style={styles.button}
+            underlayColor={colors.lightblue}>
+            <Icon
+                style={styles.icon}
+                name='ios-menu-outline'
+                size={24}
+                color={colors.blue}/>
         </TouchableHighlight>);
 };
 
@@ -64,8 +71,11 @@ const rightButton = (props) => {
 const styles = {
     container: {},
     button: {
+        width: 36,
         justifyContent: 'center',
-        marginLeft: 12
+    },
+    icon: {
+        alignSelf: 'center'
     }
 };
 

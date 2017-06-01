@@ -23,6 +23,6 @@ export default class ProfilePage extends Component {
 }
 
 const rightButton = {
-    title: 'Lưu lại' ,
-    tintColor: colors.icon
+    title: 'Lưu lại',
+    tintColor: colors.blue,
 };
