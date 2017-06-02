@@ -17,7 +17,7 @@ export default class TopNavigationBarWithBack extends Component {
         return (
             <View style={styles.container}>
                 <NavigationBar
-                    tintColor={colors.toolbar}
+                    tintColor={colors.TOOLBAR}
                     title={titleConfig(this.props)}
                     leftButton={leftButtonConfig}
                 />

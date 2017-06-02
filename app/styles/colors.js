@@ -3,15 +3,15 @@
  */
 
 const colors = {
-    backgroundApp: 'white',
-    blue: '#7373FA',
-    lightblue:'#9EBEFF',
+    BACKGROUND_APP: 'white',
+    BLUE: '#7373FA',
+    LIGHT_BLUE:'#9EBEFF',
     topBarTitle: '#333333',
     textTitle: '#333333',
-    toolbar: 'white',
-    textGrey: '#e7e7e7',
-    borderGrey: '#DFDCD4',
-    darkGrey: '#AEAEAE',
+    TOOLBAR: 'white',
+    TEXT_GREY: '#e7e7e7',
+    BORDER_GREY: '#DFDCD4',
+    DARKER_GREY: '#AEAEAE',
     facebookBlue: '#4267B2',
     facebookLightBlue: '#8b9dc3',
     facebookWhiteBlue: '#dfe3ee'

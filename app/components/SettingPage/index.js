@@ -100,10 +100,10 @@ export default class SettingPage extends Component {
 
 const styles = {
     header: {
-        color: colors.borderGrey
+        color: colors.BORDER_GREY
     },
     container: {
         flex: 1,
-        backgroundColor: colors.backgroundApp
+        backgroundColor: colors.BACKGROUND_APP
     }
 };

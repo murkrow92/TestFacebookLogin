@@ -38,7 +38,7 @@ const styles = {
         flexDirection:'row',
     },
     datetimeText: {
-        color: colors.textGrey
+        color: colors.TEXT_GREY
     },
     star: {
         flex:0.5,

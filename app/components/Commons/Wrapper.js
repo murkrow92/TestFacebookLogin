@@ -20,6 +20,6 @@ export default class PageWrapper extends Component {
 const styles = {
     container: {
         flex: 1,
-        backgroundColor: colors.backgroundApp
+        backgroundColor: colors.BACKGROUND_APP
     }
 };

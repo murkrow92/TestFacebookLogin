@@ -21,7 +21,7 @@ export default class TopNavigationBarWithSideBar extends Component {
         return (
             <View style={styles.container}>
                 <NavigationBar
-                    tintColor={colors.toolbar}
+                    tintColor={colors.TOOLBAR}
                     title={title(this.props)}
                     leftButton={leftButton(this.props)}
                     rightButton={rightButton(this.props)}
@@ -48,12 +48,12 @@ const leftButton = (props) => {
         <TouchableHighlight
             onPress={() => props.onLeftButtonPress()}
             style={styles.button}
-            underlayColor={colors.lightblue}>
+            underlayColor={colors.LIGHT_BLUE}>
             <Icon
                 style={styles.icon}
                 name='ios-menu-outline'
                 size={24}
-                color={colors.blue}/>
+                color={colors.BLUE}/>
         </TouchableHighlight>);
 };
 

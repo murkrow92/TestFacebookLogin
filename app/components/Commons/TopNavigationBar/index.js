@@ -30,7 +30,7 @@ const styles = {
 
 const rightButtonConfig = {
     title: 'Save',
-    tintColor: 'blue'
+    tintColor: 'BLUE'
 };
 
 const titleConfig = {

@@ -26,7 +26,7 @@ export default class ChatBox extends Component {
                             underlineColorAndroid='transparent'
                             autoCorrect={false}
                             multiline={true}
-                            placeholderTextColor={colors.borderGrey}
+                            placeholderTextColor={colors.BORDER_GREY}
                             placeholder="Ask a question ..."
                             style={styles.input}
                             value={this.state.message}
@@ -57,7 +57,7 @@ const styles = {
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
-        backgroundColor: colors.toolbar,
+        backgroundColor: colors.TOOLBAR,
     },
     textContainer: {
         flex: 1,

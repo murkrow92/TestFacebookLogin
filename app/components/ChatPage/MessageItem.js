@@ -57,13 +57,13 @@ const profileStyle = (isSystem) => {
 };
 
 const contentContainerStyle = (isSystem) => {
-    let bgColor = 'lightblue';
+    let bgColor = 'LIGHT_BLUE';
     let marginLeft = 24;
     let marginRight = 0;
     if (isSystem) {
         marginLeft = 0;
         marginRight = 24;
-        bgColor = colors.textGrey;
+        bgColor = colors.TEXT_GREY;
     }
 
     return (
@@ -105,7 +105,7 @@ const styles = {
         flexDirection: 'column'
     },
     datetimeText: {
-        color: colors.textGrey
+        color: colors.TEXT_GREY
     },
 
     contentContainer: {
@@ -115,7 +115,7 @@ const styles = {
         paddingLeft: 12,
         paddingRight: 12,
         paddingBottom: 6,
-        backgroundColor: colors.textGrey,
+        backgroundColor: colors.TEXT_GREY,
         borderRadius: 20,
         alignItems: 'flex-start'
     },

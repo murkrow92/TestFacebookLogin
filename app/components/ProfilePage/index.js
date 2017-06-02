@@ -32,7 +32,7 @@ export default class ProfilePage extends Component {
 
 const rightButton = {
     title: 'Lưu lại',
-    tintColor: colors.blue,
+    tintColor: colors.BLUE,
 };
 
 const styles = {
@@ -48,6 +48,7 @@ const styles = {
         borderRadius: 100,
     },
     username: {
+        color:'#000000',
         marginTop: 8,
         alignSelf: 'center'
     }

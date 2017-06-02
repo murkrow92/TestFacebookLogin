@@ -19,7 +19,7 @@ export default class LineDivider extends Component {
 
 const styles = {
     divider: {
-        backgroundColor: colors.borderGrey,
+        backgroundColor: colors.BORDER_GREY,
         height: 1,
         flexDirection: 'row'
     }

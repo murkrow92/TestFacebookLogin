@@ -21,7 +21,7 @@ export default class TopNavigationBarFull extends Component {
         return (
             <View style={styles.container}>
                 <NavigationBar
-                    tintColor={colors.toolbar}
+                    tintColor={colors.TOOLBAR}
                     title={title(this.props)}
                     leftButton={leftButton(this.props)}
                     rightButton={rightButton(this.props)}

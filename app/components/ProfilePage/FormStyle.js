@@ -1,14 +1,14 @@
 /**
  * Created by Murkrow on 6/2/2017.
  */
-import { Platform } from 'react-native';
+import {Platform} from 'react-native';
 import colors from "../../styles/colors";
 
 const LABEL_COLOR = '#000000';
 const INPUT_COLOR = '#000000';
 const ERROR_COLOR = '#a94442';
 const HELP_COLOR = '#999999';
-const BORDER_COLOR = colors.textGrey;
+const BORDER_COLOR = colors.TEXT_GREY;
 const DISABLED_COLOR = '#777777';
 const DISABLED_BACKGROUND_COLOR = '#eeeeee';
 const FONT_SIZE = 14;
@@ -59,17 +59,14 @@ export default formStyle = Object.freeze({
         color: ERROR_COLOR
     },
     textboxView: {
-        normal: {
-        },
-        error: {
-        },
-        notEditable: {
-        }
+        normal: {},
+        error: {},
+        notEditable: {}
     },
     textbox: {
         normal: {
-            backgroundColor:colors.textGrey,
-            color: INPUT_COLOR,
+            backgroundColor: BORDER_COLOR,
+            // color: INPUT_COLOR,
             fontSize: FONT_SIZE,
             height: 36,
             paddingVertical: (Platform.OS === 'ios') ? 7 : 0,
@@ -137,9 +134,7 @@ export default formStyle = Object.freeze({
                 paddingLeft: 7,
                 color: INPUT_COLOR
             },
-            ios: {
-
-            }
+            ios: {}
         }),
         // the style applied when a validation error occours
         error: Platform.select({
@@ -147,9 +142,7 @@ export default formStyle = Object.freeze({
                 paddingLeft: 7,
                 color: ERROR_COLOR
             },
-            ios: {
-
-            }
+            ios: {}
         })
     },
     pickerTouchable: {

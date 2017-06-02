@@ -26,7 +26,7 @@ export default class UserInput extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'lightblue'
+        backgroundColor: 'LIGHT_BLUE'
     },
     logoContainer: {
         marginTop: 20,
