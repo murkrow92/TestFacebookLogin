@@ -7,21 +7,25 @@ import PageWrapper from "../Commons/Wrapper";
 import TopNavigationBarWithSideBar from "../Commons/TopNavigationBar/TopNavigationBarWithSideBar";
 import colors from "../../styles/colors";
 import Background from "../../styles/images/bg.jpg";
-import {Image, Text} from "react-native";
+import {Image, Text, KeyboardAvoidingView} from "react-native";
+import ProfileForm from "./ProfileForm";
+
 
 export default class ProfilePage extends Component {
-
     render() {
         const {navigate} = this.props.navigation;
         return (
+
             <PageWrapper>
                 <TopNavigationBarWithSideBar
                     title="Cá nhân"
                     rightButton={rightButton}
                     onLeftButtonPress={() => navigate('DrawerOpen')}/>
                 <Image style={styles.avatar} source={Background}/>
-                <Text style={styles.username}>'Đoàn Phúc Bảo'</Text>
-            </PageWrapper>
+                <Text style={styles.username}>Đoàn Phúc Bảo</Text>
+                <ProfileForm/>
+            </ PageWrapper >
+
         );
     }
 }
@@ -32,6 +36,9 @@ const rightButton = {
 };
 
 const styles = {
+    container: {
+        flex: 1,
+    },
     avatar: {
         marginTop: 16,
         alignSelf: 'center',
