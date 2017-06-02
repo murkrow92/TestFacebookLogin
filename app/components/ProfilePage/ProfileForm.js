@@ -2,9 +2,10 @@
  * Created by Murkrow on 6/1/2017.
  */
 
-import React, {Component} from 'react';
+import React, {Component} from "react";
 import {View, StyleSheet} from "react-native";
-import * as TForm from 'tcomb-form-native';
+import * as TForm from "tcomb-form-native";
+import formStyle from "./FormStyle";
 let Form = TForm.form.Form;
 
 let Person = TForm.struct({
@@ -18,11 +19,12 @@ let Person = TForm.struct({
 });
 
 let options = {
+    stylesheet:  formStyle,
     auto: 'placeholders',
     fields: {
         email: {
             label: 'Email',
-            error: 'Không đúng định dạng Email'
+            error: 'Không đúng định dạng Email',
         },
         phone: {
             label: 'Điện thoại',
@@ -37,12 +39,12 @@ let options = {
         },
         year: {
             placeholder: 'Năm'
-        } ,
-        hour:{
-            placeholder:'Giờ'
         },
-        minute:{
-            placeholder:'Phút'
+        hour: {
+            placeholder: 'Giờ'
+        },
+        minute: {
+            placeholder: 'Phút'
         }
     }
 };
@@ -68,3 +70,4 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff',
     }
 });
+
