@@ -5,7 +5,8 @@
 import React, {Component} from "react";
 import {View, StyleSheet} from "react-native";
 import * as TForm from "tcomb-form-native";
-import formStyle from "./FormStyle";
+import options from "./FormOptions";
+
 let Form = TForm.form.Form;
 
 let Person = TForm.struct({
@@ -18,36 +19,6 @@ let Person = TForm.struct({
     phone: TForm.Number
 });
 
-let options = {
-    stylesheet:  formStyle,
-    auto: 'placeholders',
-    fields: {
-        email: {
-            label: 'Email',
-            error: 'Không đúng định dạng Email',
-        },
-        phone: {
-            label: 'Điện thoại',
-            placeholder: 'Số điện thoại',
-            error: 'Không đúng định dạng Số điện thoại'
-        },
-        date: {
-            placeholder: 'Ngày'
-        },
-        month: {
-            placeholder: 'Tháng'
-        },
-        year: {
-            placeholder: 'Năm'
-        },
-        hour: {
-            placeholder: 'Giờ'
-        },
-        minute: {
-            placeholder: 'Phút'
-        }
-    }
-};
 
 export default class ProfileForm extends Component {
     render() {

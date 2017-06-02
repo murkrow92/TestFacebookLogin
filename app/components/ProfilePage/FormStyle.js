@@ -14,7 +14,7 @@ const DISABLED_BACKGROUND_COLOR = '#eeeeee';
 const FONT_SIZE = 14;
 const FONT_WEIGHT = '100';
 
-export const formStyle = Object.freeze({
+export default formStyle = Object.freeze({
     fieldset: {},
     // the style applied to the container of all inputs
     formGroup: {
@@ -222,4 +222,3 @@ export const formStyle = Object.freeze({
     }
 });
 
-export default formStyle;
