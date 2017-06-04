@@ -4,31 +4,26 @@
 
 import React, {Component} from "react";
 import {View, StyleSheet} from "react-native";
-import * as TForm from "tcomb-form-native";
-import options from "./FormOptions";
-
-let Form = TForm.form.Form;
-
-let Person = TForm.struct({
-    date: TForm.Number,
-    month: TForm.Number,
-    year: TForm.Number,
-    hour: TForm.Number,
-    minute: TForm.Number,
-    email: TForm.String,
-    phone: TForm.Number
-});
-
+import NumberTextInput from "../Commons/UserInput/NumberTextInput";
 
 export default class ProfileForm extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Form
-                    ref="form"
-                    type={Person}
-                    options={options}
-                />
+                <View style={styles.datetimeContainer}>
+                    <NumberTextInput placeholder="Ngày" label="Ngày"/>
+                    <NumberTextInput placeholder="Tháng" label="Tháng"/>
+                    <NumberTextInput placeholder="Năm" label="Năm"/>
+                    <NumberTextInput placeholder="Giờ" label="Giờ"/>
+                    <NumberTextInput placeholder="Phút" label="Phút"/>
+                </View>
+                <NumberTextInput
+                    placeholder="Email"
+                    label="Email"/>
+                <NumberTextInput
+                    placeholder="Số điện thoại"
+                    label="Số điện thoại"/>
+
             </View>
         );
     }
@@ -36,9 +31,13 @@ export default class ProfileForm extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        justifyContent: 'center',
-        padding: 12,
-        backgroundColor: '#ffffff',
+        marginTop: 8,
+        flexDirection: 'column',
+        paddingLeft: 12,
+        paddingRight: 12,
+        backgroundColor: 'grey',
+    }, datetimeContainer: {
+        flexDirection: 'row',
     }
 });
 

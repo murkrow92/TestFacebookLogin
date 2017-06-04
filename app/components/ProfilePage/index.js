@@ -15,7 +15,6 @@ export default class ProfilePage extends Component {
     render() {
         const {navigate} = this.props.navigation;
         return (
-
             <PageWrapper>
                 <TopNavigationBarWithSideBar
                     title="Cá nhân"
@@ -25,7 +24,6 @@ export default class ProfilePage extends Component {
                 <Text style={styles.username}>Đoàn Phúc Bảo</Text>
                 <ProfileForm/>
             </ PageWrapper >
-
         );
     }
 }
