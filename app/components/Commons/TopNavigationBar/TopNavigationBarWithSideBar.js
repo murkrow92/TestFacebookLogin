@@ -37,7 +37,8 @@ const title = (props) => {
             title: props.title,
             tintColor: colors.topBarTitle,
             style: {
-                fontWeight: 'normal'
+                fontWeight: 'normal',
+                fontSize:13
             }
         }
     );
@@ -52,7 +53,7 @@ const leftButton = (props) => {
             <Icon
                 style={styles.icon}
                 name='ios-menu-outline'
-                size={24}
+                size={20}
                 color={colors.BLUE}/>
         </TouchableHighlight>);
 };
@@ -61,7 +62,7 @@ const rightButton = (props) => {
     if (typeof (props.rightButton) === "string") {
         return (
             <View style={{justifyContent: 'center', marginRight: 12}}>
-                <Icon name={props.rightButton} size={24} color={colors.icon}/>
+                <Icon name={props.rightButton} size={20} color={colors.icon}/>
             </View>);
     } else {
         return props.rightButton;
@@ -69,7 +70,9 @@ const rightButton = (props) => {
 };
 
 const styles = {
-    container: {},
+    container: {
+        height: 32
+    },
     button: {
         width: 36,
         justifyContent: 'center',

@@ -3,12 +3,13 @@
  */
 
 import React, {Component} from "react";
+import {Image, Text} from "react-native";
 import PageWrapper from "../Commons/Wrapper";
 import TopNavigationBarWithSideBar from "../Commons/TopNavigationBar/TopNavigationBarWithSideBar";
-import colors from "../../styles/colors";
-import Background from "../../styles/images/bg.jpg";
-import {Image, Text, KeyboardAvoidingView} from "react-native";
 import ProfileForm from "./ProfileForm";
+import colors from "../../styles/colors";
+import fonts from "../../styles/fonts";
+import Background from "../../styles/images/bg.jpg";
 
 
 export default class ProfilePage extends Component {
@@ -31,6 +32,8 @@ export default class ProfilePage extends Component {
 const rightButton = {
     title: 'Lưu lại',
     tintColor: colors.BLUE,
+    fontSize: 13,
+    fontFamily:fonts.OPEN_SAN
 };
 
 const styles = {
@@ -38,16 +41,19 @@ const styles = {
         flex: 1,
     },
     avatar: {
-        marginTop: 16,
+        marginTop: 30,
         alignSelf: 'center',
         borderWidth: 1,
-        width: 120,
-        height: 120,
-        borderRadius: 100,
+        width: 76,
+        height: 76,
+        borderRadius: 38,
+        borderColor: colors.BORDER_GREY,
     },
     username: {
-        color:'#000000',
+        fontFamily:fonts.OPEN_SAN,
+        color: '#000000',
         marginTop: 8,
-        alignSelf: 'center'
+        alignSelf: 'center',
+        fontSize: 13
     }
 };
