@@ -4,17 +4,20 @@
 
 
 import NavigationBar from 'react-native-navbar';
-import {TouchableHighlight, View} from "react-native";
+import {Text, TouchableHighlight, View} from "react-native";
 import React, {Component, PropTypes} from "react";
 import LineDivider from "../LineDivider";
 import colors from "../../../styles/colors";
 import Icon from "react-native-vector-icons/Ionicons";
+import fonts from "../../../styles/fonts";
 
 export default class TopNavigationBarWithSideBar extends Component {
 
     static propTypes = {
         title: PropTypes.string.isRequired,
-        onLeftButtonPress: PropTypes.func.isRequired
+        onLeftButtonPress: PropTypes.func.isRequired,
+        rightButtonType:PropTypes.string.isRequired,
+        rightButton:PropTypes.string.isRequired
     };
 
     render() {
@@ -38,7 +41,7 @@ const title = (props) => {
             tintColor: colors.topBarTitle,
             style: {
                 fontWeight: 'normal',
-                fontSize:13
+                fontSize: 13
             }
         }
     );
@@ -59,13 +62,15 @@ const leftButton = (props) => {
 };
 
 const rightButton = (props) => {
-    if (typeof (props.rightButton) === "string") {
+    if (props.rightButtonType === "icon") {
         return (
             <View style={{justifyContent: 'center', marginRight: 12}}>
                 <Icon name={props.rightButton} size={20} color={colors.icon}/>
             </View>);
     } else {
-        return props.rightButton;
+        return (
+            <Text style={styles.rightButton}>{props.rightButton}</Text>
+        );
     }
 };
 
@@ -79,6 +84,13 @@ const styles = {
     },
     icon: {
         alignSelf: 'center'
+    },
+    rightButton: {
+        alignSelf:'center',
+        marginRight:12,
+        color:colors.BLUE,
+        fontSize: 13,
+        fontFamily: fonts.OPEN_SAN
     }
 };
 

@@ -19,8 +19,9 @@ export default class ProfilePage extends Component {
             <PageWrapper>
                 <TopNavigationBarWithSideBar
                     title="Cá nhân"
-                    rightButton={rightButton}
-                    onLeftButtonPress={() => navigate('DrawerOpen')}/>
+                    rightButton="Lưu lại"
+                    onLeftButtonPress={() => navigate('DrawerOpen')}
+                    rightButtonType="label"/>
                 <Image style={styles.avatar} source={Background}/>
                 <Text style={styles.username}>Đoàn Phúc Bảo</Text>
                 <ProfileForm/>
@@ -28,13 +29,6 @@ export default class ProfilePage extends Component {
         );
     }
 }
-
-const rightButton = {
-    title: 'Lưu lại',
-    tintColor: colors.BLUE,
-    fontSize: 13,
-    fontFamily:fonts.OPEN_SAN
-};
 
 const styles = {
     container: {
@@ -50,7 +44,7 @@ const styles = {
         borderColor: colors.BORDER_GREY,
     },
     username: {
-        fontFamily:fonts.OPEN_SAN,
+        fontFamily: fonts.OPEN_SAN,
         color: '#000000',
         marginTop: 8,
         alignSelf: 'center',
