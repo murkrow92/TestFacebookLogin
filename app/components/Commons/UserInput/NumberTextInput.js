@@ -9,11 +9,14 @@ export default class NumberTextInput extends Component {
 
     static propTypes = {
         placeholder: PropTypes.string.isRequired,
-        label: PropTypes.string.isRequired
+        label: PropTypes.string.isRequired,
+        inline: PropTypes.bool.isRequired
     };
 
     render() {
         let containerStyle = {
+            flex: this.props.inline ? 1 : 0,
+            marginRight: this.props.inline ? 6 : 0
         };
         let labelStyle = {
             color: LABEL_COLOR,
@@ -37,6 +40,8 @@ export default class NumberTextInput extends Component {
             <View style={containerStyle}>
                 <Text style={labelStyle}>{this.props.label}</Text>
                 <TextInput
+                    onSubmitEditing={this.props.onSubmitEditing}
+                    onChangeText={this.props.onChangeText}
                     keyboardType="numeric"
                     placeholder={this.props.placeholder}
                     underlineColorAndroid='transparent'
