@@ -20,7 +20,7 @@ export default class Icon extends Component {
             <BaseIcon
                 name={this.props.name}
                 size={this.props.size}
-                color={colors.icon}/>
+                color={colors.BLUE}/>
         );
     }
 }

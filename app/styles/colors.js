@@ -3,6 +3,7 @@
  */
 
 const colors = {
+    BACKGROUND_LOGIN:'#BDC3C7',
     BACKGROUND_APP: 'white',
     BLUE: '#7373FA',
     LIGHT_BLUE:'#9EBEFF',

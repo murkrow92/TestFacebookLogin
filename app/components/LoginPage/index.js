@@ -3,24 +3,29 @@
  */
 import PageWrapper from "../Commons/Wrapper";
 import React, {Component} from "react";
-import {Button, Image} from "react-native";
+import {Button, Image, View} from "react-native";
 
 import Background from '../../styles/images/bg.jpg';
 import LoginBox from "./LoginBox";
+import colors from "../../styles/colors";
 
 export default class LoginPage extends Component {
     render() {
         const {navigate} = this.props.navigation;
         return (
             <PageWrapper>
-                <Image source={Background} style={styles.container}>
-                    <LoginBox/>
-                    <Button
-                        onPress={() => {
-                            navigate('Home')
-                        }}
-                        title="CLICK HERE"/>
-                </Image>
+                {/*<Image source={Background} style={styles.container}>*/}
+                {/*<LoginBox/>*/}
+                {/*<Button*/}
+                {/*onPress={() => {*/}
+                {/*navigate('Home')*/}
+                {/*}}*/}
+                {/*title="CLICK HERE"/>*/}
+                {/*</Image>*/}
+                <View style={styles.background}>
+
+
+                </View>
             </PageWrapper>
         );
     }
@@ -28,6 +33,11 @@ export default class LoginPage extends Component {
 
 
 const styles = {
+    background: {
+        flex:1,
+        backgroundColor: colors.BACKGROUND_LOGIN
+    },
+
     container: {
         alignItems: 'center',
         justifyContent: 'center',
