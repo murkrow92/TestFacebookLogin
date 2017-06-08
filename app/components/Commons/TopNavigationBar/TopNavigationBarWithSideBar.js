@@ -64,7 +64,7 @@ const leftButton = (props) => {
 const rightButton = (props) => {
     if (props.rightButtonType === "icon") {
         return (
-            <View style={{justifyContent: 'center', marginRight: 12}}>
+            <View style={{justifyContent: 'center', marginRight: RIGHT_BUTTON_MARGIN_RIGHT}}>
                 <Icon name={props.rightButton} size={20} color={colors.icon}/>
             </View>);
     } else {
@@ -74,12 +74,14 @@ const rightButton = (props) => {
     }
 };
 
+const RIGHT_BUTTON_MARGIN_RIGHT = 12;
+
 const styles = {
     container: {
         height: 32
     },
     button: {
-        width: 36,
+        width: 32,
         justifyContent: 'center',
     },
     icon: {
@@ -87,12 +89,14 @@ const styles = {
     },
     rightButton: {
         alignSelf:'center',
-        marginRight:12,
+        marginRight:RIGHT_BUTTON_MARGIN_RIGHT,
         color:colors.BLUE,
         fontSize: 13,
         fontFamily: fonts.OPEN_SAN
     }
 };
+
+
 
 
 

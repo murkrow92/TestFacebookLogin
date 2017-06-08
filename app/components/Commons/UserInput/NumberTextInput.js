@@ -4,6 +4,7 @@
 import React, {Component, PropTypes} from 'react';
 import {Platform, Text, TextInput, View} from "react-native";
 import colors from "../../../styles/colors";
+import fonts from "../../../styles/fonts";
 
 export default class NumberTextInput extends Component {
 
@@ -19,15 +20,16 @@ export default class NumberTextInput extends Component {
             marginRight: this.props.inline ? 6 : 0
         };
         let labelStyle = {
-            color: LABEL_COLOR,
-            fontSize: FONT_SIZE,
+            // color: LABEL_COLOR,
+            fontSize: LABEL_FONT_SIZE,
             fontWeight: FONT_WEIGHT,
-            marginBottom: 7
+            marginBottom: 4
         };
         let textboxStyle = {
+            fontFamily:fonts.ARIAL,
             backgroundColor: BORDER_COLOR,
             fontSize: FONT_SIZE,
-            height: 36,
+            height: 32,
             paddingVertical: (Platform.OS === 'ios') ? 7 : 0,
             paddingHorizontal: 7,
             borderRadius: 4,
@@ -58,5 +60,6 @@ const HELP_COLOR = '#999999';
 const BORDER_COLOR = colors.TEXT_GREY;
 const DISABLED_COLOR = '#777777';
 const DISABLED_BACKGROUND_COLOR = '#eeeeee';
-const FONT_SIZE = 14;
+const FONT_SIZE = 13;
+const LABEL_FONT_SIZE = 11;
 const FONT_WEIGHT = '100';

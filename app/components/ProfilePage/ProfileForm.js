@@ -35,10 +35,12 @@ export default class ProfileForm extends Component {
                         label="Phút"
                         inline={true}/>
                 </View>
+                <View style={styles.space}/>
                 <NumberTextInput
                     placeholder="Email"
                     label="Email"
                     inline={false}/>
+                <View style={styles.space}/>
                 <NumberTextInput
                     inline={false}
                     placeholder="Số điện thoại"
@@ -61,6 +63,9 @@ const styles = StyleSheet.create({
     },
     datetimeComponent: {
         flex: 1
+    },
+    space:{
+        height:25
     }
 
 });

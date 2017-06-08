@@ -34,7 +34,7 @@ const styles = {
             textAlignVertical: 'center',
             textAlign: 'center',
             flex: 1,
-            color: colors.textTitle
+            color: colors.BLACK
         }
     }
 };

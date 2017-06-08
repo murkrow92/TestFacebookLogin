@@ -22,6 +22,7 @@ export default class ProfilePage extends Component {
                     rightButton="Lưu lại"
                     onLeftButtonPress={() => navigate('DrawerOpen')}
                     rightButtonType="label"/>
+
                 <Image style={styles.avatar} source={Background}/>
                 <Text style={styles.username}>Đoàn Phúc Bảo</Text>
                 <ProfileForm/>
@@ -35,7 +36,7 @@ const styles = {
         flex: 1,
     },
     avatar: {
-        marginTop: 30,
+        marginTop: 25,
         alignSelf: 'center',
         borderWidth: 1,
         width: 76,
@@ -45,9 +46,10 @@ const styles = {
     },
     username: {
         fontFamily: fonts.OPEN_SAN,
-        color: '#000000',
+        color: colors.BLACK,
         marginTop: 8,
         alignSelf: 'center',
-        fontSize: 13
+        fontSize: 13,
+        marginBottom:30
     }
 };

@@ -7,7 +7,7 @@ const colors = {
     BLUE: '#7373FA',
     LIGHT_BLUE:'#9EBEFF',
     topBarTitle: '#333333',
-    textTitle: '#333333',
+    BLACK: '#333333',
     TOOLBAR: 'white',
     TEXT_GREY: '#e7e7e7',
     BORDER_GREY: '#DFDCD4',
