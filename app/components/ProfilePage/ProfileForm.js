@@ -64,8 +64,8 @@ const styles = StyleSheet.create({
     datetimeComponent: {
         flex: 1
     },
-    space:{
-        height:25
+    space: {
+        height: 25
     }
 
 });
