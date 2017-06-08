@@ -5,6 +5,7 @@
 import React, {Component} from "react";
 import {View, StyleSheet} from "react-native";
 import NumberTextInput from "../Commons/UserInput/NumberTextInput";
+import Icon from "../Commons/Icon";
 
 export default class ProfileForm extends Component {
     render() {
@@ -26,6 +27,12 @@ export default class ProfileForm extends Component {
                         label="Năm"
                         style={styles.datetimeComponent}
                         inline={true}/>
+                    <View style={styles.iconContainer}>
+                        <Icon
+                            style={styles.icon}
+                            size={20}
+                            name="birthday"/>
+                    </View>
                     <NumberTextInput
                         placeholder="Giờ"
                         label="Giờ"
@@ -62,10 +69,19 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     datetimeComponent: {
-        flex: 1
+        flex: 1,
     },
     space: {
         height: 25
+    },
+    iconContainer: {
+        paddingBottom:8,
+        alignItems:'flex-end',
+        marginRight:10,
+        flexDirection: 'row'
+    },
+    icon: {
+
     }
 
 });

@@ -17,15 +17,14 @@ export default class NumberTextInput extends Component {
     render() {
         let containerStyle = {
             flex: this.props.inline ? 1 : 0,
-            marginRight: this.props.inline ? 6 : 0
+            marginRight: this.props.inline ? 10 : 0
         };
         let labelStyle = {
-            // color: LABEL_COLOR,
             fontSize: LABEL_FONT_SIZE,
             fontWeight: FONT_WEIGHT,
             marginBottom: 4
         };
-        let textboxStyle = {
+        let textBoxStyle = {
             fontFamily:fonts.ARIAL,
             backgroundColor: BORDER_COLOR,
             fontSize: FONT_SIZE,
@@ -47,19 +46,13 @@ export default class NumberTextInput extends Component {
                     keyboardType="numeric"
                     placeholder={this.props.placeholder}
                     underlineColorAndroid='transparent'
-                    style={textboxStyle}/>
+                    style={textBoxStyle}/>
             </View>
         );
     }
 }
 
-const LABEL_COLOR = '#000000';
-const INPUT_COLOR = '#000000';
-const ERROR_COLOR = '#a94442';
-const HELP_COLOR = '#999999';
 const BORDER_COLOR = colors.TEXT_GREY;
-const DISABLED_COLOR = '#777777';
-const DISABLED_BACKGROUND_COLOR = '#eeeeee';
 const FONT_SIZE = 13;
 const LABEL_FONT_SIZE = 11;
 const FONT_WEIGHT = '100';
