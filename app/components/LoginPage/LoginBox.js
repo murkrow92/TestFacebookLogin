@@ -9,14 +9,7 @@ import colors from "../../styles/colors";
 export default class LoginBox extends Component {
 
     render() {
-        return (
-            <View style={styles.boxContainer}>
-                <Text style={styles.title}>Đăng nhập</Text>
-                <View style={styles.contentContainer}>
-                    <Text style={styles.content}>Đăng nhập bằng Facebook để bắt đầu khám phá</Text>
-                    <Login/>
-                </View>
-            </View>);
+        return (<Login/>);
     }
 }
 
