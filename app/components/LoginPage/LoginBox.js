@@ -15,24 +15,26 @@ export default class LoginBox extends Component {
 let Login = React.createClass({
     render: function () {
         return (
-            <LoginButton
-                publishPermissions={["publish_actions"]}
-                onLoginFinished={
-                    (error, result) => {
-                        if (error) {
-                            alert("login has error: " + result.error);
-                        } else if (result.isCancelled) {
-                            alert("login is cancelled.");
-                        } else {
-                            AccessToken.getCurrentAccessToken().then(
-                                (data) => {
-                                    alert(data.accessToken.toString())
-                                }
-                            )
+            <View style={styles.loginContainer}>
+                <LoginButton
+                    publishPermissions={["publish_actions"]}
+                    onLoginFinished={
+                        (error, result) => {
+                            if (error) {
+                                alert("login has error: " + result.error);
+                            } else if (result.isCancelled) {
+                                alert("login is cancelled.");
+                            } else {
+                                AccessToken.getCurrentAccessToken().then(
+                                    (data) => {
+                                        alert(data.accessToken.toString())
+                                    }
+                                )
+                            }
                         }
                     }
-                }
-                onLogoutFinished={() => alert("logout.")}/>
+                    onLogoutFinished={() => alert("logout.")}/>
+            </View>
         );
     }
 });

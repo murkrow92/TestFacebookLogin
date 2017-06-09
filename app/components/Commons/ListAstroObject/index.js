@@ -4,7 +4,7 @@
 
 import {ListView, View} from "react-native";
 import React, {Component, PropTypes} from "react";
-import TutorialItem from "./TutorialItem";
+import AstroObjectItem from "./AstroObjectItem";
 
 export default class ListAstroObject extends Component {
 
@@ -33,7 +33,7 @@ export default class ListAstroObject extends Component {
 }
 
 const renderRow = (rowData) => {
-    return (<TutorialItem data={rowData}/>)
+    return (<AstroObjectItem data={rowData}/>)
 };
 
 const styles = {
