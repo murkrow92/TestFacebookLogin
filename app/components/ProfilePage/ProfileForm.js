@@ -38,6 +38,7 @@ export default class ProfileForm extends Component {
                         label="Giờ"
                         inline={true}/>
                     <NumberTextInput
+                        isLast={true}
                         placeholder="Phút"
                         label="Phút"
                         inline={true}/>

@@ -45,8 +45,7 @@ const styles = {
         borderWidth: 1,
         width: 76,
         height: 76,
-        borderRadius: 38,
-        borderColor: colors.BORDER_GREY,
+        borderRadius: 38
     },
     username: {
         fontFamily: fonts.OPEN_SAN,

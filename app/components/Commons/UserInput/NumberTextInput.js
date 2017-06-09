@@ -11,16 +11,17 @@ export default class NumberTextInput extends Component {
     static propTypes = {
         placeholder: PropTypes.string.isRequired,
         label: PropTypes.string.isRequired,
-        inline: PropTypes.bool.isRequired
+        inline: PropTypes.bool.isRequired,
+        isLast:PropTypes.bool
     };
 
     render() {
         let containerStyle = {
             flex: this.props.inline ? 1 : 0,
-            marginRight: this.props.inline ? 10 : 0
+            marginRight: !this.props.inline || this.props.isLast ? 0 : 10
         };
         let labelStyle = {
-            color:'#666666',
+            color:colors.LABEL,
             fontSize: LABEL_FONT_SIZE,
             fontWeight: FONT_WEIGHT,
             marginBottom: 4

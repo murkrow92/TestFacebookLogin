@@ -40,7 +40,7 @@ const leftButtonConfig = {
 const titleConfig = (props) => {
     return ({
             title: props.title,
-            tintColor: colors.topBarTitle,
+            tintColor: colors.TOP_BAR_TITLE,
             style: {
                 fontWeight: 'normal'
             }
