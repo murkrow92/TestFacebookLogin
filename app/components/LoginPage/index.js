@@ -18,7 +18,7 @@ export default class LoginPage extends Component {
                     <LoginBox/>
                     <Button
                         onPress={() => {
-                            navigate('Home')
+                            navigate('Content')
                         }}
                         title="CLICK HERE"/>
                 </View>
@@ -34,7 +34,7 @@ const styles = {
         height: 150,
         resizeMode:'contain',
         marginBottom:60,
-        marginTop:0
+        marginTop:60
 
     },
     background: {

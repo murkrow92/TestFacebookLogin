@@ -11,8 +11,10 @@ import ChatPage from "./components/ChatPage/index";
 import PurchasePage from "./components/PurchasePage/index";
 import LoginPage from "./components/LoginPage/index";
 import ProfilePage from "./components/ProfilePage/index";
+import HomePage from "./components/HomePage/index";
 
-const HomePage = DrawerNavigator({
+const ContentPage = DrawerNavigator({
+    Home: {screen:HomePage},
     Profile: {screen: ProfilePage},
     Chat: {screen: ChatPage},
     About: {screen: AboutPage},
@@ -26,8 +28,8 @@ const AppRoute = StackNavigator({
     Login: {
         screen: LoginPage,
     },
-    Home: {
-        screen: HomePage,
+    Content: {
+        screen: ContentPage,
     }
 }, {
     headerMode: 'none'
