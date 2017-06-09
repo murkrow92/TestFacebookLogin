@@ -34,7 +34,7 @@ export default class IOButtonIcon extends Component {
 
 const styles = StyleSheet.create({
         button: {
-            width: 32,
+            width: 50,
             justifyContent: 'center',
         },
         icon: {

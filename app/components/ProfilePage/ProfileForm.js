@@ -62,8 +62,8 @@ const styles = StyleSheet.create({
     container: {
         marginTop: 8,
         flexDirection: 'column',
-        paddingLeft: 12,
-        paddingRight: 12
+        paddingLeft: 15,
+        paddingRight: 15
     },
     datetimeContainer: {
         flexDirection: 'row',

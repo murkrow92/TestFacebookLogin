@@ -31,7 +31,7 @@ export default class ButtonIcon extends Component {
 
 const styles = StyleSheet.create({
         button: {
-            width: 32,
+            width: 50,
             justifyContent: 'center',
         },
         icon: {

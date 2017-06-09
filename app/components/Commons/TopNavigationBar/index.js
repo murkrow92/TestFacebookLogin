@@ -51,7 +51,7 @@ const createButton = (icon, onPress) => {
 
 const styles = {
     container: {
-        height: 32
+        height: 44
     },
 };
 
