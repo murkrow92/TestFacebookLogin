@@ -6,7 +6,8 @@ import React, {Component} from "react";
 import PageWrapper from "../Commons/Wrapper";
 import ChatBox from "../Commons/ChatBox/index";
 import ListMessage from "./ListMessage";
-import TopNavigationBarWithSideBar from "../Commons/TopNavigationBar/TopNavigationBarWithSideBar";
+import TopNavigationBar from "../Commons/TopNavigationBar/index";
+import ButtonIcon from "../Commons/TopNavigationBar/ButtonIcon";
 
 export default class ChatPage extends Component {
     render() {
@@ -29,17 +30,21 @@ export default class ChatPage extends Component {
         const {navigate} = this.props.navigation;
         return (
             <PageWrapper>
-                <TopNavigationBarWithSideBar
-                    title="Ask an astrologer"
-                    rightButton="ios-card-outline"
-                    onLeftButtonPress={() => navigate('DrawerOpen')}
-                    rightButtonType="icon"/>
+                <TopNavigationBar
+                    title="Tin nhắn"
+                    onPress={() => navigate('DrawerOpen')}
+                    rightButton={rightButton()}/>
                 <ListMessage items={items}/>
                 <ChatBox/>
             </PageWrapper>
         );
     }
 }
+const rightButton = () => {
+    return (<ButtonIcon icon="chart-pie-1" onPress={() => {
+    }}/>);
+};
+
 
 
 

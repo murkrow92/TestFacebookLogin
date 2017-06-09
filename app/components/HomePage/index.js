@@ -22,7 +22,7 @@ export default class HomePage extends Component {
 }
 
 const rightButton = () => {
-    return (<ButtonIcon icon="menu" onPress={() => {
+    return (<ButtonIcon icon="chart-pie-1" onPress={() => {
     }}/>);
 };
 

@@ -7,8 +7,7 @@ import {View} from "react-native";
 import React, {Component, PropTypes} from "react";
 import LineDivider from "../LineDivider";
 import colors from "../../../styles/colors";
-import ButtonIcon from "./ButtonIcon";
-import NormalTitle from "./NormalTitle";
+import IOButtonIcon from "./IOButtonIcon";
 
 export default class TopNavigationBar extends Component {
 
@@ -19,7 +18,7 @@ export default class TopNavigationBar extends Component {
     };
 
     render() {
-        const leftButtonConfig = this.props.leftButton ? this.props.leftButton : createButton("menu", this.props.onPress);
+        const leftButtonConfig = this.props.leftButton ? this.props.leftButton : createButton("ios-menu-outline", this.props.onPress);
         return (
             <View style={styles.container}>
                 <NavigationBar
@@ -35,17 +34,24 @@ export default class TopNavigationBar extends Component {
 }
 
 const createTitle = (title) => {
-    return <NormalTitle title={title}/>
+    return ({
+        title: title,
+        style: {
+            fontWeight: 'normal',
+            fontSize: 13,
+        }
+
+    });
 };
 
 const createButton = (icon, onPress) => {
-    return (<ButtonIcon icon={icon} onPress={onPress}/>)
+    return (<IOButtonIcon icon={icon} onPress={onPress}/>)
 };
 
 
 const styles = {
     container: {
-        flex: 1,
+        height: 32
     },
 };
 

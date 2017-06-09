@@ -5,11 +5,12 @@
 import React, {Component} from "react";
 import {Image, Text} from "react-native";
 import PageWrapper from "../Commons/Wrapper";
-import TopNavigationBarWithSideBar from "../Commons/TopNavigationBar/TopNavigationBarWithSideBar";
 import ProfileForm from "./ProfileForm";
 import colors from "../../styles/colors";
 import fonts from "../../styles/fonts";
 import Background from "../../styles/images/bg.jpg";
+import TopNavigationBar from "../Commons/TopNavigationBar/index";
+import ButtonIcon from "../Commons/TopNavigationBar/ButtonIcon";
 
 
 export default class ProfilePage extends Component {
@@ -17,12 +18,10 @@ export default class ProfilePage extends Component {
         const {navigate} = this.props.navigation;
         return (
             <PageWrapper>
-                <TopNavigationBarWithSideBar
+                <TopNavigationBar
                     title="Cá nhân"
-                    rightButton="Lưu lại"
-                    onLeftButtonPress={() => navigate('DrawerOpen')}
-                    rightButtonType="label"/>
-
+                    onPress={() => navigate('DrawerOpen')}
+                    rightButton={rightButton()}/>
                 <Image style={styles.avatar} source={Background}/>
                 <Text style={styles.username}>Đoàn Phúc Bảo</Text>
                 <ProfileForm/>
@@ -31,10 +30,13 @@ export default class ProfilePage extends Component {
     }
 }
 
+const rightButton = () => {
+    return (<ButtonIcon icon="male" onPress={() => {
+    }}/>);
+};
+
 const styles = {
-    container: {
-        flex: 1,
-    },
+  
     avatar: {
         marginTop: 25,
         alignSelf: 'center',
@@ -50,6 +52,6 @@ const styles = {
         marginTop: 8,
         alignSelf: 'center',
         fontSize: 13,
-        marginBottom:30
+        marginBottom: 30
     }
 };
