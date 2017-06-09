@@ -38,7 +38,7 @@ const createTitle = (title) => {
         title: title,
         style: {
             fontWeight: 'normal',
-            fontSize: 13,
+            fontSize: 16,
         }
 
     });
