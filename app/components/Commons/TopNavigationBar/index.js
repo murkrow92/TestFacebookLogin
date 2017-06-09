@@ -45,7 +45,7 @@ const createTitle = (title) => {
 };
 
 const createButton = (icon, onPress) => {
-    return (<IOButtonIcon icon={icon} onPress={onPress}/>)
+    return (<IOButtonIcon name={icon} onPress={onPress}/>)
 };
 
 

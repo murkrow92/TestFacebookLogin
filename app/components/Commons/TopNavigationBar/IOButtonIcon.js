@@ -8,33 +8,39 @@
 import React, {Component, PropTypes} from 'react';
 import {TouchableHighlight, StyleSheet, View} from "react-native";
 import colors from "../../../styles/colors";
-import Icon from "react-native-vector-icons/Ionicons";
+import IOIcon from "../Icons/IOIcon";
+import {APP_MARGIN, ICON_SIZE} from "../../../styles/dimens";
 
 export default class IOButtonIcon extends Component {
     static propTypes = {
-        icon: PropTypes.string.isRequired,
-        onPress: PropTypes.func.isRequired
+        name: PropTypes.string.isRequired,
+        onPress: PropTypes.func.isRequired,
+        size:PropTypes.number,
+        color:PropTypes.string
     };
 
     render() {
+        let size = this.props.size?this.props.size:ICON_SIZE;
+        let color = this.props.color?this.props.color:colors.BLUE;
         return (
             <TouchableHighlight
                 onPress={() => this.props.onPress()}
                 style={styles.button}
                 underlayColor={colors.LIGHT_BLUE}>
                 <View style={styles.label}>
-                    <Icon
-                        name={this.props.icon}
-                        size={20}
-                        color={colors.BLUE}/>
+                    <IOIcon
+                        name={this.props.name}
+                        size={size}
+                        color={color}/>
                 </View>
             </TouchableHighlight>);
     }
 }
+const boxWidth = (ICON_SIZE * 0.5 + APP_MARGIN) * 2;
 
 const styles = StyleSheet.create({
         button: {
-            width: 50,
+            width: boxWidth,
             justifyContent: 'center',
         },
         label: {

@@ -5,7 +5,7 @@
 import React, {Component, PropTypes} from 'react';
 import {TouchableHighlight, StyleSheet, View} from "react-native";
 import colors from "../../../styles/colors";
-import Icon from "../Icon";
+import Icon from "../Icons/Icon";
 import {APP_MARGIN, ICON_SIZE} from "../../../styles/dimens";
 
 export default class ButtonIcon extends Component {
@@ -20,7 +20,7 @@ export default class ButtonIcon extends Component {
                 onPress={() => this.props.onPress()}
                 style={styles.button}
                 underlayColor={colors.LIGHT_BLUE}>
-                <View style={styles.label}>
+                <View style={styles.container}>
                     <Icon
                         name={this.props.icon}
                         size={ICON_SIZE}
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
             width: boxWidth,
             justifyContent: 'center',
         },
-        label: {
+        container: {
             alignSelf: 'center'
         },
     }

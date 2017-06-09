@@ -5,7 +5,7 @@
 import React, {Component} from "react";
 import {View, StyleSheet} from "react-native";
 import NumberTextInput from "../Commons/UserInput/NumberTextInput";
-import Icon from "../Commons/Icon";
+import Icon from "../Commons/Icons/Icon";
 
 export default class ProfileForm extends Component {
     render() {

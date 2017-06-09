@@ -3,8 +3,8 @@
  */
 
 import React, {Component, PropTypes} from 'react';
-import config from '../../styles/font_config.json';
-import colors from '../../styles/colors';
+import config from '../../../styles/font_config.json';
+import colors from '../../../styles/colors';
 import {createIconSetFromFontello} from 'react-native-vector-icons';
 const BaseIcon = createIconSetFromFontello(config);
 
@@ -13,6 +13,7 @@ export default class Icon extends Component {
     static propTypes = {
         name: PropTypes.string.isRequired,
         size: PropTypes.number.isRequired,
+        customFont:PropTypes.bool
     };
 
     render() {
