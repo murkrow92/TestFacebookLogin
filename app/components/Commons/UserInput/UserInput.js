@@ -13,7 +13,7 @@ export default class UserInput extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.logoContainer}>
-                    <Image style={styles.logo} source={IMAGES.icon}/>
+                    <Image style={styles.logo} source={IMAGES.label}/>
                     <Text style={styles.title}> Dùng để tính tử khí nhé </Text>
                 </View>
                 <UserInputForm/>

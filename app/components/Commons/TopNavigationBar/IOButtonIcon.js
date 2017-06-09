@@ -22,7 +22,7 @@ export default class IOButtonIcon extends Component {
                 onPress={() => this.props.onPress()}
                 style={styles.button}
                 underlayColor={colors.LIGHT_BLUE}>
-                <View style={styles.icon}>
+                <View style={styles.label}>
                     <Icon
                         name={this.props.icon}
                         size={20}
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
             width: 50,
             justifyContent: 'center',
         },
-        icon: {
+        label: {
             alignSelf: 'center'
         },
     }

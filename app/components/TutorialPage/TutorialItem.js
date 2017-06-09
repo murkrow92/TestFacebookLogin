@@ -18,7 +18,7 @@ export default class TutorialItem extends Component {
         return (
             <View style={containerStyle(rowIndex)}>
                 <View style={styles.iconContainer}>
-                    <Icon size={50} name={this.props.data.icon}/>
+                    <Icon size={50} name={this.props.data.label}/>
                 </View>
                 <View style={textContainerStyle(rowIndex)}>
                     <Text>{this.props.data.content}</Text>

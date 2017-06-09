@@ -29,7 +29,7 @@ export default class ProfileForm extends Component {
                         inline={true}/>
                     <View style={styles.iconContainer}>
                         <Icon
-                            style={styles.icon}
+                            style={styles.label}
                             size={20}
                             name="birthday"/>
                     </View>
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         marginRight:10,
         flexDirection: 'row'
     },
-    icon: {
+    label: {
 
     }
 

@@ -1,15 +1,14 @@
 /**
- * Created by Murkrow on 6/9/2017.
+ * Created by murkrow on 6/9/17.
  */
 
 import React, {Component, PropTypes} from 'react';
-import {TouchableHighlight, StyleSheet, View} from "react-native";
+import {TouchableHighlight, StyleSheet, Text} from "react-native";
 import colors from "../../../styles/colors";
-import Icon from "../Icon";
 
-export default class ButtonIcon extends Component {
+export default class ButtonLabel extends Component {
     static propTypes = {
-        icon: PropTypes.string.isRequired,
+        label: PropTypes.string.isRequired,
         onPress: PropTypes.func.isRequired
     };
 
@@ -19,24 +18,19 @@ export default class ButtonIcon extends Component {
                 onPress={() => this.props.onPress()}
                 style={styles.button}
                 underlayColor={colors.LIGHT_BLUE}>
-                <View style={styles.label}>
-                    <Icon
-                        name={this.props.icon}
-                        size={20}
-                        color={colors.BLUE}/>
-                </View>
+                <Text style={styles.label}>{this.props.label}</Text>
             </TouchableHighlight>);
     }
 }
 
 const styles = StyleSheet.create({
         button: {
-            width: 50,
+            marginRight:15,
             justifyContent: 'center',
         },
         label: {
+            color:colors.BLUE,
             alignSelf: 'center'
         },
     }
 );
-
