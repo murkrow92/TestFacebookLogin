@@ -17,7 +17,7 @@ export default class ButtonLabel extends Component {
             <TouchableHighlight
                 onPress={() => this.props.onPress()}
                 style={styles.button}
-                underlayColor={colors.LIGHT_BLUE}>
+                underlayColor={colors.BLUE}>
                 <Text style={styles.label}>{this.props.label}</Text>
             </TouchableHighlight>);
     }

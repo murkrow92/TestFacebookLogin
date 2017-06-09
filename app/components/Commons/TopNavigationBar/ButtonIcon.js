@@ -6,6 +6,7 @@ import React, {Component, PropTypes} from 'react';
 import {TouchableHighlight, StyleSheet, View} from "react-native";
 import colors from "../../../styles/colors";
 import Icon from "../Icon";
+import {APP_MARGIN, ICON_SIZE} from "../../../styles/dimens";
 
 export default class ButtonIcon extends Component {
     static propTypes = {
@@ -22,16 +23,18 @@ export default class ButtonIcon extends Component {
                 <View style={styles.label}>
                     <Icon
                         name={this.props.icon}
-                        size={20}
+                        size={ICON_SIZE}
                         color={colors.BLUE}/>
                 </View>
             </TouchableHighlight>);
     }
 }
 
+const boxWidth = (ICON_SIZE * 0.5 + APP_MARGIN) * 2;
+
 const styles = StyleSheet.create({
         button: {
-            width: 50,
+            width: boxWidth,
             justifyContent: 'center',
         },
         label: {

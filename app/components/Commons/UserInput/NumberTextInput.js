@@ -20,6 +20,7 @@ export default class NumberTextInput extends Component {
             marginRight: this.props.inline ? 10 : 0
         };
         let labelStyle = {
+            color:'#666666',
             fontSize: LABEL_FONT_SIZE,
             fontWeight: FONT_WEIGHT,
             marginBottom: 4
