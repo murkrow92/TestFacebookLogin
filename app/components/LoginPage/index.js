@@ -4,7 +4,7 @@
 import PageWrapper from "../Commons/Wrapper";
 import React, {Component} from "react";
 import {Button, Image, View} from "react-native";
-import Logo from "../../styles/images/logo.png";
+import Logo from "../../styles/images/vnastro.png";
 import LoginBox from "./LoginBox";
 import colors from "../../styles/colors";
 
