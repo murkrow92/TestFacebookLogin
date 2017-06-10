@@ -65,7 +65,7 @@ const styles = StyleSheet.create(
             flex: 1,
         },
         title: {
-            fontFamily: fonts.OPEN_SAN,
+            fontFamily: fonts.HELVETICA,
             fontSize: 13,
             color: colors.BLACK
         },

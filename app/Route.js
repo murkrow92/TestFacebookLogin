@@ -12,9 +12,11 @@ import PurchasePage from "./components/PurchasePage/index";
 import LoginPage from "./components/LoginPage/index";
 import ProfilePage from "./components/ProfilePage/index";
 import HomePage from "./components/HomePage/index";
+import BankPage from "./components/BankPage/index";
 
 const ContentPage = DrawerNavigator({
     Home: {screen:HomePage},
+    Bank: {screen:BankPage},
     Profile: {screen: ProfilePage},
     Chat: {screen: ChatPage},
     About: {screen: AboutPage},
