@@ -14,11 +14,23 @@ import ProfilePage from "./components/ProfilePage/index";
 import HomePage from "./components/HomePage/index";
 import BankPage from "./components/BankPage/index";
 import PaymentPage from "./components/PaymentPage/index";
+import MethodTransferPage from "./components/PaymentPage/MethodTransferPage/index";
+
+const PayRoute = StackNavigator({
+    Payment: {
+        screen: PaymentPage
+    },
+    MethodTransfer: {
+        screen: MethodTransferPage
+    }
+}, {
+    headerMode: 'none'
+});
 
 const ContentPage = DrawerNavigator({
-    Payment:{screen:PaymentPage},
-    Home: {screen:HomePage},
-    Bank: {screen:BankPage},
+    Payment: {screen: PayRoute},
+    Home: {screen: HomePage},
+    Bank: {screen: BankPage},
     Profile: {screen: ProfilePage},
     Chat: {screen: ChatPage},
     About: {screen: AboutPage},
@@ -27,6 +39,7 @@ const ContentPage = DrawerNavigator({
     Setting: {screen: SettingPage},
     Purchase: {screen: PurchasePage}
 });
+
 
 const AppRoute = StackNavigator({
     Login: {

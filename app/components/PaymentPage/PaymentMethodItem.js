@@ -31,6 +31,7 @@ export default class PaymentMethodItem extends Component {
                         color="#999999"
                         name="ios-arrow-forward-outline"
                         onPress={() => {
+                            this.props.data.onPress();
                         }}/>
                 </View>
                 <LineDivider color={colors.LIST_BOTTOM_BORDER}/>
@@ -38,9 +39,6 @@ export default class PaymentMethodItem extends Component {
         );
     }
 }
-
-
-
 
 const styles = StyleSheet.create({
     wrapper: {

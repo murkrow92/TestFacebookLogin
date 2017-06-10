@@ -16,11 +16,17 @@ export default class PaymentPage extends Component {
         const {navigate} = this.props.navigation;
         let item1 = {
             methodName: 'Nạp tiền bằng thẻ VISA/Master ',
-            icon: "truck"
+            icon: "truck",
+            onPress: () => {
+                navigate("MethodTransfer");
+            }
         };
         let item2 = {
             methodName: 'Chuyển khoản',
-            icon: "cart-plus"
+            icon: "cart-plus",
+            onPress: () => {
+                navigate("MethodTransfer");
+            }
         };
 
         let items = [item1, item2];
