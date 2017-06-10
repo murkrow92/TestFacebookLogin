@@ -13,7 +13,8 @@ export default class IOButtonIcon extends Component {
         name: PropTypes.string.isRequired,
         onPress: PropTypes.func.isRequired,
         size:PropTypes.number,
-        color:PropTypes.string
+        color:PropTypes.string,
+        width:PropTypes.number
     };
 
     render() {

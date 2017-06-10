@@ -4,6 +4,7 @@
 
 const colors = {
     RED:'#CC0033',
+    GREEN:'#008000',
     LIST_BOTTOM_BORDER:"#E4E4E4",
     LIST_TOP_BORDER:"#f7f7f7",
     BACKGROUND_LOGIN:'#BDC3C7',
