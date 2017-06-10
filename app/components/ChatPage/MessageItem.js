@@ -18,7 +18,7 @@ export default class MessageItem extends Component {
     render() {
         const dt = this.props.data.datetime;
         const user = this.props.data.user;
-        const content = this.props.data.content;
+        const content = this.props.data.contentContainer;
         const isSystem = (user === "System");
         return (
             <View style={containerStyle(isSystem)}>
@@ -119,7 +119,7 @@ const styles = {
         borderRadius: 20,
         alignItems: 'flex-start'
     },
-    content: {
+    contentContainer: {
 
         color: 'black'
     },

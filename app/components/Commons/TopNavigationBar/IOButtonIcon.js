@@ -1,9 +1,6 @@
 /**
  * Created by Murkrow on 6/9/2017.
  */
-/**
- * Created by Murkrow on 6/9/2017.
- */
 
 import React, {Component, PropTypes} from 'react';
 import {TouchableHighlight, StyleSheet, View} from "react-native";
@@ -26,7 +23,7 @@ export default class IOButtonIcon extends Component {
             <TouchableHighlight
                 onPress={() => this.props.onPress()}
                 style={styles.button}
-                underlayColor={colors.LIGHT_BLUE}>
+                underlayColor='transparent'>
                 <View style={styles.label}>
                     <IOIcon
                         name={this.props.name}

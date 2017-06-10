@@ -2,13 +2,14 @@
  * Created by murkrow on 6/9/17.
  */
 
-import {Text, View, StyleSheet, Image, TouchableHighlight} from "react-native";
+import {Text, View, StyleSheet, Image} from "react-native";
 import React, {Component, PropTypes} from "react";
 import colors from "../../../styles/colors";
-import Sun from "../../../styles/images/planet/Sun.png";
-import Aries from "../../../styles/images/signs/1.png";
 import {APP_MARGIN} from "../../../styles/dimens";
 import IOButtonIcon from "../TopNavigationBar/IOButtonIcon";
+import fonts from "../../../styles/fonts";
+import LineDivider from "../LineDivider";
+import {mapSign, mapPlanet} from "./map";
 
 export default class AstroObjectItem extends Component {
 
@@ -17,14 +18,24 @@ export default class AstroObjectItem extends Component {
     };
 
     render() {
+        let topBorderColor = this.props.data.isFirst ? 'transparent' : colors.LIST_TOP_BORDER;
         return (
-            <View style={styles.container}>
-                <Image source={Sun} style={styles.icon}/>
-                <Image source={Aries} style={styles.icon}/>
+            <View style={styles.wrapper}>
+                <LineDivider color={topBorderColor}/>
+                <View style={styles.container}>
+                    <Image source={mapPlanet(this.props.data.planet)} style={styles.icon}/>
+                    <Image source={mapSign(this.props.data.sign)} style={styles.icon}/>
+                    <View style={styles.contentContainer}>
+                        <Text style={styles.title}>{this.props.data.title }</Text>
+                        <Text style={styles.content}>{this.props.data.content}</Text>
 
-                <IOButtonIcon
-                    name="ios-arrow-forward-outline"
-                    onPress={()=>{}}/>
+                    </View>
+                    <IOButtonIcon
+                        name="ios-arrow-forward-outline"
+                        onPress={() => {
+                        }}/>
+                </View>
+                <LineDivider color={colors.LIST_BOTTOM_BORDER}/>
             </View>
         )
     }
@@ -32,11 +43,14 @@ export default class AstroObjectItem extends Component {
 
 const styles = StyleSheet.create(
     {
+        wrapper: {
+            flexDirection: 'column'
+        },
         container: {
+            marginTop:5,
+            marginBottom:5,
             alignItems: 'center',
-            height: 64,
             marginLeft: APP_MARGIN - 5,
-            marginRight: APP_MARGIN - 5,
             flex: 1,
             flexDirection: 'row'
 
@@ -46,7 +60,20 @@ const styles = StyleSheet.create(
             width: 30,
             height: 30
         },
-        button: {
+        contentContainer: {
+            marginLeft:5,
+            flex: 1,
+        },
+        title: {
+            fontFamily: fonts.OPEN_SAN,
+            fontSize: 13,
+            color: colors.BLACK
+        },
+        content: {
+            fontFamily: fonts.OPEN_SAN,
+            fontSize: 13,
+            marginTop: 8,
+            color: colors.LABEL
         }
     }
 );

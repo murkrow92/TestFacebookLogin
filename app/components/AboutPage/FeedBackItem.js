@@ -20,7 +20,7 @@ export default class FeedBackItem extends Component {
                         <Text style={styles.datetimeText}>{this.props.feedback.date} by {this.props.feedback.byUser}</Text>
                     </View>
                 </View>
-                <Text style={styles.content}>{this.props.feedback.content}</Text>
+                <Text style={styles.contentContainer}>{this.props.feedback.contentContainer}</Text>
             </View>);
     }
 }
@@ -44,7 +44,7 @@ const styles = {
         flex:0.5,
         flexDirection:'row'
     },
-    content: {
+    contentContainer: {
         color: 'black'
     }
 };

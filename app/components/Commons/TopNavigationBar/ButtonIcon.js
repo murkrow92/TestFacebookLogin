@@ -19,7 +19,7 @@ export default class ButtonIcon extends Component {
             <TouchableHighlight
                 onPress={() => this.props.onPress()}
                 style={styles.button}
-                underlayColor={colors.LIGHT_BLUE}>
+                underlayColor="transparent">
                 <View style={styles.container}>
                     <Icon
                         name={this.props.icon}

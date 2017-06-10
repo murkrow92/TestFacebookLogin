@@ -3,24 +3,25 @@
  */
 
 
-import React, {Component} from "react";
+import React, {Component, PropTypes} from "react";
 import {View} from "react-native";
 import colors from "../../styles/colors";
 
 export default class LineDivider extends Component {
+    static propTypes = {
+        color: PropTypes.string
+    };
+
     render() {
+        let bgColor = this.props.color ? this.props.color : colors.BORDER_GREY;
         return (
             <View
-                style={styles.divider}>
+                style={{
+                    backgroundColor: bgColor,
+                    height: 1,
+                    flexDirection: 'row'
+                }}>
             </View>
         );
     }
 }
-
-const styles = {
-    divider: {
-        backgroundColor: colors.BORDER_GREY,
-        height: 1,
-        flexDirection: 'row'
-    }
-};

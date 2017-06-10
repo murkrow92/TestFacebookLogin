@@ -21,7 +21,7 @@ export default class TutorialItem extends Component {
                     <Icon size={50} name={this.props.data.label}/>
                 </View>
                 <View style={textContainerStyle(rowIndex)}>
-                    <Text>{this.props.data.content}</Text>
+                    <Text>{this.props.data.contentContainer}</Text>
                 </View>
             </View>);
     }

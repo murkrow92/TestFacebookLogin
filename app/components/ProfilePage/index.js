@@ -10,7 +10,6 @@ import colors from "../../styles/colors";
 import fonts from "../../styles/fonts";
 import Background from "../../styles/images/bg.jpg";
 import TopNavigationBar from "../Commons/TopNavigationBar/index";
-import ButtonIcon from "../Commons/TopNavigationBar/ButtonIcon";
 import ButtonLabel from "../Commons/TopNavigationBar/ButtonLabel";
 
 
