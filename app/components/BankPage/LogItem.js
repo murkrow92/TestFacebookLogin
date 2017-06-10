@@ -35,7 +35,7 @@ export default class LogItem extends Component {
                     <Icon size={30} name="mars"/>
                     <View style={styles.contentContainer}>
                         <Text style={styles.title}>{this.props.data.title }</Text>
-                        <Text style={styles.content}>{this.props.data.content}</Text>
+                        {createContent(this.props.data.content)}
                     </View>
                     <View style={styles.textChangeContainer}>
                         <Text style={textChangeStyle}>{this.props.data.change}</Text>
@@ -50,6 +50,13 @@ export default class LogItem extends Component {
         );
     }
 }
+
+const createContent = (content) => {
+    if (content) {
+        return (<Text style={styles.content}>{content}</Text>);
+    }
+
+};
 
 
 const styles = StyleSheet.create({
@@ -66,7 +73,6 @@ const styles = StyleSheet.create({
 
     },
     contentContainer: {
-        backgroundColor: 'lightblue',
         marginLeft: APP_MARGIN,
         flex: 1,
     },
@@ -76,8 +82,8 @@ const styles = StyleSheet.create({
         color: colors.BLACK
     },
     content: {
-        fontFamily: fonts.OPEN_SAN,
-        fontSize: 13,
+        fontFamily: fonts.REGULAR,
+        fontSize: 11,
         marginTop: 5,
         color: colors.LABEL
     },

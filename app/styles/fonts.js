@@ -5,7 +5,8 @@
 const fonts = {
     OPEN_SAN: 'Open Sans',
     ARIAL: 'Arial',
-    HELVETICA:'Helvetica'
+    HELVETICA:'Helvetica',
+    REGULAR:'Regular'
 };
 
 export default fonts;
