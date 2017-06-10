@@ -9,6 +9,7 @@ import {Text, View, StyleSheet} from "react-native";
 import fonts from "../../../styles/fonts";
 import {APP_MARGIN} from "../../../styles/dimens";
 import colors from "../../../styles/colors";
+import ListBankAccount from "./ListBankAccount";
 
 export default class MethodTransferPage extends Component {
     render() {
@@ -34,6 +35,7 @@ export default class MethodTransferPage extends Component {
                 <View style={styles.pinCodeContainer}>
                     <Text style={styles.pinCode}>123456</Text>
                 </View>
+                <ListBankAccount items={items}/>
             </PageWrapper>
         );
     }
@@ -57,7 +59,8 @@ const styles = StyleSheet.create(
 
         },
         pinCodeContainer:{
-            alignItems:'center'
+            alignItems:'center',
+            marginBottom:30
 
         },
         pinCode: {
