@@ -5,7 +5,6 @@
 import PageWrapper from "../Commons/Wrapper";
 import React, {Component} from "react";
 import TopNavigationBar from "../Commons/TopNavigationBar/index";
-import {StyleSheet} from "react-native";
 import AccountBox from "./AccountBox";
 import ListLog from "./ListLog";
 
@@ -42,5 +41,3 @@ const rightButton = () => {
         title: ''
     });
 };
-
-const styles = StyleSheet.create({});

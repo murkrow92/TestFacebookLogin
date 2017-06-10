@@ -13,8 +13,10 @@ import LoginPage from "./components/LoginPage/index";
 import ProfilePage from "./components/ProfilePage/index";
 import HomePage from "./components/HomePage/index";
 import BankPage from "./components/BankPage/index";
+import PaymentPage from "./components/PaymentPage/index";
 
 const ContentPage = DrawerNavigator({
+    Payment:{screen:PaymentPage},
     Home: {screen:HomePage},
     Bank: {screen:BankPage},
     Profile: {screen: ProfilePage},

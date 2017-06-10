@@ -12,26 +12,20 @@ import Icon from "../Commons/Icons/Icon";
 import fonts from "../../styles/fonts";
 
 
-export default class LogItem extends Component {
+export default class PaymentMethodItem extends Component {
 
     static propTypes = {
         data: PropTypes.object.isRequired
     };
 
     render() {
-        let textChangeStyle = createTextChangeStyle(this.props.data.change);
-        let topBorderColor = this.props.data.isFirst ? 'transparent' : colors.LIST_TOP_BORDER;
         return (
             <View style={styles.wrapper}>
-                <LineDivider color={topBorderColor}/>
+                <LineDivider color={colors.LIST_TOP_BORDER}/>
                 <View style={styles.container}>
-                    <Icon size={30} name="mars"/>
+                    <Icon size={30} name={this.props.data.icon}/>
                     <View style={styles.contentContainer}>
-                        <Text style={styles.title}>{this.props.data.title }</Text>
-                        {createContent(this.props.data.content)}
-                    </View>
-                    <View style={styles.textChangeContainer}>
-                        <Text style={textChangeStyle}>{this.props.data.change}</Text>
+                        <Text style={styles.title}>{this.props.data.methodName }</Text>
                     </View>
                     <IOButtonIcon
                         color="#999999"
@@ -45,29 +39,12 @@ export default class LogItem extends Component {
     }
 }
 
-const createTextChangeStyle = (change)=>{
-    let textChangeStyle = {
-        fontFamily: fonts.OPEN_SAN,
-        fontSize: 13,
-        color: colors.GREEN
-    };
-    if (change < 0) {
-        textChangeStyle.color = colors.RED;
-    }
-    return textChangeStyle;
 
-};
-
-const createContent = (content) => {
-    if (content) {
-        return (<Text style={styles.content}>{content}</Text>);
-    }
-
-};
 
 
 const styles = StyleSheet.create({
     wrapper: {
+        height:64,
         flexDirection: 'column'
     },
     container: {
@@ -99,4 +76,3 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end'
     }
 });
-
