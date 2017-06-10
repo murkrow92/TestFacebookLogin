@@ -5,7 +5,6 @@
 import {Text, View, StyleSheet} from "react-native";
 import React, {Component, PropTypes} from "react";
 import LineDivider from "../../Commons/LineDivider";
-import IOButtonIcon from "../../Commons/TopNavigationBar/IOButtonIcon";
 import colors from "../../../styles/colors";
 import {APP_MARGIN} from "../../../styles/dimens";
 import Icon from "../../Commons/Icons/Icon";
@@ -25,7 +24,9 @@ export default class BackAccountItem extends Component {
                 <View style={styles.container}>
                     <Icon size={30} name={this.props.data.icon}/>
                     <View style={styles.contentContainer}>
-                        <Text style={styles.title}>{this.props.data.methodName }</Text>
+                        <Text style={styles.title}>{this.props.data.bank }</Text>
+                        <Text style={styles.content}>{this.props.data.accountName }</Text>
+                        <Text style={styles.content}>{this.props.data.accountNumber }</Text>
                     </View>
                 </View>
                 <LineDivider color={colors.LIST_BOTTOM_BORDER}/>

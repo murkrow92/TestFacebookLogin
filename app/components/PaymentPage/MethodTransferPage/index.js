@@ -15,12 +15,16 @@ export default class MethodTransferPage extends Component {
     render() {
         const {navigate} = this.props.navigation;
         let item1 = {
-            methodName: 'Nạp tiền bằng thẻ VISA/Master ',
-            icon: "truck"
+            icon: 'truck',
+            bank: 'VIB',
+            accountName: 'Đoàn Phúc Bảo',
+            accountNumber: "1234567"
         };
         let item2 = {
-            methodName: 'Chuyển khoản',
-            icon: "cart-plus"
+            icon: 'truck',
+            bank: 'VIB',
+            accountName: 'Đoàn Phúc Bảo',
+            accountNumber: "1234567"
         };
 
         let items = [item1, item2];
@@ -58,21 +62,21 @@ const styles = StyleSheet.create(
             fontFamily: fonts.HELVETICA
 
         },
-        pinCodeContainer:{
-            alignItems:'center',
-            marginBottom:30
+        pinCodeContainer: {
+            alignItems: 'center',
+            marginBottom: 30
 
         },
         pinCode: {
-            color:colors.BLACK,
+            color: colors.BLACK,
             fontSize: 20,
             fontFamily: fonts.HELVETICA,
-            borderRadius:5,
+            borderRadius: 5,
             backgroundColor: '#f2f2f2',
             width: 120,
             height: 40,
-            textAlign:'center',
-            textAlignVertical:'center'
+            textAlign: 'center',
+            textAlignVertical: 'center'
         }
     }
 );
