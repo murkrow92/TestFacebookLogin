@@ -19,6 +19,7 @@ import DetailPage from "./components/DetailPage/index";
 import QuestionPage from "./components/QuestionPage/index";
 import FriendPage from "./components/FriendPage/index";
 import NotificationPage from "./components/NotificationPage/index";
+import ChartPage from "./components/ChartPage/index";
 
 const PayRoute = StackNavigator({
     Payment: {
@@ -32,6 +33,7 @@ const PayRoute = StackNavigator({
 });
 
 const ContentPage = DrawerNavigator({
+    Chart:{screen:ChartPage},
     Notification: {screen: NotificationPage},
     Friend: {screen: FriendPage},
     Question: {screen: QuestionPage},
