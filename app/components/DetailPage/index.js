@@ -5,16 +5,18 @@ import ComboBox from "./ComboBox";
 import {Text, View, StyleSheet} from "react-native";
 import colors from "../../styles/colors";
 import fonts from "../../styles/fonts";
-import QuestionBox from "./QuestionBox";
 import {APP_MARGIN} from "../../styles/dimens";
+import {QUESTION_TYPE_COMBO, QUESTION_TYPE_QUESTION} from "../../lib/questions";
+import Icon from "../Commons/Icons/Icon";
+import QuestionBox from "./QuestionBox";
 
-const QUESTION_TYPE_COMBO = 1;
-const QUESTION_TYPE_QUESTION = 2;
+
 
 export default class DetailPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            question:'Làm thế nào để biết cung Mọc?',
             questionType:QUESTION_TYPE_QUESTION,
             answer: 'Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.'
         }

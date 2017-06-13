@@ -9,7 +9,7 @@ import {APP_MARGIN} from "../../../styles/dimens";
 import IOButtonIcon from "../TopNavigationBar/IOButtonIcon";
 import fonts from "../../../styles/fonts";
 import LineDivider from "../LineDivider";
-import {mapSign, mapPlanet} from "./map";
+import {mapSign, mapPlanet} from "../../../lib/map";
 
 export default class AstroObjectItem extends Component {
 

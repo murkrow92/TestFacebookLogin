@@ -6,6 +6,7 @@
 import React, {Component, PropTypes} from "react";
 import {View, StyleSheet, TextInput, Platform} from "react-native";
 import colors from "../../styles/colors";
+import fonts from "../../styles/fonts";
 
 export default class SearchBox extends Component {
     static propTypes = {
@@ -30,6 +31,9 @@ const styles = StyleSheet.create({
         marginBottom:10
     },
     input: {
+        color:"#999999",
+        fontFamily:fonts.ARIAL,
+        fontSize:13,
         paddingVertical: (Platform.OS === 'ios') ? 7 : 0,
         paddingHorizontal: 7,
         borderRadius: 5,
