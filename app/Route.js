@@ -16,6 +16,7 @@ import BankPage from "./components/BankPage/index";
 import PaymentPage from "./components/PaymentPage/index";
 import MethodTransferPage from "./components/PaymentPage/MethodTransferPage/index";
 import DetailPage from "./components/DetailPage/index";
+import QuestionPage from "./components/QuestionPage/index";
 
 const PayRoute = StackNavigator({
     Payment: {
@@ -29,6 +30,7 @@ const PayRoute = StackNavigator({
 });
 
 const ContentPage = DrawerNavigator({
+    Question: {screen: QuestionPage},
     Detail: {screen: DetailPage},
     Payment: {screen: PayRoute},
     Home: {screen: HomePage},

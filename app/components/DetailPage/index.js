@@ -6,7 +6,7 @@ import {Text, View, StyleSheet} from "react-native";
 import colors from "../../styles/colors";
 import fonts from "../../styles/fonts";
 import QuestionBox from "./QuestionBox";
-import * as dimens from "../../styles/dimens";
+import {APP_MARGIN} from "../../styles/dimens";
 
 const QUESTION_TYPE_COMBO = 1;
 const QUESTION_TYPE_QUESTION = 2;
@@ -56,8 +56,8 @@ const renderQuestion = (type) => {
 
 const styles = StyleSheet.create({
     container:{
-        marginLeft: dimens.APP_MARGIN,
-        marginRight: dimens.APP_MARGIN,
+        marginLeft: APP_MARGIN,
+        marginRight: APP_MARGIN,
         flex: 1,
         flexDirection: 'column'
     },
