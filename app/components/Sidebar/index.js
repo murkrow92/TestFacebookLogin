@@ -21,6 +21,7 @@ export default class Sidebar extends Component {
     }
 
     render() {
+        const {navigate} = this.props.content.navigation;
         let content = this.props.content;
         return ( <View style={styles.container}>
             <View style={styles.accountBox}>
@@ -32,9 +33,10 @@ export default class Sidebar extends Component {
                 <IOButtonIcon
                     name="ios-arrow-forward-outline"
                     onPress={() => {
+                        navigate('Home');
                     }}/>
             </View>
-            <DrawerItems {...content}/>
+            <DrawerItems {...content}  />
         </View> );
 
 
