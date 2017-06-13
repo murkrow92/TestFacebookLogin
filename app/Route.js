@@ -20,6 +20,8 @@ import QuestionPage from "./components/QuestionPage/index";
 import FriendPage from "./components/FriendPage/index";
 import NotificationPage from "./components/NotificationPage/index";
 import ChartPage from "./components/ChartPage/index";
+import React from "react";
+import Sidebar from "./components/Sidebar/index";
 
 const PayRoute = StackNavigator({
     Payment: {
@@ -48,6 +50,8 @@ const ContentPage = DrawerNavigator({
     Tutorial: {screen: TutorialPage},
     Setting: {screen: SettingPage},
     Purchase: {screen: PurchasePage}
+},{
+    contentComponent: props => <Sidebar content={props}/>
 });
 
 
