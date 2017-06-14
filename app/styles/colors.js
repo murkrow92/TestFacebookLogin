@@ -11,7 +11,6 @@ const colors = {
     BACKGROUND_APP: 'white',
     BLUE: '#7373FA',
     LIGHT_BLUE:'#9EBEFF',
-    TOP_BAR_TITLE: '#333333',
     LABEL:'#666666',
     BLACK: '#333333',
     TOOLBAR: 'white',

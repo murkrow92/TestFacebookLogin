@@ -6,6 +6,7 @@ import React, {Component} from 'react';
 import {Text, View, StyleSheet, Image} from "react-native";
 import AccountBox from "./AccountBox";
 import DrawerItem from "./DrawerItem";
+import DrawerTitle from "./DrawerTitle";
 
 export default class Sidebar extends Component {
     constructor(props) {
@@ -19,10 +20,21 @@ export default class Sidebar extends Component {
         return ( <View style={styles.container}>
             <AccountBox navigate={navigate}/>
             <DrawerItem
+                account = "500.000 đ"
                 title = "Ngân quỹ"
             />
             <DrawerItem
+                button = "plus-circled"
                 title = "Tạo câu hỏi"
+            />
+           <DrawerTitle
+                title= "Bản đồ sao"
+           />
+            <DrawerItem
+                title = "Của tôi"
+            />
+            <DrawerItem
+                title = "Của bạn bè"
             />
         </View> );
 

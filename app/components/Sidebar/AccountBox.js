@@ -28,11 +28,11 @@ export default class AccountBox extends Component {
                     <Text style={styles.title}>{this.state.name}</Text>
                     <Text style={styles.content}>{this.state.role}</Text>
                 </View>
-                <IOButtonIcon
-                    name="ios-arrow-forward-outline"
-                    onPress={() => {
-                        this.props.navigate('Home');
-                    }}/>
+                {/*<IOButtonIcon*/}
+                    {/*name="ios-arrow-forward-outline"*/}
+                    {/*onPress={() => {*/}
+                        {/*this.props.navigate('Home');*/}
+                    {/*}}/>*/}
             </View>
         );
     }
