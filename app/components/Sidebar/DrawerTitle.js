@@ -7,7 +7,6 @@ import {Text, View, StyleSheet} from "react-native";
 import {APP_MARGIN} from "../../styles/dimens";
 import fonts from "../../styles/fonts";
 import colors from "../../styles/colors";
-import LineDivider from "../Commons/LineDivider";
 
 export default class DrawerTitle extends Component {
     constructor(props) {
@@ -22,8 +21,6 @@ export default class DrawerTitle extends Component {
                 </View>
             </View>);
     };
-
-
 }
 
 

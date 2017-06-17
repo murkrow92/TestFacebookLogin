@@ -35,6 +35,7 @@ const PayRoute = StackNavigator({
 });
 
 const ContentPage = DrawerNavigator({
+    Profile: {screen: ProfilePage},
     Chart:{screen:ChartPage},
     Notification: {screen: NotificationPage},
     Friend: {screen: FriendPage},
@@ -43,7 +44,6 @@ const ContentPage = DrawerNavigator({
     Payment: {screen: PayRoute},
     Home: {screen: HomePage},
     Bank: {screen: BankPage},
-    Profile: {screen: ProfilePage},
     Chat: {screen: ChatPage},
     About: {screen: AboutPage},
     OurAstrologers: {screen: OurAstrologersPage},

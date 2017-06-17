@@ -17,20 +17,21 @@ export default class ButtonLabel extends Component {
             <TouchableHighlight
                 onPress={() => this.props.onPress()}
                 style={styles.button}
-                underlayColor={colors.BLUE}>
+                underlayColor='transparent'>
                 <Text style={styles.label}>{this.props.label}</Text>
             </TouchableHighlight>);
     }
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create(
+    {
         button: {
-            marginRight:15,
+            marginRight: 15,
             justifyContent: 'center',
         },
         label: {
-            color:colors.BLUE,
+            color: colors.BLUE,
             alignSelf: 'center'
-        },
+        }
     }
 );
