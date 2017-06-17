@@ -13,16 +13,19 @@ export default class ProfileForm extends Component {
             <View style={styles.container}>
                 <View style={styles.datetimeContainer}>
                     <NumberTextInput
+                        returnKeyType="next"
                         placeholder="Ngày"
                         label="Ngày"
                         style={styles.datetimeComponent}
                         inline={true}/>
                     <NumberTextInput
+                        returnKeyType="next"
                         placeholder="Tháng"
                         label="Tháng"
                         style={styles.datetimeComponent}
                         inline={true}/>
                     <NumberTextInput
+                        returnKeyType="next"
                         placeholder="Năm"
                         label="Năm"
                         style={styles.datetimeComponent}
@@ -34,10 +37,12 @@ export default class ProfileForm extends Component {
                             name="birthday"/>
                     </View>
                     <NumberTextInput
+                        returnKeyType="next"
                         placeholder="Giờ"
                         label="Giờ"
                         inline={true}/>
                     <NumberTextInput
+                        returnKeyType="next"
                         isLast={true}
                         placeholder="Phút"
                         label="Phút"
@@ -45,6 +50,7 @@ export default class ProfileForm extends Component {
                 </View>
                 <View style={styles.space}/>
                 <NumberTextInput
+                    returnKeyType="next"
                     placeholder="Email"
                     label="Email"
                     inline={false}/>
