@@ -13,18 +13,33 @@ export default class ProfileForm extends Component {
             <View style={styles.container}>
                 <View style={styles.datetimeContainer}>
                     <NumberTextInput
+                        onSubmitEditing={() => {
+                            this.monthInput.textInput.focus()
+                        }}
                         returnKeyType="next"
                         placeholder="Ngày"
                         label="Ngày"
                         style={styles.datetimeComponent}
                         inline={true}/>
                     <NumberTextInput
+                        ref={input => {
+                            this.monthInput = input
+                        }}
+                        onSubmitEditing={() => {
+                            this.yearInput.textInput.focus()
+                        }}
                         returnKeyType="next"
                         placeholder="Tháng"
                         label="Tháng"
                         style={styles.datetimeComponent}
                         inline={true}/>
                     <NumberTextInput
+                        ref={input => {
+                            this.yearInput = input
+                        }}
+                        onSubmitEditing={() => {
+                            this.hourInput.textInput.focus()
+                        }}
                         returnKeyType="next"
                         placeholder="Năm"
                         label="Năm"
@@ -37,11 +52,23 @@ export default class ProfileForm extends Component {
                             name="birthday"/>
                     </View>
                     <NumberTextInput
+                        ref={input => {
+                            this.hourInput = input
+                        }}
+                        onSubmitEditing={() => {
+                            this.minuteInput.textInput.focus()
+                        }}
                         returnKeyType="next"
                         placeholder="Giờ"
                         label="Giờ"
                         inline={true}/>
                     <NumberTextInput
+                        ref={input => {
+                            this.minuteInput = input
+                        }}
+                        onSubmitEditing={() => {
+                            this.emailInput.textInput.focus()
+                        }}
                         returnKeyType="next"
                         isLast={true}
                         placeholder="Phút"
@@ -50,13 +77,22 @@ export default class ProfileForm extends Component {
                 </View>
                 <View style={styles.space}/>
                 <NumberTextInput
+                    ref={input => {
+                        this.emailInput = input
+                    }}
+
+                    onSubmitEditing={() => {
+                        this.phoneInput.textInput.focus()
+                    }}
+                    keyboardType='email-address'
                     returnKeyType="next"
                     placeholder="Email"
-                    label="Email"
-                    inline={false}/>
+                    label="Email"/>
                 <View style={styles.space}/>
                 <NumberTextInput
-                    inline={false}
+                    ref={input => {
+                        this.phoneInput = input
+                    }}
                     placeholder="Số điện thoại"
                     label="Số điện thoại"/>
 
@@ -82,14 +118,12 @@ const styles = StyleSheet.create({
         height: 25
     },
     iconContainer: {
-        paddingBottom:8,
-        alignItems:'flex-end',
-        marginRight:10,
+        paddingBottom: 8,
+        alignItems: 'flex-end',
+        marginRight: 10,
         flexDirection: 'row'
     },
-    label: {
-
-    }
+    label: {}
 
 });
 

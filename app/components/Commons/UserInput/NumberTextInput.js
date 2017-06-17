@@ -11,16 +11,19 @@ export default class NumberTextInput extends Component {
     static propTypes = {
         placeholder: PropTypes.string.isRequired,
         label: PropTypes.string.isRequired,
-        inline: PropTypes.bool.isRequired,
+        inline: PropTypes.bool,
         isLast: PropTypes.bool,
-        returnKeyType: PropTypes.string
+        returnKeyType: PropTypes.string,
+        keyboardType: PropTypes.string
     };
 
     render() {
         let returnKeyType = this.props.returnKeyType ? this.props.returnKeyType : 'done';
+        let inline = this.props.inline? this.props.inline : false;
+        let keyboardType = this.props.keyboardType? this.props.keyboardType:'numeric';
 
         let containerStyle = {
-            flex: this.props.inline ? 1 : 0,
+            flex: inline ? 1 : 0,
             marginRight: !this.props.inline || this.props.isLast ? 0 : 10
         };
         let labelStyle = {
@@ -46,10 +49,13 @@ export default class NumberTextInput extends Component {
             <View style={containerStyle}>
                 <Text style={labelStyle}>{this.props.label}</Text>
                 <TextInput
+                    ref={input => {
+                        this.textInput = input
+                    }}
                     returnKeyType={returnKeyType}
                     onSubmitEditing={this.props.onSubmitEditing}
                     onChangeText={this.props.onChangeText}
-                    keyboardType="numeric"
+                    keyboardType={keyboardType}
                     placeholder={this.props.placeholder}
                     underlineColorAndroid='transparent'
                     style={textBoxStyle}/>
