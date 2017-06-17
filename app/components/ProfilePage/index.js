@@ -3,7 +3,7 @@
  */
 
 import React, {Component} from "react";
-import {Image, Text} from "react-native";
+import {Image, ScrollView, Text} from "react-native";
 import PageWrapper from "../Commons/Wrapper";
 import ProfileForm from "./ProfileForm";
 import colors from "../../styles/colors";
@@ -33,11 +33,11 @@ export default class ProfilePage extends Component {
 const rightButton = () => {
     return (<ButtonLabel
         onPress={() => {
-    }} label="Lưu lại"/>);
+        }} label="Lưu lại"/>);
 };
 
 const styles = {
-  
+
     avatar: {
         marginTop: 25,
         alignSelf: 'center',
