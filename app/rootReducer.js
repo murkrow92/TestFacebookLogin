@@ -4,7 +4,9 @@
 
 import {combineReducers} from 'redux';
 import appReducer from "./appReducer";
+import profileReducer from "./components/ProfilePage/ProfileReducer";
 
 export default combineReducers({
-    app: appReducer
+    app: appReducer,
+    profile: profileReducer
 });

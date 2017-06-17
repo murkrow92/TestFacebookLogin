@@ -3,7 +3,7 @@
  */
 
 import React, {Component} from "react";
-import {Image, ScrollView, Text} from "react-native";
+import {Image, Text} from "react-native";
 import PageWrapper from "../Commons/Wrapper";
 import ProfileForm from "./ProfileForm";
 import colors from "../../styles/colors";
@@ -11,9 +11,12 @@ import fonts from "../../styles/fonts";
 import Background from "../../styles/images/bg.jpg";
 import TopNavigationBar from "../Commons/TopNavigationBar/index";
 import ButtonLabel from "../Commons/TopNavigationBar/ButtonLabel";
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import * as actions from "./ProfileActions";
 
 
-export default class ProfilePage extends Component {
+class ProfilePage extends Component {
     render() {
         const {navigate} = this.props.navigation;
         return (
@@ -21,7 +24,7 @@ export default class ProfilePage extends Component {
                 <TopNavigationBar
                     title="Cá nhân"
                     onPress={() => navigate('DrawerOpen')}
-                    rightButton={rightButton()}/>
+                    rightButton={rightButton(this.props.actions.requestSave)}/>
                 <Image style={styles.avatar} source={Background}/>
                 <Text style={styles.username}>Đoàn Phúc Bảo</Text>
                 <ProfileForm/>
@@ -30,10 +33,9 @@ export default class ProfilePage extends Component {
     }
 }
 
-const rightButton = () => {
+const rightButton = (onSubmit) => {
     return (<ButtonLabel
-        onPress={() => {
-        }} label="Lưu lại"/>);
+        onPress={onSubmit} label="Lưu lại"/>);
 };
 
 const styles = {
@@ -55,3 +57,14 @@ const styles = {
         marginBottom: 30
     }
 };
+
+const mapStateToProps = (state) => ({
+    profile: state.profile,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    actions: bindActionCreators(actions, dispatch)
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);
