@@ -2,13 +2,15 @@
  * Created by Murkrow on 6/1/2017.
  */
 
-import React, {Component} from "react";
+import React, {Component, PropTypes} from "react";
 import {View, StyleSheet, ScrollView} from "react-native";
 import NumberTextInput from "../Commons/UserInput/NumberTextInput";
 import Icon from "../Commons/Icons/Icon";
 
 export default class ProfileForm extends Component {
+
     render() {
+        const {actions} = this.props;
         return (
             <ScrollView>
                 <View style={styles.container}>
@@ -17,12 +19,14 @@ export default class ProfileForm extends Component {
                             onSubmitEditing={() => {
                                 this.monthInput.textInput.focus()
                             }}
+                            onChangeText={(day) => { actions.onFormChange('day', day) }}
                             returnKeyType="next"
                             placeholder="Ngày"
                             label="Ngày"
                             style={styles.datetimeComponent}
                             inline={true}/>
                         <NumberTextInput
+                            onChangeText={(month) => { actions.onFormChange('month', month) }}
                             ref={input => {
                                 this.monthInput = input
                             }}
@@ -35,6 +39,7 @@ export default class ProfileForm extends Component {
                             style={styles.datetimeComponent}
                             inline={true}/>
                         <NumberTextInput
+                            onChangeText={(year) => { actions.onFormChange('year', year) }}
                             ref={input => {
                                 this.yearInput = input
                             }}
@@ -53,6 +58,7 @@ export default class ProfileForm extends Component {
                                 name="birthday"/>
                         </View>
                         <NumberTextInput
+                            onChangeText={(hour) => { actions.onFormChange('hour', hour) }}
                             ref={input => {
                                 this.hourInput = input
                             }}
@@ -64,6 +70,7 @@ export default class ProfileForm extends Component {
                             label="Giờ"
                             inline={true}/>
                         <NumberTextInput
+                            onChangeText={(minute) => { actions.onFormChange('minute', minute) }}
                             ref={input => {
                                 this.minuteInput = input
                             }}
@@ -78,6 +85,7 @@ export default class ProfileForm extends Component {
                     </View>
                     <View style={styles.space}/>
                     <NumberTextInput
+                        onChangeText={(email) => { actions.onFormChange('email', email) }}
                         ref={input => {
                             this.emailInput = input
                         }}
@@ -91,6 +99,7 @@ export default class ProfileForm extends Component {
                         label="Email"/>
                     <View style={styles.space}/>
                     <NumberTextInput
+                        onChangeText={(phone) => { actions.onFormChange('phone', phone) }}
                         ref={input => {
                             this.phoneInput = input
                         }}

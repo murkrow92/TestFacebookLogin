@@ -19,15 +19,18 @@ import * as actions from "./ProfileActions";
 class ProfilePage extends Component {
     render() {
         const {navigate} = this.props.navigation;
+        const {profile, actions} = this.props;
         return (
             <PageWrapper>
                 <TopNavigationBar
                     title="Cá nhân"
                     onPress={() => navigate('DrawerOpen')}
-                    rightButton={rightButton(this.props.actions.requestSave)}/>
+                    rightButton={rightButton(actions.requestSave)}/>
                 <Image style={styles.avatar} source={Background}/>
                 <Text style={styles.username}>Đoàn Phúc Bảo</Text>
-                <ProfileForm/>
+                <ProfileForm
+                    actions={actions}
+                    profile={profile}/>
             </ PageWrapper >
         );
     }
