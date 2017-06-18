@@ -5,8 +5,9 @@
 export const REQUEST_SAVE = 'request_save';
 export const FORM_CHANGE = 'form_change';
 
-export const requestSave = () => ({
-    type: REQUEST_SAVE
+export const requestSave = (profile) => ({
+    type: REQUEST_SAVE,
+    profile
 });
 
 export const onFormChange = (key, value) => ({

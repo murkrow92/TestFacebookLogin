@@ -25,7 +25,7 @@ class ProfilePage extends Component {
                 <TopNavigationBar
                     title="Cá nhân"
                     onPress={() => navigate('DrawerOpen')}
-                    rightButton={rightButton(actions.requestSave)}/>
+                    rightButton={rightButton(()=>actions.requestSave(profile))}/>
                 <Image style={styles.avatar} source={Background}/>
                 <Text style={styles.username}>Đoàn Phúc Bảo</Text>
                 <ProfileForm

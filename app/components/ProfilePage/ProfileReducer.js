@@ -11,10 +11,7 @@ const formState = {};
 const profileReducer = (state = formState, action) => {
     switch (action.type) {
         case REQUEST_SAVE:
-            alert('Hello World');
-            return {
-                ...state
-            };
+            return save(state ,action.profile);
         case FORM_CHANGE:
             return onChange(state, action.key, action.value);
         default:
@@ -26,6 +23,12 @@ const onChange = (state, key, value) => {
     return {
         ...state,
         [key]: value
+    };
+};
+
+const save = (state, profile) => {
+    return {
+        profile
     };
 };
 
