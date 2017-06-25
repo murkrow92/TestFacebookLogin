@@ -9,11 +9,7 @@ export default configureStore = () => {
     return createStore(
         rootReducer,
         undefined,
-        compose(
-            applyMiddleware(
-                thunk,
-            )
-        )
+        compose(applyMiddleware(thunk))
     );
 
 };

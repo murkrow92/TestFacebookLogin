@@ -10,7 +10,7 @@ import Icon from "../Commons/Icons/Icon";
 export default class ProfileForm extends Component {
 
     render() {
-        const {actions} = this.props;
+        const {actions, profile} = this.props;
         return (
             <ScrollView>
                 <View style={styles.container}>
@@ -19,6 +19,7 @@ export default class ProfileForm extends Component {
                             onSubmitEditing={() => {
                                 this.monthInput.textInput.focus()
                             }}
+                            value={profile.month}
                             onChangeText={(day) => { actions.onFormChange('day', day) }}
                             returnKeyType="next"
                             placeholder="Ngày"

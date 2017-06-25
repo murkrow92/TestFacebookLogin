@@ -55,6 +55,7 @@ export default class NumberTextInput extends Component {
                     returnKeyType={returnKeyType}
                     onSubmitEditing={this.props.onSubmitEditing}
                     onChangeText={this.props.onChangeText}
+                    value = {this.props.value}
                     keyboardType={keyboardType}
                     placeholder={this.props.placeholder}
                     underlineColorAndroid='transparent'
