@@ -3,7 +3,7 @@
  */
 
 import React, {Component} from 'react';
-import {Text, View, StyleSheet, Image} from "react-native";
+import {View, StyleSheet} from "react-native";
 import AccountBox from "./AccountBox";
 import DrawerItem from "./DrawerItem";
 import DrawerTitle from "./DrawerTitle";
@@ -11,30 +11,31 @@ import DrawerTitle from "./DrawerTitle";
 export default class Sidebar extends Component {
     constructor(props) {
         super(props);
-
     }
 
     render() {
         const {navigate} = this.props.content.navigation;
-        let content = this.props.content;
         return ( <View style={styles.container}>
-            <AccountBox navigate={navigate}/>
+            <AccountBox
+                navigate={navigate}/>
             <DrawerItem
-                account = "500.000 đ"
-                title = "Ngân quỹ"
+                navigate={navigate}
+                account="500.000 đ"
+                title="Ngân quỹ"
             />
             <DrawerItem
-                button = "plus-circled"
-                title = "Tạo câu hỏi"
+                navigate={navigate}
+                button="plus-circled"
+                title="Tạo câu hỏi"
             />
-           <DrawerTitle
-                title= "Bản đồ sao"
-           />
-            <DrawerItem
-                title = "Của tôi"
+            <DrawerTitle
+                title="Bản đồ sao"
             />
             <DrawerItem
-                title = "Của bạn bè"
+                title="Của tôi"
+            />
+            <DrawerItem
+                title="Của bạn bè"
             />
         </View> );
 
@@ -43,6 +44,5 @@ export default class Sidebar extends Component {
 }
 
 const styles = StyleSheet.create({
-    container: {},
-
+    container: {}
 });

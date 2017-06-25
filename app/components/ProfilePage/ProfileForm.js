@@ -19,7 +19,7 @@ export default class ProfileForm extends Component {
                             onSubmitEditing={() => {
                                 this.monthInput.textInput.focus()
                             }}
-                            value={profile.month}
+                            value={profile.day}
                             onChangeText={(day) => { actions.onFormChange('day', day) }}
                             returnKeyType="next"
                             placeholder="Ngày"
@@ -27,6 +27,7 @@ export default class ProfileForm extends Component {
                             style={styles.datetimeComponent}
                             inline={true}/>
                         <NumberTextInput
+                            value={profile.month}
                             onChangeText={(month) => { actions.onFormChange('month', month) }}
                             ref={input => {
                                 this.monthInput = input
@@ -47,6 +48,7 @@ export default class ProfileForm extends Component {
                             onSubmitEditing={() => {
                                 this.hourInput.textInput.focus()
                             }}
+                            value={profile.year}
                             returnKeyType="next"
                             placeholder="Năm"
                             label="Năm"
@@ -63,6 +65,7 @@ export default class ProfileForm extends Component {
                             ref={input => {
                                 this.hourInput = input
                             }}
+                            value={profile.hour}
                             onSubmitEditing={() => {
                                 this.minuteInput.textInput.focus()
                             }}
@@ -78,6 +81,7 @@ export default class ProfileForm extends Component {
                             onSubmitEditing={() => {
                                 this.emailInput.textInput.focus()
                             }}
+                            value={profile.minute}
                             returnKeyType="next"
                             isLast={true}
                             placeholder="Phút"
@@ -90,7 +94,7 @@ export default class ProfileForm extends Component {
                         ref={input => {
                             this.emailInput = input
                         }}
-
+                        value={profile.email}
                         onSubmitEditing={() => {
                             this.phoneInput.textInput.focus()
                         }}
@@ -104,6 +108,7 @@ export default class ProfileForm extends Component {
                         ref={input => {
                             this.phoneInput = input
                         }}
+                        value={profile.phone}
                         placeholder="Số điện thoại"
                         label="Số điện thoại"/>
 

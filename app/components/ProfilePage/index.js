@@ -17,6 +17,13 @@ import * as actions from "./ProfileActions";
 
 
 class ProfilePage extends Component {
+
+    constructor(props){
+        super(props);
+        const {actions} = this.props;
+        actions.getLocalProfileAsync();
+    }
+
     render() {
         const {navigate} = this.props.navigation;
         const {profile, actions} = this.props;
@@ -30,7 +37,7 @@ class ProfilePage extends Component {
                 <Text style={styles.username}>Đoàn Phúc Bảo</Text>
                 <ProfileForm
                     actions={actions}
-                    profile={profile}/>
+                    profile={profile.profile}/>
             </ PageWrapper >
         );
     }
