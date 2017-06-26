@@ -10,13 +10,19 @@ import colors from "../../styles/colors";
 import  {AccessToken} from "react-native-fbsdk";
 
 export default class LoginPage extends Component {
-    render() {
+
+    constructor(props){
+        super(props);
         const {navigate} = this.props.navigation;
         AccessToken.getCurrentAccessToken().then(
             (data) => {
                 navigate('Content');
             }
         );
+    }
+
+    render() {
+        const {navigate} = this.props.navigation;
         return (
             <PageWrapper>
                 <View style={styles.background}>
@@ -30,10 +36,8 @@ export default class LoginPage extends Component {
                 </View>
             </PageWrapper>
         );
-
     }
 }
-
 
 const styles = {
     logo: {
