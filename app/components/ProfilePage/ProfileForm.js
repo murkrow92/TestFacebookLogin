@@ -2,8 +2,8 @@
  * Created by Murkrow on 6/1/2017.
  */
 
-import React, {Component, PropTypes} from "react";
-import {View, StyleSheet, ScrollView} from "react-native";
+import React, {Component} from "react";
+import {View, StyleSheet, ScrollView, Keyboard} from "react-native";
 import NumberTextInput from "../Commons/UserInput/NumberTextInput";
 import Icon from "../Commons/Icons/Icon";
 
@@ -107,6 +107,10 @@ export default class ProfileForm extends Component {
                         onChangeText={(phone) => { actions.onFormChange('phone', phone) }}
                         ref={input => {
                             this.phoneInput = input
+                        }}
+                        onSubmitEditing={() => {
+                            Keyboard.dismiss();
+                            actions.requestSave(profile);
                         }}
                         value={profile.phone}
                         placeholder="Số điện thoại"

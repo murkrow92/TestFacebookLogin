@@ -3,7 +3,7 @@
  */
 
 import React, {Component} from "react";
-import {Image, Text} from "react-native";
+import {Image, Text, Keyboard} from "react-native";
 import PageWrapper from "../Commons/Wrapper";
 import ProfileForm from "./ProfileForm";
 import colors from "../../styles/colors";
@@ -32,7 +32,9 @@ class ProfilePage extends Component {
                 <TopNavigationBar
                     title="Cá nhân"
                     onPress={() => navigate('DrawerOpen')}
-                    rightButton={rightButton(()=>actions.requestSave(profile))}/>
+                    rightButton={rightButton(()=>{
+                        Keyboard.dismiss();
+                        actions.requestSave(profile)})}/>
                 <Image style={styles.avatar} source={Background}/>
                 <Text style={styles.username}>Đoàn Phúc Bảo</Text>
                 <ProfileForm

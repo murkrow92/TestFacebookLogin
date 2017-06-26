@@ -30,9 +30,7 @@ export default class DrawerItem extends Component {
 
     renderPrice(account) {
         if (account) {
-            return (
-                <Text style={styles.price}>{account}</Text>
-            );
+            return (<Text style={styles.price}>{account}</Text>);
         }
     }
 

@@ -16,8 +16,7 @@ const profileReducer = (state = formState, action) => {
         case FORM_CHANGE:
             return onChange(state, action.key, action.value);
         case GET_PROFILE_FROM_LOCAL:
-            let result = JSON.parse(action.profile);
-            return result.profile;
+            return action.profile;
         default:
             return state;
     }
@@ -33,7 +32,10 @@ const onChange = (state, key, value) => {
 const save = (state, profile) => {
     let result = JSON.stringify(profile);
     AsyncStorage.setItem('profile', result);
-    return profile.profile;
+    return {
+        ...state,
+        profile:profile
+    };
 };
 
 export default combineReducers({

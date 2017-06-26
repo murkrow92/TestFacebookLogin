@@ -21,7 +21,8 @@ export const getLocalProfileAsync = () => {
         try {
             const value = await AsyncStorage.getItem('profile');
             if (value !== null){
-                dispatch(getLocalProfile(value));
+                let profile = JSON.parse(value).profile;
+                dispatch(getLocalProfile(profile));
             }
         } catch (error) {
             alert('error: ' + error);
