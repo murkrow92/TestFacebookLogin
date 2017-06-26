@@ -20,10 +20,10 @@ export default class FacebookManager {
 
 const callback = (error, result) => {
     if (error) {
-        alert('Error fetching data: ' + JSON.stringify(error));
+        //alert('Error fetching data: ' + JSON.stringify(error));
     } else {
         let info = JSON.stringify(result);
-        alert('Success fetching data: ' + info);
+        // alert('Success fetching data: ' + info);
         AsyncStorage.setItem('facebook', info);
     }
 };

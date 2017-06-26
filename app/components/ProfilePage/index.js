@@ -38,7 +38,7 @@ class ProfilePage extends Component {
                         Keyboard.dismiss();
                         actions.requestSave(profile)})}/>
                 <Image style={styles.avatar} source={Background}/>
-                <Text style={styles.username}>Đoàn Phúc Bảo</Text>
+                <Text style={styles.username}>{profile.profile.name}</Text>
                 <ProfileForm
                     actions={actions}
                     profile={profile.profile}/>

@@ -11,12 +11,14 @@ import  {AccessToken} from "react-native-fbsdk";
 
 export default class LoginPage extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         const {navigate} = this.props.navigation;
         AccessToken.getCurrentAccessToken().then(
             (data) => {
-                navigate('Content');
+                if (data !== null) {
+                    navigate('Content');
+                }
             }
         );
     }

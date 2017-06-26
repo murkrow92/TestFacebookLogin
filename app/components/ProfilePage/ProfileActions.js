@@ -10,18 +10,25 @@ export const GET_PROFILE_FROM_LOCAL = 'profile_load_from_local';
 
 
 function getLocalProfile(profile) {
-    return({
-        type:GET_PROFILE_FROM_LOCAL,
+    return ({
+        type: GET_PROFILE_FROM_LOCAL,
         profile
     });
 }
 
 export const getLocalProfileAsync = () => {
-    return async(dispatch, getState) => {
+    return async (dispatch, getState) => {
         try {
             const value = await AsyncStorage.getItem('profile');
-            if (value !== null){
+            const facebook = await AsyncStorage.getItem('facebook');
+            if (value !== null) {
                 let profile = JSON.parse(value).profile;
+                alert("profile: " + JSON.stringify(profile));
+
+                if (facebook !== null) {
+                    profile.name = facebook.name;
+                    profile.id = facebook.id;
+                }
                 dispatch(getLocalProfile(profile));
             }
         } catch (error) {
