@@ -17,7 +17,7 @@ let Login = React.createClass({
         return (
             <View style={styles.loginContainer}>
                 <LoginButton
-                    publishPermissions={["publish_actions"]}
+                    readPermissions={["email","user_friends","public_profile"]}
                     onLoginFinished={
                         (error, result) => {
                             if (error) {

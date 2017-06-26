@@ -8,7 +8,7 @@ import PageWrapper from "../Commons/Wrapper";
 import ProfileForm from "./ProfileForm";
 import colors from "../../styles/colors";
 import fonts from "../../styles/fonts";
-import Background from "../../styles/images/bg.jpg";
+import BlankProfile from "../../styles/images/blank_profile.png";
 import TopNavigationBar from "../Commons/TopNavigationBar/index";
 import ButtonLabel from "../Commons/TopNavigationBar/ButtonLabel";
 import {bindActionCreators} from "redux";
@@ -18,7 +18,7 @@ import * as actions from "./ProfileActions";
 
 class ProfilePage extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         const {actions} = this.props;
         actions.getLocalProfileAsync();
@@ -28,15 +28,25 @@ class ProfilePage extends Component {
     render() {
         const {navigate} = this.props.navigation;
         const {profile, actions} = this.props;
+        let picture = BlankProfile;
+        if (typeof(profile.profile.picture) === "object"){
+            picture = {
+                uri:profile.profile.picture.data.url
+            }
+        }
+
         return (
             <PageWrapper>
                 <TopNavigationBar
                     title="Cá nhân"
                     onPress={() => navigate('DrawerOpen')}
-                    rightButton={rightButton(()=>{
+                    rightButton={rightButton(() => {
                         Keyboard.dismiss();
-                        actions.requestSave(profile)})}/>
-                <Image style={styles.avatar} source={Background}/>
+                        actions.requestSave(profile)
+                    })}/>
+                <Image
+                    style={styles.avatar}
+                    source={picture}/>
                 <Text style={styles.username}>{profile.profile.name}</Text>
                 <ProfileForm
                     actions={actions}

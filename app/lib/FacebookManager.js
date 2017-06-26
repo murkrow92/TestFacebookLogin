@@ -20,7 +20,7 @@ export default class FacebookManager {
                 let infoRequest = new GraphRequest('/me', {
                     parameters: {
                         fields: {
-                            string: 'email,name,friends'
+                            string: 'email,name,friends,picture'
                         },
                         access_token: {
                             string: data.accessToken
@@ -40,7 +40,7 @@ const callback = (error, result) => {
         alert('Error fetching data: ' + JSON.stringify(error));
     } else {
         let info = JSON.stringify(result);
-        alert('Success fetching data: ' + info);
+        // alert('Success fetching data: ' + info);
         AsyncStorage.setItem('facebook', info);
     }
 };
