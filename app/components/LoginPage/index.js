@@ -7,10 +7,16 @@ import {Button, Image, View} from "react-native";
 import Logo from "../../styles/images/vnastro.png";
 import LoginBox from "./LoginBox";
 import colors from "../../styles/colors";
+import  {AccessToken} from "react-native-fbsdk";
 
 export default class LoginPage extends Component {
     render() {
         const {navigate} = this.props.navigation;
+        AccessToken.getCurrentAccessToken().then(
+            (data) => {
+                navigate('Content');
+            }
+        );
         return (
             <PageWrapper>
                 <View style={styles.background}>
@@ -24,6 +30,7 @@ export default class LoginPage extends Component {
                 </View>
             </PageWrapper>
         );
+
     }
 }
 
@@ -32,9 +39,9 @@ const styles = {
     logo: {
         width: 150,
         height: 150,
-        resizeMode:'contain',
-        marginBottom:60,
-        marginTop:60
+        resizeMode: 'contain',
+        marginBottom: 60,
+        marginTop: 60
 
     },
     background: {
