@@ -14,7 +14,6 @@ import ButtonLabel from "../Commons/TopNavigationBar/ButtonLabel";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import * as actions from "./ProfileActions";
-import FacebookManager from "../../lib/FacebookManager";
 
 
 class ProfilePage extends Component {
@@ -23,7 +22,7 @@ class ProfilePage extends Component {
         super(props);
         const {actions} = this.props;
         actions.getLocalProfileAsync();
-        FacebookManager.fetchUserInfo();
+        actions.getFacebookProfileAsync();
     }
 
     render() {

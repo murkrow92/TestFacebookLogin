@@ -20,15 +20,27 @@ export const getLocalProfileAsync = () => {
     return async (dispatch, getState) => {
         try {
             const value = await AsyncStorage.getItem('profile');
-            const facebook = await AsyncStorage.getItem('facebook');
+            let facebook = await AsyncStorage.getItem('facebook');
             if (value !== null) {
                 let profile = JSON.parse(value).profile;
-                if (facebook !== null) {
-                    profile.name = facebook.name;
-                    profile.id = facebook.id;
-                }
+
                 dispatch(getLocalProfile(profile));
             }
+        } catch (error) {
+            alert('error: ' + error);
+        }
+    }
+};
+
+export const getFacebookProfileAsync = () => {
+    return async (dispatch, getState) => {
+        try {
+            let profile = await AsyncStorage.getItem('facebook');
+            if (profile !== null) {
+                profile = JSON.parse(profile);
+            }
+            dispatch(getLocalProfile(profile));
+
         } catch (error) {
             alert('error: ' + error);
         }

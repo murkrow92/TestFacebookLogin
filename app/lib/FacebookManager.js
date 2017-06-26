@@ -4,6 +4,8 @@
 
 const FBSDK = require('react-native-fbsdk');
 import {AsyncStorage} from "react-native";
+import {AccessToken} from 'react-native-fbsdk';
+
 const {
     GraphRequest,
     GraphRequestManager,
@@ -11,19 +13,34 @@ const {
 
 export default class FacebookManager {
 
+
     static fetchUserInfo() {
-        let infoRequest = new GraphRequest('/me', null, callback);
-        new GraphRequestManager().addRequest(infoRequest).start();
+        AccessToken.getCurrentAccessToken().then(
+            (data) => {
+                let infoRequest = new GraphRequest('/me', {
+                    parameters: {
+                        fields: {
+                            string: 'email,name,friends'
+                        },
+                        access_token: {
+                            string: data.accessToken
+                        }
+                    }
+                }, callback);
+                new GraphRequestManager().addRequest(infoRequest).start();
+            }
+        );
+
     }
 
 }
 
 const callback = (error, result) => {
     if (error) {
-        //alert('Error fetching data: ' + JSON.stringify(error));
+        alert('Error fetching data: ' + JSON.stringify(error));
     } else {
         let info = JSON.stringify(result);
-        // alert('Success fetching data: ' + info);
+        alert('Success fetching data: ' + info);
         AsyncStorage.setItem('facebook', info);
     }
 };

@@ -8,16 +8,17 @@ import Logo from "../../styles/images/vnastro.png";
 import LoginBox from "./LoginBox";
 import colors from "../../styles/colors";
 import  {AccessToken} from "react-native-fbsdk";
+import FacebookManager from "../../lib/FacebookManager";
 
 export default class LoginPage extends Component {
 
     constructor(props) {
         super(props);
-        const {navigate} = this.props.navigation;
+
         AccessToken.getCurrentAccessToken().then(
             (data) => {
                 if (data !== null) {
-                    navigate('Content');
+                    this.login();
                 }
             }
         );
@@ -30,7 +31,7 @@ export default class LoginPage extends Component {
                 <View style={styles.background}>
                     <Image style={styles.logo} source={Logo}/>
                     <LoginBox onLogin={() => {
-                        navigate('Content');
+                        this.login();
                     }}/>
                     <Button
                         onPress={() => {
@@ -40,6 +41,12 @@ export default class LoginPage extends Component {
                 </View>
             </PageWrapper>
         );
+    }
+
+    login() {
+        const {navigate} = this.props.navigation;
+        FacebookManager.fetchUserInfo();
+        navigate('Content');
     }
 }
 
