@@ -8,7 +8,7 @@ import colors from "../../styles/colors";
 
 export default class LoginBox extends Component {
     render() {
-        return (<Login/>);
+        return (<Login onLogin={this.props.onLogin}/>);
     }
 }
 
@@ -27,7 +27,8 @@ let Login = React.createClass({
                             } else {
                                 AccessToken.getCurrentAccessToken().then(
                                     (data) => {
-                                        alert(data.accessToken.toString())
+                                        alert(data.accessToken.toString());
+                                        this.props.onLogin();
                                     }
                                 )
                             }

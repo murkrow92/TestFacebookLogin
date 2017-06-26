@@ -23,8 +23,6 @@ export const getLocalProfileAsync = () => {
             const facebook = await AsyncStorage.getItem('facebook');
             if (value !== null) {
                 let profile = JSON.parse(value).profile;
-                alert("profile: " + JSON.stringify(profile));
-
                 if (facebook !== null) {
                     profile.name = facebook.name;
                     profile.id = facebook.id;
@@ -33,7 +31,6 @@ export const getLocalProfileAsync = () => {
             }
         } catch (error) {
             alert('error: ' + error);
-            // Error retrieving data
         }
     }
 };

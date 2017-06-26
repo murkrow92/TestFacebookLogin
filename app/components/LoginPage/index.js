@@ -29,10 +29,12 @@ export default class LoginPage extends Component {
             <PageWrapper>
                 <View style={styles.background}>
                     <Image style={styles.logo} source={Logo}/>
-                    <LoginBox/>
+                    <LoginBox onLogin={() => {
+                        navigate('Content');
+                    }}/>
                     <Button
                         onPress={() => {
-                            navigate('Content')
+                            navigate('Content');
                         }}
                         title="CLICK HERE"/>
                 </View>
