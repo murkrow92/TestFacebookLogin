@@ -29,12 +29,15 @@ export default class Sidebar extends Component {
                 title="Tạo câu hỏi"
             />
             <DrawerTitle
+                navigate={navigate}
                 title="Bản đồ sao"
             />
             <DrawerItem
+                navigate={navigate}
                 title="Của tôi"
             />
             <DrawerItem
+                navigate={navigate}
                 title="Của bạn bè"
             />
         </View> );

@@ -13,7 +13,6 @@ const {
 
 export default class FacebookManager {
 
-
     static fetchUserInfo() {
         AccessToken.getCurrentAccessToken().then(
             (data) => {
@@ -30,9 +29,7 @@ export default class FacebookManager {
                 new GraphRequestManager().addRequest(infoRequest).start();
             }
         );
-
     }
-
 }
 
 const callback = (error, result) => {
@@ -40,10 +37,7 @@ const callback = (error, result) => {
         alert('Error fetching data: ' + JSON.stringify(error));
     } else {
         let info = JSON.stringify(result);
-        // alert('Success fetching data: ' + info);
+        console.log(info);
         AsyncStorage.setItem('facebook', info);
     }
 };
-
-
-// Start the graph request.

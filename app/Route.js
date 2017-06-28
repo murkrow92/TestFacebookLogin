@@ -2,7 +2,7 @@
  * Created by Murkrow on 5/23/2017.
  */
 
-import {DrawerNavigator, StackNavigator} from "react-navigation";
+import {DrawerNavigator, StackNavigator, TabNavigator} from "react-navigation";
 import AboutPage from "./components/AboutPage/index";
 import OurAstrologersPage from "./components/OurAstrologersPage/index";
 import TutorialPage from "./components/TutorialPage/index";
@@ -22,8 +22,9 @@ import NotificationPage from "./components/NotificationPage/index";
 import ChartPage from "./components/ChartPage/index";
 import React from "react";
 import Sidebar from "./components/Sidebar/index";
+import AwesomeIcon from "./components/Commons/Icons/AwesomeIcon";
 
-const PayRoute = StackNavigator({
+export const PayRoute = StackNavigator({
     Payment: {
         screen: PaymentPage
     },
@@ -34,9 +35,34 @@ const PayRoute = StackNavigator({
     headerMode: 'none'
 });
 
-const ContentPage = DrawerNavigator({
+export const BottomPage = TabNavigator({
+    Home: {
+        screen: HomePage,
+        navigationOptions: {
+            tabBarLabel: 'Notifications',
+            tabBarIcon: ({ tintColor }) =>  (<AwesomeIcon name="home" size={24}/>)
+        }
+    },
+    Notification: {screen: NotificationPage},
     Profile: {screen: ProfilePage},
-    Chart:{screen:ChartPage},
+    Bank: {screen: BankPage}
+}, {
+    tabBarPosition: 'bottom',
+    tabBarOptions: {
+        showLabel: false,
+        showIcon: true,
+        style: {
+            backgroundColor: 'white',
+            height: 48
+        }
+
+    }
+});
+
+const ContentPage = DrawerNavigator({
+    Bottom: {screen: BottomPage},
+    Profile: {screen: ProfilePage},
+    Chart: {screen: ChartPage},
     Notification: {screen: NotificationPage},
     Friend: {screen: FriendPage},
     Question: {screen: QuestionPage},
@@ -50,7 +76,7 @@ const ContentPage = DrawerNavigator({
     Tutorial: {screen: TutorialPage},
     Setting: {screen: SettingPage},
     Purchase: {screen: PurchasePage}
-},{
+}, {
     contentComponent: props => <Sidebar content={props}/>
 });
 

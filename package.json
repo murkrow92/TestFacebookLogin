@@ -1,5 +1,9 @@
 {
-  "rnpm": { "assets": [ "resources/fonts" ] },
+  "rnpm": {
+    "assets": [
+      "resources/fonts"
+    ]
+  },
   "name": "TestFacebookLogin",
   "version": "0.0.1",
   "private": true,
@@ -14,6 +18,7 @@
     "react-native-datepicker": "^1.5.1",
     "react-native-fbsdk": "^0.6.0",
     "react-native-form": "^2.1.2",
+    "react-native-material-bottom-navigation": "^0.5.1",
     "react-native-navbar": "^1.7.1",
     "react-native-settings-list": "^1.4.0",
     "react-native-vector-icons": "^4.2.0",
