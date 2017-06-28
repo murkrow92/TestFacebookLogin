@@ -16,7 +16,10 @@ const profileReducer = (state = formState, action) => {
         case FORM_CHANGE:
             return onChange(state, action.key, action.value);
         case GET_PROFILE_FROM_LOCAL:
-            return action.profile;
+            return {
+                ...state,
+                ...action.profile
+            };
         default:
             return state;
     }
@@ -34,7 +37,7 @@ const save = (state, profile) => {
     AsyncStorage.setItem('profile', result);
     return {
         ...state,
-        profile:profile
+        profile: profile
     };
 };
 

@@ -21,8 +21,8 @@ class ProfilePage extends Component {
     constructor(props) {
         super(props);
         const {actions} = this.props;
-        actions.getLocalProfileAsync();
         actions.getFacebookProfileAsync();
+        actions.getLocalProfileAsync();
     }
 
     render() {
