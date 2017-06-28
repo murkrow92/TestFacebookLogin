@@ -2,12 +2,11 @@
  * Created by murkrow on 6/17/17.
  */
 
-import {AsyncStorage} from 'react-native';
 
+import {AsyncStorage} from 'react-native';
 export const REQUEST_SAVE = 'request_save';
 export const FORM_CHANGE = 'form_change';
 export const GET_PROFILE_FROM_LOCAL = 'profile_load_from_local';
-
 
 function getLocalProfile(profile) {
     return ({
@@ -16,36 +15,30 @@ function getLocalProfile(profile) {
     });
 }
 
-export const getLocalProfileAsync = () => {
-    return async (dispatch, getState) => {
-        try {
-            const value = await AsyncStorage.getItem('profile');
-            let facebook = await AsyncStorage.getItem('facebook');
-            if (value !== null) {
-                let profile = JSON.parse(value).profile;
-
-                dispatch(getLocalProfile(profile));
+export const getLocalProfileAsync = () => (dispatch, getState) =>
+    AsyncStorage.getItem('profile').then(
+        value => {
+            if (value === null) {
+                return Promise.resolve();
             }
-        } catch (error) {
-            alert('error: ' + error);
-        }
-    }
-};
-
-export const getFacebookProfileAsync = () => {
-    return async (dispatch, getState) => {
-        try {
-            let profile = await AsyncStorage.getItem('facebook');
-            if (profile !== null) {
-                profile = JSON.parse(profile);
-            }
+            let profile = JSON.parse(value).profile;
+            console.log(profile);
             dispatch(getLocalProfile(profile));
+        },
+        error => alert('Error: ' + error.message)
+    );
 
-        } catch (error) {
-            alert('error: ' + error);
+export const getFacebookProfileAsync = () => (dispatch, getState) =>
+    AsyncStorage.getItem('facebook').then(
+        value => {
+            if (value === null) {
+                return Promise.resolve();
+            }
+            let profile = JSON.parse(value);
+            console.log(profile);
+            dispatch(getLocalProfile(profile));
         }
-    }
-};
+    );
 
 
 export const requestSave = (profile) => ({
