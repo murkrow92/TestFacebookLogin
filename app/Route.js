@@ -43,33 +43,47 @@ export const BottomPage = TabNavigator({
         screen: HomePage,
         navigationOptions: {
             tabBarLabel: 'Notifications',
-            tabBarIcon: ({tintColor}) => (<AwesomeIcon name="home" size={24}/>)
+            tabBarIcon: ({tintColor}) => (<AwesomeIcon
+                color={tintColor}
+                name="home"
+                size={24}/>)
         }
     },
     Notification: {
         screen: NotificationPage,
         navigationOptions: {
             tabBarLabel: 'Notifications',
-            tabBarIcon: ({tintColor}) => (<MaterialCommunityIcon name="earth" size={24}/>)
+            tabBarIcon: ({tintColor}) => (<MaterialCommunityIcon
+                color={tintColor}
+                name="earth"
+                size={24}/>)
         }
     },
     Profile: {
         screen: ProfilePage,
         navigationOptions: {
             tabBarLabel: 'Notifications',
-            tabBarIcon: ({tintColor}) => (<MaterialCommunityIcon name="account" size={24}/>)
+            tabBarIcon: ({tintColor}) => (<MaterialCommunityIcon
+                color={tintColor}
+                name="account"
+                size={24}/>)
         }
     },
     Bank: {
         screen: BankPage,
         navigationOptions: {
             tabBarLabel: 'Notifications',
-            tabBarIcon: ({tintColor}) => (<IOIcon name="ios-cash-outline" size={24}/>)
+            tabBarIcon: ({tintColor}) => (<IOIcon
+                color={tintColor}
+                name="ios-cash-outline"
+                size={24}/>)
         }
     }
 }, {
     tabBarPosition: 'bottom',
     tabBarOptions: {
+        activeTintColor: colors.BLUE,
+        inactiveTintColor:colors.DARKER_GREY,
         indicatorStyle: {
             backgroundColor: 'transparent'
         },
