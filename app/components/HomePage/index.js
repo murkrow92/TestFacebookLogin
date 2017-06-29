@@ -16,7 +16,7 @@ class HomePage extends Component {
     constructor(props){
         super(props);
         const {actions} = this.props;
-        actions.fetchAstro();
+        actions.fetchAstroAsync();
     }
 
     render() {
