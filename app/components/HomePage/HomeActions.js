@@ -18,7 +18,7 @@ export const fetchAstroAsync = () => (dispatch, getState) => {
     let date = new Date();
     return api.fetchAstro(date).then(
         response => {
-            AsyncStorage.setItem('current_planet_location', result);
+            AsyncStorage.setItem('current_planet_location', JSON.stringify(response));
             dispatch(fetchAstro(response));
         }
     );

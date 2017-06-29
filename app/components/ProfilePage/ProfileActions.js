@@ -8,12 +8,10 @@ export const REQUEST_SAVE = 'request_save';
 export const FORM_CHANGE = 'form_change';
 export const GET_PROFILE_FROM_LOCAL = 'profile_load_from_local';
 
-function getLocalProfile(profile) {
-    return ({
-        type: GET_PROFILE_FROM_LOCAL,
-        profile
-    });
-}
+const getLocalProfile = (profile) => ({
+    type: GET_PROFILE_FROM_LOCAL,
+    profile
+});
 
 export const getLocalProfileAsync = () => (dispatch, getState) =>
     AsyncStorage.getItem('profile').then(
