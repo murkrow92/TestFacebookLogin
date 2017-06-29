@@ -23,6 +23,9 @@ import ChartPage from "./components/ChartPage/index";
 import React from "react";
 import Sidebar from "./components/Sidebar/index";
 import AwesomeIcon from "./components/Commons/Icons/AwesomeIcon";
+import MaterialCommunityIcon from "./components/Commons/Icons/MaterialCommunityIcon";
+import IOIcon from "./components/Commons/Icons/IOIcon";
+import colors from "./styles/colors";
 
 export const PayRoute = StackNavigator({
     Payment: {
@@ -40,20 +43,44 @@ export const BottomPage = TabNavigator({
         screen: HomePage,
         navigationOptions: {
             tabBarLabel: 'Notifications',
-            tabBarIcon: ({ tintColor }) =>  (<AwesomeIcon name="home" size={24}/>)
+            tabBarIcon: ({tintColor}) => (<AwesomeIcon name="home" size={24}/>)
         }
     },
-    Notification: {screen: NotificationPage},
-    Profile: {screen: ProfilePage},
-    Bank: {screen: BankPage}
+    Notification: {
+        screen: NotificationPage,
+        navigationOptions: {
+            tabBarLabel: 'Notifications',
+            tabBarIcon: ({tintColor}) => (<MaterialCommunityIcon name="earth" size={24}/>)
+        }
+    },
+    Profile: {
+        screen: ProfilePage,
+        navigationOptions: {
+            tabBarLabel: 'Notifications',
+            tabBarIcon: ({tintColor}) => (<MaterialCommunityIcon name="account" size={24}/>)
+        }
+    },
+    Bank: {
+        screen: BankPage,
+        navigationOptions: {
+            tabBarLabel: 'Notifications',
+            tabBarIcon: ({tintColor}) => (<IOIcon name="ios-cash-outline" size={24}/>)
+        }
+    }
 }, {
     tabBarPosition: 'bottom',
     tabBarOptions: {
+        indicatorStyle: {
+            backgroundColor: 'transparent'
+        },
+        swipeEnabled: true,
         showLabel: false,
         showIcon: true,
         style: {
+            borderWidth: 1,
             backgroundColor: 'white',
-            height: 48
+            height: 48,
+            borderColor: colors.LIST_BOTTOM_BORDER
         }
 
     }
