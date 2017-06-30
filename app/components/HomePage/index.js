@@ -10,6 +10,7 @@ import ListAstroObject from "../Commons/ListAstroObject/index";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as actions from './HomeActions';
+import {ScrollView} from "react-native";
 
 class HomePage extends Component {
 
@@ -29,7 +30,9 @@ class HomePage extends Component {
                     title="Bầu trời lúc này"
                     onPress={() => navigate('DrawerOpen')}
                     rightButton={rightButton()}/>
-                {this.renderList(home.planet)}
+                <ScrollView>
+                    {this.renderList(home.planet)}
+                </ScrollView>
             </PageWrapper>
         );
     }
@@ -48,6 +51,7 @@ const getItems = (planet) => {
         planet.Ascendant,
         planet.Sun,
         planet.Moon,
+        planet.PurpleAir,
         planet.Mercury,
         planet.Mars,
         planet.Venus,
@@ -55,7 +59,11 @@ const getItems = (planet) => {
         planet.Saturn,
         planet.Uranus,
         planet.Neptune,
-        planet.Pluto];
+        planet.Pluto,
+        planet.MC,
+        planet["true Node"],
+        planet.SouthNode,
+        planet.Chiron];
     items[0].isFirst = true;
     return items;
 };
