@@ -44,7 +44,9 @@ class HomePage extends Component {
 }
 
 const getItems = (planet) => {
-    let items = [planet.Sun,
+    let items = [
+        planet.Ascendant,
+        planet.Sun,
         planet.Moon,
         planet.Mercury,
         planet.Mars,

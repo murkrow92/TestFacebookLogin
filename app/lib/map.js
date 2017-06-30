@@ -15,6 +15,8 @@ import CAPRICORN from "../styles/images/signs/10.png";
 import AQUARIUS from "../styles/images/signs/11.png";
 import PISCES from "../styles/images/signs/12.png";
 
+import ASCENDANT from "../styles/images/planet/ac.png";
+import MIDHEAVEN from "../styles/images/planet/mc.png"
 import SUN from "../styles/images/planet/Sun.png";
 import MOON from "../styles/images/planet/Moon.png";
 import MOON_2 from "../styles/images/planet/Moon_2.png";
@@ -50,6 +52,7 @@ export const mapSign = sign => {
 
 export const mapPlanet = planet => {
     let planets = [
+        ASCENDANT,
         SUN,
         MOON_2,
         MERCURY,
@@ -60,9 +63,70 @@ export const mapPlanet = planet => {
         URANUS,
         NEPTUNE,
         PLUTO,
+        MIDHEAVEN,
         NORTH_NODE,
-        SOUTH_NODE,
         CHIRON
     ];
+
     return planets[planet - 1];
 };
+
+const objNames = [
+    "Ascendant",
+    "Sun",
+    "Moon",
+    "Mercury",
+    "Venus",
+    "Mars",
+    "Jupiter",
+    "Saturn",
+    "Uranus",
+    "Neptune",
+    "Pluto",
+    "MC",
+    "true Node",
+    "Chiron"];
+
+export const mapPlanetByName = name => {
+    return mapPlanet(objNames.indexOf(name) + 1);
+};
+
+const viObjNames = [
+    "AC",
+    "Mặt trời",
+    "Mặt trăng",
+    "Sao Thuỷ",
+    "Sao Kim",
+    "Sao Hoả",
+    "Sao Mộc",
+    "Sao Thổ",
+    "Sao Thiên Vương",
+    "Sao Hải Vương",
+    "Sao Diêm Vương",
+    "MC",
+    "La Hầu",
+    "Chiron"
+];
+
+export const mapViPlanetName = name => (viObjNames[objNames.indexOf(name)]);
+
+
+const viSignName = [
+    "Bạch Dương",
+    "Kim Ngưu",
+    "Song Tử",
+    "Cự Giải",
+    "Sư Tử",
+    "Xử Nữ",
+    "Thiên Bình",
+    "Bọ Cạp",
+    "Nhân Mã",
+    "Ma Kết",
+    "Bảo Bình",
+    "Song Ngư"
+
+];
+
+export const mapViSignName = sign => (viSignName[sign - 1]);
+
+
