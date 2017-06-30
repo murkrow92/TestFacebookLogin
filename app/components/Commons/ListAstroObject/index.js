@@ -14,10 +14,17 @@ export default class ListAstroObject extends Component {
 
     constructor(props) {
         super(props);
+        let items = this.props.items;
+        if (items.length > 0){
+            items[0].isFirst = true;
+        }
+
+
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
-            dataSource: ds.cloneWithRows(this.props.items),
+            dataSource: ds.cloneWithRows(items),
         };
+
     }
 
     render() {
@@ -33,11 +40,9 @@ export default class ListAstroObject extends Component {
 }
 
 const renderRow = (rowData) => {
-    return (<AstroObjectItem data={rowData}/>)
+    return (<AstroObjectItem item={rowData}/>)
 };
 
 const styles = {
-    container: {
-
-    }
+    container: {}
 };
