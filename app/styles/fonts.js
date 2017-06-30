@@ -3,10 +3,10 @@
  */
 
 const fonts = {
-    OPEN_SAN: 'Open Sans',
-    ARIAL: 'Arial',
-    HELVETICA:'Helvetica',
-    REGULAR:'Regular'
+    OPEN_SAN: "Open Sans",
+    ARIAL: "Arial",
+    HELVETICA: "Helvetica",
+    REGULAR: "Regular"
 };
 
 export default fonts;

@@ -5,8 +5,10 @@
 import {combineReducers} from 'redux';
 import appReducer from "./appReducer";
 import profileReducer from "./components/ProfilePage/ProfileReducer";
+import homeReducer from "./components/HomePage/HomeReducer";
 
 export default combineReducers({
     app: appReducer,
-    profile: profileReducer
+    profile: profileReducer,
+    home:homeReducer
 });

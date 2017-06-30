@@ -8,7 +8,6 @@ import {AsyncStorage} from "react-native";
 
 const api = new API();
 
-
 const fetchAstro = (astro) => ({
     type: FETCH_ASTRO,
     astro
@@ -20,7 +19,8 @@ export const fetchAstroAsync = () => (dispatch, getState) => {
         response => {
             AsyncStorage.setItem('current_planet_location', JSON.stringify(response));
             dispatch(fetchAstro(response));
-        }
+        },
+        error => alert("error: " + error)
     );
 
 };

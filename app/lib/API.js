@@ -2,10 +2,9 @@
  * Created by murkrow on 6/29/17.
  */
 
+const queryString = require("query-string");
 
-const queryString = require('query-string');
-
-const checkStatus = (response) => {
+const checkStatus = response => {
     console.log(response);
     let json = response.json();
     if (response.status === 200) {
@@ -16,18 +15,13 @@ const checkStatus = (response) => {
 };
 
 const postRequest = (url, body, headers) =>
-    fetch(url, {method: 'POST', body, headers}).then(checkStatus);
-
-
+    fetch(url, { method: "POST", body, headers }).then(checkStatus);
 
 const getRequest = (url, headers) =>
-    fetch(url, {headers}).then(checkStatus);
-
-
+    fetch(url, { headers }).then(checkStatus);
 
 const putRequest = (url, body, headers) =>
-    fetch(url, {method: 'PUT', body, headers}).then(checkStatus);
-
+    fetch(url, { method: "PUT", body, headers }).then(checkStatus);
 
 export class API {
     constructor() {
@@ -41,7 +35,7 @@ export class API {
             month: datetime.getMonth() + 1,
             day: datetime.getDate(),
             hour: datetime.getHours(),
-            minute: datetime.getMinutes(),
+            minute: datetime.getMinutes()
         });
 
         return getRequest(`${this.API_ENDPOINT}/astro?${query}`);

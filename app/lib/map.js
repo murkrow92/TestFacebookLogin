@@ -30,13 +30,39 @@ import NORTH_NODE from "../styles/images/planet/NorthNode.png";
 import SOUTH_NODE from "../styles/images/planet/SouthNode.png";
 import CHIRON from "../styles/images/planet/Chiron.png";
 
-
-export const mapSign = (sign) => {
-    let signs = [ARIES, TAURUS, GEMINI, CANCER, LEO, VIRGO, LIBRA, SCORPIO, SAGITTARIUS, CAPRICORN, AQUARIUS, PISCES];
+export const mapSign = sign => {
+    let signs = [
+        ARIES,
+        TAURUS,
+        GEMINI,
+        CANCER,
+        LEO,
+        VIRGO,
+        LIBRA,
+        SCORPIO,
+        SAGITTARIUS,
+        CAPRICORN,
+        AQUARIUS,
+        PISCES
+    ];
     return signs[sign - 1];
 };
 
-export const mapPlanet = (planet) => {
-    let planets = [SUN, MOON_2, MERCURY, VENUS, MARS, JUPITER, SATURN, URANUS, NEPTUNE, PLUTO, NORTH_NODE, SOUTH_NODE, CHIRON];
+export const mapPlanet = planet => {
+    let planets = [
+        SUN,
+        MOON_2,
+        MERCURY,
+        VENUS,
+        MARS,
+        JUPITER,
+        SATURN,
+        URANUS,
+        NEPTUNE,
+        PLUTO,
+        NORTH_NODE,
+        SOUTH_NODE,
+        CHIRON
+    ];
     return planets[planet - 1];
 };
