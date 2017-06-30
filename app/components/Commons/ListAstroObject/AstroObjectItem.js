@@ -37,8 +37,14 @@ export default class AstroObjectItem extends Component {
             <View style={styles.wrapper}>
                 <LineDivider color={topBorderColor}/>
                 <View style={styles.container}>
-                    <Image source={mapPlanetByName(name)} style={styles.icon}/>
-                    <Image source={mapSign(sign)} style={styles.icon}/>
+                    <Image
+                        resizeMode="contain"
+                        source={mapPlanetByName(name)}
+                        style={styles.icon}/>
+                    <Image
+                        resizeMode="contain"
+                        source={mapSign(sign)}
+                        style={styles.icon}/>
                     <View style={styles.contentContainer}>
                         <Text style={styles.title}>
                             <B>{mapViPlanetName(name)}</B> {mapViSignName(sign)}
