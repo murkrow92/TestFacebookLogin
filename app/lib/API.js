@@ -17,8 +17,7 @@ const checkStatus = response => {
 const postRequest = (url, body, headers) =>
     fetch(url, { method: "POST", body, headers }).then(checkStatus);
 
-const getRequest = (url, headers) =>
-    fetch(url, { headers }).then(checkStatus);
+const getRequest = (url, headers) => fetch(url, { headers }).then(checkStatus);
 
 const putRequest = (url, body, headers) =>
     fetch(url, { method: "PUT", body, headers }).then(checkStatus);

@@ -13,6 +13,7 @@
     "prettier": "prettier --tab-width 4 --write app/**/*.js"
   },
   "dependencies": {
+    "lodash": "^4.17.4",
     "prop-types": "^15.5.10",
     "query-string": "^4.3.4",
     "react": "16.0.0-alpha.6",

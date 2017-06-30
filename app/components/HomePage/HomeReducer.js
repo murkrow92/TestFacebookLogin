@@ -8,7 +8,10 @@ import {FETCH_ASTRO} from "./HomeActions";
 const homeReducer = (state = {}, action) => {
     switch (action.type) {
         case FETCH_ASTRO:
-            return action.response;
+            return {
+                ...state,
+                ...action.astro.data.Planets
+            };
         default:
             return state;
     }
@@ -16,5 +19,5 @@ const homeReducer = (state = {}, action) => {
 
 
 export default combineReducers({
-    home: homeReducer
+    planet: homeReducer
 });

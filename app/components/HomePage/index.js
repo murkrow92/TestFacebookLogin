@@ -10,17 +10,28 @@ import ListAstroObject from "../Commons/ListAstroObject/index";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as actions from './HomeActions';
+import forOwn from 'lodash/forOwn';
 
 class HomePage extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         const {actions} = this.props;
         actions.fetchAstroAsync();
     }
 
     render() {
-        
+        const {home, actions} = this.props;
+
+        const planets = [];
+        forOwn(home.planet, (value, key) => {
+            planets.push({
+                name: key,
+                data: value,
+            });
+        });
+
+        console.log(planets);
 
         let item1 = {content: "23 \xB0 16' 22''", title: 'Mặt trời Bạch Dương', sign: 1, planet: 1, isFirst: true};
         let item2 = {content: "23 \xB0 16' 22''", title: 'Sao Thuỷ Kim Ngưu', sign: 2, planet: 2};

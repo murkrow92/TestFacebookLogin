@@ -101,6 +101,7 @@ export const BottomPage = TabNavigator({
 });
 
 const ContentPage = DrawerNavigator({
+
     Bottom: {screen: BottomPage},
     Profile: {screen: ProfilePage},
     Chart: {screen: ChartPage},
