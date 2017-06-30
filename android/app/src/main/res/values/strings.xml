@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TestFacebookLogin</string>
+    <string name="app_name">VnAstro</string>
     <string name="fb_app_id">409787666074891</string>
     <string name="fb_login_protocol_scheme">fb409787666074891</string>
 </resources>
