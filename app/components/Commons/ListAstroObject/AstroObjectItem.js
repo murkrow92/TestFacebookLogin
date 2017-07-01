@@ -2,7 +2,7 @@
  * Created by murkrow on 6/9/17.
  */
 
-import {Text, View, StyleSheet, Image} from "react-native";
+import {Text, View, StyleSheet, Image, TouchableHighlight} from "react-native";
 import React, {Component, PropTypes} from "react";
 import colors from "../../../styles/colors";
 import {APP_MARGIN} from "../../../styles/dimens";
@@ -34,32 +34,40 @@ export default class AstroObjectItem extends Component {
         }
 
         return (
-            <View style={styles.wrapper}>
-                <LineDivider color={topBorderColor}/>
-                <View style={styles.container}>
-                    <Image
-                        resizeMode="contain"
-                        source={mapPlanetByName(name)}
-                        style={styles.icon}/>
-                    <Image
-                        resizeMode="contain"
-                        source={mapSign(sign)}
-                        style={styles.icon}/>
-                    <View style={styles.contentContainer}>
-                        <Text style={styles.title}>
-                            <B>{mapViPlanetName(name)}</B> {mapViSignName(sign)}
-                        </Text>
-                        <Text style={styles.content}>{content}</Text>
+            <TouchableHighlight
+                onPress={() => this.gotoDetail()}
+                underlayColor='lightblue'>
+                <View style={styles.wrapper}>
+                    <LineDivider color={topBorderColor}/>
+                    <View style={styles.container}>
+                        <Image
+                            resizeMode="contain"
+                            source={mapPlanetByName(name)}
+                            style={styles.icon}/>
+                        <Image
+                            resizeMode="contain"
+                            source={mapSign(sign)}
+                            style={styles.icon}/>
+                        <View style={styles.contentContainer}>
+                            <Text style={styles.title}>
+                                <B>{mapViPlanetName(name)}</B> {mapViSignName(sign)}
+                            </Text>
+                            <Text style={styles.content}>{content}</Text>
 
+                        </View>
+                        <IOButtonIcon
+                            name="ios-arrow-forward-outline"
+                            onPress={() => this.gotoDetail()}/>
                     </View>
-                    <IOButtonIcon
-                        name="ios-arrow-forward-outline"
-                        onPress={() => {
-                        }}/>
+                    <LineDivider color={colors.LIST_BOTTOM_BORDER}/>
                 </View>
-                <LineDivider color={colors.LIST_BOTTOM_BORDER}/>
-            </View>
+            </TouchableHighlight>
         )
+    }
+
+    gotoDetail(){
+        const {navigate} = this.props;
+        navigate('Detail');
     }
 }
 

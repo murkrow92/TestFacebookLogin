@@ -15,7 +15,7 @@ export default class ListAstroObject extends Component {
     constructor(props) {
         super(props);
         let items = this.props.items;
-        if (items.length > 0){
+        if (items.length > 0) {
             items[0].isFirst = true;
         }
 
@@ -32,15 +32,17 @@ export default class ListAstroObject extends Component {
             <View style={styles.container}>
                 <ListView
                     dataSource={this.state.dataSource}
-                    renderRow={(rowData) => renderRow(rowData)}
+                    renderRow={(rowData) => renderRow(rowData, this.props.navigate)}
                 />
             </View>
         );
     }
 }
 
-const renderRow = (rowData) => {
-    return (<AstroObjectItem item={rowData}/>)
+const renderRow = (rowData, navigate) => {
+    return (<AstroObjectItem
+        navigate={navigate}
+        item={rowData}/>)
 };
 
 const styles = {

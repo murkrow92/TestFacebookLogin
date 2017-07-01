@@ -38,9 +38,21 @@ export const PayRoute = StackNavigator({
     headerMode: 'none'
 });
 
+export const HomeRoute = StackNavigator({
+    Home: {
+        screen: HomePage
+    },
+    Detail: {
+        screen: DetailPage
+    }
+
+}, {
+    headerMode: 'none'
+});
+
 export const BottomPage = TabNavigator({
     Home: {
-        screen: HomePage,
+        screen: HomeRoute,
         navigationOptions: {
             tabBarLabel: 'Notifications',
             tabBarIcon: ({tintColor}) => (<AwesomeIcon
@@ -83,7 +95,7 @@ export const BottomPage = TabNavigator({
     tabBarPosition: 'bottom',
     tabBarOptions: {
         activeTintColor: colors.BLUE,
-        inactiveTintColor:colors.DARKER_GREY,
+        inactiveTintColor: colors.DARKER_GREY,
         indicatorStyle: {
             backgroundColor: 'transparent'
         },
@@ -110,7 +122,7 @@ const ContentPage = DrawerNavigator({
     Question: {screen: QuestionPage},
     Detail: {screen: DetailPage},
     Payment: {screen: PayRoute},
-    Home: {screen: HomePage},
+    Home: {screen: HomeRoute},
     Bank: {screen: BankPage},
     Chat: {screen: ChatPage},
     About: {screen: AboutPage},

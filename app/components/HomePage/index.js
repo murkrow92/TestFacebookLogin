@@ -31,17 +31,19 @@ class HomePage extends Component {
                     onPress={() => navigate('DrawerOpen')}
                     rightButton={rightButton()}/>
                 <ScrollView>
-                    {this.renderList(home.planet)}
+                    {this.renderList(home.planet, navigate)}
                 </ScrollView>
             </PageWrapper>
         );
     }
 
-    renderList(planet) {
+    renderList(planet, navigate) {
         if (planet.hasOwnProperty("Sun")) {
             console.log(planet);
             let items = getItems(planet);
-            return <ListAstroObject items={items}/>
+            return <ListAstroObject
+                navigate={navigate}
+                items={items}/>
         }
     }
 }
