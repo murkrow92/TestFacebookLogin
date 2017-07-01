@@ -22,17 +22,10 @@ class Sidebar extends Component {
     render() {
         const {actions, sidebar} = this.props;
         const {navigate} = this.props.content.navigation;
-        let picture = BlankProfile;
-        if (typeof(sidebar.user.picture) === "object"){
-            picture = {
-                uri: sidebar.user.picture.data.url
-            };
-        }
 
-        console.log(sidebar);
         return ( <View style={styles.container}>
             <AccountBox
-                picture={picture}
+                picture={this.getPicture()}
                 name={sidebar.user.name}
                 navigate={navigate}/>
             <DrawerItem
@@ -58,8 +51,17 @@ class Sidebar extends Component {
                 title="Của bạn bè"
             />
         </View> );
+    }
 
-
+    getPicture() {
+        const {actions, sidebar} = this.props;
+        let picture = BlankProfile;
+        if (typeof(sidebar.user.picture) === "object") {
+            picture = {
+                uri: sidebar.user.picture.data.url
+            };
+        }
+        return picture;
     }
 }
 
