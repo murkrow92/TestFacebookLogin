@@ -11,19 +11,18 @@ import Icon from "../Commons/Icons/Icon";
 import QuestionBox from "./QuestionBox";
 
 
-
 export default class DetailPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            question:'Làm thế nào để biết cung Mọc?',
-            questionType:QUESTION_TYPE_QUESTION,
+            question: 'Làm thế nào để biết cung Mọc?',
             answer: 'Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.'
         }
     }
 
     render() {
         const {navigate} = this.props.navigation;
+        const {params} = this.props.navigation.state;
         return (
             <PageWrapper>
                 <TopNavigationBar
@@ -31,7 +30,7 @@ export default class DetailPage extends Component {
                     onPress={() => navigate('DrawerOpen')}
                     rightButton={rightButton()}/>
                 <View style={styles.container}>
-                    {renderQuestion(this.state.questionType)}
+                    {renderQuestion(params)}
                     <View style={styles.answerBox}>
                         <Text style={styles.answer}>{this.state.answer}</Text>
                     </View>
@@ -47,17 +46,17 @@ const rightButton = () => {
     };
 };
 
-const renderQuestion = (type) => {
-    if (type === QUESTION_TYPE_COMBO){
-        return <ComboBox/>;
-    }  else if (type === QUESTION_TYPE_QUESTION) {
+const renderQuestion = (params) => {
+    if (params.questionType === QUESTION_TYPE_COMBO) {
+        return <ComboBox params={params}/>;
+    } else if (params.questionType === QUESTION_TYPE_QUESTION) {
         return <QuestionBox/>;
     }
 
 };
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         marginLeft: APP_MARGIN,
         marginRight: APP_MARGIN,
         flex: 1,

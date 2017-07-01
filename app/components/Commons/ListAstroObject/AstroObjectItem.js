@@ -10,6 +10,7 @@ import IOButtonIcon from "../TopNavigationBar/IOButtonIcon";
 import fonts from "../../../styles/fonts";
 import LineDivider from "../LineDivider";
 import {mapSign, mapPlanetByName, mapViPlanetName, mapViSignName} from "../../../lib/map";
+import {QUESTION_TYPE_COMBO} from "../../../lib/questions";
 
 export default class AstroObjectItem extends Component {
 
@@ -23,12 +24,9 @@ export default class AstroObjectItem extends Component {
 
     render() {
         let topBorderColor = this.props.item.isFirst ? 'transparent' : colors.LIST_TOP_BORDER;
-        const degrees = this.props.item.degrees;
-        const minutes = this.props.item.minutes;
+        const {degrees, minutes, name, retrograde} = this.props.item;
         const sign = this.props.item.house;
-        const name = this.props.item.name;
         let content = degrees + "\xB0" + minutes;
-        const retrograde = this.props.item.retrograde;
         if (retrograde === "TRUE") {
             content = content + " " + "Nghịch hành";
         }
@@ -65,13 +63,23 @@ export default class AstroObjectItem extends Component {
         )
     }
 
-    gotoDetail(){
+    gotoDetail() {
+        const {degrees, minutes, name, retrograde} = this.props.item;
+        const sign = this.props.item.house;
         const {navigate} = this.props;
-        navigate('Detail');
+        let content = degrees + "\xB0" + minutes;
+        if (retrograde === "TRUE") {
+            content = content + " " + "Nghịch hành";
+        }
+        navigate('Detail', {
+            questionType: QUESTION_TYPE_COMBO,
+            comboName: mapViPlanetName(name) + " " + mapViSignName(sign),
+            comboDegree: content
+        });
     }
 }
 
-const B = (props) => <Text style={{fontWeight: 'bold'}}>{props.children}</Text>
+const B = (props) => <Text style={{fontWeight: 'bold'}}>{props.children}</Text>;
 
 const styles = StyleSheet.create(
     {

@@ -12,21 +12,18 @@ import Aries from "../../styles/images/signs/1.png";
 export default class ComboBox extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            comboDegree: '22 ',
-            comboName: 'Mặt trời Bạch Dương'
-        }
     }
 
     render() {
+        const params = this.props.params;
         return (
             <View style={styles.container}>
                 <View style={styles.comboBox}>
                     <Image source={Sun} style={styles.combo1}/>
                     <Image source={Aries} style={styles.combo2}/>
                 </View>
-                <Text style={styles.comboName}>{this.state.comboName}</Text>
-                <Text style={styles.comboDegree}>{this.state.comboDegree}</Text>
+                <Text style={styles.comboName}>{params.comboName}</Text>
+                <Text style={styles.comboDegree}>{params.comboDegree}</Text>
             </View>
         );
     }
