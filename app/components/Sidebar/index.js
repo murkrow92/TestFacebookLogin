@@ -10,6 +10,7 @@ import DrawerTitle from "./DrawerTitle";
 import {bindActionCreators} from "redux";
 import * as actions from "./SideBarAction";
 import {connect} from "react-redux";
+import BlankProfile from "../../styles/images/blank_profile.png";
 
 class Sidebar extends Component {
     constructor(props) {
@@ -21,8 +22,18 @@ class Sidebar extends Component {
     render() {
         const {actions, sidebar} = this.props;
         const {navigate} = this.props.content.navigation;
+        let picture = BlankProfile;
+        if (typeof(sidebar.user.picture) === "object"){
+            picture = {
+                uri: sidebar.user.picture.data.url
+            };
+        }
+
+        console.log(sidebar);
         return ( <View style={styles.container}>
             <AccountBox
+                picture={picture}
+                name={sidebar.user.name}
                 navigate={navigate}/>
             <DrawerItem
                 navigate={navigate}
