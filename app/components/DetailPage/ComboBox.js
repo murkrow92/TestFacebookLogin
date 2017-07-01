@@ -19,8 +19,14 @@ export default class ComboBox extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.comboBox}>
-                    <Image source={Sun} style={styles.combo1}/>
-                    <Image source={Aries} style={styles.combo2}/>
+                    <Image
+                        resizeMode="contain"
+                        source={params.source1}
+                        style={styles.combo1}/>
+                    <Image
+                        resizeMode="contain"
+                        source={params.source2}
+                        style={styles.combo2}/>
                 </View>
                 <Text style={styles.comboName}>{params.comboName}</Text>
                 <Text style={styles.comboDegree}>{params.comboDegree}</Text>

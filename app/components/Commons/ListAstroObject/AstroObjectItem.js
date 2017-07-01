@@ -33,7 +33,7 @@ export default class AstroObjectItem extends Component {
 
         return (
             <TouchableHighlight
-                onPress={() => this.gotoDetail()}
+                onPress={() => this.goDetail()}
                 underlayColor='lightblue'>
                 <View style={styles.wrapper}>
                     <LineDivider color={topBorderColor}/>
@@ -55,7 +55,7 @@ export default class AstroObjectItem extends Component {
                         </View>
                         <IOButtonIcon
                             name="ios-arrow-forward-outline"
-                            onPress={() => this.gotoDetail()}/>
+                            onPress={() => this.goDetail()}/>
                     </View>
                     <LineDivider color={colors.LIST_BOTTOM_BORDER}/>
                 </View>
@@ -63,7 +63,7 @@ export default class AstroObjectItem extends Component {
         )
     }
 
-    gotoDetail() {
+    goDetail() {
         const {degrees, minutes, name, retrograde} = this.props.item;
         const sign = this.props.item.house;
         const {navigate} = this.props;
@@ -72,6 +72,8 @@ export default class AstroObjectItem extends Component {
             content = content + " " + "Nghịch hành";
         }
         navigate('Detail', {
+            source1: mapPlanetByName(name),
+            source2: mapSign(sign),
             questionType: QUESTION_TYPE_COMBO,
             comboName: mapViPlanetName(name) + " " + mapViSignName(sign),
             comboDegree: content
