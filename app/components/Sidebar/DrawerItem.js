@@ -3,7 +3,7 @@
  */
 
 import React, {Component} from "react";
-import {Text, View, StyleSheet} from "react-native";
+import {Text, View, StyleSheet, TouchableHighlight} from "react-native";
 import {APP_MARGIN} from "../../styles/dimens";
 import fonts from "../../styles/fonts";
 import colors from "../../styles/colors";
@@ -18,14 +18,18 @@ export default class DrawerItem extends Component {
 
     render() {
         return (
-            <View style={styles.wrapper}>
-                <View style={styles.container}>
-                    <Text style={styles.title}>{this.props.title}</Text>
-                    {this.renderPrice(this.props.account)}
-                    {this.renderButton(this.props.button)}
+            <TouchableHighlight
+                onPress={this.props.onPress}
+                underlayColor='lightblue'>
+                <View style={styles.wrapper}>
+                    <View style={styles.container}>
+                        <Text style={styles.title}>{this.props.title}</Text>
+                        {this.renderPrice(this.props.account)}
+                        {this.renderButton(this.props.button, this.props.onPress)}
+                    </View>
+                    <LineDivider color={colors.LIST_BOTTOM_BORDER}/>
                 </View>
-                <LineDivider color={colors.LIST_BOTTOM_BORDER}/>
-            </View>);
+            </TouchableHighlight>);
     };
 
     renderPrice(account) {
@@ -34,14 +38,12 @@ export default class DrawerItem extends Component {
         }
     }
 
-    renderButton(button) {
+    renderButton(button, onPress) {
         if (button) {
             return <ButtonIcon
                 color="#999999"
                 icon={button}
-                onPress={() => {
-                    this.props.navigate('Home');
-                }}/>;
+                onPress={onPress}/>;
 
         } else {
             return <IOButtonIcon

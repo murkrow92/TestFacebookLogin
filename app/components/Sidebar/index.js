@@ -29,25 +29,28 @@ class Sidebar extends Component {
                 name={sidebar.user.name}
                 navigate={navigate}/>
             <DrawerItem
-                navigate={navigate}
+                onPress={() => {
+                }}
                 account="500.000 đ"
                 title="Ngân quỹ"
             />
             <DrawerItem
-                navigate={navigate}
+                onPress={() => {
+                }}
                 button="plus-circled"
                 title="Tạo câu hỏi"
             />
             <DrawerTitle
-                navigate={navigate}
+                onPress={() => {
+                }}
                 title="Bản đồ sao"
             />
             <DrawerItem
-                navigate={navigate}
+                onPress={() => navigate('Chart')}
                 title="Của tôi"
             />
             <DrawerItem
-                navigate={navigate}
+                onPress={() => navigate('Chart')}
                 title="Của bạn bè"
             />
         </View> );

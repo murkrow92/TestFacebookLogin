@@ -20,7 +20,6 @@ export const getLocalProfileAsync = () => (dispatch, getState) =>
                 return Promise.resolve();
             }
             let profile = JSON.parse(value).profile;
-            console.log(profile);
             dispatch(getLocalProfile(profile));
         },
         error => alert('Error: ' + error.message)
@@ -33,7 +32,6 @@ export const getFacebookProfileAsync = () => (dispatch, getState) =>
                 return Promise.resolve();
             }
             let profile = JSON.parse(value);
-            console.log(profile);
             dispatch(getLocalProfile(profile));
         }
     );
