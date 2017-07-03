@@ -42,4 +42,11 @@ export class API {
     fetchNotifications(){
         return getRequest(`${this.API_ENDPOINT}/notify`);
     }
+
+    fetchConversation(conversationId){
+        let query = queryString.stringify({
+           id:conversationId
+        });
+        return getRequest(`${this.API_ENDPOINT}/conversation?${query}`);
+    }
 }

@@ -2,7 +2,7 @@
  * Created by murkrow on 6/12/17.
  */
 import React, {Component} from 'react';
-import {View, StyleSheet, Text, Image} from "react-native";
+import {View, StyleSheet, Text} from "react-native";
 import colors from "../../styles/colors";
 import fonts from "../../styles/fonts";
 import Icon from "../Commons/Icons/Icon";
@@ -24,7 +24,6 @@ export default class QuestionBox extends Component {
         );
     }
 }
-
 
 const styles = StyleSheet.create({
     container: {
