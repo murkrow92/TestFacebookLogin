@@ -14,12 +14,12 @@ const checkStatus = response => {
 };
 
 const postRequest = (url, body, headers) =>
-    fetch(url, { method: "POST", body, headers }).then(checkStatus);
+    fetch(url, {method: "POST", body, headers}).then(checkStatus);
 
-const getRequest = (url, headers) => fetch(url, { headers }).then(checkStatus);
+const getRequest = (url, headers) => fetch(url, {headers}).then(checkStatus);
 
 const putRequest = (url, body, headers) =>
-    fetch(url, { method: "PUT", body, headers }).then(checkStatus);
+    fetch(url, {method: "PUT", body, headers}).then(checkStatus);
 
 export class API {
     constructor() {
@@ -39,14 +39,19 @@ export class API {
         return getRequest(`${this.API_ENDPOINT}/astro?${query}`);
     }
 
-    fetchNotifications(){
+    fetchNotifications() {
         return getRequest(`${this.API_ENDPOINT}/notify`);
     }
 
-    fetchConversation(conversationId){
+    fetchConversation(conversationId) {
+        if (conversationId === '0'){
+            conversationId = 1;
+        }
         let query = queryString.stringify({
-           id:conversationId
+            id: conversationId
         });
-        return getRequest(`${this.API_ENDPOINT}/conversation?${query}`);
+        let url = `${this.API_ENDPOINT}/conversation?${query}`;
+        console.log(url);
+        return getRequest(url);
     }
 }

@@ -8,19 +8,19 @@ import {AsyncStorage} from "react-native";
 
 const api = new API();
 
-const fetchConversation = (conservation) => ({
+const fetchConversation = (conversation) => ({
     type: FETCH_CONVERSATION,
-    conservation
+    conversation
 });
 
 export const fetchConversationAsync = (conversationId) => (dispatch, getState) =>
     (api.fetchConversation(conversationId).then(
         response => {
-            AsyncStorage.setItem('conservation' + conversationId, JSON.stringify(response));
+            AsyncStorage.setItem('conversation' + conversationId, JSON.stringify(response));
             dispatch(fetchConversation(response));
         },
         error => {
-            AsyncStorage.getItem('conservation' + conversationId).then(
+            AsyncStorage.getItem('conversation' + conversationId).then(
                 value => {
                     if (value === null) {
                         return Promise.resolve();

@@ -23,11 +23,13 @@ class ChatPage extends Component {
         super(props);
         const {actions} = this.props;
         const {params} = this.props.navigation.state;
-        console.log(params.conversationId);
         actions.fetchConversationAsync(params.conversationId);
     }
 
     render() {
+        const {chat} = this.props;
+        console.log(chat);
+
         let item1 = {
             content: "Fill in your birth data Fill in your birth data Fill in your birth data Fill in your birth data Fill in your birth data",
             datetime: "12/02/1992",

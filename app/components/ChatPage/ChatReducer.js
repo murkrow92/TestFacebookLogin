@@ -11,7 +11,8 @@ const chatReducer = (state = {}, action) => {
         case FETCH_CONVERSATION:
             console.log(action);
             return {
-                ...state
+                ...state,
+                ...action.conversation.data.messages
             };
         default:
             return state;
@@ -20,5 +21,5 @@ const chatReducer = (state = {}, action) => {
 
 
 export default combineReducers({
-    conservation: chatReducer
+    messages: chatReducer
 });

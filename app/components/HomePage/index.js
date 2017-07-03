@@ -21,7 +21,7 @@ class HomePage extends Component {
     }
 
     render() {
-        const {home, action} = this.props;
+        const {home} = this.props;
         const {navigate} = this.props.navigation;
 
         return (
