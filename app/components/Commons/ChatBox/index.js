@@ -6,7 +6,7 @@ import {Text, TextInput, TouchableHighlight, View, Dimensions} from "react-nativ
 import React, {Component} from "react";
 import LineDivider from "../LineDivider";
 import colors from "../../../styles/colors";
-var windowSize = Dimensions.get('window');
+const windowSize = Dimensions.get('window');
 
 export default class ChatBox extends Component {
     constructor(props) {
@@ -60,6 +60,7 @@ const styles = {
         backgroundColor: colors.TOOLBAR,
     },
     textContainer: {
+        marginTop:6,
         flex: 1,
         justifyContent: 'center'
     },

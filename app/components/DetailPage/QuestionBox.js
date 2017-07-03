@@ -28,6 +28,7 @@ export default class QuestionBox extends Component {
 
 const styles = StyleSheet.create({
     container: {
+        alignItems:'center',
         marginTop:15,
         flexDirection: 'row'
     },

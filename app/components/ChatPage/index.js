@@ -8,6 +8,11 @@ import ChatBox from "../Commons/ChatBox/index";
 import ListMessage from "./ListMessage";
 import TopNavigationBar from "../Commons/TopNavigationBar/index";
 import ButtonIcon from "../Commons/TopNavigationBar/ButtonIcon";
+import QuestionBox from "../DetailPage/QuestionBox";
+import {View, StyleSheet, ScrollView} from "react-native";
+import {APP_MARGIN} from "../../styles/dimens";
+import colors from "../../styles/colors";
+import fonts from "../../styles/fonts";
 
 export default class ChatPage extends Component {
     render() {
@@ -34,17 +39,46 @@ export default class ChatPage extends Component {
                     title="Tin nhắn"
                     onPress={() => navigate('DrawerOpen')}
                     rightButton={rightButton()}/>
-                <ListMessage items={items}/>
+                <View style={styles.questionBoxContainer}>
+                    <QuestionBox/>
+                </View>
+                <ScrollView>
+                    <ListMessage items={items}/>
+                </ScrollView>
                 <ChatBox/>
             </PageWrapper>
         );
     }
 }
 const rightButton = () => {
-    return (<ButtonIcon icon="chart-pie-1" onPress={() => {
-    }}/>);
+    return (<ButtonIcon
+        icon="chart-pie-1"
+        onPress={() => {
+        }}/>);
 };
 
+const styles = StyleSheet.create({
+    questionBoxContainer: {
+        paddingLeft: APP_MARGIN,
+        paddingRight: APP_MARGIN
+    },
+    answerBox: {
+        marginTop: 15,
+        paddingLeft: 10,
+        paddingRight: 10,
+        paddingTop: 8,
+        paddingBottom: 8,
+        borderRadius: 10,
+        backgroundColor: colors.LIST_TOP_BORDER
+
+    },
+    answer: {
+        padding: 6,
+        color: colors.BLACK,
+        fontSize: 13,
+        fontFamily: fonts.ARIAL
+    }
+});
 
 
 

@@ -20,9 +20,10 @@ export default class NotificationItem extends Component {
 
     render() {
         let topBorderColor = this.props.data.isFirst ? 'transparent' : colors.LIST_TOP_BORDER;
+        const conversionId = this.props.data.link_id;
         return (
             <TouchableHighlight
-                onPress={() => this.goDetail()}
+                onPress={() => this.goDetail(conversionId)}
                 underlayColor='lightblue'>
                 <View style={styles.wrapper}>
                     <LineDivider color={topBorderColor}/>
@@ -34,7 +35,7 @@ export default class NotificationItem extends Component {
                         </View>
                         <IOButtonIcon
                             name="ios-arrow-forward-outline"
-                            onPress={() => this.goDetail()}/>
+                            onPress={() => this.goDetail(conversionId)}/>
                     </View>
                     <LineDivider color={colors.LIST_BOTTOM_BORDER}/>
                 </View>
@@ -42,10 +43,11 @@ export default class NotificationItem extends Component {
         )
     }
 
-    goDetail() {
+    goDetail(conversionId) {
         const navigate = this.props.navigate;
-        navigate('Detail', {
-            questionType: QUESTION_TYPE_QUESTION
+        navigate('Chat', {
+            questionType: QUESTION_TYPE_QUESTION,
+            questionId: conversionId
         });
     }
 }

@@ -54,8 +54,8 @@ export const NotificationRoute = StackNavigator({
     Notification: {
         screen: NotificationPage
     },
-    Detail: {
-        screen: DetailPage
+    Chat: {
+        screen: ChatPage
     }
 
 }, {

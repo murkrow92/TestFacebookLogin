@@ -57,7 +57,7 @@ const profileStyle = (isSystem) => {
 };
 
 const contentContainerStyle = (isSystem) => {
-    let bgColor = 'LIGHT_BLUE';
+    let bgColor = 'lightblue';
     let marginLeft = 24;
     let marginRight = 0;
     if (isSystem) {
@@ -119,11 +119,6 @@ const styles = {
         borderRadius: 20,
         alignItems: 'flex-start'
     },
-    contentContainer: {
-
-        color: 'black'
-    },
-
     avatar: {
         alignSelf: 'flex-end',
         borderWidth: 1,
