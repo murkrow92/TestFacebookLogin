@@ -17,9 +17,11 @@ import {bindActionCreators} from "redux";
 import * as actions from "./ChatActions";
 import {connect} from "react-redux";
 
+let lodash = require('lodash');
+
 class ChatPage extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         const {actions} = this.props;
         const {params} = this.props.navigation.state;
@@ -27,25 +29,7 @@ class ChatPage extends Component {
     }
 
     render() {
-        const {chat} = this.props;
-        console.log(chat);
-
-        let item1 = {
-            content: "Fill in your birth data Fill in your birth data Fill in your birth data Fill in your birth data Fill in your birth data",
-            datetime: "12/02/1992",
-            user: "System"
-        };
-        let item2 = {
-            content: "Ask your Astrologer",
-            datetime: "12/02/1992",
-            user: "user"
-        };
-        let item3 = {
-            content: "Receive your answer",
-            datetime: "12/02/1992",
-            user: "System"
-        };
-        let items = [item1, item2, item3];
+        const {chat, profile} = this.props;
         const {navigate} = this.props.navigation;
         return (
             <PageWrapper>
@@ -54,16 +38,44 @@ class ChatPage extends Component {
                     onPress={() => navigate('DrawerOpen')}
                     rightButton={rightButton()}/>
                 <View style={styles.questionBoxContainer}>
-                    <QuestionBox/>
+                    {this.renderQuestionBox(chat.messages)}
                 </View>
                 <ScrollView>
-                    <ListMessage items={items}/>
+                    {this.renderList(chat.messages, profile.profile)}
                 </ScrollView>
                 <ChatBox/>
             </PageWrapper>
         );
     }
+
+    renderQuestionBox(messages) {
+        if (!lodash.isEmpty(messages)) {
+            return <QuestionBox
+                content={messages[0].content}
+            />
+        }
+
+    }
+
+    renderList(messages, profile) {
+        if (!lodash.isEmpty(messages)) {
+            let items = getItems(messages);
+            return <ListMessage
+                profile={profile}
+                items={items}/>
+        }
+    }
 }
+
+const getItems = (list) => {
+    let items = [];
+    lodash.forEach(list, function (value, key) {
+        items.push(value);
+    });
+    items[0].isFirst = true;
+    return items;
+};
+
 const rightButton = () => {
     return (<ButtonIcon
         icon="chart-pie-1"
@@ -96,6 +108,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => ({
     chat: state.chat,
+    profile: state.profile
 });
 
 const mapDispatchToProps = (dispatch) => ({

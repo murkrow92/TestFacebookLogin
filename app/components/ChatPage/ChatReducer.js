@@ -9,7 +9,6 @@ import {FETCH_CONVERSATION} from "./ChatActions";
 const chatReducer = (state = {}, action) => {
     switch (action.type) {
         case FETCH_CONVERSATION:
-            console.log(action);
             return {
                 ...state,
                 ...action.conversation.data.messages

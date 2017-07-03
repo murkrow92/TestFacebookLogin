@@ -6,8 +6,7 @@
 import {Image, Text, View} from "react-native";
 import React, {Component, PropTypes} from "react";
 import colors from "../../styles/colors";
-import Profile from "../../styles/images/profile.jpg";
-import Sagittarius from "../../styles/images/ic_sagittarius.png";
+import SystemProfile from "../../styles/images/ic_launcher.png";
 
 export default class MessageItem extends Component {
 
@@ -16,16 +15,18 @@ export default class MessageItem extends Component {
     };
 
     render() {
-        const dt = this.props.data.datetime;
-        const user = this.props.data.user;
-        const content = this.props.data.contentContainer;
-        const isSystem = (user === "System");
+        const {data, profile} = this.props;
+        profile.userId = "2";
+        const user = data.user_id;
+        console.log(user);
+        const content = data.content;
+        const isSystem = (user === profile.userId);
         return (
             <View style={containerStyle(isSystem)}>
-                <Image style={styles.avatar} source={profileStyle(isSystem)}/>
+                <Image style={styles.avatar} source={profileStyle(isSystem, profile)}/>
                 <View style={styles.textContainer}>
-                    <Text style={styles.datetimeText}> {dt} by {user} </Text>
-                    <View style={contentContainerStyle(isSystem)}>
+                    {/*<Text style={styles.datetimeText}> {dt} by {user} </Text>*/}
+                    <View style={contentContainerStyle(isSystem, profile)}>
                         <Text style={contentStyle(isSystem)}>{content}</Text>
                     </View>
                 </View>
@@ -48,16 +49,18 @@ const containerStyle = (isSystem) => {
 
 };
 
-const profileStyle = (isSystem) => {
+const profileStyle = (isSystem, profile) => {
     if (isSystem) {
-        return Sagittarius;
+        return SystemProfile;
     } else {
-        return Profile
+        return {
+            uri: profile.picture.data.url
+        }
     }
 };
 
 const contentContainerStyle = (isSystem) => {
-    let bgColor = 'lightblue';
+    let bgColor = '#0084ff';
     let marginLeft = 24;
     let marginRight = 0;
     if (isSystem) {

@@ -27,15 +27,17 @@ export default class ListMessage extends Component {
             <View style={styles.container}>
                 <ListView
                     dataSource={this.state.dataSource}
-                    renderRow={(rowData) => renderRow(rowData)}
+                    renderRow={(rowData) => renderRow(rowData, this.props.profile)}
                 />
             </View>
         );
     }
 }
 
-const renderRow = (rowData) => {
-    return <MessageItem data={rowData}/>;
+const renderRow = (rowData, profile) => {
+    return <MessageItem
+        profile={profile}
+        data={rowData}/>;
 };
 
 const styles = {

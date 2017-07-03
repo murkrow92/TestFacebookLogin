@@ -8,18 +8,11 @@ import fonts from "../../styles/fonts";
 import Icon from "../Commons/Icons/Icon";
 
 export default class QuestionBox extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            question: "Làm sao biết cung Mọc nếu chỉ biết ngày sinh?"
-        }
-    }
-
     render() {
         return (
             <View style={styles.container}>
                 <Icon size={28} name="chart-pie-1"/>
-                <Text style={styles.text}>{this.state.question}</Text>
+                <Text style={styles.text}>{this.props.content}</Text>
             </View>
         );
     }

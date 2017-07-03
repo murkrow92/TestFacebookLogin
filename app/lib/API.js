@@ -51,7 +51,6 @@ export class API {
             id: conversationId
         });
         let url = `${this.API_ENDPOINT}/conversation?${query}`;
-        console.log(url);
         return getRequest(url);
     }
 }
