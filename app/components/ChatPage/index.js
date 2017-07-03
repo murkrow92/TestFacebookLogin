@@ -49,9 +49,10 @@ class ChatPage extends Component {
     }
 
     renderQuestionBox(messages) {
+        console.log(messages);
         if (!lodash.isEmpty(messages)) {
             return <QuestionBox
-                content={messages[0].content}
+                content={messages[1].content}
             />
         }
 
