@@ -21,23 +21,24 @@ export default class ListFriend extends Component {
     }
 
     render() {
+        const navigate = this.props.navigate;
         return (
             <View style={styles.container}>
                 <ListView
                     dataSource={this.state.dataSource}
-                    renderRow={(rowData) => renderRow(rowData)}
+                    renderRow={(rowData) => renderRow(rowData, navigate)}
                 />
             </View>
         );
     }
 }
 
-const renderRow = (rowData) => {
-    return (<NotificationItem data={rowData}/>)
+const renderRow = (rowData, navigate) => {
+    return (<NotificationItem
+        navigate={navigate}
+        data={rowData}/>)
 };
 
 const styles = {
-    container: {
-
-    }
+    container: {}
 };

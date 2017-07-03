@@ -38,7 +38,9 @@ class NotificationPage extends Component {
     renderList(list, navigate) {
         if (!lodash.isEmpty(list)) {
             let items = getItems(list);
-            return <ListNotification items={items}/>
+            return <ListNotification
+                navigate={navigate}
+                items={items}/>
         }
     }
 }

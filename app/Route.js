@@ -50,6 +50,19 @@ export const HomeRoute = StackNavigator({
     headerMode: 'none'
 });
 
+export const NotificationRoute = StackNavigator({
+    Notification: {
+        screen: NotificationPage
+    },
+    Detail: {
+        screen: DetailPage
+    }
+
+}, {
+    headerMode: 'none'
+
+});
+
 export const BottomPage = TabNavigator({
     Home: {
         screen: HomeRoute,
@@ -62,7 +75,7 @@ export const BottomPage = TabNavigator({
         }
     },
     Notification: {
-        screen: NotificationPage,
+        screen: NotificationRoute,
         navigationOptions: {
             tabBarLabel: 'Notifications',
             tabBarIcon: ({tintColor}) => (<MaterialCommunityIcon

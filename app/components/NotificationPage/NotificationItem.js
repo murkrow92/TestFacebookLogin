@@ -2,7 +2,7 @@
  * Created by murkrow on 6/13/17.
  */
 
-import {Text, View, StyleSheet, Image} from "react-native";
+import {Text, View, StyleSheet, Image, TouchableHighlight} from "react-native";
 import React, {Component, PropTypes} from "react";
 import colors from "../../styles/colors";
 import {APP_MARGIN} from "../../styles/dimens";
@@ -10,6 +10,7 @@ import IOButtonIcon from "../Commons/TopNavigationBar/IOButtonIcon";
 import fonts from "./../../styles/fonts";
 import LineDivider from "../Commons/LineDivider";
 import Background from "../../styles/images/ic_launcher.png";
+import {QUESTION_TYPE_QUESTION} from "../../lib/questions";
 
 export default class NotificationItem extends Component {
 
@@ -20,22 +21,32 @@ export default class NotificationItem extends Component {
     render() {
         let topBorderColor = this.props.data.isFirst ? 'transparent' : colors.LIST_TOP_BORDER;
         return (
-            <View style={styles.wrapper}>
-                <LineDivider color={topBorderColor}/>
-                <View style={styles.container}>
-                    <Image source={Background} style={styles.icon}/>
-                    <View style={styles.contentContainer}>
-                        <Text style={styles.title}>{this.props.data.title }</Text>
-                        <Text style={styles.content}>{this.props.data.content}</Text>
+            <TouchableHighlight
+                onPress={() => this.goDetail()}
+                underlayColor='lightblue'>
+                <View style={styles.wrapper}>
+                    <LineDivider color={topBorderColor}/>
+                    <View style={styles.container}>
+                        <Image source={Background} style={styles.icon}/>
+                        <View style={styles.contentContainer}>
+                            <Text style={styles.title}>{this.props.data.title }</Text>
+                            <Text style={styles.content}>{this.props.data.content}</Text>
+                        </View>
+                        <IOButtonIcon
+                            name="ios-arrow-forward-outline"
+                            onPress={() => this.goDetail()}/>
                     </View>
-                    <IOButtonIcon
-                        name="ios-arrow-forward-outline"
-                        onPress={() => {
-                        }}/>
+                    <LineDivider color={colors.LIST_BOTTOM_BORDER}/>
                 </View>
-                <LineDivider color={colors.LIST_BOTTOM_BORDER}/>
-            </View>
+            </TouchableHighlight>
         )
+    }
+
+    goDetail() {
+        const navigate = this.props.navigate;
+        navigate('Detail', {
+            questionType: QUESTION_TYPE_QUESTION
+        });
     }
 }
 
@@ -45,8 +56,8 @@ const styles = StyleSheet.create(
             flexDirection: 'column'
         },
         container: {
-            marginTop:5,
-            marginBottom:5,
+            marginTop: 5,
+            marginBottom: 5,
             alignItems: 'center',
             marginLeft: APP_MARGIN,
             flex: 1,
@@ -54,13 +65,13 @@ const styles = StyleSheet.create(
 
         },
         icon: {
-            borderRadius:5,
+            borderRadius: 5,
             marginRight: 10,
             width: 40,
             height: 40
         },
         contentContainer: {
-            marginLeft:5,
+            marginLeft: 5,
             flex: 1,
         },
         title: {
