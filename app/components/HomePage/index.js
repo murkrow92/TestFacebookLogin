@@ -39,7 +39,6 @@ class HomePage extends Component {
 
     renderList(planet, navigate) {
         if (planet.hasOwnProperty("Sun")) {
-            console.log(planet);
             let items = getItems(planet);
             return <ListAstroObject
                 navigate={navigate}

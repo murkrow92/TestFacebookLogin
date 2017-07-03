@@ -5,7 +5,6 @@
 const queryString = require("query-string");
 
 const checkStatus = response => {
-    console.log(response);
     let json = response.json();
     if (response.status === 200) {
         return json;
@@ -38,5 +37,9 @@ export class API {
         });
 
         return getRequest(`${this.API_ENDPOINT}/astro?${query}`);
+    }
+
+    fetchNotifications(){
+        return getRequest(`${this.API_ENDPOINT}/notify`);
     }
 }

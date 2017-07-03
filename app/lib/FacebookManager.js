@@ -35,7 +35,6 @@ const callback = (error, result) => {
         alert("Error fetching data: " + JSON.stringify(error));
     } else {
         let info = JSON.stringify(result);
-        console.log(info);
         AsyncStorage.setItem("facebook", info);
     }
 };

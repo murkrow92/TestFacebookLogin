@@ -6,14 +6,20 @@ import React, {Component} from 'react';
 import PageWrapper from "../Commons/Wrapper";
 import TopNavigationBar from "../Commons/TopNavigationBar/index";
 import ListNotification from "./ListNotification";
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import * as actions from "./NotificationActions";
 
-
-export default class NotificationPage extends Component {
+class NotificationPage extends Component {
     constructor(props) {
         super(props);
+        const {actions} = this.props;
+        actions.fetchNotificationsAsync();
     }
 
     render() {
+        console.log(this.props);
+
         const {navigate} = this.props.navigation;
         let item1 = {
             title: 'Mặt trời Bạch Dương',
@@ -49,3 +55,15 @@ const rightButton = () => {
         title: ''
     };
 };
+
+
+const mapStateToProps = (state) => ({
+    list: state.list,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    actions: bindActionCreators(actions, dispatch)
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(NotificationPage);
