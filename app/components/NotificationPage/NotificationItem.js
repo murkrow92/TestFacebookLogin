@@ -43,11 +43,11 @@ export default class NotificationItem extends Component {
         )
     }
 
-    goDetail(conversionId) {
+    goDetail(conversationId) {
         const navigate = this.props.navigate;
         navigate('Chat', {
             questionType: QUESTION_TYPE_QUESTION,
-            questionId: conversionId
+            conversationId: conversationId
         });
     }
 }

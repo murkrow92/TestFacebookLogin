@@ -7,7 +7,6 @@ import colors from "../../styles/colors";
 import fonts from "../../styles/fonts";
 import {APP_MARGIN} from "../../styles/dimens";
 import {QUESTION_TYPE_COMBO, QUESTION_TYPE_QUESTION} from "../../lib/questions";
-import Icon from "../Commons/Icons/Icon";
 import QuestionBox from "./QuestionBox";
 
 

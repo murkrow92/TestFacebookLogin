@@ -13,8 +13,19 @@ import {View, StyleSheet, ScrollView} from "react-native";
 import {APP_MARGIN} from "../../styles/dimens";
 import colors from "../../styles/colors";
 import fonts from "../../styles/fonts";
+import {bindActionCreators} from "redux";
+import * as actions from "./ChatActions";
 
 export default class ChatPage extends Component {
+
+    constructor(props){
+        super(props);
+        const {actions} = this.props;
+        const {navigate} = this.props.navigation;
+        const {params} = navigate.state;
+        actions.fetchConversation(params.conversationId);
+    }
+
     render() {
         let item1 = {
             content: "Fill in your birth data Fill in your birth data Fill in your birth data Fill in your birth data Fill in your birth data",
@@ -80,6 +91,16 @@ const styles = StyleSheet.create({
     }
 });
 
+const mapStateToProps = (state) => ({
+    chat: state.chat,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    actions: bindActionCreators(actions, dispatch)
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
 
 
 
