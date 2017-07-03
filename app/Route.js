@@ -67,41 +67,41 @@ export const BottomPage = TabNavigator({
     Home: {
         screen: HomeRoute,
         navigationOptions: {
-            tabBarLabel: 'Notifications',
-            tabBarIcon: ({tintColor}) => (<AwesomeIcon
-                color={tintColor}
-                name="home"
-                size={24}/>)
+            tabBarIcon: ({tintColor}) =>
+                (<AwesomeIcon
+                    color={tintColor}
+                    name="home"
+                    size={24}/>)
         }
     },
     Notification: {
         screen: NotificationRoute,
         navigationOptions: {
-            tabBarLabel: 'Notifications',
-            tabBarIcon: ({tintColor}) => (<MaterialCommunityIcon
-                color={tintColor}
-                name="earth"
-                size={24}/>)
+            tabBarIcon: ({tintColor}) =>
+                (<MaterialCommunityIcon
+                    color={tintColor}
+                    name="earth"
+                    size={24}/>)
         }
     },
     Profile: {
         screen: ProfilePage,
         navigationOptions: {
-            tabBarLabel: 'Notifications',
-            tabBarIcon: ({tintColor}) => (<MaterialCommunityIcon
-                color={tintColor}
-                name="account"
-                size={24}/>)
+            tabBarIcon: ({tintColor}) =>
+                (<MaterialCommunityIcon
+                    color={tintColor}
+                    name="account"
+                    size={24}/>)
         }
     },
     Bank: {
         screen: BankPage,
         navigationOptions: {
-            tabBarLabel: 'Notifications',
-            tabBarIcon: ({tintColor}) => (<IOIcon
-                color={tintColor}
-                name="ios-cash-outline"
-                size={24}/>)
+            tabBarIcon: ({tintColor}) =>
+                (<IOIcon
+                    color={tintColor}
+                    name="ios-cash-outline"
+                    size={24}/>)
         }
     }
 }, {
