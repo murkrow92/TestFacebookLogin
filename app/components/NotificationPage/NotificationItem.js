@@ -9,7 +9,7 @@ import {APP_MARGIN} from "../../styles/dimens";
 import IOButtonIcon from "../Commons/TopNavigationBar/IOButtonIcon";
 import fonts from "./../../styles/fonts";
 import LineDivider from "../Commons/LineDivider";
-import Background from "../../styles/images/bg.jpg";
+import Background from "../../styles/images/ic_launcher.png";
 
 export default class NotificationItem extends Component {
 
@@ -71,7 +71,7 @@ const styles = StyleSheet.create(
         content: {
             fontFamily: fonts.OPEN_SAN,
             fontSize: 13,
-            marginTop: 8,
+            marginTop: 4,
             color: colors.LABEL
         }
     }

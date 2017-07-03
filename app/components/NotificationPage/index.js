@@ -9,6 +9,8 @@ import ListNotification from "./ListNotification";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import * as actions from "./NotificationActions";
+import {ScrollView} from "react-native";
+let lodash = require('lodash');
 
 class NotificationPage extends Component {
     constructor(props) {
@@ -18,37 +20,38 @@ class NotificationPage extends Component {
     }
 
     render() {
-        console.log(this.props);
-
         const {navigate} = this.props.navigation;
-        let item1 = {
-            title: 'Mặt trời Bạch Dương',
-            content: '21h ngày 5/10/1992',
-            onPress: () => {
-                navigate('Detail');
-            },
-            isFirst: true
-        };
-        let item2 = {
-            title: 'Mặt trời Kim Ngưu liệu có phải là người chung thuỷ hay không',
-            content: '21h ngày 5/10/1992',
-            onPress: () => {
-                navigate('Detail');
-            }
-        };
-
-        let items = [item1, item2];
+        const {list} = this.props.notifications;
         return (
             <PageWrapper>
                 <TopNavigationBar
                     title="Thông báo"
                     onPress={() => navigate('DrawerOpen')}
                     rightButton={rightButton()}/>
-                <ListNotification items={items}/>
+                <ScrollView>
+                    {this.renderList(list, navigate)}
+                </ScrollView>
             </PageWrapper>
         );
     }
+
+    renderList(list, navigate) {
+        if (!lodash.isEmpty(list)) {
+            let items = getItems(list);
+            return <ListNotification items={items}/>
+        }
+    }
 }
+
+const getItems = (list) => {
+    let items = [];
+    lodash.forEach(list, function (value, key) {
+        items.push(value);
+    });
+    items[0].isFirst = true;
+    console.log(items);
+    return items;
+};
 
 const rightButton = () => {
     return {
@@ -58,7 +61,7 @@ const rightButton = () => {
 
 
 const mapStateToProps = (state) => ({
-    list: state.list,
+    notifications: state.notifications,
 });
 
 const mapDispatchToProps = (dispatch) => ({

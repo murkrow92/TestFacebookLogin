@@ -10,7 +10,10 @@ const notificationReducer = (state = {}, action) => {
     switch (action.type) {
         case FETCH_NOTIFICATIONS:
             console.log(action);
-            return state;
+            return {
+                ...state,
+                ...action.notifications.data
+            };
         default:
             return state;
     }
