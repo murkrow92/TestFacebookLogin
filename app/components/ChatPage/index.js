@@ -15,15 +15,16 @@ import colors from "../../styles/colors";
 import fonts from "../../styles/fonts";
 import {bindActionCreators} from "redux";
 import * as actions from "./ChatActions";
+import {connect} from "react-redux";
 
-export default class ChatPage extends Component {
+class ChatPage extends Component {
 
     constructor(props){
         super(props);
         const {actions} = this.props;
-        const {navigate} = this.props.navigation;
-        const {params} = navigate.state;
-        actions.fetchConversation(params.conversationId);
+        const {params} = this.props.navigation.state;
+        console.log(params.conversationId);
+        actions.fetchConversationAsync(params.conversationId);
     }
 
     render() {
@@ -100,7 +101,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(ChatPage);
 
 
 

@@ -51,7 +51,6 @@ const getItems = (list) => {
         items.push(value);
     });
     items[0].isFirst = true;
-    console.log(items);
     return items;
 };
 

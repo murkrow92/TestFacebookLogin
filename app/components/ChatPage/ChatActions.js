@@ -3,21 +3,21 @@
  */
 
 import {API} from "../../lib/API";
-export const FETCH_CONSERVATION = "fetch_conservation";
+export const FETCH_CONVERSATION = "fetch_conversation";
 import {AsyncStorage} from "react-native";
 
 const api = new API();
 
-const fetchConservation = (conservation) => ({
-    type: FETCH_CONSERVATION,
+const fetchConversation = (conservation) => ({
+    type: FETCH_CONVERSATION,
     conservation
 });
 
-export const fetchConservationAsync = (conversationId) => (dispatch, getState) =>
+export const fetchConversationAsync = (conversationId) => (dispatch, getState) =>
     (api.fetchConversation(conversationId).then(
         response => {
             AsyncStorage.setItem('conservation' + conversationId, JSON.stringify(response));
-            dispatch(fetchConservation(response));
+            dispatch(fetchConversation(response));
         },
         error => {
             AsyncStorage.getItem('conservation' + conversationId).then(
@@ -25,7 +25,7 @@ export const fetchConservationAsync = (conversationId) => (dispatch, getState) =
                     if (value === null) {
                         return Promise.resolve();
                     }
-                    dispatch(fetchConservation(JSON.parse(value)));
+                    dispatch(fetchConversation(JSON.parse(value)));
 
                 },
                 error => {

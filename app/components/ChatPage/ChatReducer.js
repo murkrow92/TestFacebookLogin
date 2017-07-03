@@ -4,15 +4,14 @@
 
 
 import {combineReducers} from "redux";
-import {FETCH_CONSERVATION} from "./ChatActions";
+import {FETCH_CONVERSATION} from "./ChatActions";
 
 const chatReducer = (state = {}, action) => {
     switch (action.type) {
-        case FETCH_CONSERVATION:
+        case FETCH_CONVERSATION:
             console.log(action);
             return {
-                ...state,
-                ...action.notifications.data
+                ...state
             };
         default:
             return state;

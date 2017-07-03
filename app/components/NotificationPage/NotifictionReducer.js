@@ -9,7 +9,6 @@ import {FETCH_NOTIFICATIONS} from "./NotificationActions";
 const notificationReducer = (state = {}, action) => {
     switch (action.type) {
         case FETCH_NOTIFICATIONS:
-            console.log(action);
             return {
                 ...state,
                 ...action.notifications.data
