@@ -9,7 +9,7 @@ import {APP_MARGIN} from "../../../styles/dimens";
 import IOButtonIcon from "../TopNavigationBar/IOButtonIcon";
 import fonts from "../../../styles/fonts";
 import LineDivider from "../LineDivider";
-import {mapSign, mapPlanetByName, mapViPlanetName, mapViSignName} from "../../../lib/map";
+import {mapSign, mapPlanetByName, mapViPlanetName, mapViSignName, mapObjectPositionByName} from "../../../lib/map";
 import {QUESTION_TYPE_COMBO} from "../../../lib/questions";
 
 export default class AstroObjectItem extends Component {
@@ -30,7 +30,6 @@ export default class AstroObjectItem extends Component {
         if (retrograde === "TRUE") {
             content = content + " " + "Nghịch hành";
         }
-
         return (
             <TouchableHighlight
                 onPress={() => this.goDetail()}
@@ -71,7 +70,10 @@ export default class AstroObjectItem extends Component {
         if (retrograde === "TRUE") {
             content = content + " " + "Nghịch hành";
         }
+        let combo = mapObjectPositionByName(name);
+        combo.sign = sign;
         navigate('Detail', {
+            combo: combo,
             source1: mapPlanetByName(name),
             source2: mapSign(sign),
             questionType: QUESTION_TYPE_COMBO,

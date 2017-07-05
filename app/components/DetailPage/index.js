@@ -8,18 +8,26 @@ import fonts from "../../styles/fonts";
 import {APP_MARGIN} from "../../styles/dimens";
 import {QUESTION_TYPE_COMBO, QUESTION_TYPE_QUESTION} from "../../lib/questions";
 import QuestionBox from "./QuestionBox";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import * as actions from "./DetailActions";
 
 
-export default class DetailPage extends Component {
+class DetailPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
             question: 'Làm thế nào để biết cung Mọc?',
             answer: 'Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.'
-        }
+        };
+        const {actions} = this.props;
+        const {params} = this.props.navigation.state;
+        actions.fetchComboAsync(params.combo);
     }
 
     render() {
+        const {detail} = this.props;
+        console.log(detail.data);
         const {navigate} = this.props.navigation;
         const {params} = this.props.navigation.state;
         return (
@@ -78,3 +86,15 @@ const styles = StyleSheet.create({
         fontFamily: fonts.ARIAL
     }
 });
+
+
+const mapStateToProps = (state) => ({
+    detail: state.detail
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    actions: bindActionCreators(actions, dispatch)
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(DetailPage);

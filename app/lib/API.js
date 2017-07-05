@@ -3,6 +3,7 @@
  */
 
 const queryString = require("query-string");
+const lodash = require('lodash');
 
 const checkStatus = response => {
     let json = response.json();
@@ -44,7 +45,7 @@ export class API {
     }
 
     fetchConversation(conversationId) {
-        if (conversationId === '0'){
+        if (conversationId === '0') {
             conversationId = 1;
         }
         let query = queryString.stringify({
@@ -52,5 +53,15 @@ export class API {
         });
         let url = `${this.API_ENDPOINT}/conversation?${query}`;
         return getRequest(url);
+    }
+
+    fetchDetailCombo(combo) {
+        const body = new FormData();
+        lodash.forEach(combo, function (value, key) {
+            body.append(key, value);
+        });
+
+        let url = `${this.API_ENDPOINT}/astro/mean`
+        return postRequest(url, body);
     }
 }

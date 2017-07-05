@@ -93,9 +93,30 @@ const objNames = [
     "Chiron"
 ];
 
-export const mapPlanetByName = name => {
-    return mapPlanet(objNames.indexOf(name) + 1);
-};
+export const mapPlanetByName = name => (mapPlanet(objNames.indexOf(name) + 1));
+
+
+const objPosition = [
+    {house: 1},
+    {planet: 0},
+    {planet: 1},
+    {planet: 16},
+    {planet: 2},
+    {planet: 3},
+    {planet: 4},
+    {planet: 5},
+    {planet: 6},
+    {planet: 7},
+    {planet: 8},
+    {planet: 9},
+    {house: 10},
+    {planet: 12},
+    {planet: 15},
+    {planet: 10}
+];
+
+export const mapObjectPositionByName = name =>
+    (objPosition[objNames.indexOf(name)]);
 
 const viObjNames = [
     "AC",

@@ -9,6 +9,7 @@ import homeReducer from "./components/HomePage/HomeReducer";
 import sidebarReducer from "./components/Sidebar/SideBarReducer";
 import chatReducer from "./components/ChatPage/ChatReducer";
 import notificationReducer from "./components/NotificationPage/NotifictionReducer";
+import detailReducer from "./components/DetailPage/DetailReducer";
 
 export default combineReducers({
     app: appReducer,
@@ -16,5 +17,6 @@ export default combineReducers({
     home:homeReducer,
     sidebar:sidebarReducer,
     notifications:notificationReducer,
-    chat:chatReducer
+    chat:chatReducer,
+    detail:detailReducer
 });

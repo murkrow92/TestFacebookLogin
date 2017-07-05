@@ -9,7 +9,7 @@ import ListMessage from "./ListMessage";
 import TopNavigationBar from "../Commons/TopNavigationBar/index";
 import ButtonIcon from "../Commons/TopNavigationBar/ButtonIcon";
 import QuestionBox from "../DetailPage/QuestionBox";
-import {View, StyleSheet, ScrollView} from "react-native";
+import {View, StyleSheet, ScrollView, Text} from "react-native";
 import {APP_MARGIN} from "../../styles/dimens";
 import colors from "../../styles/colors";
 import fonts from "../../styles/fonts";
@@ -43,7 +43,9 @@ class ChatPage extends Component {
                 <ScrollView>
                     {this.renderList(chat.messages, profile.profile)}
                 </ScrollView>
-                <ChatBox/>
+                <View style={styles.chatboxContainer}>
+                    <Text>Hello World</Text>
+                </View>
             </PageWrapper>
         );
     }
