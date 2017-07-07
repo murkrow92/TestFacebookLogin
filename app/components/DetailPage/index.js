@@ -12,14 +12,11 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as actions from "./DetailActions";
 
+let lodash = require('lodash');
 
 class DetailPage extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            question: 'Làm thế nào để biết cung Mọc?',
-            answer: 'Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.Hello World. Sun is the most important planet on a chart.'
-        };
         const {actions} = this.props;
         const {params} = this.props.navigation.state;
         actions.fetchComboAsync(params.combo);
@@ -27,9 +24,9 @@ class DetailPage extends Component {
 
     render() {
         const {detail} = this.props;
-        console.log(detail.data);
         const {navigate} = this.props.navigation;
         const {params} = this.props.navigation.state;
+        const answer = getAnswer(detail.data);
         return (
             <PageWrapper>
                 <TopNavigationBar
@@ -39,13 +36,30 @@ class DetailPage extends Component {
                 <View style={styles.container}>
                     {renderQuestion(params)}
                     <View style={styles.answerBox}>
-                        <Text style={styles.answer}>{this.state.answer}</Text>
+                        <Text style={styles.answer}>{answer}</Text>
                     </View>
                 </View>
             </PageWrapper>
         );
     }
 }
+
+const getAnswer = (data) => {
+    let answers = [];
+    lodash.forEach(data, function (value, key) {
+        answers.push(value);
+    });
+
+    if (answers.length > 0) {
+        let index = lodash.random(answers.length - 1);
+        let item = answers[index];
+        return item.content;
+    } else {
+        return 'Đang cập nhật';
+    }
+
+
+};
 
 const rightButton = () => {
     return {
