@@ -26,7 +26,9 @@ class ChatPage extends Component {
         super(props);
         const {actions} = this.props;
         const {params} = this.props.navigation.state;
-        actions.fetchConversationAsync(params.conversationId);
+        if (!lodash.isEmpty(params)) {
+            actions.fetchConversationAsync(params.conversationId);
+        }
     }
 
     render() {
@@ -45,9 +47,22 @@ class ChatPage extends Component {
                     {this.renderList(chat.messages, profile.profile)}
                 </ScrollView>
                 <LineDivider/>
-                <ChatBox/>
+                <ChatBox
+                    onPress={(message) => {
+                        this.sendMessage(message);
+                    }}
+                />
             </PageWrapper>
         );
+    }
+
+    sendMessage(message) {
+        const {params} = this.props.navigation.state;
+        if (!lodash.isEmpty(params)) {
+
+        } else {
+            alert(message);
+        }
     }
 
     renderQuestionBox(messages) {

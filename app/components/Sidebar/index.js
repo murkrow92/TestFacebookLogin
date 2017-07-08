@@ -35,8 +35,7 @@ class Sidebar extends Component {
                 title="Ngân quỹ"
             />
             <DrawerItem
-                onPress={() => {
-                }}
+                onPress={() => navigate('Chat')}
                 button="plus-circled"
                 title="Tạo câu hỏi"
             />

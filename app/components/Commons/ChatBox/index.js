@@ -12,22 +12,13 @@ export default class ChatBox extends Component {
         super(props);
         this.state = {
             message: '',
-            height: 56,
         };
     }
 
     render() {
-        const {height} = this.state;
         return (
-            <View style={{
-                paddingLeft: 8,
-                paddingRight: 8,
-                flexDirection: 'row',
-                alignItems: 'center',
-                height: height
-            }}>
+            <View style={styles.container}>
                 <AutoGrowingTextInput
-                    onHeightChanged={(height) => console.log(height)}
                     underlineColorAndroid='transparent'
                     autoCorrect={false}
                     multiline={true}
@@ -35,9 +26,12 @@ export default class ChatBox extends Component {
                     placeholder="Ask a question ..."
                     style={styles.chatbox}
                     value={this.state.message}
-                    onChangeText={(text) => this.setState({message: text})}
+                    onChangeText={(text) => this.setState({
+                        message: text
+                    })}
                 />
                 <TouchableHighlight
+                    onPress={() => this.props.onPress(this.state.message)}
                     underlayColor="white">
                     <View style={styles.buttonContainer}>
                         <Text style={styles.sendLabel}>Gửi</Text>
@@ -47,15 +41,16 @@ export default class ChatBox extends Component {
             </View>
         );
     }
-
-    updateSize(height) {
-        this.setState({
-            height
-        });
-    }
 }
 
 const styles = StyleSheet.create({
+    container: {
+        paddingLeft: 8,
+        paddingRight: 8,
+        flexDirection: 'row',
+        alignItems: 'center',
+        height: 56
+    },
     chatbox: {
         flex: 1,
         marginRight: 8,
