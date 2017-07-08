@@ -2,11 +2,9 @@
  * Created by Murkrow on 5/27/2017.
  */
 
-import {Text, TextInput, TouchableHighlight, View, Dimensions} from "react-native";
+import {Text, TextInput, TouchableHighlight, View, StyleSheet} from "react-native";
 import React, {Component} from "react";
-import LineDivider from "../LineDivider";
 import colors from "../../../styles/colors";
-const windowSize = Dimensions.get('window');
 
 export default class ChatBox extends Component {
     constructor(props) {
@@ -19,72 +17,62 @@ export default class ChatBox extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style={styles.box}>
-                    <LineDivider/>
-                    <View style={styles.textContainer}>
-                        <TextInput
-                            underlineColorAndroid='transparent'
-                            autoCorrect={false}
-                            multiline={true}
-                            placeholderTextColor={colors.BORDER_GREY}
-                            placeholder="Ask a question ..."
-                            style={styles.input}
-                            value={this.state.message}
-                            onChangeText={(text) => this.setState({message: text})}
-                        />
+                <TextInput
+                    underlineColorAndroid='transparent'
+                    autoCorrect={false}
+                    multiline={true}
+                    placeholderTextColor={colors.BORDER_GREY}
+                    placeholder="Ask a question ..."
+                    style={styles.chatbox}
+                    value={this.state.message}
+                    onChangeText={(text) => this.setState({message: text})}
+                />
+                <TouchableHighlight
+                    underlayColor="white">
+                    <View style={styles.buttonContainer}>
+                        <Text style={styles.sendLabel}>Gửi</Text>
                     </View>
-                    <View style={styles.sendContainer}>
-                        <TouchableHighlight
-                            underlayColor="white">
-                            <Text style={styles.sendLabel}>SEND</Text>
-                        </TouchableHighlight>
-                    </View>
-                </View>
+                </TouchableHighlight>
+
             </View>
         );
     }
 }
 
-const styles = {
+const styles = StyleSheet.create({
+
     container: {
-        flex: 1,
-        alignItems: 'flex-end',
+        paddingLeft: 8,
+        paddingRight: 8,
         flexDirection: 'row',
-        justifyContent: 'space-around',
-    },
-    box: {
-        padding: 8,
-        flexDirection: 'row',
-        justifyContent: 'space-around',
         alignItems: 'center',
-        backgroundColor: colors.TOOLBAR,
+        height: 56
     },
-    textContainer: {
-        marginTop:6,
+    chatbox: {
         flex: 1,
-        justifyContent: 'center'
-    },
-    sendContainer: {
-        marginLeft: 8,
-        justifyContent: 'flex-end',
-        paddingRight: 10
-    },
-    sendLabel: {
-        color: 'silver',
-        fontSize: 15
-    },
-    input: {
-        justifyContent:'center',
-        width: windowSize.width - 70,
+        marginRight: 8,
+        justifyContent: 'center',
         color: '#555555',
         paddingRight: 8,
         paddingLeft: 8,
-        height: 32,
+        height: 40,
         borderColor: 'lightgrey',
         borderWidth: 1,
-        borderRadius: 3,
+        borderRadius: 10,
         alignSelf: 'center',
         backgroundColor: '#ffffff'
     },
-};
+    buttonContainer: {
+        paddingTop: 6,
+        paddingBottom: 6,
+        paddingRight: 10,
+        paddingLeft: 10,
+        borderRadius: 10,
+        backgroundColor: colors.DARKER_GREY
+    },
+    sendLabel: {
+        color: colors.BLACK,
+        fontSize: 15
+    }
+});
 

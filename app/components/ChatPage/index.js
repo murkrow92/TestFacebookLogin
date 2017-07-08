@@ -4,18 +4,19 @@
 
 import React, {Component} from "react";
 import PageWrapper from "../Commons/Wrapper";
-import ChatBox from "../Commons/ChatBox/index";
 import ListMessage from "./ListMessage";
 import TopNavigationBar from "../Commons/TopNavigationBar/index";
 import ButtonIcon from "../Commons/TopNavigationBar/ButtonIcon";
 import QuestionBox from "../DetailPage/QuestionBox";
-import {View, StyleSheet, ScrollView, Text} from "react-native";
+import {View, StyleSheet, ScrollView} from "react-native";
 import {APP_MARGIN} from "../../styles/dimens";
 import colors from "../../styles/colors";
 import fonts from "../../styles/fonts";
 import {bindActionCreators} from "redux";
 import * as actions from "./ChatActions";
 import {connect} from "react-redux";
+import LineDivider from "../Commons/LineDivider";
+import ChatBox from "../Commons/ChatBox/index";
 
 let lodash = require('lodash');
 
@@ -43,9 +44,8 @@ class ChatPage extends Component {
                 <ScrollView>
                     {this.renderList(chat.messages, profile.profile)}
                 </ScrollView>
-                <View style={styles.chatboxContainer}>
-                    <Text>Hello World</Text>
-                </View>
+                <LineDivider/>
+                <ChatBox/>
             </PageWrapper>
         );
     }

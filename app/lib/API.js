@@ -57,10 +57,9 @@ export class API {
 
     fetchDetailCombo(combo) {
         const body = new FormData();
-        // lodash.forEach(combo, function (value, key) {
-        //     body.append(key, value);
-        // });
-        body.append('sign', 1);
+        lodash.forEach(combo, function (value, key) {
+            body.append(key, value);
+        });
 
         let url = `${this.API_ENDPOINT}/astro/mean`
         return postRequest(url, body);
