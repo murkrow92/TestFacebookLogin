@@ -49,7 +49,7 @@ class Sidebar extends Component {
                 title="Của tôi"
             />
             <DrawerItem
-                onPress={() => navigate('Chart')}
+                onPress={() => navigate('Friend')}
                 title="Của bạn bè"
             />
         </View> );

@@ -64,4 +64,9 @@ export class API {
         let url = `${this.API_ENDPOINT}/astro/mean`
         return postRequest(url, body);
     }
+
+    fetchFriend() {
+        console.log("Hello call fetch ");
+        return getRequest(`${this.API_ENDPOINT}/contact`);
+    }
 }

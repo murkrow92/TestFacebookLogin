@@ -10,13 +10,15 @@ import sidebarReducer from "./components/Sidebar/SideBarReducer";
 import chatReducer from "./components/ChatPage/ChatReducer";
 import notificationReducer from "./components/NotificationPage/NotifictionReducer";
 import detailReducer from "./components/DetailPage/DetailReducer";
+import friendReducer from "./components/FriendPage/FriendRecuder";
 
 export default combineReducers({
     app: appReducer,
     profile: profileReducer,
-    home:homeReducer,
-    sidebar:sidebarReducer,
-    notifications:notificationReducer,
-    chat:chatReducer,
-    detail:detailReducer
+    home: homeReducer,
+    sidebar: sidebarReducer,
+    notifications: notificationReducer,
+    chat: chatReducer,
+    detail: detailReducer,
+    friend: friendReducer
 });

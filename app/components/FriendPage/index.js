@@ -10,28 +10,35 @@ import SearchBox from "../Commons/SearchBox";
 import {APP_MARGIN} from "../../styles/dimens";
 import ListFriend from "./ListFriend";
 import ButtonIcon from "../Commons/TopNavigationBar/ButtonIcon";
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import * as actions from "./FriendActions";
 
 
-export default class FriendPage extends Component {
+class FriendPage extends Component {
     constructor(props) {
         super(props);
+        const {actions} = this.props;
+        actions.fetchFriendAsync();
     }
 
     render() {
         const {navigate} = this.props.navigation;
+        console.log(this.props.friend.friend);
+
         let item1 = {
             avatar: "Hello World",
             name: "Đoàn Phúc Bảo",
-            birthday:'21h ngày 5/10/1992',
-            onPress:() => {
+            birthday: '21h ngày 5/10/1992',
+            onPress: () => {
                 navigate('Detail');
             }
         };
         let item2 = {
             avatar: "Hello World",
             name: "Biển Ngọc",
-            birthday:'21h ngày 5/10/1992',
-            onPress:() => {
+            birthday: '21h ngày 5/10/1992',
+            onPress: () => {
                 navigate('Detail');
             }
         };
@@ -66,3 +73,14 @@ const styles = StyleSheet.create({
         marginRight: APP_MARGIN
     }
 });
+
+const mapStateToProps = (state) => ({
+    friend: state.friend
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    actions: bindActionCreators(actions, dispatch)
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(FriendPage);
