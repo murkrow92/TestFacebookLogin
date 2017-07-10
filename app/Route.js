@@ -39,12 +39,10 @@ export const PayRoute = StackNavigator({
 });
 
 export const HomeRoute = StackNavigator({
-    Home: {
-        screen: HomePage
-    },
-    Detail: {
-        screen: DetailPage
-    }
+    Home: {screen: HomePage},
+    Detail: {screen: DetailPage},
+    Chart: {screen: ChartPage},
+    Friend: {screen: FriendPage},
 
 }, {
     headerMode: 'none'
@@ -63,7 +61,7 @@ export const NotificationRoute = StackNavigator({
 
 });
 
-export const BottomPage = TabNavigator({
+export const BottomRoute = TabNavigator({
     Home: {
         screen: HomeRoute,
         navigationOptions: {
@@ -127,15 +125,14 @@ export const BottomPage = TabNavigator({
 
 const ContentPage = DrawerNavigator({
 
-    Bottom: {screen: BottomPage},
+    Bottom: {screen: BottomRoute},
+    Home: {screen: HomeRoute},
     Profile: {screen: ProfilePage},
-    Chart: {screen: ChartPage},
-    Notification: {screen: NotificationPage},
-    Friend: {screen: FriendPage},
+
     Question: {screen: QuestionPage},
     Detail: {screen: DetailPage},
     Payment: {screen: PayRoute},
-    Home: {screen: HomeRoute},
+
     Bank: {screen: BankPage},
     Chat: {screen: ChatPage},
     About: {screen: AboutPage},

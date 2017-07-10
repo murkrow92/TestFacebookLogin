@@ -2,7 +2,7 @@
  * Created by murkrow on 6/13/17.
  */
 
-import {Text, View, StyleSheet, Image} from "react-native";
+import {Text, View, StyleSheet, Image, TouchableHighlight} from "react-native";
 import React, {Component, PropTypes} from "react";
 import colors from "../../styles/colors";
 import {APP_MARGIN} from "../../styles/dimens";
@@ -28,22 +28,31 @@ export default class FriendItem extends Component {
         }
 
         return (
-            <View style={styles.wrapper}>
-                <LineDivider color={colors.LIST_TOP_BORDER}/>
-                <View style={styles.container}>
-                    <Image source={picture} style={styles.icon}/>
-                    <View style={styles.contentContainer}>
-                        <Text style={styles.title}>{this.props.data.name }</Text>
-                        <Text style={styles.content}>{birthday}</Text>
+            <TouchableHighlight
+                onPress={() => this.goDetail()}
+                underlayColor='lightblue'>
+                <View style={styles.wrapper}>
+                    <LineDivider color={colors.LIST_TOP_BORDER}/>
+                    <View style={styles.container}>
+                        <Image source={picture} style={styles.icon}/>
+                        <View style={styles.contentContainer}>
+                            <Text style={styles.title}>{this.props.data.name }</Text>
+                            <Text style={styles.content}>{birthday}</Text>
+                        </View>
+                        <IOButtonIcon
+                            name="ios-arrow-forward-outline"
+                            onPress={() => {
+                            }}/>
                     </View>
-                    <IOButtonIcon
-                        name="ios-arrow-forward-outline"
-                        onPress={() => {
-                        }}/>
+                    <LineDivider color={colors.LIST_BOTTOM_BORDER}/>
                 </View>
-                <LineDivider color={colors.LIST_BOTTOM_BORDER}/>
-            </View>
-        )
+            </TouchableHighlight>
+        );
+    }
+
+    goDetail() {
+        const {navigate} = this.props;
+        navigate('Home', {});
     }
 }
 
