@@ -17,17 +17,28 @@ class HomePage extends Component {
     constructor(props) {
         super(props);
         const {actions} = this.props;
-        actions.fetchAstroAsync();
+        const {params} = this.props.navigation.state;
+        if (params.date) {
+            actions.fetchAstroAtDateAsync(params.date);
+        } else {
+            actions.fetchAstroAsync();
+        }
+
     }
 
     render() {
         const {home} = this.props;
         const {navigate} = this.props.navigation;
+        const {params} = this.props.navigation.state;
+        let title = "Bầu trời lúc này";
+        if (params.date) {
+            title = "Toạ độ";
+        }
 
         return (
             <PageWrapper>
                 <TopNavigationBar
-                    title="Bầu trời lúc này"
+                    title={title}
                     onPress={() => navigate('DrawerOpen')}
                     rightButton={rightButton()}/>
                 <ScrollView>

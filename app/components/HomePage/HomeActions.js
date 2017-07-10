@@ -36,5 +36,26 @@ export const fetchAstroAsync = () => (dispatch, getState) => {
 
         }
     );
-
 };
+
+export const fetchAstroAtDateAsync = (date) => (dispatch, getState) =>
+    (
+        AsyncStorage.getItem('astro_position' + date.getTime()).then(
+            value => {
+                if (value === null) {
+                    return api.fetchAstro(date).then(
+                        response => {
+                            AsyncStorage.setItem('astro_position' + date.getTime(), JSON.stringify(response));
+                            dispatch(fetchAstro(response));
+                        },
+                        error => {
+                            alert("error: " + error.message);
+                        });
+                }
+                dispatch(fetchAstro(JSON.parse(value)));
+            },
+            error => {
+                alert("error: " + error.message);
+            }
+        ));
+

@@ -26,10 +26,11 @@ export default class FriendItem extends Component {
                 uri: avatar
             }
         }
+        let date = new Date(byear, bmonth, bday, bhour, bminute);
 
         return (
             <TouchableHighlight
-                onPress={() => this.goDetail()}
+                onPress={() => this.goDetail(date)}
                 underlayColor='lightblue'>
                 <View style={styles.wrapper}>
                     <LineDivider color={colors.LIST_TOP_BORDER}/>
@@ -41,8 +42,7 @@ export default class FriendItem extends Component {
                         </View>
                         <IOButtonIcon
                             name="ios-arrow-forward-outline"
-                            onPress={() => {
-                            }}/>
+                            onPress={() => this.goDetail(date)}/>
                     </View>
                     <LineDivider color={colors.LIST_BOTTOM_BORDER}/>
                 </View>
@@ -50,9 +50,9 @@ export default class FriendItem extends Component {
         );
     }
 
-    goDetail() {
+    goDetail(date) {
         const {navigate} = this.props;
-        navigate('Home', {});
+        navigate('Home', {date: date});
     }
 }
 
