@@ -19,6 +19,7 @@ export default class SearchBox extends Component {
                 <TextInput
                     underlineColorAndroid='transparent'
                     placeholder='Tìm kiếm'
+                    onChangeText={(text) => this.props.onChangeText(text)}
                     style={styles.input}/>
             </View>
         );
@@ -28,12 +29,12 @@ export default class SearchBox extends Component {
 const styles = StyleSheet.create({
     container: {
         marginTop: 10,
-        marginBottom:10
+        marginBottom: 10
     },
     input: {
-        color:"#999999",
-        fontFamily:fonts.ARIAL,
-        fontSize:13,
+        color: "#999999",
+        fontFamily: fonts.ARIAL,
+        fontSize: 13,
         paddingVertical: (Platform.OS === 'ios') ? 7 : 0,
         paddingHorizontal: 7,
         borderRadius: 5,

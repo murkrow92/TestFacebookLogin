@@ -14,36 +14,21 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import * as actions from "./FriendActions";
 
+const lodash = require('lodash');
 
 class FriendPage extends Component {
     constructor(props) {
         super(props);
         const {actions} = this.props;
+        this.state = {
+            keywordSearch: ''
+        };
         actions.fetchFriendAsync();
     }
 
     render() {
         const {navigate} = this.props.navigation;
-        console.log(this.props.friend.friend);
-
-        let item1 = {
-            avatar: "Hello World",
-            name: "Đoàn Phúc Bảo",
-            birthday: '21h ngày 5/10/1992',
-            onPress: () => {
-                navigate('Detail');
-            }
-        };
-        let item2 = {
-            avatar: "Hello World",
-            name: "Biển Ngọc",
-            birthday: '21h ngày 5/10/1992',
-            onPress: () => {
-                navigate('Detail');
-            }
-        };
-
-        let items = [item1, item2];
+        const {friend} = this.props.friend;
         return (
             <PageWrapper>
                 <TopNavigationBar
@@ -51,12 +36,43 @@ class FriendPage extends Component {
                     onPress={() => navigate('DrawerOpen')}
                     rightButton={rightButton()}/>
                 <View style={styles.searchBoxContainer}>
-                    <SearchBox/>
+                    <SearchBox
+                        onChangeText={(text) => this.search(text)}
+                    />
                 </View>
-                <ListFriend items={items}/>
-
+                {this.renderList(friend, navigate)}
             </PageWrapper>
         );
+    }
+
+    renderList(friends, navigte) {
+        if (!lodash.isEmpty(friends)) {
+            let items = this.getItems(friends);
+            return <ListFriend items={items}/>
+        }
+    }
+
+    getItems(friends) {
+        const keyword = this.state.keywordSearch;
+        let items = [];
+        lodash.forEach(friends, function (value, key) {
+            console.log("Keyword: " + keyword);
+            console.log("Name: " + value.name);
+            if (keyword === '') {
+                items.push(value);
+            } else if (value.name.includes(keyword)) {
+                items.push(value);
+            }
+        });
+        console.log(items);
+        return items;
+    }
+
+    search(text) {
+        this.setState({
+            keywordSearch: text
+        });
+
     }
 }
 

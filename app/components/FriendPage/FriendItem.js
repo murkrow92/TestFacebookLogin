@@ -9,7 +9,7 @@ import {APP_MARGIN} from "../../styles/dimens";
 import IOButtonIcon from "../Commons/TopNavigationBar/IOButtonIcon";
 import fonts from "./../../styles/fonts";
 import LineDivider from "../Commons/LineDivider";
-import Background from "../../styles/images/bg.jpg";
+import BlankProfile from "../../styles/images/blank_profile.png";
 
 export default class FriendItem extends Component {
 
@@ -18,14 +18,23 @@ export default class FriendItem extends Component {
     };
 
     render() {
+        const {byear, bmonth, bday, bhour, bminute, avatar} = this.props.data;
+        const birthday = bday + "/" + bmonth + "/" + byear + " " + bhour + ":" + bminute;
+        let picture = BlankProfile;
+        if (avatar) {
+            picture = {
+                uri: avatar
+            }
+        }
+
         return (
             <View style={styles.wrapper}>
                 <LineDivider color={colors.LIST_TOP_BORDER}/>
                 <View style={styles.container}>
-                    <Image source={Background} style={styles.icon}/>
+                    <Image source={picture} style={styles.icon}/>
                     <View style={styles.contentContainer}>
                         <Text style={styles.title}>{this.props.data.name }</Text>
-                        <Text style={styles.content}>{this.props.data.birthday}</Text>
+                        <Text style={styles.content}>{birthday}</Text>
                     </View>
                     <IOButtonIcon
                         name="ios-arrow-forward-outline"
@@ -44,8 +53,8 @@ const styles = StyleSheet.create(
             flexDirection: 'column'
         },
         container: {
-            marginTop:5,
-            marginBottom:5,
+            marginTop: 5,
+            marginBottom: 5,
             alignItems: 'center',
             marginLeft: APP_MARGIN,
             flex: 1,
@@ -53,13 +62,13 @@ const styles = StyleSheet.create(
 
         },
         icon: {
-            borderRadius:5,
+            borderRadius: 5,
             marginRight: 10,
             width: 40,
             height: 40
         },
         contentContainer: {
-            marginLeft:5,
+            marginLeft: 5,
             flex: 1,
         },
         title: {

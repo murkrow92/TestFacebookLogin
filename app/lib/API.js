@@ -61,12 +61,11 @@ export class API {
             body.append(key, value);
         });
 
-        let url = `${this.API_ENDPOINT}/astro/mean`
+        let url = `${this.API_ENDPOINT}/astro/mean`;
         return postRequest(url, body);
     }
 
     fetchFriend() {
-        console.log("Hello call fetch ");
         return getRequest(`${this.API_ENDPOINT}/contact`);
     }
 }
