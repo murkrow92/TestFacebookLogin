@@ -45,10 +45,13 @@ class FriendPage extends Component {
         );
     }
 
-    renderList(friends, navigte) {
+    renderList(friends, navigate) {
         if (!lodash.isEmpty(friends)) {
             let items = this.getItems(friends);
-            return <ListFriend items={items}/>
+            console.log(items);
+            return <ListFriend
+                navigate={navigate}
+                items={items}/>
         }
     }
 
@@ -56,15 +59,12 @@ class FriendPage extends Component {
         const keyword = this.state.keywordSearch;
         let items = [];
         lodash.forEach(friends, function (value, key) {
-            console.log("Keyword: " + keyword);
-            console.log("Name: " + value.name);
             if (keyword === '') {
                 items.push(value);
             } else if (value.name.includes(keyword)) {
                 items.push(value);
             }
         });
-        console.log(items);
         return items;
     }
 
@@ -72,7 +72,6 @@ class FriendPage extends Component {
         this.setState({
             keywordSearch: text
         });
-
     }
 }
 

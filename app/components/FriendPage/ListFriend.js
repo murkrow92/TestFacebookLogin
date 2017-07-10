@@ -25,19 +25,19 @@ export default class ListFriend extends Component {
             <View style={styles.container}>
                 <ListView
                     dataSource={this.state.dataSource}
-                    renderRow={(rowData) => renderRow(rowData)}
+                    renderRow={(rowData) => renderRow(rowData, this.props.navigate)}
                 />
             </View>
         );
     }
 }
 
-const renderRow = (rowData) => {
-    return (<FriendItem data={rowData}/>)
+const renderRow = (rowData, navigate) => {
+    return (<FriendItem
+        navigate={navigate}
+        data={rowData}/>)
 };
 
 const styles = {
-    container: {
-
-    }
+    container: {}
 };
