@@ -26,7 +26,7 @@ export default class FriendItem extends Component {
                 uri: avatar
             }
         }
-        let date = new Date(byear, bmonth, bday, bhour, bminute);
+        let date = new Date(byear, bmonth - 1, bday, bhour, bminute);
 
         return (
             <TouchableHighlight

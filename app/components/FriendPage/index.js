@@ -48,7 +48,6 @@ class FriendPage extends Component {
     renderList(friends, navigate) {
         if (!lodash.isEmpty(friends)) {
             let items = this.getItems(friends);
-            console.log(items);
             return <ListFriend
                 navigate={navigate}
                 items={items}/>

@@ -12,13 +12,16 @@ import {bindActionCreators} from "redux";
 import * as actions from './HomeActions';
 import {ScrollView} from "react-native";
 
+const lodash = require('lodash');
+
 class HomePage extends Component {
 
     constructor(props) {
         super(props);
         const {actions} = this.props;
         const {params} = this.props.navigation.state;
-        if (params.date) {
+        if (params) {
+            console.log(params.date);
             actions.fetchAstroAtDateAsync(params.date);
         } else {
             actions.fetchAstroAsync();
@@ -31,7 +34,7 @@ class HomePage extends Component {
         const {navigate} = this.props.navigation;
         const {params} = this.props.navigation.state;
         let title = "Bầu trời lúc này";
-        if (params.date) {
+        if (params) {
             title = "Toạ độ";
         }
 
