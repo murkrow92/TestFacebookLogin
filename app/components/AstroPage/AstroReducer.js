@@ -3,11 +3,11 @@
  */
 
 import {combineReducers} from "redux";
-import {FETCH_ASTRO} from "./AstroActions";
+import {FETCH_ASTRO_DATE} from "./AstroActions";
 
 const astroReducer = (state = {}, action) => {
     switch (action.type) {
-        case FETCH_ASTRO:
+        case FETCH_ASTRO_DATE:
             return {
                 ...state,
                 ...action.astro.data.Planets
