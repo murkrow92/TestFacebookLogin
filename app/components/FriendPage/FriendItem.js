@@ -52,7 +52,7 @@ export default class FriendItem extends Component {
 
     goDetail(date) {
         const {navigate} = this.props;
-        navigate('Home', {date: date});
+        navigate('Astro', {date: date});
     }
 }
 

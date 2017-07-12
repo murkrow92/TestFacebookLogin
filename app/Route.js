@@ -19,6 +19,7 @@ import DetailPage from "./components/DetailPage/index";
 import QuestionPage from "./components/QuestionPage/index";
 import FriendPage from "./components/FriendPage/index";
 import NotificationPage from "./components/NotificationPage/index";
+import AstroPage from "./components/AstroPage/index";
 import ChartPage from "./components/ChartPage/index";
 import React from "react";
 import Sidebar from "./components/Sidebar/index";
@@ -43,6 +44,7 @@ export const HomeRoute = StackNavigator({
     Detail: {screen: DetailPage},
     Chart: {screen: ChartPage},
     Friend: {screen: FriendPage},
+    Astro: {screen: AstroPage}
 
 }, {
     headerMode: 'none'

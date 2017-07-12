@@ -1,7 +1,3 @@
-/**
- * Created by Murkrow on 6/9/2017.
- */
-
 import PageWrapper from "../Commons/Wrapper";
 import React, {Component} from "react";
 import TopNavigationBar from "../Commons/TopNavigationBar/index";
@@ -9,25 +5,24 @@ import ButtonIcon from "../Commons/TopNavigationBar/ButtonIcon";
 import ListAstroObject from "../Commons/ListAstroObject/index";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import * as actions from './HomeActions';
+import * as actions from './AstroActions';
 import {ScrollView} from "react-native";
 
 const lodash = require('lodash');
 
-class HomePage extends Component {
+class AstroPage extends Component {
 
     constructor(props) {
         super(props);
         const {actions} = this.props;
-        actions.fetchAstroAsync();
+        const {params} = this.props.navigation.state;
+        actions.fetchAstroAtDateAsync(params.date);
     }
 
     render() {
-        const {home} = this.props;
+        const {astro} = this.props;
         const {navigate} = this.props.navigation;
-        let title = "Bầu trời lúc này";
-
-
+        let title = "Toạ độ";
         return (
             <PageWrapper>
                 <TopNavigationBar
@@ -35,7 +30,7 @@ class HomePage extends Component {
                     onPress={() => navigate('DrawerOpen')}
                     rightButton={rightButton()}/>
                 <ScrollView>
-                    {this.renderList(home.planet, navigate)}
+                    {this.renderList(astro.planet, navigate)}
                 </ScrollView>
             </PageWrapper>
         );
@@ -52,7 +47,7 @@ class HomePage extends Component {
 }
 
 const getItems = (planet) => {
-    let items = [
+    return [
         planet.Ascendant,
         planet.Sun,
         planet.Moon,
@@ -69,8 +64,6 @@ const getItems = (planet) => {
         planet["true Node"],
         planet.SouthNode,
         planet.Chiron];
-    items[0].isFirst = true;
-    return items;
 };
 
 const rightButton = () => {
@@ -81,7 +74,7 @@ const rightButton = () => {
 };
 
 const mapStateToProps = (state) => ({
-    home: state.home,
+    astro: state.astro,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -89,5 +82,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
-
+export default connect(mapStateToProps, mapDispatchToProps)(AstroPage);
