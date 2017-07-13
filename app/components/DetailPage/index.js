@@ -17,9 +17,6 @@ let lodash = require('lodash');
 class DetailPage extends Component {
     constructor(props) {
         super(props);
-        const {actions} = this.props;
-        const {params} = this.props.navigation.state;
-        actions.fetchComboAsync(params.combo);
     }
 
     render() {
@@ -41,6 +38,12 @@ class DetailPage extends Component {
                 </View>
             </PageWrapper>
         );
+    }
+
+    componentDidMount() {
+        const {actions} = this.props;
+        const {params} = this.props.navigation.state;
+        actions.fetchComboAsync(params.combo);
     }
 }
 

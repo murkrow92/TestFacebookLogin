@@ -24,11 +24,6 @@ class ChatPage extends Component {
 
     constructor(props) {
         super(props);
-        const {actions} = this.props;
-        const {params} = this.props.navigation.state;
-        if (!lodash.isEmpty(params)) {
-            actions.fetchConversationAsync(params.conversationId);
-        }
     }
 
     render() {
@@ -54,6 +49,14 @@ class ChatPage extends Component {
                 />
             </PageWrapper>
         );
+    }
+
+    componentDidMount() {
+        const {actions} = this.props;
+        const {params} = this.props.navigation.state;
+        if (!lodash.isEmpty(params)) {
+            actions.fetchConversationAsync(params.conversationId);
+        }
     }
 
     sendMessage(message) {

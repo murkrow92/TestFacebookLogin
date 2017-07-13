@@ -45,6 +45,10 @@ class FriendPage extends Component {
         );
     }
 
+    componentDidMount(){
+
+    }
+
     renderList(friends, navigate) {
         if (!lodash.isEmpty(friends)) {
             let items = this.getItems(friends);

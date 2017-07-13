@@ -18,8 +18,6 @@ class HomePage extends Component {
 
     constructor(props) {
         super(props);
-        const {actions} = this.props;
-        actions.fetchAstroAsync();
     }
 
     render() {
@@ -48,6 +46,11 @@ class HomePage extends Component {
                 navigate={navigate}
                 items={items}/>
         }
+    }
+
+    componentDidMount() {
+        const {actions} = this.props;
+        actions.fetchAstroAsync();
     }
 }
 

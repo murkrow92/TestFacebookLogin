@@ -15,8 +15,6 @@ import BlankProfile from "../../styles/images/blank_profile.png";
 class Sidebar extends Component {
     constructor(props) {
         super(props);
-        const {actions} = this.props;
-        actions.getLocalProfileAsync();
     }
 
     render() {
@@ -53,6 +51,11 @@ class Sidebar extends Component {
                 title="Của bạn bè"
             />
         </View> );
+    }
+
+    componentDidMount() {
+        const {actions} = this.props;
+        actions.getLocalProfileAsync();
     }
 
     getPicture() {

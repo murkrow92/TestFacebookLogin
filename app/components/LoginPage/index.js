@@ -14,14 +14,6 @@ export default class LoginPage extends Component {
 
     constructor(props) {
         super(props);
-
-        AccessToken.getCurrentAccessToken().then(
-            (data) => {
-                if (data !== null) {
-                    this.login();
-                }
-            }
-        );
     }
 
     render() {
@@ -40,6 +32,16 @@ export default class LoginPage extends Component {
                         title="CLICK HERE"/>
                 </View>
             </PageWrapper>
+        );
+    }
+
+    componentDidMount() {
+        AccessToken.getCurrentAccessToken().then(
+            (data) => {
+                if (data !== null) {
+                    this.login();
+                }
+            }
         );
     }
 

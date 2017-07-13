@@ -20,18 +20,15 @@ class ProfilePage extends Component {
 
     constructor(props) {
         super(props);
-        const {actions} = this.props;
-        actions.getFacebookProfileAsync();
-        actions.getLocalProfileAsync();
     }
 
     render() {
         const {navigate} = this.props.navigation;
         const {profile, actions} = this.props;
         let picture = BlankProfile;
-        if (typeof(profile.profile.picture) === "object"){
+        if (typeof(profile.profile.picture) === "object") {
             picture = {
-                uri:profile.profile.picture.data.url
+                uri: profile.profile.picture.data.url
             }
         }
 
@@ -53,6 +50,12 @@ class ProfilePage extends Component {
                     profile={profile.profile}/>
             </ PageWrapper >
         );
+    }
+
+    componentDidMount() {
+        const {actions} = this.props;
+        actions.getFacebookProfileAsync();
+        actions.getLocalProfileAsync();
     }
 }
 

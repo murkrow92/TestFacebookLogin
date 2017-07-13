@@ -14,9 +14,6 @@ class AstroPage extends Component {
 
     constructor(props) {
         super(props);
-        const {actions} = this.props;
-        const {params} = this.props.navigation.state;
-        actions.fetchAstroAtDateAsync(params.date);
     }
 
     render() {
@@ -43,6 +40,12 @@ class AstroPage extends Component {
                 navigate={navigate}
                 items={items}/>
         }
+    }
+
+    componentDidMount() {
+        const {actions} = this.props;
+        const {params} = this.props.navigation.state;
+        actions.fetchAstroAtDateAsync(params.date);
     }
 }
 

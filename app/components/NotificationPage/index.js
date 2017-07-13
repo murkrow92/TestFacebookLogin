@@ -15,8 +15,6 @@ let lodash = require('lodash');
 class NotificationPage extends Component {
     constructor(props) {
         super(props);
-        const {actions} = this.props;
-        actions.fetchNotificationsAsync();
     }
 
     render() {
@@ -33,6 +31,11 @@ class NotificationPage extends Component {
                 </ScrollView>
             </PageWrapper>
         );
+    }
+
+    componentDidMount() {
+        const {actions} = this.props;
+        actions.fetchNotificationsAsync();
     }
 
     renderList(list, navigate) {
