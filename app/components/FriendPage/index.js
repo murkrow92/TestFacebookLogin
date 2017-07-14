@@ -19,14 +19,13 @@ const lodash = require('lodash');
 class FriendPage extends Component {
     constructor(props) {
         super(props);
-        const {actions} = this.props;
         this.state = {
             keywordSearch: ''
         };
-        actions.fetchFriendAsync();
     }
 
     render() {
+        console.log(this.state.keywordSearch);
         const {navigate} = this.props.navigation;
         const {friend} = this.props.friend;
         return (
@@ -45,8 +44,9 @@ class FriendPage extends Component {
         );
     }
 
-    componentDidMount(){
-
+    componentDidMount() {
+        const {actions} = this.props;
+        actions.fetchFriendAsync();
     }
 
     renderList(friends, navigate) {

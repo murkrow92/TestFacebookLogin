@@ -19,8 +19,8 @@ export default class DrawerItem extends Component {
     render() {
         return (
             <TouchableHighlight
-                onPress={this.props.onPress}
-                underlayColor='lightblue'>
+                underlayColor='transparent'
+                onPress={this.props.onPress}>
                 <View style={styles.wrapper}>
                     <View style={styles.container}>
                         <Text style={styles.title}>{this.props.title}</Text>

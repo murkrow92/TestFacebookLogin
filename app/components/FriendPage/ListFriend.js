@@ -14,17 +14,15 @@ export default class ListFriend extends Component {
 
     constructor(props) {
         super(props);
-        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        this.state = {
-            dataSource: ds.cloneWithRows(this.props.items),
-        };
     }
 
     render() {
+        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+        const dataSource = ds.cloneWithRows(this.props.items);
         return (
             <View style={styles.container}>
                 <ListView
-                    dataSource={this.state.dataSource}
+                    dataSource={dataSource}
                     renderRow={(rowData) => renderRow(rowData, this.props.navigate)}
                 />
             </View>
