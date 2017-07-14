@@ -36,6 +36,7 @@ class FriendPage extends Component {
                     rightButton={rightButton()}/>
                 <View style={styles.searchBoxContainer}>
                     <SearchBox
+                        text={this.state.keywordSearch}
                         onChangeText={(text) => this.search(text)}
                     />
                 </View>
