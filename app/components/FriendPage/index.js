@@ -13,6 +13,7 @@ import ButtonIcon from "../Commons/TopNavigationBar/ButtonIcon";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import * as actions from "./FriendActions";
+import * as StringHelper from "../../lib/StringHelper";
 
 const lodash = require('lodash');
 
@@ -25,7 +26,6 @@ class FriendPage extends Component {
     }
 
     render() {
-        console.log(this.state.keywordSearch);
         const {navigate} = this.props.navigation;
         const {friend} = this.props.friend;
         return (
@@ -52,9 +52,11 @@ class FriendPage extends Component {
     renderList(friends, navigate) {
         if (!lodash.isEmpty(friends)) {
             let items = this.getItems(friends);
-            return <ListFriend
-                navigate={navigate}
-                items={items}/>
+            if (!lodash.isEmpty(items)) {
+                return <ListFriend
+                    navigate={navigate}
+                    items={items}/>
+            }
         }
     }
 
@@ -62,9 +64,15 @@ class FriendPage extends Component {
         const keyword = this.state.keywordSearch;
         let items = [];
         lodash.forEach(friends, function (value, key) {
+            let lowerCaseName = value.name.toLowerCase();
+            let upperCaseName = value.name.toUpperCase();
+            let standardName = StringHelper.replaceVietnamese(value.name);
+
             if (keyword === '') {
                 items.push(value);
-            } else if (value.name.includes(keyword)) {
+            } else if (lowerCaseName.includes(keyword)
+                || upperCaseName.includes(keyword)
+                || standardName.includes(keyword)) {
                 items.push(value);
             }
         });
