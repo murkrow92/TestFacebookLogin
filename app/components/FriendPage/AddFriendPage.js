@@ -12,6 +12,7 @@ import ButtonLabel from "../Commons/TopNavigationBar/ButtonLabel";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import * as actions from "./FriendActions";
+import AddFriendForm from "./AddFriendForm";
 
 class AddFriendPage extends Component {
 
@@ -21,8 +22,7 @@ class AddFriendPage extends Component {
 
     render() {
         const {navigate} = this.props.navigation;
-        const {profile, actions} = this.props;
-
+        const {actions, friend} = this.props;
 
         return (
             <PageWrapper>
@@ -32,10 +32,10 @@ class AddFriendPage extends Component {
                     rightButton={rightButton(() => {
                         Keyboard.dismiss();
                     })}/>
-                <Text style={styles.username}>{profile.profile.name}</Text>
-                <ProfileForm
+                <AddFriendForm
+                    friend={friend}
                     actions={actions}
-                    profile={profile.profile}/>
+                />
             </ PageWrapper >
         );
     }
@@ -50,28 +50,9 @@ const rightButton = (onSubmit) => {
         onPress={onSubmit} label="Lưu lại"/>);
 };
 
-const styles = {
-
-    avatar: {
-        marginTop: 25,
-        alignSelf: 'center',
-        borderWidth: 1,
-        width: 76,
-        height: 76,
-        borderRadius: 38
-    },
-    username: {
-        fontFamily: fonts.OPEN_SAN,
-        color: colors.BLACK,
-        marginTop: 8,
-        alignSelf: 'center',
-        fontSize: 13,
-        marginBottom: 30
-    }
-};
 
 const mapStateToProps = (state) => ({
-    profile: state.profile,
+    friend: state.friend,
 });
 
 const mapDispatchToProps = (dispatch) => ({
