@@ -68,4 +68,9 @@ export class API {
     fetchFriend() {
         return getRequest(`${this.API_ENDPOINT}/contact`);
     }
+
+    addFriend(friend){
+        const body = new FormData();
+
+    }
 }

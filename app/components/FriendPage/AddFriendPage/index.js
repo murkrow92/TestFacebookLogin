@@ -2,16 +2,13 @@
  * Created by murkrow on 7/15/17.
  */
 import React, {Component} from "react";
-import {Text, Keyboard} from "react-native";
-import PageWrapper from "../Commons/Wrapper";
-import ProfileForm from "../ProfilePage/ProfileForm";
-import colors from "../../styles/colors";
-import fonts from "../../styles/fonts";
-import TopNavigationBar from "../Commons/TopNavigationBar/index";
-import ButtonLabel from "../Commons/TopNavigationBar/ButtonLabel";
+import {Keyboard} from "react-native";
+import PageWrapper from "../../Commons/Wrapper";
+import TopNavigationBar from "../../Commons/TopNavigationBar/index";
+import ButtonLabel from "../../Commons/TopNavigationBar/ButtonLabel";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import * as actions from "./FriendActions";
+import * as actions from "./AddFriendAtions";
 import AddFriendForm from "./AddFriendForm";
 
 class AddFriendPage extends Component {
@@ -22,8 +19,8 @@ class AddFriendPage extends Component {
 
     render() {
         const {navigate} = this.props.navigation;
-        const {actions, friend} = this.props;
-
+        const {actions, newFriend, profile} = this.props;
+        console.log(newFriend);
         return (
             <PageWrapper>
                 <TopNavigationBar
@@ -31,17 +28,18 @@ class AddFriendPage extends Component {
                     onPress={() => navigate('DrawerOpen')}
                     rightButton={rightButton(() => {
                         Keyboard.dismiss();
+                        actions.requestSave(profile, newFriend.friend);
                     })}/>
                 <AddFriendForm
-                    friend={friend}
-                    actions={actions}
+                    onFormChange={(key, value) => {
+                        actions.onFormChange(key, value)
+                    }}
+
+                    onSubmit={() => actions.requestSave(profile, newFriend.friend)}
                 />
             </ PageWrapper >
-        );
-    }
-
-    componentDidMount() {
-        const {actions} = this.props;
+        )
+            ;
     }
 }
 
@@ -52,7 +50,8 @@ const rightButton = (onSubmit) => {
 
 
 const mapStateToProps = (state) => ({
-    friend: state.friend,
+    newFriend: state.addFriend,
+    profile: state.profile
 });
 
 const mapDispatchToProps = (dispatch) => ({

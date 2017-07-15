@@ -12,6 +12,7 @@ import notificationReducer from "./components/NotificationPage/NotifictionReduce
 import detailReducer from "./components/DetailPage/DetailReducer";
 import friendReducer from "./components/FriendPage/FriendRecuder";
 import astroReducer from "./components/AstroPage/AstroReducer";
+import addFriendReducer from "./components/FriendPage/AddFriendPage/AddFriendReducer";
 
 export default combineReducers({
     app: appReducer,
@@ -22,5 +23,6 @@ export default combineReducers({
     chat: chatReducer,
     detail: detailReducer,
     friend: friendReducer,
+    addFriend: addFriendReducer,
     astro: astroReducer
 });

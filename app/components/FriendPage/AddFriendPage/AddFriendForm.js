@@ -4,19 +4,18 @@
 
 import React, {Component} from "react";
 import {View, StyleSheet, ScrollView, Keyboard} from "react-native";
-import NumberTextInput from "../Commons/UserInput/NumberTextInput";
-import Icon from "../Commons/Icons/Icon";
+import NumberTextInput from "../../Commons/UserInput/NumberTextInput";
+import Icon from "../../Commons/Icons/Icon";
 
 export default class AddFriendForm extends Component {
 
     render() {
-        const {actions} = this.props;
         return (
             <ScrollView>
                 <View style={styles.container}>
                     <NumberTextInput
                         onChangeText={(name) => {
-                            actions.onFormChange('name', name)
+                            this.props.onFormChange('name', name)
                         }}
                         onSubmitEditing={() => {
                             this.dayInput.textInput.focus()
@@ -32,7 +31,7 @@ export default class AddFriendForm extends Component {
                                 this.dayInput = input
                             }}
                             onChangeText={(day) => {
-                                actions.onFormChange('day', day)
+                                this.props.onFormChange('day', day)
                             }}
                             returnKeyType="next"
                             placeholder="Ngày"
@@ -41,7 +40,7 @@ export default class AddFriendForm extends Component {
                             inline={true}/>
                         <NumberTextInput
                             onChangeText={(month) => {
-                                actions.onFormChange('month', month)
+                                this.props.onFormChange('month', month)
                             }}
                             ref={input => {
                                 this.monthInput = input
@@ -56,7 +55,7 @@ export default class AddFriendForm extends Component {
                             inline={true}/>
                         <NumberTextInput
                             onChangeText={(year) => {
-                                actions.onFormChange('year', year)
+                                this.props.onFormChange('year', year)
                             }}
                             ref={input => {
                                 this.yearInput = input
@@ -77,7 +76,7 @@ export default class AddFriendForm extends Component {
                         </View>
                         <NumberTextInput
                             onChangeText={(hour) => {
-                                actions.onFormChange('hour', hour)
+                                this.props.onFormChange('hour', hour)
                             }}
                             ref={input => {
                                 this.hourInput = input
@@ -91,7 +90,7 @@ export default class AddFriendForm extends Component {
                             inline={true}/>
                         <NumberTextInput
                             onChangeText={(minute) => {
-                                actions.onFormChange('minute', minute)
+                                this.props.onFormChange('minute', minute)
                             }}
                             ref={input => {
                                 this.minuteInput = input
@@ -108,7 +107,7 @@ export default class AddFriendForm extends Component {
                     <View style={styles.space}/>
                     <NumberTextInput
                         onChangeText={(email) => {
-                            actions.onFormChange('email', email)
+                            this.props.onFormChange('email', email)
                         }}
                         ref={input => {
                             this.emailInput = input
@@ -122,14 +121,14 @@ export default class AddFriendForm extends Component {
                         label="Email"/>
                     <NumberTextInput
                         onChangeText={(phone) => {
-                            actions.onFormChange('phone', phone)
+                            this.props.onFormChange('phone', phone)
                         }}
                         ref={input => {
                             this.phoneInput = input
                         }}
                         onSubmitEditing={() => {
                             Keyboard.dismiss();
-                            actions.requestSave(profile);
+                            this.props.onSubmit();
                         }}
                         placeholder="Số điện thoại"
                         label="Số điện thoại"/>

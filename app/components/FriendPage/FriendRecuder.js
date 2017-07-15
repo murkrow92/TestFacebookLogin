@@ -18,6 +18,17 @@ const friendReducer = (state = {}, action) => {
     }
 };
 
+const onChange = (state, key, value) => {
+    return {
+        ...state,
+        [key]: value
+    };
+};
+
+const save = (state, friend) => {
+    return state;
+};
+
 export default combineReducers({
     friend: friendReducer
 });
