@@ -33,7 +33,7 @@ class FriendPage extends Component {
                 <TopNavigationBar
                     title="Bạn bè"
                     onPress={() => navigate('DrawerOpen')}
-                    rightButton={rightButton()}/>
+                    rightButton={rightButton(navigate)}/>
                 <View style={styles.searchBoxContainer}>
                     <SearchBox
                         text={this.state.keywordSearch}
@@ -87,11 +87,13 @@ class FriendPage extends Component {
     }
 }
 
-const rightButton = () => {
+const rightButton = (navigate) => {
     return (<ButtonIcon
         size={20}
-        icon="user-add" onPress={() => {
-    }}/>);
+        icon="user-add"
+        onPress={() =>
+            navigate('AddFriend')
+        }/>);
 };
 
 const styles = StyleSheet.create({

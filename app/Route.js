@@ -27,6 +27,7 @@ import AwesomeIcon from "./components/Commons/Icons/AwesomeIcon";
 import MaterialCommunityIcon from "./components/Commons/Icons/MaterialCommunityIcon";
 import IOIcon from "./components/Commons/Icons/IOIcon";
 import colors from "./styles/colors";
+import AddFriendPage from "./components/FriendPage/AddFriendPage";
 
 export const PayRoute = StackNavigator({
     Payment: {
@@ -44,6 +45,7 @@ export const HomeRoute = StackNavigator({
     Detail: {screen: DetailPage},
     Chart: {screen: ChartPage},
     Friend: {screen: FriendPage},
+    AddFriend: {screen: AddFriendPage},
     Astro: {screen: AstroPage}
 
 }, {
