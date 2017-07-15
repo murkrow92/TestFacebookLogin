@@ -4,7 +4,7 @@
 
 
 import React, {Component, PropTypes} from "react";
-import {View, StyleSheet, TextInput, Platform, Text, TouchableHighlight} from "react-native";
+import {View, StyleSheet, TextInput, Platform, TouchableHighlight} from "react-native";
 import colors from "../../styles/colors";
 import fonts from "../../styles/fonts";
 import IOButtonIcon from "./TopNavigationBar/IOButtonIcon";
