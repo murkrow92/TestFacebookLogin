@@ -69,8 +69,14 @@ export class API {
         return getRequest(`${this.API_ENDPOINT}/contact`);
     }
 
-    addFriend(friend){
+    addFriend(profile, friend) {
         const body = new FormData();
+        lodash.forEach(friend, function (value, key) {
+            body.append(key, value);
+        });
+        body.append("user_id", profile.id);
+        let url = `${this.API_ENDPOINT}/contact/add`;
+        return postRequest(url, body);
 
     }
 }

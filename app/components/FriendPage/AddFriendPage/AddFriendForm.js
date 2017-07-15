@@ -31,7 +31,7 @@ export default class AddFriendForm extends Component {
                                 this.dayInput = input
                             }}
                             onChangeText={(day) => {
-                                this.props.onFormChange('day', day)
+                                this.props.onFormChange('bday', day)
                             }}
                             returnKeyType="next"
                             placeholder="Ngày"
@@ -40,7 +40,7 @@ export default class AddFriendForm extends Component {
                             inline={true}/>
                         <NumberTextInput
                             onChangeText={(month) => {
-                                this.props.onFormChange('month', month)
+                                this.props.onFormChange('bmonth', month)
                             }}
                             ref={input => {
                                 this.monthInput = input
@@ -55,7 +55,7 @@ export default class AddFriendForm extends Component {
                             inline={true}/>
                         <NumberTextInput
                             onChangeText={(year) => {
-                                this.props.onFormChange('year', year)
+                                this.props.onFormChange('byear', year)
                             }}
                             ref={input => {
                                 this.yearInput = input
@@ -76,7 +76,7 @@ export default class AddFriendForm extends Component {
                         </View>
                         <NumberTextInput
                             onChangeText={(hour) => {
-                                this.props.onFormChange('hour', hour)
+                                this.props.onFormChange('bhour', hour)
                             }}
                             ref={input => {
                                 this.hourInput = input
@@ -90,7 +90,7 @@ export default class AddFriendForm extends Component {
                             inline={true}/>
                         <NumberTextInput
                             onChangeText={(minute) => {
-                                this.props.onFormChange('minute', minute)
+                                this.props.onFormChange('bminute', minute)
                             }}
                             ref={input => {
                                 this.minuteInput = input

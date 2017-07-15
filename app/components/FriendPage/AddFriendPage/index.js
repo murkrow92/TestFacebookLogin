@@ -20,7 +20,6 @@ class AddFriendPage extends Component {
     render() {
         const {navigate} = this.props.navigation;
         const {actions, newFriend, profile} = this.props;
-        console.log(newFriend);
         return (
             <PageWrapper>
                 <TopNavigationBar
