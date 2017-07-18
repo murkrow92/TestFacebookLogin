@@ -40,9 +40,9 @@ class AddFriendPage extends Component {
         );
     }
 
-    componentDidUpdate() {
+    componentWillUpdate(nextProps, nextStates) {
         const {navigate} = this.props.navigation;
-        const {newFriend, actions} = this.props;
+        const {newFriend, actions} = nextProps;
         if (newFriend.friend.saved) {
             Alert.alert("Đã lưu thành công", "Đã thêm thành công người bạn mới", [{
                 text: "Ok", onPress: () => {
@@ -61,30 +61,19 @@ class AddFriendPage extends Component {
     }
 }
 
-const
-    rightButton = (onSubmit) => {
-        return (<ButtonLabel
-            onPress={onSubmit} label="Lưu lại"/>);
-    };
+const rightButton = (onSubmit) => {
+    return (<ButtonLabel
+        onPress={onSubmit} label="Lưu lại"/>);
+};
 
 
-const
-    mapStateToProps = (state) => ({
-        newFriend: state.addFriend,
-        profile: state.profile
-    });
+const mapStateToProps = (state) => ({
+    newFriend: state.addFriend,
+    profile: state.profile
+});
 
-const
-    mapDispatchToProps = (dispatch) => ({
-        actions: bindActionCreators(actions, dispatch)
-    });
+const mapDispatchToProps = (dispatch) => ({
+    actions: bindActionCreators(actions, dispatch)
+});
 
-export
-default
-
-connect(mapStateToProps, mapDispatchToProps)
-
-(
-    AddFriendPage
-)
-;
+export default connect(mapStateToProps, mapDispatchToProps)(AddFriendPage);
