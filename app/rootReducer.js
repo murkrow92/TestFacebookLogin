@@ -13,6 +13,7 @@ import detailReducer from "./components/DetailPage/DetailReducer";
 import friendReducer from "./components/FriendPage/FriendRecuder";
 import astroReducer from "./components/AstroPage/AstroReducer";
 import addFriendReducer from "./components/FriendPage/AddFriendPage/AddFriendReducer";
+import bankReducer from "./components/BankPage/BankReducer";
 
 export default combineReducers({
     app: appReducer,
@@ -24,5 +25,6 @@ export default combineReducers({
     detail: detailReducer,
     friend: friendReducer,
     addFriend: addFriendReducer,
-    astro: astroReducer
+    astro: astroReducer,
+    bank: bankReducer
 });

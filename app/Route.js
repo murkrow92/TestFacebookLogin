@@ -62,7 +62,6 @@ export const NotificationRoute = StackNavigator({
 
 }, {
     headerMode: 'none'
-
 });
 
 export const BottomRoute = TabNavigator({

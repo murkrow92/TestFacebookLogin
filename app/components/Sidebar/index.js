@@ -18,7 +18,7 @@ class Sidebar extends Component {
     }
 
     render() {
-        const {actions, sidebar} = this.props;
+        const {sidebar} = this.props;
         const {navigate} = this.props.content.navigation;
 
         return ( <View style={styles.container}>
@@ -27,8 +27,7 @@ class Sidebar extends Component {
                 name={sidebar.user.name}
                 navigate={navigate}/>
             <DrawerItem
-                onPress={() => {
-                }}
+                onPress={() => navigate('Bank')}
                 account="500.000 đ"
                 title="Ngân quỹ"
             />

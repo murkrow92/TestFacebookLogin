@@ -77,6 +77,15 @@ export class API {
         body.append("user_id", profile.id);
         let url = `${this.API_ENDPOINT}/contact/add`;
         return postRequest(url, body);
-
     }
+
+    fetchTransaction(userId) {
+        userId = 2;
+        let query = queryString.stringify({
+            user_id: userId,
+            status: 1
+        });
+        return getRequest(`${this.API_ENDPOINT}/transaction?${query}`);
+    }
+
 }
