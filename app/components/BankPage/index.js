@@ -10,44 +10,40 @@ import ListLog from "./ListLog";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as actions from "./BankActions";
+import {ScrollView} from "react-native";
+
+const lodash = require('lodash');
 
 class BankPage extends Component {
     render() {
-        const {bank} = this.props;
-        console.log(bank);
-
-        let item1 = {
-            content: "Ngày 20/11/2016 lúc 20h10",
-            title: 'Đặt câu hỏi cho Giảng viên Đoàn Phúc Bảo',
-            change: -50000,
-            isFirst: true
-        };
-        let item2 = {title: 'Sao Thuỷ Kim Ngưu', change: -50000};
-        let item3 = {content: "Ngày 20/11/2016 lúc 20h10", title: 'Mặt trăng Bọ Cạp', change: -50000};
-        let item4 = {content: "", title: 'Mở quyền tạo thêm nhiều bản đồ cho bạn bè', change: 50000};
-        let item5 = {content: "", title: 'Mặt trăng Bọ Cạp', change: 100000};
-        let item6 = {
-            content: "Ngày 20/11/2016 lúc 20h10",
-            title: 'Mở quyền tạo thêm nhiều bản đồ cho bạn bè',
-            change: 50000
-        };
-        let item7 = {content: "", title: 'Mặt trăng Bọ Cạp', change: -50000};
-        let item8 = {content: "", title: 'Mặt trăng Bọ Cạp', change: -50000};
-        let item9 = {content: "", title: 'Mặt trăng Bọ Cạp', change: 50000};
-
-        let items = [item1, item2, item3, item4, item5, item6, item7, item8, item9];
         const {navigate} = this.props.navigation;
+        const {bank} = this.props;
         return (
             <PageWrapper>
                 <TopNavigationBar
                     title="Ngân quỹ"
                     onPress={() => navigate('DrawerOpen')}
                     rightButton={rightButton()}/>
-                <AccountBox/>
-                <ListLog items={items}/>
+                <AccountBox
+                    bank={bank}
+                />
+                <ScrollView>
+                    {this.renderList()}
+                </ScrollView>
 
             </PageWrapper>
         );
+    }
+
+    renderList() {
+        const {bank} = this.props;
+        if (!lodash.isEmpty(bank.transaction)) {
+            let items = [];
+            lodash.forEach(bank.transaction.data, function (value, key) {
+                items.push(value);
+            });
+            return <ListLog items={items}/>
+        }
     }
 
     componentWillUpdate(nextProps, nextState) {
@@ -61,9 +57,7 @@ class BankPage extends Component {
 }
 
 const rightButton = () => {
-    return ({
-        title: ''
-    });
+    return ({title: ''});
 };
 
 const mapStateToProps = (state) => ({

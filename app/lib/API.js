@@ -85,7 +85,8 @@ export class API {
             user_id: userId,
             status: 1
         });
-        return getRequest(`${this.API_ENDPOINT}/transaction?${query}`);
+        let url = `${this.API_ENDPOINT}/transaction?${query}`;
+        return getRequest(url);
     }
 
 }

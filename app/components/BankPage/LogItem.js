@@ -19,7 +19,9 @@ export default class LogItem extends Component {
     };
 
     render() {
-        let textChangeStyle = createTextChangeStyle(this.props.data.change);
+        console.log(this.props.data);
+
+        let textChangeStyle = createTextChangeStyle(this.props.data.money);
         let topBorderColor = this.props.data.isFirst ? 'transparent' : colors.LIST_TOP_BORDER;
         return (
             <View style={styles.wrapper}>
@@ -27,11 +29,11 @@ export default class LogItem extends Component {
                 <View style={styles.container}>
                     <Icon size={30} name="mars"/>
                     <View style={styles.contentContainer}>
-                        <Text style={styles.title}>{this.props.data.title }</Text>
-                        {createContent(this.props.data.content)}
+                        <Text style={styles.title}>Giao dịch số: {this.props.data.created}</Text>
+                        {createContent(this.props.data.status)}
                     </View>
                     <View style={styles.textChangeContainer}>
-                        <Text style={textChangeStyle}>{this.props.data.change}</Text>
+                        <Text style={textChangeStyle}>{this.props.data.money}</Text>
                     </View>
                     <IOButtonIcon
                         color="#999999"
@@ -45,7 +47,7 @@ export default class LogItem extends Component {
     }
 }
 
-const createTextChangeStyle = (change)=>{
+const createTextChangeStyle = (change) => {
     let textChangeStyle = {
         fontFamily: fonts.OPEN_SAN,
         fontSize: 13,
