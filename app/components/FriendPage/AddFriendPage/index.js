@@ -2,7 +2,7 @@
  * Created by murkrow on 7/15/17.
  */
 import React, {Component} from "react";
-import {Keyboard} from "react-native";
+import {Keyboard, Alert} from "react-native";
 import PageWrapper from "../../Commons/Wrapper";
 import TopNavigationBar from "../../Commons/TopNavigationBar/index";
 import ButtonLabel from "../../Commons/TopNavigationBar/ButtonLabel";
@@ -37,24 +37,54 @@ class AddFriendPage extends Component {
                     onSubmit={() => actions.requestSave(profile, newFriend.friend)}
                 />
             </ PageWrapper >
-        )
-            ;
+        );
+    }
+
+    componentDidUpdate() {
+        const {navigate} = this.props.navigation;
+        const {newFriend, actions} = this.props;
+        if (newFriend.friend.saved) {
+            Alert.alert("Đã lưu thành công", "Đã thêm thành công người bạn mới", [{
+                text: "Ok", onPress: () => {
+                    navigate('Friend');
+                    actions.resetState();
+                }
+            }], {cancelable: false});
+        } else if (newFriend.friend.error) {
+            Alert.alert("Lỗi", "Đã có lỗi xảy ra", [{
+                text: "Ok", onPress: () => {
+                    navigate('Friend');
+                    actions.resetState();
+                }
+            }], {cancelable: false});
+        }
     }
 }
 
-const rightButton = (onSubmit) => {
-    return (<ButtonLabel
-        onPress={onSubmit} label="Lưu lại"/>);
-};
+const
+    rightButton = (onSubmit) => {
+        return (<ButtonLabel
+            onPress={onSubmit} label="Lưu lại"/>);
+    };
 
 
-const mapStateToProps = (state) => ({
-    newFriend: state.addFriend,
-    profile: state.profile
-});
+const
+    mapStateToProps = (state) => ({
+        newFriend: state.addFriend,
+        profile: state.profile
+    });
 
-const mapDispatchToProps = (dispatch) => ({
-    actions: bindActionCreators(actions, dispatch)
-});
+const
+    mapDispatchToProps = (dispatch) => ({
+        actions: bindActionCreators(actions, dispatch)
+    });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddFriendPage);
+export
+default
+
+connect(mapStateToProps, mapDispatchToProps)
+
+(
+    AddFriendPage
+)
+;

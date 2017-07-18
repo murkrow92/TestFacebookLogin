@@ -2,7 +2,7 @@
  * Created by murkrow on 7/15/17.
  */
 
-import {FRIEND_FORM_CHANGE, SAVE_FRIEND_SUCCESS, SAVE_FRIEND_FAILED} from "./AddFriendAtions";
+import {FRIEND_FORM_CHANGE, SAVE_FRIEND_SUCCESS, SAVE_FRIEND_FAILED, RESET_FRIEND_STATE} from "./AddFriendAtions";
 import {combineReducers} from "redux";
 
 
@@ -14,6 +14,8 @@ const addFriendReducer = (state = {}, action) => {
             return onSuccess(state, action.friend);
         case SAVE_FRIEND_FAILED:
             return onFailed(state);
+        case RESET_FRIEND_STATE:
+            return {};
         default:
             return state;
     }
@@ -33,7 +35,7 @@ const onSuccess = (state, friend) => ({
 
 const onFailed = (state) => ({
     ...state,
-    saved: false
+    error: true
 });
 export default combineReducers({
     friend: addFriendReducer
