@@ -18,7 +18,7 @@ class Sidebar extends Component {
     }
 
     render() {
-        const {sidebar} = this.props;
+        const {sidebar, bank} = this.props;
         const {navigate} = this.props.content.navigation;
 
         return ( <View style={styles.container}>
@@ -28,7 +28,7 @@ class Sidebar extends Component {
                 navigate={navigate}/>
             <DrawerItem
                 onPress={() => navigate('Bank')}
-                account="500.000 đ"
+                account={bank.transaction.money}
                 title="Ngân quỹ"
             />
             <DrawerItem
@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => ({
     sidebar: state.sidebar,
+    bank: state.bank
 });
 
 const mapDispatchToProps = (dispatch) => ({

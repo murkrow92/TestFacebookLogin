@@ -8,8 +8,8 @@ import LineDivider from "../Commons/LineDivider";
 import IOButtonIcon from "../Commons/TopNavigationBar/IOButtonIcon";
 import colors from "../../styles/colors";
 import {APP_MARGIN} from "../../styles/dimens";
-import Icon from "../Commons/Icons/Icon";
 import fonts from "../../styles/fonts";
+import IOIcon from "../Commons/Icons/IOIcon";
 
 
 export default class LogItem extends Component {
@@ -27,10 +27,10 @@ export default class LogItem extends Component {
             <View style={styles.wrapper}>
                 <LineDivider color={topBorderColor}/>
                 <View style={styles.container}>
-                    <Icon size={30} name="mars"/>
+                    <IOIcon size={30} name="ios-cash-outline"/>
                     <View style={styles.contentContainer}>
-                        <Text style={styles.title}>Giao dịch số: {this.props.data.created}</Text>
-                        {createContent(this.props.data.status)}
+                        <Text style={styles.title}> {this.props.data.title}</Text>
+                        {createContent(this.props.data.created)}
                     </View>
                     <View style={styles.textChangeContainer}>
                         <Text style={textChangeStyle}>{this.props.data.money}</Text>
