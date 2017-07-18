@@ -2,7 +2,7 @@
  * Created by murkrow on 6/10/17.
  */
 
-import {Text, View, StyleSheet, Image} from "react-native";
+import {Text, View, StyleSheet} from "react-native";
 import React, {Component, PropTypes} from "react";
 import LineDivider from "../Commons/LineDivider";
 import IOButtonIcon from "../Commons/TopNavigationBar/IOButtonIcon";
@@ -10,6 +10,7 @@ import colors from "../../styles/colors";
 import {APP_MARGIN} from "../../styles/dimens";
 import fonts from "../../styles/fonts";
 import IOIcon from "../Commons/Icons/IOIcon";
+import Currency from "../../lib/Currency";
 
 
 export default class LogItem extends Component {
@@ -19,21 +20,21 @@ export default class LogItem extends Component {
     };
 
     render() {
-        console.log(this.props.data);
-
-        let textChangeStyle = createTextChangeStyle(this.props.data.money);
+        const {money} = this.props.data;
+        let textChangeStyle = createTextChangeStyle(money);
         let topBorderColor = this.props.data.isFirst ? 'transparent' : colors.LIST_TOP_BORDER;
+        let src = money >= 0 ? 'ios-cash-outline' : 'ios-cart-outline';
         return (
             <View style={styles.wrapper}>
                 <LineDivider color={topBorderColor}/>
                 <View style={styles.container}>
-                    <IOIcon size={30} name="ios-cash-outline"/>
+                    <IOIcon size={30} name={src}/>
                     <View style={styles.contentContainer}>
                         <Text style={styles.title}> {this.props.data.title}</Text>
                         {createContent(this.props.data.created)}
                     </View>
                     <View style={styles.textChangeContainer}>
-                        <Text style={textChangeStyle}>{this.props.data.money}</Text>
+                        <Text style={textChangeStyle}>{Currency.convert(money)}</Text>
                     </View>
                     <IOButtonIcon
                         color="#999999"

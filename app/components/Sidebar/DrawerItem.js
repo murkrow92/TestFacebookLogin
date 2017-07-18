@@ -10,6 +10,7 @@ import colors from "../../styles/colors";
 import LineDivider from "../Commons/LineDivider";
 import IOButtonIcon from "../Commons/TopNavigationBar/IOButtonIcon";
 import ButtonIcon from "../Commons/TopNavigationBar/ButtonIcon";
+import Currency from "../../lib/Currency";
 
 export default class DrawerItem extends Component {
     constructor(props) {
@@ -32,9 +33,9 @@ export default class DrawerItem extends Component {
             </TouchableHighlight>);
     };
 
-    renderPrice(account) {
-        if (account) {
-            return (<Text style={styles.price}>{account} đ</Text>);
+    renderPrice(money) {
+        if (money) {
+            return (<Text style={styles.price}>{Currency.convert(money)}</Text>);
         }
     }
 

@@ -7,6 +7,7 @@ import {View, StyleSheet, Text, TouchableHighlight} from "react-native";
 import colors from "../../styles/colors";
 import fonts from "../../styles/fonts";
 import {APP_MARGIN} from "../../styles/dimens";
+import Currency from "../../lib/Currency";
 
 const lodash = require('lodash');
 
@@ -22,7 +23,7 @@ export default class AccountBox extends Component {
             <View style={styles.accountBox}>
                 <Text style={styles.textAccount}>Số dư</Text>
                 <View style={styles.content}>
-                    <Text style={styles.textContent}>{money} đ</Text>
+                    <Text style={styles.textContent}>{Currency.convert(money)}</Text>
                 </View>
                 <View style={styles.buttonContainer}>
                     <TouchableHighlight
