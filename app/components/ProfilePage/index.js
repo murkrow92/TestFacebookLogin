@@ -54,8 +54,8 @@ class ProfilePage extends Component {
 
     componentDidMount() {
         const {actions} = this.props;
-        actions.getFacebookProfileAsync();
-        actions.getLocalProfileAsync();
+        actions.fetchFacebookProfileAsync();
+        actions.fetchLocalProfileAsync();
     }
 }
 

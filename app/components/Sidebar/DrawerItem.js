@@ -25,21 +25,23 @@ export default class DrawerItem extends Component {
                 <View style={styles.wrapper}>
                     <View style={styles.container}>
                         <Text style={styles.title}>{this.props.title}</Text>
-                        {this.renderPrice(this.props.account)}
-                        {this.renderButton(this.props.button, this.props.onPress)}
+                        {this.renderPrice()}
+                        {this.renderButton()}
                     </View>
                     <LineDivider color={colors.LIST_BOTTOM_BORDER}/>
                 </View>
             </TouchableHighlight>);
     };
 
-    renderPrice(money) {
+    renderPrice() {
+        const money = this.props.account;
         if (money) {
             return (<Text style={styles.price}>{Currency.convert(money)}</Text>);
         }
     }
 
-    renderButton(button, onPress) {
+    renderButton() {
+        const {button, onPress} = this.props;
         if (button) {
             return <ButtonIcon
                 color="#999999"

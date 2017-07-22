@@ -89,4 +89,8 @@ export class API {
         return getRequest(url);
     }
 
+    fetchUser(){
+        let url = `${this.API_ENDPOINT}/user`
+    }
+
 }

@@ -4,6 +4,7 @@
 
 
 import {AsyncStorage} from 'react-native';
+
 export const REQUEST_SAVE = 'request_save';
 export const FORM_CHANGE = 'form_change';
 export const GET_PROFILE_FROM_LOCAL = 'profile_load_from_local';
@@ -13,7 +14,7 @@ const getLocalProfile = (profile) => ({
     profile
 });
 
-export const getLocalProfileAsync = () => (dispatch, getState) =>
+export const fetchLocalProfileAsync = () => (dispatch, getState) =>
     AsyncStorage.getItem('profile').then(
         value => {
             if (value === null) {
@@ -25,7 +26,7 @@ export const getLocalProfileAsync = () => (dispatch, getState) =>
         error => alert('Error: ' + error.message)
     );
 
-export const getFacebookProfileAsync = () => (dispatch, getState) =>
+export const fetchFacebookProfileAsync = () => (dispatch, getState) =>
     AsyncStorage.getItem('facebook').then(
         value => {
             if (value === null) {
@@ -35,7 +36,6 @@ export const getFacebookProfileAsync = () => (dispatch, getState) =>
             dispatch(getLocalProfile(profile));
         }
     );
-
 
 export const requestSave = (profile) => ({
     type: REQUEST_SAVE,
