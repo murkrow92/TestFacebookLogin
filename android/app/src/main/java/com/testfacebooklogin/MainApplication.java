@@ -12,10 +12,21 @@ import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.facebook.soloader.SoLoader;
 import com.oblador.vectoricons.VectorIconsPackage;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import android.util.Base64;
+import android.util.Log;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import java.util.Arrays;
 import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
+
+private static final String TAG = MainApplication.class.getSimpleName();
 
 	private static CallbackManager mCallbackManager = CallbackManager.Factory.create();
 	private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
@@ -50,5 +61,20 @@ public class MainApplication extends Application implements ReactApplication {
 		FacebookSdk.sdkInitialize(getApplicationContext());
 		// If you want to use AppEventsLogger to log events.
 		AppEventsLogger.activateApp(this);
+		printKeyHash();
 	}
+
+		private void printKeyHash() {
+    		try {
+    			PackageInfo info = getPackageManager().getPackageInfo(
+    					"oiz.com.vnastro", PackageManager.GET_SIGNATURES);
+    			for (Signature signature : info.signatures) {
+    				MessageDigest md = MessageDigest.getInstance("SHA");
+    				md.update(signature.toByteArray());
+    				Log.d(TAG, Base64.encodeToString(md.digest(), Base64.DEFAULT));
+    			}
+    		} catch (PackageManager.NameNotFoundException | NoSuchAlgorithmException e) {
+    			Log.e(TAG, "printKeyHash: ", e);
+    		}
+    	}
 }
