@@ -12,6 +12,7 @@ const formState = {};
 const profileReducer = (state = formState, action) => {
     switch (action.type) {
         case REQUEST_SAVE:
+            alert("Đã lưu thành công");
             return save(state, action.profile);
         case FORM_CHANGE:
             return onChange(state, action.key, action.value);
@@ -33,8 +34,6 @@ const onChange = (state, key, value) => {
 };
 
 const save = (state, profile) => {
-    let result = JSON.stringify(profile);
-    AsyncStorage.setItem('profile', result);
     return {
         ...state,
         profile: profile

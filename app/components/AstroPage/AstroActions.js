@@ -15,7 +15,6 @@ const fetchAstro = (astro) => ({
 export const fetchAstroAtDateAsync = (date) => (dispatch, getState) =>
     (api.fetchAstro(date).then(
         response => {
-            console.log(response);
             dispatch(fetchAstro(response));
         },
         error => {
