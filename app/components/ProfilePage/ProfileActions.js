@@ -24,7 +24,6 @@ export const fetchLocalProfileAsync = () => (dispatch, getState) =>
                 return Promise.resolve();
             }
             let profile = JSON.parse(value);
-            console.log(profile);
             dispatch(getLocalProfile(profile));
         },
         error => alert('Error: ' + error.message)
@@ -44,7 +43,11 @@ export const fetchFacebookProfileAsync = () => (dispatch, getState) =>
 export const saveProfileAsync = (profile) => (dispatch, getState) =>
     (api.saveProfile(profile).then(
         response => {
-            dispatch(requestSave(profile));
+            let result = JSON.stringify(profile);
+            AsyncStorage.setItem('profile', result).then(
+                dispatch(requestSave(profile))
+            ).catch(error => console.log(error));
+
         },
         error => {
             console.log(error);

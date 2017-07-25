@@ -90,7 +90,6 @@ export class API {
     }
 
     saveProfile(profile) {
-        console.log(profile);
         const body = new FormData();
         const keys = ["id", "email", "day", "month", "hour", "minute", "phone"];
         lodash.forEach(keys, function (value, key) {

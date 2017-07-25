@@ -25,7 +25,6 @@ class ProfilePage extends Component {
     render() {
         const {navigate} = this.props.navigation;
         const {profile} = this.props;
-        console.log(profile);
         let picture = BlankProfile;
         if (typeof(profile.profile.picture) === "object") {
             picture = {
