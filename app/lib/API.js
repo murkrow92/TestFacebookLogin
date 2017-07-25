@@ -15,7 +15,7 @@ const checkStatus = response => {
 };
 
 const postRequest = (url, body, headers) =>
-    fetch(url, {method: "POST", body, headers}).then(checkStatus);
+    fetch(url, {method: "POST", body, headers}).then(checkStatus).catch(error => console.log(error));
 
 const getRequest = (url, headers) => fetch(url, {headers}).then(checkStatus);
 
@@ -89,8 +89,20 @@ export class API {
         return getRequest(url);
     }
 
-    fetchUser(){
-        let url = `${this.API_ENDPOINT}/user`
+    saveProfile(profile) {
+        console.log(profile);
+        const body = new FormData();
+        const keys = ["id", "email", "day", "month", "hour", "minute", "phone"];
+        lodash.forEach(keys, function (value, key) {
+            if (value === "id") {
+                value = "user_id";
+            }
+            if (profile.hasOwnProperty(value)) {
+                body.append(value, profile[value]);
+            }
+        });
+        let url = `${this.API_ENDPOINT}/user/update`;
+        return postRequest(url, body);
     }
 
 }

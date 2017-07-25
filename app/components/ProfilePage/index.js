@@ -24,7 +24,8 @@ class ProfilePage extends Component {
 
     render() {
         const {navigate} = this.props.navigation;
-        const {profile, actions} = this.props;
+        const {profile} = this.props;
+        console.log(profile);
         let picture = BlankProfile;
         if (typeof(profile.profile.picture) === "object") {
             picture = {
@@ -37,19 +38,28 @@ class ProfilePage extends Component {
                 <TopNavigationBar
                     title="Cá nhân"
                     onPress={() => navigate('DrawerOpen')}
-                    rightButton={rightButton(() => {
-                        Keyboard.dismiss();
-                        actions.requestSave(profile)
-                    })}/>
+                    rightButton={rightButton(() => this.doSaveProfile(profile.profile))}/>
                 <Image
                     style={styles.avatar}
                     source={picture}/>
                 <Text style={styles.username}>{profile.profile.name}</Text>
                 <ProfileForm
-                    actions={actions}
+                    onFormChange={(key, value) => this.onFormChange(key, value)}
+                    obSubmit={() => this.doSaveProfile(profile.profile)}
                     profile={profile.profile}/>
-            </ PageWrapper >
+            </ PageWrapper>
         );
+    }
+
+    onFormChange(key, value) {
+        const {actions} = this.props;
+        actions.onFormChange(key, value);
+    }
+
+    doSaveProfile(profile) {
+        const {actions} = this.props;
+        Keyboard.dismiss();
+        actions.saveProfileAsync(profile);
     }
 
     componentDidMount() {

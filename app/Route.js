@@ -139,9 +139,6 @@ const ContentPage = DrawerNavigator({
     Bank: {screen: BankPage},
     Chat: {screen: ChatPage},
     About: {screen: AboutPage},
-    OurAstrologers: {screen: OurAstrologersPage},
-    Tutorial: {screen: TutorialPage},
-    Setting: {screen: SettingPage},
     Purchase: {screen: PurchasePage}
 }, {
     contentComponent: props => <Sidebar content={props}/>

@@ -10,7 +10,7 @@ import Icon from "../Commons/Icons/Icon";
 export default class ProfileForm extends Component {
 
     render() {
-        const {actions, profile} = this.props;
+        const {onSubmit, onFormChange, profile} = this.props;
         return (
             <ScrollView>
                 <View style={styles.container}>
@@ -20,7 +20,9 @@ export default class ProfileForm extends Component {
                                 this.monthInput.textInput.focus()
                             }}
                             value={profile.day}
-                            onChangeText={(day) => { actions.onFormChange('day', day) }}
+                            onChangeText={(day) => {
+                                onFormChange('day', day)
+                            }}
                             returnKeyType="next"
                             placeholder="Ngày"
                             label="Ngày"
@@ -28,7 +30,9 @@ export default class ProfileForm extends Component {
                             inline={true}/>
                         <NumberTextInput
                             value={profile.month}
-                            onChangeText={(month) => { actions.onFormChange('month', month) }}
+                            onChangeText={(month) => {
+                                onFormChange('month', month)
+                            }}
                             ref={input => {
                                 this.monthInput = input
                             }}
@@ -41,7 +45,9 @@ export default class ProfileForm extends Component {
                             style={styles.datetimeComponent}
                             inline={true}/>
                         <NumberTextInput
-                            onChangeText={(year) => { actions.onFormChange('year', year) }}
+                            onChangeText={(year) => {
+                                onFormChange('year', year)
+                            }}
                             ref={input => {
                                 this.yearInput = input
                             }}
@@ -61,7 +67,9 @@ export default class ProfileForm extends Component {
                                 name="birthday"/>
                         </View>
                         <NumberTextInput
-                            onChangeText={(hour) => { actions.onFormChange('hour', hour) }}
+                            onChangeText={(hour) => {
+                                onFormChange('hour', hour)
+                            }}
                             ref={input => {
                                 this.hourInput = input
                             }}
@@ -74,7 +82,9 @@ export default class ProfileForm extends Component {
                             label="Giờ"
                             inline={true}/>
                         <NumberTextInput
-                            onChangeText={(minute) => { actions.onFormChange('minute', minute) }}
+                            onChangeText={(minute) => {
+                                onFormChange('minute', minute)
+                            }}
                             ref={input => {
                                 this.minuteInput = input
                             }}
@@ -90,7 +100,9 @@ export default class ProfileForm extends Component {
                     </View>
                     <View style={styles.space}/>
                     <NumberTextInput
-                        onChangeText={(email) => { actions.onFormChange('email', email) }}
+                        onChangeText={(email) => {
+                            onFormChange('email', email)
+                        }}
                         ref={input => {
                             this.emailInput = input
                         }}
@@ -104,14 +116,13 @@ export default class ProfileForm extends Component {
                         label="Email"/>
                     <View style={styles.space}/>
                     <NumberTextInput
-                        onChangeText={(phone) => { actions.onFormChange('phone', phone) }}
+                        onChangeText={(phone) => {
+                            onFormChange('phone', phone)
+                        }}
                         ref={input => {
                             this.phoneInput = input
                         }}
-                        onSubmitEditing={() => {
-                            Keyboard.dismiss();
-                            actions.requestSave(profile);
-                        }}
+                        onSubmitEditing={onSubmit}
                         value={profile.phone}
                         placeholder="Số điện thoại"
                         label="Số điện thoại"/>
