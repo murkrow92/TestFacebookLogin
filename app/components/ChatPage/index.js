@@ -20,14 +20,18 @@ import ChatBox from "../Commons/ChatBox/index";
 
 let lodash = require('lodash');
 
+const MIN_HEIGHT = 56;
+
 class ChatPage extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            chatboxHeight: MIN_HEIGHT,
+        }
     }
 
     render() {
-        const {chat, profile} = this.props;
         const {navigate} = this.props.navigation;
         return (
             <PageWrapper>
@@ -36,26 +40,42 @@ class ChatPage extends Component {
                     onPress={() => navigate('DrawerOpen')}
                     rightButton={rightButton()}/>
                 <View style={styles.questionBoxContainer}>
-                    {this.renderQuestionBox(chat.messages)}
+                    {this.renderQuestionBox()}
                 </View>
                 <ScrollView>
-                    {this.renderList(chat.messages, profile.profile)}
+                    {this.renderList()}
                 </ScrollView>
                 <LineDivider/>
                 <ChatBox
-                    onPress={(message) => {
+                    height={this.state.chatboxHeight}
+                    onSubmit={(message) => {
                         this.sendMessage(message);
                     }}
+                    onHeightChanged={(deltaHeight) => this.onHeightChanged(deltaHeight)}
                 />
             </PageWrapper>
         );
     }
 
-    componentDidMount() {
-        const {actions} = this.props;
-        const {params} = this.props.navigation.state;
-        if (!lodash.isEmpty(params)) {
-            actions.fetchConversationAsync(params.conversationId);
+
+    renderQuestionBox() {
+        const {chat} = this.props;
+        if (!lodash.isEmpty(chat.messages)) {
+            return <QuestionBox
+                content={chat.messages[1].content}
+            />
+        }
+
+    }
+
+    renderList() {
+        const {chat, profile} = this.props;
+        const messages = chat.messages;
+        if (!lodash.isEmpty(messages)) {
+            let items = getItems(messages);
+            return <ListMessage
+                profile={profile.profile}
+                items={items}/>
         }
     }
 
@@ -68,22 +88,17 @@ class ChatPage extends Component {
         }
     }
 
-    renderQuestionBox(messages) {
-        console.log(messages);
-        if (!lodash.isEmpty(messages)) {
-            return <QuestionBox
-                content={messages[1].content}
-            />
-        }
-
+    onHeightChanged(deltaHeight) {
+        this.setState({
+            chatboxHeight: MIN_HEIGHT + deltaHeight
+        });
     }
 
-    renderList(messages, profile) {
-        if (!lodash.isEmpty(messages)) {
-            let items = getItems(messages);
-            return <ListMessage
-                profile={profile}
-                items={items}/>
+    componentDidMount() {
+        const {actions} = this.props;
+        const {params} = this.props.navigation.state;
+        if (!lodash.isEmpty(params)) {
+            actions.fetchConversationAsync(params.conversationId);
         }
     }
 }

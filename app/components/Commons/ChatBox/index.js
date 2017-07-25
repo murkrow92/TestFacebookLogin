@@ -7,6 +7,9 @@ import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
 import React, {Component} from "react";
 import colors from "../../../styles/colors";
 
+const CONTAINER_MIN_HEIGHT = 56;
+const CHATBOX_MIN_HEIGHT = 40;
+
 export default class ChatBox extends Component {
     constructor(props) {
         super(props);
@@ -17,39 +20,44 @@ export default class ChatBox extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <View style={[styles.container, {height: this.props.height}]}>
                 <AutoGrowingTextInput
                     underlineColorAndroid='transparent'
                     autoCorrect={false}
                     multiline={true}
                     placeholderTextColor={colors.BORDER_GREY}
-                    placeholder="Ask a question ..."
-                    style={styles.chatbox}
+                    placeholder="Đặt câu hỏi"
+                    style={[styles.chatbox, {height: this.props.height}]}
                     value={this.state.message}
                     onChangeText={(text) => this.setState({
                         message: text
                     })}
+                    onSubmitEditing={() => {
+                        this.props.onSubmit(this.state.message);
+                    }}
+                    onChange={(event) =>
+                        this.props.onHeightChanged(event.nativeEvent.contentSize.height - CHATBOX_MIN_HEIGHT)
+                    }
                 />
                 <TouchableHighlight
-                    onPress={() => this.props.onPress(this.state.message)}
+                    onPress={() => this.props.onSubmit(this.state.message)}
                     underlayColor="white">
                     <View style={styles.buttonContainer}>
                         <Text style={styles.sendLabel}>Gửi</Text>
                     </View>
                 </TouchableHighlight>
-
             </View>
         );
     }
 }
 
-const styles = StyleSheet.create({
+const styles = {
     container: {
         paddingLeft: 8,
         paddingRight: 8,
         flexDirection: 'row',
         alignItems: 'center',
-        height: 56
+        height: CONTAINER_MIN_HEIGHT
     },
     chatbox: {
         flex: 1,
@@ -58,7 +66,7 @@ const styles = StyleSheet.create({
         color: '#555555',
         paddingRight: 8,
         paddingLeft: 8,
-        height: 40,
+        height: CHATBOX_MIN_HEIGHT,
         borderColor: 'lightgrey',
         borderWidth: 1,
         borderRadius: 10,
@@ -77,5 +85,5 @@ const styles = StyleSheet.create({
         color: colors.BLACK,
         fontSize: 15
     }
-});
+};
 
