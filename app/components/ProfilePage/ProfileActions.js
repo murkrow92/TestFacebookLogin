@@ -43,16 +43,31 @@ export const fetchFacebookProfileAsync = () => (dispatch, getState) =>
 export const saveProfileAsync = (profile) => (dispatch, getState) =>
     (api.saveProfile(profile).then(
         response => {
-            let result = JSON.stringify(profile);
-            AsyncStorage.setItem('profile', result).then(
-                dispatch(requestSave(profile))
-            ).catch(error => console.log(error));
-
+            doSaveProfile(response, dispatch);
         },
         error => {
             console.log(error);
+            fetchLocalProfileAsync(dispatch, getState);
         }));
 
+export const fetchUserProfileAsync = () => (dispatch, getState) => (
+    api.fetchUserProfile().then(
+        response => {
+            doSaveProfile(response, dispatch);
+        },
+        error => {
+            console.log(error);
+            fetchLocalProfileAsync(dispatch, getState);
+        }
+    )
+);
+
+const doSaveProfile = (response, dispatch) => {
+    let result = JSON.stringify(profile);
+    AsyncStorage.setItem('profile', result).then(
+        dispatch(requestSave(profile))
+    ).catch(error => console.log(error));
+};
 
 const requestSave = (profile) => ({
     type: REQUEST_SAVE,

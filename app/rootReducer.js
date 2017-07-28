@@ -14,6 +14,7 @@ import friendReducer from "./components/FriendPage/FriendRecuder";
 import astroReducer from "./components/AstroPage/AstroReducer";
 import addFriendReducer from "./components/FriendPage/AddFriendPage/AddFriendReducer";
 import bankReducer from "./components/BankPage/BankReducer";
+import loginReducer from "./components/LoginPage/LoginReducer";
 
 export default combineReducers({
     app: appReducer,
@@ -26,5 +27,6 @@ export default combineReducers({
     friend: friendReducer,
     addFriend: addFriendReducer,
     astro: astroReducer,
-    bank: bankReducer
+    bank: bankReducer,
+    login: loginReducer
 });

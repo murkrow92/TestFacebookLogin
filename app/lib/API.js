@@ -22,10 +22,13 @@ const getRequest = (url, headers) => fetch(url, {headers}).then(checkStatus);
 const putRequest = (url, body, headers) =>
     fetch(url, {method: "PUT", body, headers}).then(checkStatus);
 
+
 export class API {
+
+    static ACCESS_TOKEN;
+
     constructor() {
         this.API_ENDPOINT = "http://api.vnastro.com/1.0";
-        this.SESSION_TOKEN = "";
     }
 
     fetchAstro(datetime) {
@@ -110,7 +113,14 @@ export class API {
         body.append("fb_id", facebookId);
         let url = `${this.API_ENDPOINT}/user/fbconnect`;
         return postRequest(url, body);
+    }
 
+    fetchUserProfile() {
+        let query = queryString.stringify({
+            access_token: API.ACCESS_TOKEN
+        });
+        const url = `${this.API_ENDPOINT}/user?${query}`;
+        return getRequest(url);
     }
 
 }

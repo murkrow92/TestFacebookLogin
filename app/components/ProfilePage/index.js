@@ -64,8 +64,9 @@ class ProfilePage extends Component {
     componentDidMount() {
         const {actions} = this.props;
         actions.fetchFacebookProfileAsync();
-        actions.fetchLocalProfileAsync();
+        // actions.fetchUserProfileAsync();
     }
+
 }
 
 const rightButton = (onSubmit) => {
