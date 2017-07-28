@@ -104,4 +104,13 @@ export class API {
         return postRequest(url, body);
     }
 
+    login(email, facebookId) {
+        const body = new FormData();
+        body.append("email", email);
+        body.append("fb_id", facebookId);
+        let url = `${this.API_ENDPOINT}/user/fbconnect`;
+        return postRequest(url, body);
+
+    }
+
 }

@@ -3,12 +3,15 @@
  */
 import PageWrapper from "../Commons/Wrapper";
 import React, {Component} from "react";
-import {Button, Image, View} from "react-native";
+import {Button, Image, View, AsyncStorage} from "react-native";
 import Logo from "../../styles/images/vnastro.png";
 import LoginBox from "./LoginBox";
 import colors from "../../styles/colors";
-import  {AccessToken} from "react-native-fbsdk";
+import {AccessToken} from "react-native-fbsdk";
 import FacebookManager from "../../lib/FacebookManager";
+import {API} from "../../lib/API";
+
+const api = new API();
 
 export default class LoginPage extends Component {
 
@@ -46,9 +49,29 @@ export default class LoginPage extends Component {
     }
 
     login() {
+        FacebookManager.fetchUserInfo((error, result) => this.callback(error, result));
+    }
+
+    callback(error, result) {
         const {navigate} = this.props.navigation;
-        FacebookManager.fetchUserInfo();
-        navigate('Content');
+        if (error) {
+            alert("Error fetching data: " + JSON.stringify(error));
+        } else {
+            let info = JSON.stringify(result);
+            AsyncStorage.setItem("facebook", info);
+            api.login(result.email, result.id).then(
+                response => {
+                    console.log(response);
+                    if (response.access_token) {
+                        AsyncStorage.setItem("accessToken", response.access_token);
+                        navigate("Content");
+                    }
+                },
+                error => {
+                    console.log(error);
+                }
+            );
+        }
     }
 }
 

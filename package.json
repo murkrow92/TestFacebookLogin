@@ -15,27 +15,29 @@
   "dependencies": {
     "currency-formatter": "^1.2.1",
     "lodash": "^4.17.4",
+    "moment": "^2.18.1",
     "prop-types": "^15.5.10",
+    "pusher-js": "^4.1.0",
     "query-string": "^4.3.4",
     "react": "16.0.0-alpha.6",
     "react-native": "0.44.2",
     "react-native-autogrow-textinput": "^4.0.0",
     "react-native-fbsdk": "^0.6.0",
     "react-native-material-bottom-navigation": "^0.5.1",
-    "react-native-navbar": "^1.7.1",
+    "react-native-navbar": "^1.8.0",
     "react-native-settings-list": "^1.4.0",
     "react-native-vector-icons": "^4.2.0",
-    "react-navigation": "^1.0.0-beta.11",
+    "react-navigation": "^1.0.0-beta.12",
     "react-redux": "^5.0.5",
     "react-thunk": "^1.0.0",
-    "redux": "^3.6.0",
+    "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "babel-jest": "20.0.3",
     "babel-preset-react-native": "1.9.2",
     "jest": "20.0.4",
-    "prettier": "^1.5.2",
+    "prettier": "^1.5.3",
     "react-test-renderer": "16.0.0-alpha.6"
   },
   "jest": {

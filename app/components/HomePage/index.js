@@ -11,6 +11,7 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as actions from './HomeActions';
 import {ScrollView} from "react-native";
+import Pusher from 'pusher-js/react-native';
 
 const lodash = require('lodash');
 
@@ -21,11 +22,8 @@ class HomePage extends Component {
     }
 
     render() {
-        const {home} = this.props;
         const {navigate} = this.props.navigation;
         let title = "Bầu trời lúc này";
-
-
         return (
             <PageWrapper>
                 <TopNavigationBar
@@ -33,13 +31,15 @@ class HomePage extends Component {
                     onPress={() => navigate('DrawerOpen')}
                     rightButton={rightButton()}/>
                 <ScrollView>
-                    {this.renderList(home.planet, navigate)}
+                    {this.renderList()}
                 </ScrollView>
             </PageWrapper>
         );
     }
 
-    renderList(planet, navigate) {
+    renderList() {
+        const {planet} = this.props.home;
+        const {navigate} = this.props.navigation;
         if (planet.hasOwnProperty("Sun")) {
             let items = getItems(planet);
             return <ListAstroObject
