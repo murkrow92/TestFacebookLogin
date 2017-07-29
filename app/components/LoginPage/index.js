@@ -51,7 +51,6 @@ class LoginPage extends Component {
         const {actions} = this.props;
         const {data} = this.props.login;
         const {navigate} = this.props.navigation;
-        console.log(data);
         if (data.isLoggedIn) {
             navigate('Content');
         } else if (data.isFacebookLoggedIn) {

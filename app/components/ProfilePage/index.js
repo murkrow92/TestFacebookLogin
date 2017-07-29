@@ -33,7 +33,7 @@ class ProfilePage extends Component {
                 <TopNavigationBar
                     title="Cá nhân"
                     onPress={() => navigate('DrawerOpen')}
-                    rightButton={rightButton(() => this.doSaveProfile(profile.data))}/>
+                    rightButton={rightButton(() => this.doSaveProfile())}/>
                 <Image
                     style={styles.avatar}
                     source={this.getPicture()}/>
@@ -41,7 +41,7 @@ class ProfilePage extends Component {
                 <Text style={styles.astroName}>{userProfile.astroname}</Text>
                 <ProfileForm
                     onFormChange={(key, value) => this.onFormChange(key, value)}
-                    obSubmit={() => this.doSaveProfile(profile.profile)}
+                    obSubmit={() => this.doSaveProfile()}
                     profile={userProfile}/>
             </ PageWrapper>
         );
@@ -64,10 +64,12 @@ class ProfilePage extends Component {
         actions.onFormChange(key, value);
     }
 
-    doSaveProfile(profile) {
+    doSaveProfile() {
+        const {profile, login} = this.props;
+        const userProfile = {...login.data, ...profile.data};
         const {actions} = this.props;
         Keyboard.dismiss();
-        actions.saveProfileAsync(profile);
+        actions.saveProfileAsync(userProfile);
     }
 
     componentDidMount() {

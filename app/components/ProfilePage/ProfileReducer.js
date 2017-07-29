@@ -3,7 +3,7 @@
  */
 
 
-import {ACTION_FETCH_PROFILE_SUCCESS, FORM_CHANGE, GET_PROFILE_FROM_LOCAL, REQUEST_SAVE} from "./ProfileActions";
+import {ACTION_FETCH_PROFILE_SUCCESS, ACTION_FORM_DATA_CHANGE, ACTION_LOAD_SAVED_PROFILE, ACTION_SAVE_SUCCESS} from "./ProfileActions";
 import {combineReducers} from "redux";
 import {AsyncStorage} from "react-native";
 
@@ -11,12 +11,12 @@ const formState = {};
 
 const profileReducer = (state = formState, action) => {
     switch (action.type) {
-        case REQUEST_SAVE:
+        case ACTION_SAVE_SUCCESS:
             alert("Đã lưu thành công");
             return save(state, action.profile);
-        case FORM_CHANGE:
+        case ACTION_FORM_DATA_CHANGE:
             return onChange(state, action.key, action.value);
-        case GET_PROFILE_FROM_LOCAL:
+        case ACTION_LOAD_SAVED_PROFILE:
             return {
                 ...state,
                 ...action.profile
