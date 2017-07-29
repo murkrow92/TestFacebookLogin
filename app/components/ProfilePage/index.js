@@ -24,11 +24,11 @@ class ProfilePage extends Component {
 
     render() {
         const {navigate} = this.props.navigation;
-        const {profile} = this.props;
+        const {profile, login} = this.props;
         let picture = BlankProfile;
-        if (typeof(profile.profile.picture) === "object") {
+        if (typeof(login.data.picture) === "object") {
             picture = {
-                uri: profile.profile.picture.data.url
+                uri: login.data.picture.data.url
             }
         }
 
@@ -37,15 +37,15 @@ class ProfilePage extends Component {
                 <TopNavigationBar
                     title="Cá nhân"
                     onPress={() => navigate('DrawerOpen')}
-                    rightButton={rightButton(() => this.doSaveProfile(profile.profile))}/>
+                    rightButton={rightButton(() => this.doSaveProfile(profile.data))}/>
                 <Image
                     style={styles.avatar}
                     source={picture}/>
-                <Text style={styles.username}>{profile.profile.name}</Text>
+                <Text style={styles.username}>{profile.data.name}</Text>
                 <ProfileForm
                     onFormChange={(key, value) => this.onFormChange(key, value)}
                     obSubmit={() => this.doSaveProfile(profile.profile)}
-                    profile={profile.profile}/>
+                    profile={profile.data}/>
             </ PageWrapper>
         );
     }
@@ -63,8 +63,7 @@ class ProfilePage extends Component {
 
     componentDidMount() {
         const {actions} = this.props;
-        actions.fetchFacebookProfileAsync();
-        // actions.fetchUserProfileAsync();
+        actions.fetchUserProfileAsync();
     }
 
 }
@@ -96,6 +95,7 @@ const styles = {
 
 const mapStateToProps = (state) => ({
     profile: state.profile,
+    login: state.login
 });
 
 const mapDispatchToProps = (dispatch) => ({

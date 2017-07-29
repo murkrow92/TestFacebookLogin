@@ -3,7 +3,7 @@
  */
 
 
-import {FORM_CHANGE, GET_PROFILE_FROM_LOCAL, REQUEST_SAVE} from "./ProfileActions";
+import {ACTION_FETCH_PROFILE_SUCCESS, FORM_CHANGE, GET_PROFILE_FROM_LOCAL, REQUEST_SAVE} from "./ProfileActions";
 import {combineReducers} from "redux";
 import {AsyncStorage} from "react-native";
 
@@ -21,6 +21,12 @@ const profileReducer = (state = formState, action) => {
                 ...state,
                 ...action.profile
             };
+        case ACTION_FETCH_PROFILE_SUCCESS:
+            return {
+                ...state,
+                ...action.profile
+            };
+
         default:
             return state;
     }
@@ -41,5 +47,5 @@ const save = (state, profile) => {
 };
 
 export default combineReducers({
-    profile: profileReducer
+    data: profileReducer
 });

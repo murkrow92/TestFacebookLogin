@@ -48,8 +48,8 @@ class BankPage extends Component {
 
     componentWillUpdate(nextProps, nextState) {
         const {actions, profile} = this.props;
-        let oldId = profile.profile.id;
-        let newId = nextProps.profile.profile.id;
+        let oldId = profile.data.id;
+        let newId = nextProps.profile.data.id;
         if (newId !== oldId) {
             actions.fetchTransactionAsync(newId);
         }

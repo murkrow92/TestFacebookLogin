@@ -18,13 +18,13 @@ class Sidebar extends Component {
     }
 
     render() {
-        const {sidebar, bank} = this.props;
+        const {sidebar, bank, profile} = this.props;
         const {navigate} = this.props.content.navigation;
 
         return ( <View style={styles.container}>
             <AccountBox
                 picture={this.getPicture()}
-                name={sidebar.user.name}
+                name={profile.data.fullname}
                 navigate={navigate}/>
             <DrawerItem
                 onPress={() => navigate('Bank')}
@@ -54,15 +54,14 @@ class Sidebar extends Component {
 
     componentDidMount() {
         const {actions} = this.props;
-        actions.getLocalProfileAsync();
     }
 
     getPicture() {
-        const {actions, sidebar} = this.props;
+        const {login} = this.props;
         let picture = BlankProfile;
-        if (typeof(sidebar.user.picture) === "object") {
+        if (typeof(login.data.picture) === "object") {
             picture = {
-                uri: sidebar.user.picture.data.url
+                uri: login.data.picture.data.url
             };
         }
         return picture;
@@ -75,7 +74,9 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => ({
     sidebar: state.sidebar,
-    bank: state.bank
+    bank: state.bank,
+    profile: state.profile,
+    login: state.login
 });
 
 const mapDispatchToProps = (dispatch) => ({

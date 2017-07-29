@@ -5,7 +5,7 @@ const FBSDK = require("react-native-fbsdk");
 const {GraphRequest, GraphRequestManager} = FBSDK;
 
 export const ACTION_LOGIN_SUCCESS = 'action.com.login';
-export const ACTION_FETCH_FACEBOOK_SUCCESS = 'action_fetch_facebook_success';
+export const ACTION_FETCH_FACEBOOK_SUCCESS = 'action.fetch.facebook.success';
 
 const api = new API();
 
@@ -18,7 +18,8 @@ export const login = (email, facebookId) => (dispatch, getState) => (
     api.login(email, facebookId).then(
         response => {
             if (response.access_token) {
-                dispatch(loginSuccess(response));
+                API.ACCESS_TOKEN = response.access_token;
+                dispatch(loginSuccess(response))
             }
         },
         error => console.log(error)

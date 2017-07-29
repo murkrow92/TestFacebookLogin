@@ -9,6 +9,7 @@ import {API} from "../../lib/API";
 export const REQUEST_SAVE = 'request_save';
 export const FORM_CHANGE = 'form_change';
 export const GET_PROFILE_FROM_LOCAL = 'profile_load_from_local';
+export const ACTION_FETCH_PROFILE_SUCCESS = "com.fetch.profile.success";
 
 const api = new API();
 
@@ -50,10 +51,17 @@ export const saveProfileAsync = (profile) => (dispatch, getState) =>
             fetchLocalProfileAsync(dispatch, getState);
         }));
 
+const fetchProfileSuccess = (profile) => ({
+    type: ACTION_FETCH_PROFILE_SUCCESS,
+    profile
+});
+
 export const fetchUserProfileAsync = () => (dispatch, getState) => (
     api.fetchUserProfile().then(
         response => {
-            doSaveProfile(response, dispatch);
+            console.log(response);
+            const profile = response.data;
+            dispatch(fetchProfileSuccess(profile));
         },
         error => {
             console.log(error);
@@ -63,6 +71,7 @@ export const fetchUserProfileAsync = () => (dispatch, getState) => (
 );
 
 const doSaveProfile = (response, dispatch) => {
+    const profile = response.data;
     let result = JSON.stringify(profile);
     AsyncStorage.setItem('profile', result).then(
         dispatch(requestSave(profile))
