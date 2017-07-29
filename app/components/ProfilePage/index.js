@@ -25,12 +25,8 @@ class ProfilePage extends Component {
     render() {
         const {navigate} = this.props.navigation;
         const {profile, login} = this.props;
-        let picture = BlankProfile;
-        if (typeof(login.data.picture) === "object") {
-            picture = {
-                uri: login.data.picture.data.url
-            }
-        }
+        const userProfile = {...login.data, ...profile.data};
+        console.log(userProfile);
 
         return (
             <PageWrapper>
@@ -40,14 +36,27 @@ class ProfilePage extends Component {
                     rightButton={rightButton(() => this.doSaveProfile(profile.data))}/>
                 <Image
                     style={styles.avatar}
-                    source={picture}/>
-                <Text style={styles.username}>{profile.data.name}</Text>
+                    source={this.getPicture()}/>
+                <Text style={styles.username}>{userProfile.fullname || userProfile.name}</Text>
+                <Text style={styles.astroName}>{userProfile.astroname}</Text>
                 <ProfileForm
                     onFormChange={(key, value) => this.onFormChange(key, value)}
                     obSubmit={() => this.doSaveProfile(profile.profile)}
-                    profile={profile.data}/>
+                    profile={userProfile}/>
             </ PageWrapper>
         );
+    }
+
+    getPicture() {
+        const {profile, login} = this.props;
+        const userProfile = {...login.data, ...profile.data};
+        let picture = BlankProfile;
+        if (typeof(userProfile.picture) === "object") {
+            picture = {
+                uri: userProfile.picture.data.url
+            }
+        }
+        return picture;
     }
 
     onFormChange(key, value) {
@@ -89,7 +98,14 @@ const styles = {
         marginTop: 8,
         alignSelf: 'center',
         fontSize: 13,
-        marginBottom: 30
+    },
+    astroName: {
+        fontFamily: fonts.OPEN_SAN,
+        color: 'black',
+        marginTop: 8,
+        alignSelf: 'center',
+        fontSize: 16,
+        marginBottom: 25
     }
 };
 

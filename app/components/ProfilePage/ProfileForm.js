@@ -123,7 +123,7 @@ export default class ProfileForm extends Component {
                             this.phoneInput = input
                         }}
                         onSubmitEditing={onSubmit}
-                        value={profile.phone}
+                        value={profile.mobile_phone}
                         placeholder="Số điện thoại"
                         label="Số điện thoại"/>
 
