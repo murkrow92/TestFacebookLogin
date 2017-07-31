@@ -17,10 +17,21 @@ import * as actions from "./ChatActions";
 import {connect} from "react-redux";
 import LineDivider from "../Commons/LineDivider";
 import ChatBox from "../Commons/ChatBox/index";
+import Pusher from 'pusher-js/react-native';
+
 
 let lodash = require('lodash');
 
 const MIN_HEIGHT = 56;
+
+Pusher.logToConsole = true;
+
+const pusher = new Pusher('4f086a0de734aa6e0a2e', {
+    cluster: 'ap1',
+    encrypted: true
+});
+
+let channel;
 
 class ChatPage extends Component {
 
@@ -81,10 +92,19 @@ class ChatPage extends Component {
 
     sendMessage(message) {
         const {params} = this.props.navigation.state;
+        const {profile, chat} = this.props;
         if (!lodash.isEmpty(params)) {
 
         } else {
-            alert(message);
+            // channel.trigger('client-notify', {
+            //     channel_id: profile.id,
+            //     type: "chat",
+            //     from: profile.id,
+            //     to: chat.conservationId,
+            //     messages: {
+            //         text: message
+            //     },
+            // });
         }
     }
 
@@ -95,11 +115,16 @@ class ChatPage extends Component {
     }
 
     componentDidMount() {
-        const {actions} = this.props;
+
+        const {actions, profile} = this.props;
         const {params} = this.props.navigation.state;
         if (!lodash.isEmpty(params)) {
             actions.fetchConversationAsync(params.conversationId);
         }
+        // channel = pusher.subscribe("general");
+        // channel.bind('notify', function (data) {
+        //     alert(data.message);
+        // });
     }
 }
 

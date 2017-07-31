@@ -87,6 +87,8 @@ android {
     buildToolsVersion "25.0.2"
 
     defaultConfig {
+        manifestPlaceholders = [onesignal_app_id: "113a798b-2456-4829-ac79-c7eb2affc6e8re",
+                                    onesignal_google_project_number: "REMOTE"]
         applicationId "com.testfacebooklogin"
         minSdkVersion 16
         targetSdkVersion 22
@@ -126,6 +128,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-onesignal')
     compile project(':react-native-vector-icons')
     compile project(':react-native-fbsdk')
     compile fileTree(dir: "libs", include: ["*.jar"])

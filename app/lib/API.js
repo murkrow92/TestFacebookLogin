@@ -104,6 +104,8 @@ export class API {
             }
         });
         let url = `${this.API_ENDPOINT}/user/update`;
+        console.log(url);
+        console.log(profile);
         return postRequest(url, body);
     }
 

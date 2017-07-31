@@ -16,6 +16,7 @@ const api = new API();
 export const saveProfileAsync = (profile) => (dispatch, getState) =>
     (api.saveProfile(profile).then(
         response => {
+            console.log(response);
             doSaveProfile(response, dispatch);
         },
         error => {
