@@ -94,7 +94,7 @@ export class API {
 
     saveProfile(profile) {
         const body = new FormData();
-        const keys = ["id", "email", "day", "month", "hour", "minute", "phone"];
+        const keys = ["id", "email", "day", "month", "hour", "minute", "phone", "year"];
         lodash.forEach(keys, function (value, key) {
             if (value === "id") {
                 value = "user_id";
