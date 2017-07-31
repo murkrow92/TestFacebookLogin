@@ -3,7 +3,12 @@
  */
 
 
-import {ACTION_FETCH_PROFILE_SUCCESS, ACTION_FORM_DATA_CHANGE, ACTION_LOAD_SAVED_PROFILE, ACTION_SAVE_SUCCESS} from "./ProfileActions";
+import {
+    ACTION_FETCH_PROFILE_SUCCESS,
+    ACTION_FORM_DATA_CHANGE,
+    ACTION_LOAD_SAVED_PROFILE,
+    ACTION_SAVE_SUCCESS
+} from "./ProfileActions";
 import {combineReducers} from "redux";
 import {AsyncStorage} from "react-native";
 
