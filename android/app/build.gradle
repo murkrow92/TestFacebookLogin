@@ -87,8 +87,6 @@ android {
     buildToolsVersion "25.0.2"
 
     defaultConfig {
-        manifestPlaceholders = [onesignal_app_id: "113a798b-2456-4829-ac79-c7eb2affc6e8re",
-                                    onesignal_google_project_number: "REMOTE"]
         applicationId "com.testfacebooklogin"
         minSdkVersion 16
         targetSdkVersion 22
@@ -97,6 +95,8 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
+        manifestPlaceholders = [onesignal_app_id: "113a798b-2456-4829-ac79-c7eb2affc6e8",
+                                            onesignal_google_project_number: "526153867960"]
     }
     splits {
         abi {

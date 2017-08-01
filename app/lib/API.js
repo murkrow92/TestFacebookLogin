@@ -103,9 +103,7 @@ export class API {
                 body.append(value, profile[value]);
             }
         });
-        let url = `${this.API_ENDPOINT}/user/update`;
-        console.log(url);
-        console.log(profile);
+        const url = `${this.API_ENDPOINT}/user/update`;
         return postRequest(url, body);
     }
 
@@ -126,3 +124,4 @@ export class API {
     }
 
 }
+
