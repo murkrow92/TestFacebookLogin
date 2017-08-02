@@ -26,8 +26,6 @@ class ProfilePage extends Component {
         const {navigate} = this.props.navigation;
         const {profile, login} = this.props;
         const userProfile = {...login.data, ...profile.data};
-        console.log(userProfile);
-
         return (
             <PageWrapper>
                 <TopNavigationBar

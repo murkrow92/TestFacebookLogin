@@ -3,13 +3,15 @@
  */
 
 import {API} from "../../lib/API";
-export const FETCH_CONVERSATION = "fetch_conversation";
+
+export const ACTION_FETCH_CONVERSATION_SUCCESS = "fetch_conversation_success";
+export const ACTION_NEW_CONVERSATION_SUCCESS = "add_conversation_success";
 import {AsyncStorage} from "react-native";
 
 const api = new API();
 
-const fetchConversation = (conversation) => ({
-    type: FETCH_CONVERSATION,
+const fetchConversationSuccess = (conversation) => ({
+    type: ACTION_FETCH_CONVERSATION_SUCCESS,
     conversation
 });
 
@@ -17,7 +19,7 @@ export const fetchConversationAsync = (conversationId) => (dispatch, getState) =
     (api.fetchConversation(conversationId).then(
         response => {
             AsyncStorage.setItem('conversation' + conversationId, JSON.stringify(response));
-            dispatch(fetchConversation(response));
+            dispatch(fetchConversationSuccess(response));
         },
         error => {
             AsyncStorage.getItem('conversation' + conversationId).then(
@@ -25,7 +27,7 @@ export const fetchConversationAsync = (conversationId) => (dispatch, getState) =
                     if (value === null) {
                         return Promise.resolve();
                     }
-                    dispatch(fetchConversation(JSON.parse(value)));
+                    dispatch(fetchConversationSuccess(JSON.parse(value)));
 
                 },
                 error => {
@@ -34,3 +36,18 @@ export const fetchConversationAsync = (conversationId) => (dispatch, getState) =
             );
 
         }));
+
+const addConversationSuccess = (conversation) => ({
+    type: ACTION_NEW_CONVERSATION_SUCCESS,
+    conversation
+});
+
+export const addConversationAsync = (userId, message) => (dispatch, getState) =>
+    (api.addConversation(userId, message).then(
+        response => {
+            dispatch(addConversationSuccess(response));
+        },
+        error => {
+            console.log(error);
+        }
+    ));

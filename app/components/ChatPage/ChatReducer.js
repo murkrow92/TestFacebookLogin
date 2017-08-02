@@ -4,15 +4,21 @@
 
 
 import {combineReducers} from "redux";
-import {FETCH_CONVERSATION} from "./ChatActions";
+import {ACTION_FETCH_CONVERSATION_SUCCESS, ACTION_NEW_CONVERSATION_SUCCESS} from "./ChatActions";
 
 const chatReducer = (state = {}, action) => {
     switch (action.type) {
-        case FETCH_CONVERSATION:
+        case ACTION_FETCH_CONVERSATION_SUCCESS:
             return {
                 ...state,
-                ...action.conversation.data.messages
+                ...action.conversation.data
             };
+        case ACTION_NEW_CONVERSATION_SUCCESS:
+            return {
+                ...state,
+                ...action.conversation.data
+            };
+
         default:
             return state;
     }

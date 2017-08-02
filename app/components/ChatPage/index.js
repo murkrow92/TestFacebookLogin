@@ -19,19 +19,17 @@ import LineDivider from "../Commons/LineDivider";
 import ChatBox from "../Commons/ChatBox/index";
 import Pusher from 'pusher-js/react-native';
 
-
-let lodash = require('lodash');
-
+const md5 = require('md5');
+const lodash = require('lodash');
 const MIN_HEIGHT = 56;
-
-Pusher.logToConsole = true;
-
-const pusher = new Pusher('4f086a0de734aa6e0a2e', {
+const APP_KEY = '4f086a0de734aa6e0a2e';
+const pusher = new Pusher(APP_KEY, {
     cluster: 'ap1',
-    encrypted: true
+    encrypted: true,
+    authEndpoint: "http://api.vnastro.com/1.0/notify/auth"
 });
 
-let channel;
+Pusher.logToConsole = true;
 
 class ChatPage extends Component {
 
@@ -44,6 +42,8 @@ class ChatPage extends Component {
 
     render() {
         const {navigate} = this.props.navigation;
+        const {chat} = this.props;
+        console.log(chat);
         return (
             <PageWrapper>
                 <TopNavigationBar
@@ -92,20 +92,28 @@ class ChatPage extends Component {
 
     sendMessage(message) {
         const {params} = this.props.navigation.state;
-        const {profile, chat} = this.props;
         if (!lodash.isEmpty(params)) {
-
+            this.triggerPushEvent(message);
         } else {
-            // channel.trigger('client-notify', {
-            //     channel_id: profile.id,
-            //     type: "chat",
-            //     from: profile.id,
-            //     to: chat.conservationId,
-            //     messages: {
-            //         text: message
-            //     },
-            // });
+
         }
+    }
+
+    triggerPushEvent(message) {
+        const {profile, chat} = this.props;
+        const {actions} = this.props;
+        const encrypted = md5(profile.id);
+        const channelName = "private-" + encrypted;
+        const channel = pusher.channel(channelName);
+        channel.trigger('', {
+            channel_id: channelName,
+            type: "chat",
+            from: profile.id,
+            to:chat.conversationId,
+            messages: {
+                text: message,
+            }
+        });
     }
 
     onHeightChanged(deltaHeight) {
@@ -115,16 +123,16 @@ class ChatPage extends Component {
     }
 
     componentDidMount() {
-
         const {actions, profile} = this.props;
         const {params} = this.props.navigation.state;
+        const encrypted = md5(profile.id);
+        const channel = pusher.subscribe("private-" + encrypted);
+        channel.bind('chat', function (data) {
+            alert(data.message);
+        });
         if (!lodash.isEmpty(params)) {
             actions.fetchConversationAsync(params.conversationId);
         }
-        // channel = pusher.subscribe("general");
-        // channel.bind('notify', function (data) {
-        //     alert(data.message);
-        // });
     }
 }
 

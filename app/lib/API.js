@@ -123,5 +123,13 @@ export class API {
         return getRequest(url);
     }
 
+    addConversation(profile, message){
+        const url = `${this.API_ENDPOINT}/conversation/add`;
+        const body = new FormData();
+        body.append("user_id", profile.id);
+        body.append("message", message);
+        return postRequest(url, body);
+    }
+
 }
 

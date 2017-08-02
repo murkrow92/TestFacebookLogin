@@ -25,7 +25,6 @@ export default class MessageItem extends Component {
             <View style={containerStyle(isSystem)}>
                 <Image style={styles.avatar} source={profileStyle(isSystem, profile)}/>
                 <View style={styles.textContainer}>
-                    {/*<Text style={styles.datetimeText}> {dt} by {user} </Text>*/}
                     <View style={contentContainerStyle(isSystem, profile)}>
                         <Text style={contentStyle(isSystem)}>{content}</Text>
                     </View>
