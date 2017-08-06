@@ -2,9 +2,9 @@
  * Created by Murkrow on 5/16/2017.
  */
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import configureStore from "./configureStore";
-import {Provider} from "react-redux";
+import { Provider } from "react-redux";
 import AppRoute from "./Route";
 import OneSignal from 'react-native-onesignal';
 
@@ -38,6 +38,7 @@ export default class App extends Component {
         console.log('Data: ', openResult.notification.payload.additionalData);
         console.log('isActive: ', openResult.notification.isAppInFocus);
         console.log('openResult: ', openResult);
+        console.log("Hello World");
     }
 
     onRegistered(notifData) {
@@ -51,7 +52,7 @@ export default class App extends Component {
     render() {
         return (
             <Provider store={store}>
-                <AppRoute/>
+                <AppRoute />
             </Provider>
         );
     }
