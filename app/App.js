@@ -38,7 +38,6 @@ export default class App extends Component {
         console.log('Data: ', openResult.notification.payload.additionalData);
         console.log('isActive: ', openResult.notification.isAppInFocus);
         console.log('openResult: ', openResult);
-        console.log("Hello World");
     }
 
     onRegistered(notifData) {
