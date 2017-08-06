@@ -29,7 +29,7 @@ const pusher = new Pusher(APP_KEY, {
     authEndpoint: "http://api.vnastro.com/1.0/notify/auth"
 });
 
-Pusher.logToConsole = true;
+Pusher.logToConsole = false;
 
 class ChatPage extends Component {
 
@@ -42,8 +42,6 @@ class ChatPage extends Component {
 
     render() {
         const {navigate} = this.props.navigation;
-        const {chat} = this.props;
-        console.log(chat);
         return (
             <PageWrapper>
                 <TopNavigationBar
@@ -101,7 +99,6 @@ class ChatPage extends Component {
 
     triggerPushEvent(message) {
         const {profile, chat} = this.props;
-        const {actions} = this.props;
         const encrypted = md5(profile.id);
         const channelName = "private-" + encrypted;
         const channel = pusher.channel(channelName);

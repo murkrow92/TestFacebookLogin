@@ -4,9 +4,6 @@
 
 import {DrawerNavigator, StackNavigator, TabNavigator} from "react-navigation";
 import AboutPage from "./components/AboutPage/index";
-import OurAstrologersPage from "./components/OurAstrologersPage/index";
-import TutorialPage from "./components/TutorialPage/index";
-import SettingPage from "./components/SettingPage/index";
 import ChatPage from "./components/ChatPage/index";
 import PurchasePage from "./components/PurchasePage/index";
 import LoginPage from "./components/LoginPage/index";
@@ -28,6 +25,7 @@ import MaterialCommunityIcon from "./components/Commons/Icons/MaterialCommunityI
 import IOIcon from "./components/Commons/Icons/IOIcon";
 import colors from "./styles/colors";
 import AddFriendPage from "./components/FriendPage/AddFriendPage/index";
+import ConversationPage from "./components/ConversationPage/index";
 
 export const PayRoute = StackNavigator({
     Payment: {
@@ -56,6 +54,10 @@ export const NotificationRoute = StackNavigator({
     Notification: {
         screen: NotificationPage
     },
+    Conversation: {
+        screen: ConversationPage
+    },
+
     Chat: {
         screen: ChatPage
     }

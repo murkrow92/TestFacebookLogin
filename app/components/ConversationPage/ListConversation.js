@@ -1,12 +1,12 @@
 /**
- * Created by Murkrow on 5/24/2017.
+ * Created by murkrow on 6/13/17.
  */
 
 import {ListView, View} from "react-native";
 import React, {Component, PropTypes} from "react";
-import TutorialItem from "./TutorialItem";
+import ConversationItem from "./ConversationItem";
 
-export default class ListTutorial extends Component {
+export default class ListConversation extends Component {
 
     static propTypes = {
         items: PropTypes.array.isRequired
@@ -21,24 +21,26 @@ export default class ListTutorial extends Component {
     }
 
     render() {
+        const {navigate, items} = this.props;
+        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+        const dataSource = ds.cloneWithRows(items);
         return (
             <View style={styles.container}>
                 <ListView
-                    dataSource={this.state.dataSource}
-                    renderRow={(rowData) => renderRow(rowData)}
+                    dataSource={dataSource}
+                    renderRow={(rowData) => renderRow(rowData, navigate)}
                 />
             </View>
         );
     }
 }
 
-const renderRow = (rowData) => {
-    return (<TutorialItem data={rowData}/>)
+const renderRow = (rowData, navigate) => {
+    return (<ConversationItem
+        navigate={navigate}
+        data={rowData}/>)
 };
 
 const styles = {
-    container: {
-        marginLeft: 24,
-        marginRight: 24
-    }
+    container: {}
 };

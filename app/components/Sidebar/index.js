@@ -36,6 +36,10 @@ class Sidebar extends Component {
                 button="plus-circled"
                 title="Tạo câu hỏi"
             />
+            <DrawerItem
+                onPress={() => navigate('Conversation')}
+                title="Danh sách câu hỏi"
+            />
             <DrawerTitle
                 onPress={() => {
                 }}
@@ -50,10 +54,6 @@ class Sidebar extends Component {
                 title="Của bạn bè"
             />
         </View> );
-    }
-
-    componentDidMount() {
-        const {actions} = this.props;
     }
 
     getPicture() {

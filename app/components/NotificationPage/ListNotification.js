@@ -6,7 +6,7 @@ import {ListView, View} from "react-native";
 import React, {Component, PropTypes} from "react";
 import NotificationItem from "./NotificationItem";
 
-export default class ListFriend extends Component {
+export default class ListNotification extends Component {
 
     static propTypes = {
         items: PropTypes.array.isRequired
@@ -14,18 +14,17 @@ export default class ListFriend extends Component {
 
     constructor(props) {
         super(props);
-        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        this.state = {
-            dataSource: ds.cloneWithRows(this.props.items),
-        };
     }
 
     render() {
-        const navigate = this.props.navigate;
+        const {items, navigate} = this.props;
+        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+        const dataSource = ds.cloneWithRows(items);
+
         return (
             <View style={styles.container}>
                 <ListView
-                    dataSource={this.state.dataSource}
+                    dataSource={dataSource}
                     renderRow={(rowData) => renderRow(rowData, navigate)}
                 />
             </View>

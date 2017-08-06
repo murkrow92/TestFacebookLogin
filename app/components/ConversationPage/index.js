@@ -1,19 +1,15 @@
-/**
- * Created by murkrow on 6/13/17.
- */
-
 import React, {Component} from 'react';
 import PageWrapper from "../Commons/Wrapper";
 import TopNavigationBar from "../Commons/TopNavigationBar/index";
-import ListNotification from "./ListNotification";
+import ListConversation from "./ListConversation";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import * as actions from "./NotificationActions";
+import * as actions from "./ConversationActions";
 import {ScrollView} from "react-native";
 
 let lodash = require('lodash');
 
-class NotificationPage extends Component {
+class ConversationPage extends Component {
     constructor(props) {
         super(props);
     }
@@ -23,7 +19,7 @@ class NotificationPage extends Component {
         return (
             <PageWrapper>
                 <TopNavigationBar
-                    title="Thông báo"
+                    title="Danh sách câu hỏi"
                     onPress={() => navigate('DrawerOpen')}
                     rightButton={rightButton()}/>
                 <ScrollView>
@@ -35,15 +31,16 @@ class NotificationPage extends Component {
 
     componentDidMount() {
         const {actions} = this.props;
-        actions.fetchNotificationsAsync();
+        actions.fetchConversationsAsync();
     }
 
     renderList() {
         const {navigate} = this.props.navigation;
-        const {list} = this.props.notifications;
+        const {list} = this.props.conversations;
+        console.log(list);
         if (!lodash.isEmpty(list)) {
             let items = getItems(list);
-            return <ListNotification
+            return <ListConversation
                 navigate={navigate}
                 items={items}/>
         }
@@ -67,7 +64,7 @@ const rightButton = () => {
 
 
 const mapStateToProps = (state) => ({
-    notifications: state.notifications,
+    conversations: state.conversations,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -75,4 +72,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(NotificationPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ConversationPage);

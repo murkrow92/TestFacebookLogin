@@ -22,10 +22,16 @@ const getRequest = (url, headers) => fetch(url, {headers}).then(checkStatus);
 const putRequest = (url, body, headers) =>
     fetch(url, {method: "PUT", body, headers}).then(checkStatus);
 
-
 export class API {
 
-    static ACCESS_TOKEN;
+    static ACCESS_TOKEN = "";
+
+    static header() {
+        return new Headers({
+            "Authorization": API.ACCESS_TOKEN
+        });
+    }
+
 
     constructor() {
         this.API_ENDPOINT = "http://api.vnastro.com/1.0";
@@ -40,11 +46,16 @@ export class API {
             minute: datetime.getMinutes()
         });
 
-        return getRequest(`${this.API_ENDPOINT}/astro?${query}`);
+        return getRequest(`${this.API_ENDPOINT}/astro?${query}`, API.header());
     }
 
     fetchNotifications() {
-        return getRequest(`${this.API_ENDPOINT}/notify`);
+        return getRequest(`${this.API_ENDPOINT}/notify`, API.header());
+    }
+
+    fetchConversations() {
+        let url = `${this.API_ENDPOINT}/conversation`;
+        return getRequest(url, API.header());
     }
 
     fetchConversation(conversationId) {
@@ -55,7 +66,7 @@ export class API {
             id: conversationId
         });
         let url = `${this.API_ENDPOINT}/conversation?${query}`;
-        return getRequest(url);
+        return getRequest(url, API.header());
     }
 
     fetchDetailCombo(combo) {
@@ -65,11 +76,11 @@ export class API {
         });
 
         let url = `${this.API_ENDPOINT}/astro/mean`;
-        return postRequest(url, body);
+        return postRequest(url, body, API.header());
     }
 
     fetchFriend() {
-        return getRequest(`${this.API_ENDPOINT}/contact`);
+        return getRequest(`${this.API_ENDPOINT}/contact`, API.header());
     }
 
     addFriend(profile, friend) {
@@ -79,7 +90,7 @@ export class API {
         });
         body.append("user_id", profile.id);
         let url = `${this.API_ENDPOINT}/contact/add`;
-        return postRequest(url, body);
+        return postRequest(url, body, API.header());
     }
 
     fetchTransaction(userId) {
@@ -89,7 +100,7 @@ export class API {
             status: 1
         });
         let url = `${this.API_ENDPOINT}/transaction?${query}`;
-        return getRequest(url);
+        return getRequest(url, API.header());
     }
 
     saveProfile(profile) {
@@ -104,7 +115,7 @@ export class API {
             }
         });
         const url = `${this.API_ENDPOINT}/user/update`;
-        return postRequest(url, body);
+        return postRequest(url, body, API.header());
     }
 
     login(email, facebookId) {
@@ -116,19 +127,16 @@ export class API {
     }
 
     fetchUserProfile() {
-        let query = queryString.stringify({
-            access_token: API.ACCESS_TOKEN
-        });
-        const url = `${this.API_ENDPOINT}/user?${query}`;
-        return getRequest(url);
+        const url = `${this.API_ENDPOINT}/user`;
+        return getRequest(url, API.header());
     }
 
-    addConversation(profile, message){
+    addConversation(profile, message) {
         const url = `${this.API_ENDPOINT}/conversation/add`;
         const body = new FormData();
         body.append("user_id", profile.id);
         body.append("message", message);
-        return postRequest(url, body);
+        return postRequest(url, body, API.header());
     }
 
 }
