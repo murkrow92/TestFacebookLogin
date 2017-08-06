@@ -15,15 +15,13 @@ export default class MessageItem extends Component {
     };
 
     render() {
-        const {data, profile} = this.props;
-        profile.userId = "2";
-        const user = data.user_id;
-        console.log(user);
-        const content = data.content;
-        const isSystem = (user === profile.userId);
+        const {data, profile, facebook} = this.props;
+        const {user_id, content} = data;
+        const isSystem = (user_id === profile.id);
+        console.log(facebook);
         return (
             <View style={containerStyle(isSystem)}>
-                <Image style={styles.avatar} source={profileStyle(isSystem, profile)}/>
+                <Image style={styles.avatar} source={profileStyle(isSystem, facebook)}/>
                 <View style={styles.textContainer}>
                     <View style={contentContainerStyle(isSystem, profile)}>
                         <Text style={contentStyle(isSystem)}>{content}</Text>
@@ -48,12 +46,12 @@ const containerStyle = (isSystem) => {
 
 };
 
-const profileStyle = (isSystem, profile) => {
+const profileStyle = (isSystem, facebook) => {
     if (isSystem) {
         return SystemProfile;
     } else {
         return {
-            uri: profile.picture.data.url
+            uri: facebook.picture.data.url
         }
     }
 };

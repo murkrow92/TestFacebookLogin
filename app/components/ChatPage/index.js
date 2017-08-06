@@ -68,22 +68,22 @@ class ChatPage extends Component {
 
 
     renderQuestionBox() {
-        const {chat} = this.props;
-        if (!lodash.isEmpty(chat.messages)) {
+        const {messages} = this.props.chat;
+        if (!lodash.isEmpty(messages.messages)) {
             return <QuestionBox
-                content={chat.messages[1].content}
+                content={messages.messages[messages.message_id].content}
             />
         }
-
     }
 
     renderList() {
-        const {chat, profile} = this.props;
-        const messages = chat.messages;
+        const {chat, profile, login} = this.props;
+        const messages = chat.messages.messages;
         if (!lodash.isEmpty(messages)) {
             let items = getItems(messages);
             return <ListMessage
-                profile={profile.profile}
+                facebook={login.data}
+                profile={profile.data}
                 items={items}/>
         }
     }
@@ -106,7 +106,7 @@ class ChatPage extends Component {
             channel_id: channelName,
             type: "chat",
             from: profile.id,
-            to:chat.conversationId,
+            to: chat.conversationId,
             messages: {
                 text: message,
             }
@@ -120,13 +120,22 @@ class ChatPage extends Component {
     }
 
     componentDidMount() {
-        const {actions, profile} = this.props;
-        const {params} = this.props.navigation.state;
+        this.registerChannel();
+        this.fetchConversation();
+    }
+
+    registerChannel() {
+        const {profile} = this.props;
         const encrypted = md5(profile.id);
         const channel = pusher.subscribe("private-" + encrypted);
         channel.bind('chat', function (data) {
             alert(data.message);
         });
+    }
+
+    fetchConversation() {
+        const {actions} = this.props;
+        const {params} = this.props.navigation.state;
         if (!lodash.isEmpty(params)) {
             actions.fetchConversationAsync(params.conversationId);
         }
@@ -174,7 +183,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => ({
     chat: state.chat,
-    profile: state.profile
+    profile: state.profile,
+    login: state.login
 });
 
 const mapDispatchToProps = (dispatch) => ({

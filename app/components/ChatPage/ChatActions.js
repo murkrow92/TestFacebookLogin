@@ -18,6 +18,7 @@ const fetchConversationSuccess = (conversation) => ({
 export const fetchConversationAsync = (conversationId) => (dispatch, getState) =>
     (api.fetchConversation(conversationId).then(
         response => {
+            console.log(response);
             AsyncStorage.setItem('conversation' + conversationId, JSON.stringify(response));
             dispatch(fetchConversationSuccess(response));
         },

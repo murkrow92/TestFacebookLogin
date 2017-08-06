@@ -14,7 +14,6 @@ const fetchConversationSuccess = (conversations) => ({
 export const fetchConversationsAsync = () => (dispatch, getState) =>
     (api.fetchConversations().then(
         response => {
-            console.log(response);
             AsyncStorage.setItem('conversations', JSON.stringify(response));
             dispatch(fetchConversationSuccess(response));
         },

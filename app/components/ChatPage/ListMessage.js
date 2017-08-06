@@ -15,27 +15,26 @@ export default class ListMessage extends Component {
 
     constructor(props) {
         super(props);
-        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        this.state = {
-            dataSource: ds.cloneWithRows(this.props.items),
-        };
     }
 
     render() {
-
+        const {items, profile, facebook} = this.props;
+        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+        const dataSource = ds.cloneWithRows(items);
         return (
             <View style={styles.container}>
                 <ListView
-                    dataSource={this.state.dataSource}
-                    renderRow={(rowData) => renderRow(rowData, this.props.profile)}
+                    dataSource={dataSource}
+                    renderRow={(rowData) => renderRow(rowData, profile, facebook)}
                 />
             </View>
         );
     }
 }
 
-const renderRow = (rowData, profile) => {
+const renderRow = (rowData, profile, facebook) => {
     return <MessageItem
+        facebook={facebook}
         profile={profile}
         data={rowData}/>;
 };

@@ -37,7 +37,7 @@ export default class ConversationItem extends Component {
     }
 
     goDetail() {
-        const {id} = this.props;
+        const {id} = this.props.data;
         const {navigate} = this.props;
         navigate('Chat', {conversationId: id});
     }
@@ -46,8 +46,6 @@ export default class ConversationItem extends Component {
         const {lastMessage} = this.props.data;
         const {facebook} = this.props;
         let picture = BlankProfile;
-        console.log(lastMessage);
-        console.log(this.props.data);
         if (lastMessage.user_id === this.props.data.user_id) {
             if (typeof(facebook.picture) === "object") {
                 picture = {
