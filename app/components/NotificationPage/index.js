@@ -9,7 +9,7 @@ import ListNotification from "./ListNotification";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import * as actions from "./NotificationActions";
-import {ScrollView} from "react-native";
+import {ScrollView, Text, View, StyleSheet} from "react-native";
 
 let lodash = require('lodash');
 
@@ -26,9 +26,7 @@ class NotificationPage extends Component {
                     title="Thông báo"
                     onPress={() => navigate('DrawerOpen')}
                     rightButton={rightButton()}/>
-                <ScrollView>
-                    {this.renderList()}
-                </ScrollView>
+                {this.renderList()}
             </PageWrapper>
         );
     }
@@ -42,10 +40,15 @@ class NotificationPage extends Component {
         const {navigate} = this.props.navigation;
         const {list} = this.props.notifications;
         if (!lodash.isEmpty(list)) {
+            console.log("Empty");
             let items = getItems(list);
             return <ListNotification
                 navigate={navigate}
                 items={items}/>
+        } else {
+            return (<Text style={styles.empty}>
+                Vẫn chưa có thông báo nào
+            </Text>);
         }
     }
 }
@@ -64,6 +67,14 @@ const rightButton = () => {
         title: ''
     };
 };
+
+const styles = StyleSheet.create({
+    empty: {
+        alignItems: 'center',
+        marginTop: 30,
+        textAlign: 'center'
+    }
+});
 
 
 const mapStateToProps = (state) => ({

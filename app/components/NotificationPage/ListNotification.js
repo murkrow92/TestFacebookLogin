@@ -2,7 +2,7 @@
  * Created by murkrow on 6/13/17.
  */
 
-import {ListView, View} from "react-native";
+import {ListView, ScrollView, View} from "react-native";
 import React, {Component, PropTypes} from "react";
 import NotificationItem from "./NotificationItem";
 
@@ -22,12 +22,12 @@ export default class ListNotification extends Component {
         const dataSource = ds.cloneWithRows(items);
 
         return (
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
                 <ListView
                     dataSource={dataSource}
                     renderRow={(rowData) => renderRow(rowData, navigate)}
                 />
-            </View>
+            </ScrollView>
         );
     }
 }

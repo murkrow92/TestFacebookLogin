@@ -10,6 +10,7 @@ const checkStatus = response => {
     if (response.status === 200) {
         return json;
     } else {
+        console.log(response);
         return json.then(Promise.reject.bind(Promise));
     }
 };
