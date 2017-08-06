@@ -5,7 +5,8 @@ const conversationReducer = (state = {}, action) => {
     switch (action.type) {
         case FETCH_CONVERSATION_SUCCESS:
             return {
-                ...state
+                ...state,
+                ...action.conversations.data
             };
         default:
             return state;
