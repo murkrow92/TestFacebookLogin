@@ -22,9 +22,7 @@ class ConversationPage extends Component {
                     title="Danh sách câu hỏi"
                     onPress={() => navigate('DrawerOpen')}
                     rightButton={rightButton()}/>
-                <ScrollView>
-                    {this.renderList()}
-                </ScrollView>
+                {this.renderList()}
             </PageWrapper>
         );
     }
@@ -37,10 +35,11 @@ class ConversationPage extends Component {
     renderList() {
         const {navigate} = this.props.navigation;
         const {list} = this.props.conversations;
-        console.log(list);
+        const {data} = this.props.login;
         if (!lodash.isEmpty(list)) {
             let items = getItems(list);
             return <ListConversation
+                facebook={data}
                 navigate={navigate}
                 items={items}/>
         }
@@ -65,6 +64,7 @@ const rightButton = () => {
 
 const mapStateToProps = (state) => ({
     conversations: state.conversations,
+    login: state.login
 });
 
 const mapDispatchToProps = (dispatch) => ({
