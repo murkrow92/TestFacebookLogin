@@ -10,7 +10,7 @@ import ListLog from "./ListLog";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as actions from "./BankActions";
-import {ScrollView} from "react-native";
+import {ScrollView, StyleSheet, Text} from "react-native";
 
 const lodash = require('lodash');
 
@@ -27,22 +27,24 @@ class BankPage extends Component {
                 <AccountBox
                     bank={bank}
                 />
-                <ScrollView>
-                    {this.renderList()}
-                </ScrollView>
-
+                {this.renderList()}
             </PageWrapper>
         );
     }
 
     renderList() {
         const {bank} = this.props;
-        if (!lodash.isEmpty(bank.transaction)) {
+        console.log(bank);
+        if (!lodash.isEmpty(bank.transaction.data)) {
             let items = [];
             lodash.forEach(bank.transaction.data, function (value, key) {
                 items.push(value);
             });
             return <ListLog items={items}/>
+        } else {
+            return (<Text style={styles.empty}>
+                Vẫn chưa có giao dịch
+            </Text>);
         }
     }
 
@@ -63,6 +65,14 @@ const rightButton = () => {
 const mapStateToProps = (state) => ({
     bank: state.bank,
     profile: state.profile
+});
+
+const styles = StyleSheet.create({
+    empty: {
+        alignItems: 'center',
+        marginTop: 30,
+        textAlign: 'center'
+    }
 });
 
 const mapDispatchToProps = (dispatch) => ({
