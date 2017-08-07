@@ -3,8 +3,8 @@
  */
 
 
-import {Image, Text, View} from "react-native";
-import React, {Component, PropTypes} from "react";
+import { Image, Text, View } from "react-native";
+import React, { Component, PropTypes } from "react";
 import colors from "../../styles/colors";
 import SystemProfile from "../../styles/images/ic_launcher.png";
 
@@ -15,13 +15,12 @@ export default class MessageItem extends Component {
     };
 
     render() {
-        const {data, profile, facebook} = this.props;
-        const {user_id, content} = data;
-        const isSystem = (user_id === profile.id);
-        console.log(facebook);
+        const { data, profile, facebook } = this.props;
+        const { user_id, content } = data;
+        const isSystem = (user_id !== profile.id);
         return (
             <View style={containerStyle(isSystem)}>
-                <Image style={styles.avatar} source={profileStyle(isSystem, facebook)}/>
+                <Image style={styles.avatar} source={profileStyle(isSystem, facebook)} />
                 <View style={styles.textContainer}>
                     <View style={contentContainerStyle(isSystem, profile)}>
                         <Text style={contentStyle(isSystem)}>{content}</Text>
