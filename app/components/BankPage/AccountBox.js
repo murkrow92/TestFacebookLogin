@@ -40,7 +40,6 @@ export default class AccountBox extends Component {
     }
 }
 
-
 const styles = StyleSheet.create({
     accountBox: {
         backgroundColor: colors.LIST_TOP_BORDER,
