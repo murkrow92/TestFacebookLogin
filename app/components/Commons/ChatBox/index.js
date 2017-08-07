@@ -13,9 +13,6 @@ const CHATBOX_MIN_HEIGHT = 40;
 export default class ChatBox extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            message: '',
-        };
     }
 
     render() {
