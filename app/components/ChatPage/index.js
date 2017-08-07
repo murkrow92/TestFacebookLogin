@@ -2,19 +2,19 @@
  * Created by Murkrow on 5/25/2017.
  */
 
-import React, {Component} from "react";
+import React, { Component } from "react";
 import PageWrapper from "../Commons/Wrapper";
 import ListMessage from "./ListMessage";
 import TopNavigationBar from "../Commons/TopNavigationBar/index";
 import ButtonIcon from "../Commons/TopNavigationBar/ButtonIcon";
 import QuestionBox from "../DetailPage/QuestionBox";
-import {View, StyleSheet, ScrollView} from "react-native";
-import {APP_MARGIN} from "../../styles/dimens";
+import { View, StyleSheet, ScrollView } from "react-native";
+import { APP_MARGIN } from "../../styles/dimens";
 import colors from "../../styles/colors";
 import fonts from "../../styles/fonts";
-import {bindActionCreators} from "redux";
+import { bindActionCreators } from "redux";
 import * as actions from "./ChatActions";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import LineDivider from "../Commons/LineDivider";
 import ChatBox from "../Commons/ChatBox/index";
 import Pusher from 'pusher-js/react-native';
@@ -23,10 +23,11 @@ const md5 = require('md5');
 const lodash = require('lodash');
 const MIN_HEIGHT = 56;
 const APP_KEY = '4f086a0de734aa6e0a2e';
+const APP_AUTH_ENDPOINT = "http://api.vnastro.com/1.0/notify/auth";
 const pusher = new Pusher(APP_KEY, {
     cluster: 'ap1',
     encrypted: true,
-    authEndpoint: "http://api.vnastro.com/1.0/notify/auth"
+    authEndpoint: APP_AUTH_ENDPOINT
 });
 
 Pusher.logToConsole = false;
@@ -41,34 +42,34 @@ class ChatPage extends Component {
     }
 
     render() {
-        const {navigate} = this.props.navigation;
+        const { navigate } = this.props.navigation;
         return (
             <PageWrapper>
                 <TopNavigationBar
                     title="Tin nhắn"
                     onPress={() => navigate('DrawerOpen')}
-                    rightButton={rightButton()}/>
+                    rightButton={rightButton()} />
                 <View style={styles.questionBoxContainer}>
                     {this.renderQuestionBox()}
                 </View>
                 <ScrollView>
                     {this.renderList()}
                 </ScrollView>
-                <LineDivider/>
+                <LineDivider />
                 <ChatBox
                     height={this.state.chatboxHeight}
                     onSubmit={(message) => {
                         this.sendMessage(message);
                     }}
-                    onHeightChanged={(deltaHeight) => this.onHeightChanged(deltaHeight)}
+                    onHeightChanged={(deltaHeight) =>
+                        this.onHeightChanged(deltaHeight)}
                 />
             </PageWrapper>
         );
     }
 
-
     renderQuestionBox() {
-        const {messages} = this.props.chat;
+        const { messages } = this.props.chat;
         if (!lodash.isEmpty(messages.messages)) {
             return <QuestionBox
                 content={messages.messages[messages.message_id].content}
@@ -77,28 +78,33 @@ class ChatPage extends Component {
     }
 
     renderList() {
-        const {chat, profile, login} = this.props;
-        const messages = chat.messages.messages;
+        const { chat, profile, login } = this.props;
+        const messages = chat.messages.message;
         if (!lodash.isEmpty(messages)) {
             let items = getItems(messages);
             return <ListMessage
                 facebook={login.data}
                 profile={profile.data}
-                items={items}/>
+                items={items} />
         }
     }
 
     sendMessage(message) {
-        const {params} = this.props.navigation.state;
-        if (!lodash.isEmpty(params)) {
-            this.triggerPushEvent(message);
+        const { params } = this.props.navigation.state;
+        if (lodash.isEmpty(params)) {
+            this.createConversation(message);
         } else {
-
+            this.triggerPushEvent(message);
         }
     }
 
+    createConversation(message) {
+        const { actions } = this.props;
+        actions.addConversationAsync(message);
+    }
+
     triggerPushEvent(message) {
-        const {profile, chat} = this.props;
+        const { profile, chat } = this.props;
         const encrypted = md5(profile.id);
         const channelName = "private-" + encrypted;
         const channel = pusher.channel(channelName);
@@ -106,7 +112,7 @@ class ChatPage extends Component {
             channel_id: channelName,
             type: "chat",
             from: profile.id,
-            to: chat.conversationId,
+            to: chat.messages.conversationId,
             messages: {
                 text: message,
             }
@@ -125,17 +131,24 @@ class ChatPage extends Component {
     }
 
     registerChannel() {
-        const {profile} = this.props;
+        const { profile } = this.props;
         const encrypted = md5(profile.id);
         const channel = pusher.subscribe("private-" + encrypted);
         channel.bind('chat', function (data) {
-            alert(data.message);
+            this.fetchConversation();
         });
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        const { chat, actions } = this.props;
+        if (chat.messages.needFetch) {
+            this.fetchConversation();
+        }
+    }
+
     fetchConversation() {
-        const {actions} = this.props;
-        const {params} = this.props.navigation.state;
+        const { actions } = this.props;
+        const { params } = this.props.navigation.state;
         if (!lodash.isEmpty(params)) {
             actions.fetchConversationAsync(params.conversationId);
         }
@@ -155,7 +168,7 @@ const rightButton = () => {
     return (<ButtonIcon
         icon="chart-pie-1"
         onPress={() => {
-        }}/>);
+        }} />);
 };
 
 const styles = StyleSheet.create({

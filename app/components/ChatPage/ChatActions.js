@@ -2,11 +2,11 @@
  * Created by murkrow on 7/3/17.
  */
 
-import {API} from "../../lib/API";
+import { API } from "../../lib/API";
 
 export const ACTION_FETCH_CONVERSATION_SUCCESS = "fetch_conversation_success";
 export const ACTION_NEW_CONVERSATION_SUCCESS = "add_conversation_success";
-import {AsyncStorage} from "react-native";
+import { AsyncStorage } from "react-native";
 
 const api = new API();
 
@@ -18,8 +18,8 @@ const fetchConversationSuccess = (conversation) => ({
 export const fetchConversationAsync = (conversationId) => (dispatch, getState) =>
     (api.fetchConversation(conversationId).then(
         response => {
-            console.log(response);
-            AsyncStorage.setItem('conversation' + conversationId, JSON.stringify(response));
+            const responseString = JSON.stringify(response);
+            AsyncStorage.setItem('conversation' + conversationId, responseString);
             dispatch(fetchConversationSuccess(response));
         },
         error => {
@@ -28,7 +28,8 @@ export const fetchConversationAsync = (conversationId) => (dispatch, getState) =
                     if (value === null) {
                         return Promise.resolve();
                     }
-                    dispatch(fetchConversationSuccess(JSON.parse(value)));
+                    const conversation = JSON.parse(value);
+                    dispatch(fetchConversationSuccess(conversation));
 
                 },
                 error => {
@@ -43,8 +44,8 @@ const addConversationSuccess = (conversation) => ({
     conversation
 });
 
-export const addConversationAsync = (userId, message) => (dispatch, getState) =>
-    (api.addConversation(userId, message).then(
+export const addConversationAsync = (message) => (dispatch, getState) =>
+    (api.addConversation(message).then(
         response => {
             dispatch(addConversationSuccess(response));
         },
