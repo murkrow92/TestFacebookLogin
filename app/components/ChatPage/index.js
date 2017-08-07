@@ -94,13 +94,12 @@ class ChatPage extends Component {
     }
 
     sendMessage(message) {
-        console.log("Send: " + message);
         Keyboard.dismiss();
         const { params } = this.props.navigation.state;
         if (lodash.isEmpty(params)) {
             this.createConversation(message);
         } else {
-            this.triggerPushEvent(message);
+            this.addMessage(message);
         }
     }
 
@@ -109,21 +108,9 @@ class ChatPage extends Component {
         actions.addConversationAsync(message);
     }
 
-    triggerPushEvent(message) {
-        const { profile, chat } = this.props;
-        const encrypted = md5(profile.data.id);
-        const channelName = "private-" + encrypted;
-        const channel = pusher.channel(channelName);
-        console.log(channel);
-        channel.trigger('client-chat', {
-            channel_id: channelName,
-            type: "chat",
-            from: profile.data.id,
-            to: chat.messages.conversationId,
-            messages: {
-                text: message,
-            }
-        });
+    addMessage(message) {
+        const { actions } = this.props;
+        actions.addMessageAsync(message);
     }
 
     onChangeText(text) {
@@ -147,9 +134,8 @@ class ChatPage extends Component {
         if (!id) {
             return;
         }
-        const encrypted = md5(id);
+        const encrypted = md5("vnAstro" + id);
         const channel = pusher.subscribe("private-" + encrypted);
-        console.log(channel);
         channel.bind('client-chat', function (data) {
             console.log(data);
             this.fetchConversation();

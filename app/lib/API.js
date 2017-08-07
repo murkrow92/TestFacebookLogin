@@ -139,5 +139,13 @@ export class API {
         return postRequest(url, body, API.header());
     }
 
+    addMessage(conversationId, message) {
+        const url = `${this.API_ENDPOINT}/conversation/addMessage`;
+        const body = new FormData();
+        body.append('conversation_id', conversationId);
+        body.append('message', message);
+        return postRequest(url, body, API.header());
+    }
+
 }
 

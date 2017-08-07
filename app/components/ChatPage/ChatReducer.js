@@ -7,7 +7,8 @@ import { combineReducers } from "redux";
 import {
     ACTION_FETCH_CONVERSATION_SUCCESS,
     ACTION_NEW_CONVERSATION_SUCCESS,
-    ACTION_ON_TEXT_CHANGE
+    ACTION_ON_TEXT_CHANGE,
+    ACTION_ADD_MESSAGE_SUCCESS
 } from "./ChatActions";
 
 const chatReducer = (state = { text: '' }, action) => {
@@ -29,6 +30,13 @@ const chatReducer = (state = { text: '' }, action) => {
             return {
                 ...state,
                 text: action.text
+            }
+        case ACTION_ADD_MESSAGE_SUCCESS:
+            return {
+                ...state,
+                ...action.conversation.data,
+                needFetch: true,
+                text: ''
             }
 
         default:
