@@ -16,12 +16,12 @@ const checkStatus = response => {
 };
 
 const postRequest = (url, body, headers) =>
-    fetch(url, {method: "POST", body, headers}).then(checkStatus).catch(error => console.log(error));
+    fetch(url, { method: "POST", body, headers }).then(checkStatus).catch(error => console.log(error));
 
-const getRequest = (url, headers) => fetch(url, {headers}).then(checkStatus);
+const getRequest = (url, headers) => fetch(url, { headers }).then(checkStatus);
 
 const putRequest = (url, body, headers) =>
-    fetch(url, {method: "PUT", body, headers}).then(checkStatus);
+    fetch(url, { method: "PUT", body, headers }).then(checkStatus);
 
 export class API {
 
@@ -132,10 +132,9 @@ export class API {
         return getRequest(url, API.header());
     }
 
-    addConversation(profile, message) {
+    addConversation(message) {
         const url = `${this.API_ENDPOINT}/conversation/add`;
         const body = new FormData();
-        body.append("user_id", profile.id);
         body.append("message", message);
         return postRequest(url, body, API.header());
     }
