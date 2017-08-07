@@ -3,9 +3,9 @@
  */
 
 
-import {API} from "../../lib/API";
+import { API } from "../../lib/API";
 export const FETCH_TRANSACTION = "fetch_transaction";
-import {AsyncStorage} from "react-native";
+import { AsyncStorage } from "react-native";
 
 const api = new API();
 
@@ -17,7 +17,8 @@ const fetchTransaction = (transaction) => ({
 export const fetchTransactionAsync = (userId) => (dispatch, getState) =>
     (api.fetchTransaction(userId).then(
         response => {
-            AsyncStorage.setItem('transaction', JSON.stringify(response));
+            const transactionString = JSON.stringify(response);
+            AsyncStorage.setItem('transaction', transactionString);
             dispatch(fetchTransaction(response));
         },
         error => {

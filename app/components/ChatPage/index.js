@@ -79,7 +79,7 @@ class ChatPage extends Component {
 
     renderList() {
         const { chat, profile, login } = this.props;
-        const messages = chat.messages.message;
+        const { messages } = chat.messages;
         if (!lodash.isEmpty(messages)) {
             let items = getItems(messages);
             return <ListMessage
