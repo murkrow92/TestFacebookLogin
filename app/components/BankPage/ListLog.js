@@ -2,8 +2,8 @@
  * Created by murkrow on 6/10/17.
  */
 
-import {ListView, ScrollView, View} from "react-native";
-import React, {Component, PropTypes} from "react";
+import { ListView, ScrollView, View } from "react-native";
+import React, { Component, PropTypes } from "react";
 import LogItem from "./LogItem";
 
 export default class ListLog extends Component {
@@ -21,7 +21,7 @@ export default class ListLog extends Component {
         if (items.length > 0) {
             items[0].isFirst = true;
         }
-        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+        const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
         const dataSource = ds.cloneWithRows(items);
         return (
             <ScrollView style={styles.container}>
@@ -35,7 +35,7 @@ export default class ListLog extends Component {
 }
 
 const renderRow = (rowData) => {
-    return (<LogItem data={rowData}/>)
+    return (<LogItem data={rowData} />)
 };
 
 const styles = {
