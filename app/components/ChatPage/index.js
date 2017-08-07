@@ -105,13 +105,13 @@ class ChatPage extends Component {
 
     triggerPushEvent(message) {
         const { profile, chat } = this.props;
-        const encrypted = md5(profile.id);
+        const encrypted = md5(profile.data.id);
         const channelName = "private-" + encrypted;
         const channel = pusher.channel(channelName);
         channel.trigger('', {
             channel_id: channelName,
             type: "chat",
-            from: profile.id,
+            from: profile.data.id,
             to: chat.messages.conversationId,
             messages: {
                 text: message,
@@ -131,25 +131,34 @@ class ChatPage extends Component {
     }
 
     registerChannel() {
-        const { profile } = this.props;
-        const encrypted = md5(profile.id);
+        const { id } = this.props.profile.data;
+        if (!id) {
+            return;
+        }
+        const encrypted = md5(id);
         const channel = pusher.subscribe("private-" + encrypted);
         channel.bind('chat', function (data) {
+            console.log(data);
             this.fetchConversation();
         });
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const { chat, actions } = this.props;
+        const { chat } = this.props;
+        console.log(chat);
         if (chat.messages.needFetch) {
             this.fetchConversation();
         }
     }
 
     fetchConversation() {
-        const { actions } = this.props;
+        const { actions, chat } = this.props;
         const { params } = this.props.navigation.state;
-        if (!lodash.isEmpty(params)) {
+        if (lodash.isEmpty(params)) {
+            if (chat.messages.id) {
+                actions.fetchConversationAsync(chat.messages.id)
+            }
+        } else {
             actions.fetchConversationAsync(params.conversationId);
         }
     }

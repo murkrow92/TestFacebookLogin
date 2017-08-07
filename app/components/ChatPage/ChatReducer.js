@@ -12,13 +12,13 @@ const chatReducer = (state = {}, action) => {
             return {
                 ...state,
                 ...action.conversation.data,
-                needFetch = false
+                needFetch: false
             };
         case ACTION_NEW_CONVERSATION_SUCCESS:
             return {
                 ...state,
                 ...action.conversation.data,
-                needFetch = true
+                needFetch: true
             };
 
         default:

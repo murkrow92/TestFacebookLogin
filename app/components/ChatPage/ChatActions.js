@@ -47,6 +47,7 @@ const addConversationSuccess = (conversation) => ({
 export const addConversationAsync = (message) => (dispatch, getState) =>
     (api.addConversation(message).then(
         response => {
+            console.log(response);
             dispatch(addConversationSuccess(response));
         },
         error => {
