@@ -4,7 +4,11 @@
 
 
 import { combineReducers } from "redux";
-import { ACTION_FETCH_CONVERSATION_SUCCESS, ACTION_NEW_CONVERSATION_SUCCESS } from "./ChatActions";
+import {
+    ACTION_FETCH_CONVERSATION_SUCCESS,
+    ACTION_NEW_CONVERSATION_SUCCESS,
+    ACTION_ON_TEXT_CHANGE
+} from "./ChatActions";
 
 const chatReducer = (state = { text: '' }, action) => {
     switch (action.type) {
@@ -21,6 +25,11 @@ const chatReducer = (state = { text: '' }, action) => {
                 needFetch: true,
                 text: ''
             };
+        case ACTION_ON_TEXT_CHANGE:
+            return {
+                ...state,
+                text: action.text
+            }
 
         default:
             return state;

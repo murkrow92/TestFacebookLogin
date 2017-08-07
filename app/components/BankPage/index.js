@@ -34,7 +34,6 @@ class BankPage extends Component {
 
     renderList() {
         const { bank } = this.props;
-        console.log(bank);
         if (!lodash.isEmpty(bank.transaction.data)) {
             let items = [];
             lodash.forEach(bank.transaction.data, function (value, key) {

@@ -2,9 +2,9 @@
  * Created by Murkrow on 5/27/2017.
  */
 
-import {Text, TouchableHighlight, View, StyleSheet} from "react-native";
-import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
-import React, {Component} from "react";
+import { Text, TouchableHighlight, View, StyleSheet } from "react-native";
+import { AutoGrowingTextInput } from 'react-native-autogrow-textinput';
+import React, { Component } from "react";
 import colors from "../../../styles/colors";
 
 const CONTAINER_MIN_HEIGHT = 56;
@@ -19,28 +19,27 @@ export default class ChatBox extends Component {
     }
 
     render() {
+        const { message } = this.props;
         return (
-            <View style={[styles.container, {height: this.props.height}]}>
+            <View style={[styles.container, { height: this.props.height }]}>
                 <AutoGrowingTextInput
                     underlineColorAndroid='transparent'
                     autoCorrect={false}
                     multiline={true}
                     placeholderTextColor={colors.BORDER_GREY}
                     placeholder="Đặt câu hỏi"
-                    style={[styles.chatbox, {height: this.props.height}]}
-                    value={this.state.message}
-                    onChangeText={(text) => this.setState({
-                        message: text
-                    })}
+                    style={[styles.chatbox, { height: this.props.height }]}
+                    value={message}
+                    onChangeText={(text) => this.props.onChangeText(text)}
                     onSubmitEditing={() => {
-                        this.props.onSubmit(this.state.message);
+                        this.props.onSubmit(message);
                     }}
                     onChange={(event) =>
                         this.props.onHeightChanged(event.nativeEvent.contentSize.height - CHATBOX_MIN_HEIGHT)
                     }
                 />
                 <TouchableHighlight
-                    onPress={() => this.props.onSubmit(this.state.message)}
+                    onPress={() => this.props.onSubmit(message)}
                     underlayColor="white">
                     <View style={styles.buttonContainer}>
                         <Text style={styles.sendLabel}>Gửi</Text>

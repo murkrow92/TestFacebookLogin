@@ -6,6 +6,7 @@ import { API } from "../../lib/API";
 
 export const ACTION_FETCH_CONVERSATION_SUCCESS = "fetch_conversation_success";
 export const ACTION_NEW_CONVERSATION_SUCCESS = "add_conversation_success";
+export const ACTION_ON_TEXT_CHANGE = "action.chat.text.change";
 import { AsyncStorage } from "react-native";
 
 const api = new API();
@@ -47,10 +48,14 @@ const addConversationSuccess = (conversation) => ({
 export const addConversationAsync = (message) => (dispatch, getState) =>
     (api.addConversation(message).then(
         response => {
-            console.log(response);
             dispatch(addConversationSuccess(response));
         },
         error => {
             console.log(error);
         }
     ));
+
+export const onChangeText = (text) => ({
+    type: ACTION_ON_TEXT_CHANGE,
+    text
+});

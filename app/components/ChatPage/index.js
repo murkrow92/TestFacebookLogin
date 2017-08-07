@@ -8,7 +8,7 @@ import ListMessage from "./ListMessage";
 import TopNavigationBar from "../Commons/TopNavigationBar/index";
 import ButtonIcon from "../Commons/TopNavigationBar/ButtonIcon";
 import QuestionBox from "../DetailPage/QuestionBox";
-import { View, StyleSheet, ScrollView } from "react-native";
+import { View, StyleSheet, ScrollView, Keyboard } from "react-native";
 import { APP_MARGIN } from "../../styles/dimens";
 import colors from "../../styles/colors";
 import fonts from "../../styles/fonts";
@@ -43,6 +43,8 @@ class ChatPage extends Component {
 
     render() {
         const { navigate } = this.props.navigation;
+        const { chat } = this.props;
+        const text = chat.messages.text;
         return (
             <PageWrapper>
                 <TopNavigationBar
@@ -57,9 +59,11 @@ class ChatPage extends Component {
                 </ScrollView>
                 <LineDivider />
                 <ChatBox
+                    message={text}
+                    onChangeText={(newText) => this.onChangeText(newText)}
                     height={this.state.chatboxHeight}
-                    onSubmit={(message) => {
-                        this.sendMessage(message);
+                    onSubmit={(newText) => {
+                        this.sendMessage(newText);
                     }}
                     onHeightChanged={(deltaHeight) =>
                         this.onHeightChanged(deltaHeight)}
@@ -90,6 +94,8 @@ class ChatPage extends Component {
     }
 
     sendMessage(message) {
+        console.log("Send: " + message);
+        Keyboard.dismiss();
         const { params } = this.props.navigation.state;
         if (lodash.isEmpty(params)) {
             this.createConversation(message);
@@ -108,7 +114,8 @@ class ChatPage extends Component {
         const encrypted = md5(profile.data.id);
         const channelName = "private-" + encrypted;
         const channel = pusher.channel(channelName);
-        channel.trigger('', {
+        console.log(channel);
+        channel.trigger('client-chat', {
             channel_id: channelName,
             type: "chat",
             from: profile.data.id,
@@ -117,6 +124,11 @@ class ChatPage extends Component {
                 text: message,
             }
         });
+    }
+
+    onChangeText(text) {
+        const { actions } = this.props;
+        actions.onChangeText(text);
     }
 
     onHeightChanged(deltaHeight) {
@@ -137,7 +149,8 @@ class ChatPage extends Component {
         }
         const encrypted = md5(id);
         const channel = pusher.subscribe("private-" + encrypted);
-        channel.bind('chat', function (data) {
+        console.log(channel);
+        channel.bind('client-chat', function (data) {
             console.log(data);
             this.fetchConversation();
         });
@@ -145,7 +158,6 @@ class ChatPage extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         const { chat } = this.props;
-        console.log(chat);
         if (chat.messages.needFetch) {
             this.fetchConversation();
         }
