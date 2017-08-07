@@ -2,18 +2,18 @@
  * Created by murkrow on 6/10/17.
  */
 
-import React, {Component} from "react";
-import {View, StyleSheet, Text, TouchableHighlight} from "react-native";
+import React, { Component } from "react";
+import { View, StyleSheet, Text, TouchableHighlight } from "react-native";
+import Currency from "../../lib/Currency";
 import colors from "../../styles/colors";
 import fonts from "../../styles/fonts";
-import {APP_MARGIN} from "../../styles/dimens";
-import Currency from "../../lib/Currency";
+import { APP_MARGIN } from "../../styles/dimens";
 
 const lodash = require('lodash');
 
 export default class AccountBox extends Component {
     render() {
-        const {bank} = this.props;
+        const { bank } = this.props;
         let money = 0;
         if (!lodash.isEmpty(bank)) {
             money = bank.transaction.money;
@@ -30,7 +30,7 @@ export default class AccountBox extends Component {
                         onPress={() => {
                         }}
                         style={styles.button}
-                        underlayColor='transparent'>
+                        underlayColor='lightblue'>
                         <Text style={styles.label}>Nạp tiền</Text>
                     </TouchableHighlight>
                 </View>
