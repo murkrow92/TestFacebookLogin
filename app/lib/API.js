@@ -5,9 +5,12 @@
 const queryString = require("query-string");
 const lodash = require('lodash');
 
+const RESPONSE_CODE_SUCCESS = 200;
+const API_ENDPOINT = "http://api.vnastro.com/1.0";
+
 const checkStatus = response => {
     let json = response.json();
-    if (response.status === 200) {
+    if (response.status === RESPONSE_CODE_SUCCESS) {
         return json;
     } else {
         console.log(response);
@@ -35,7 +38,7 @@ export class API {
 
 
     constructor() {
-        this.API_ENDPOINT = "http://api.vnastro.com/1.0";
+        this.API_ENDPOINT = API_ENDPOINT;
     }
 
     fetchAstro(datetime) {

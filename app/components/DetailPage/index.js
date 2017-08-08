@@ -60,8 +60,6 @@ const getAnswer = (data) => {
     } else {
         return 'Đang cập nhật';
     }
-
-
 };
 
 const rightButton = () => {
