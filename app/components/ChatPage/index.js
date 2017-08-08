@@ -24,8 +24,10 @@ const lodash = require('lodash');
 const MIN_HEIGHT = 56;
 const APP_KEY = '4f086a0de734aa6e0a2e';
 const APP_AUTH_ENDPOINT = "http://api.vnastro.com/1.0/notify/auth";
+const APP_CLUSTER = 'ap1';
+
 const pusher = new Pusher(APP_KEY, {
-    cluster: 'ap1',
+    cluster: APP_CLUSTER,
     encrypted: true,
     authEndpoint: APP_AUTH_ENDPOINT
 });
@@ -93,13 +95,13 @@ class ChatPage extends Component {
         }
     }
 
-    sendMessage(message) {
+    sendMessage(text) {
         Keyboard.dismiss();
         const { params } = this.props.navigation.state;
         if (lodash.isEmpty(params)) {
-            this.createConversation(message);
+            this.createConversation(text);
         } else {
-            this.addMessage(message);
+            this.addMessage(text);
         }
     }
 

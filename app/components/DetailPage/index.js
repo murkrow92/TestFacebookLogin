@@ -1,15 +1,15 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PageWrapper from "../Commons/Wrapper";
 import TopNavigationBar from "../Commons/TopNavigationBar/index";
 import ComboBox from "./ComboBox";
-import {Text, View, StyleSheet} from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import colors from "../../styles/colors";
 import fonts from "../../styles/fonts";
-import {APP_MARGIN} from "../../styles/dimens";
-import {QUESTION_TYPE_COMBO, QUESTION_TYPE_QUESTION} from "../../lib/questions";
+import { APP_MARGIN } from "../../styles/dimens";
+import { QUESTION_TYPE_COMBO, QUESTION_TYPE_QUESTION } from "../../lib/questions";
 import QuestionBox from "./QuestionBox";
-import {connect} from "react-redux";
-import {bindActionCreators} from "redux";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import * as actions from "./DetailActions";
 
 let lodash = require('lodash');
@@ -20,16 +20,16 @@ class DetailPage extends Component {
     }
 
     render() {
-        const {detail} = this.props;
-        const {navigate} = this.props.navigation;
-        const {params} = this.props.navigation.state;
+        const { detail } = this.props;
+        const { navigate } = this.props.navigation;
+        const { params } = this.props.navigation.state;
         const answer = getAnswer(detail.data);
         return (
             <PageWrapper>
                 <TopNavigationBar
                     title="Trả lời"
                     onPress={() => navigate('DrawerOpen')}
-                    rightButton={rightButton()}/>
+                    rightButton={rightButton()} />
                 <View style={styles.container}>
                     {renderQuestion(params)}
                     <View style={styles.answerBox}>
@@ -41,8 +41,8 @@ class DetailPage extends Component {
     }
 
     componentDidMount() {
-        const {actions} = this.props;
-        const {params} = this.props.navigation.state;
+        const { actions } = this.props;
+        const { params } = this.props.navigation.state;
         actions.fetchComboAsync(params.combo);
     }
 }
@@ -72,9 +72,9 @@ const rightButton = () => {
 
 const renderQuestion = (params) => {
     if (params.questionType === QUESTION_TYPE_COMBO) {
-        return <ComboBox params={params}/>;
+        return <ComboBox params={params} />;
     } else if (params.questionType === QUESTION_TYPE_QUESTION) {
-        return <QuestionBox/>;
+        return <QuestionBox />;
     }
 
 };
