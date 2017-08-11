@@ -2,4 +2,5 @@
     <string name="app_name">VnAstro</string>
     <string name="fb_app_id">30572648044</string>
     <string name="fb_login_protocol_scheme">fb30572648044</string>
+    <string name="RNB_GOOGLE_PLAY_LICENSE_KEY">2a3b4c</string>
 </resources>

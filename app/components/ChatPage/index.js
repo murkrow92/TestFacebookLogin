@@ -32,7 +32,7 @@ const pusher = new Pusher(APP_KEY, {
     authEndpoint: APP_AUTH_ENDPOINT
 });
 
-Pusher.logToConsole = false;
+Pusher.logToConsole = true;
 
 class ChatPage extends Component {
 
@@ -138,10 +138,12 @@ class ChatPage extends Component {
         }
         const encrypted = md5("vnAstro" + id);
         const channel = pusher.subscribe("private-" + encrypted);
-        channel.bind('client-chat', function (data) {
-            console.log(data);
-            this.fetchConversation();
-        });
+        channel.bind('chat', this.pusherCallback.bind(this));
+    }
+
+    pusherCallback(data) {
+        console.log(data);
+        this.fetchConversation();
     }
 
     componentDidUpdate(prevProps, prevState) {

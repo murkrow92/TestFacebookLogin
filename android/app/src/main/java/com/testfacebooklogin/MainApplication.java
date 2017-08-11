@@ -5,6 +5,7 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.react.ReactApplication;
+import com.idehub.Billing.InAppBillingBridgePackage;
 import com.geektime.rnonesignalandroid.ReactNativeOneSignalPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -40,6 +41,7 @@ private static final String TAG = MainApplication.class.getSimpleName();
 		protected List<ReactPackage> getPackages() {
 			return Arrays.<ReactPackage>asList(
 					new MainReactPackage(),
+            new InAppBillingBridgePackage(),
                     new ReactNativeOneSignalPackage(),
 					new VectorIconsPackage(),
 					new FBSDKPackage(mCallbackManager)

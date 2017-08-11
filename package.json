@@ -23,6 +23,7 @@
     "react": "16.0.0-alpha.6",
     "react-native": "0.44.2",
     "react-native-autogrow-textinput": "^4.0.0",
+    "react-native-billing": "^2.3.1",
     "react-native-fbsdk": "^0.6.0",
     "react-native-material-bottom-navigation": "^0.5.1",
     "react-native-navbar": "^1.8.0",
