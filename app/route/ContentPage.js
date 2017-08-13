@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {DrawerNavigator, StackNavigator, TabNavigator} from "react-navigation";
+import React, { Component } from 'react';
+import { DrawerNavigator, StackNavigator, TabNavigator } from "react-navigation";
 import AboutPage from "../components/AboutPage/index";
 import ChatPage from "../components/ChatPage/index";
 import PurchasePage from "../components/PurchasePage/index";
@@ -21,6 +21,7 @@ import IOIcon from "../components/Commons/Icons/IOIcon";
 import colors from "../styles/colors";
 import AddFriendPage from "../components/FriendPage/AddFriendPage/index";
 import ConversationPage from "../components/ConversationPage/index";
+import * as actions from "./ContentActions";
 
 const PayRoute = StackNavigator({
     Payment: {
@@ -30,8 +31,8 @@ const PayRoute = StackNavigator({
         screen: MethodTransferPage
     }
 }, {
-    headerMode: 'none'
-});
+        headerMode: 'none'
+    });
 
 const NotificationRoute = StackNavigator({
     Notification: {
@@ -46,89 +47,89 @@ const NotificationRoute = StackNavigator({
     }
 
 }, {
-    headerMode: 'none'
-});
+        headerMode: 'none'
+    });
 
 const HomeRoute = StackNavigator({
-    Home: {screen: HomePage},
-    Detail: {screen: DetailPage},
-    Chart: {screen: ChartPage},
-    Friend: {screen: FriendPage},
-    AddFriend: {screen: AddFriendPage},
-    Astro: {screen: AstroPage}
+    Home: { screen: HomePage },
+    Detail: { screen: DetailPage },
+    Chart: { screen: ChartPage },
+    Friend: { screen: FriendPage },
+    AddFriend: { screen: AddFriendPage },
+    Astro: { screen: AstroPage }
 
 }, {
-    headerMode: 'none'
-});
+        headerMode: 'none'
+    });
 
 const BottomRoute = TabNavigator({
     Home: {
         screen: HomeRoute,
         navigationOptions: {
-            tabBarIcon: ({tintColor}) =>
+            tabBarIcon: ({ tintColor }) =>
                 (<AwesomeIcon
                     color={tintColor}
                     name="home"
-                    size={24}/>)
+                    size={24} />)
         }
     },
     Notification: {
         screen: NotificationRoute,
         navigationOptions: {
-            tabBarIcon: ({tintColor}) =>
+            tabBarIcon: ({ tintColor }) =>
                 (<MaterialCommunityIcon
                     color={tintColor}
                     name="earth"
-                    size={24}/>)
+                    size={24} />)
         }
     },
     Profile: {
         screen: ProfilePage,
         navigationOptions: {
-            tabBarIcon: ({tintColor}) =>
+            tabBarIcon: ({ tintColor }) =>
                 (<MaterialCommunityIcon
                     color={tintColor}
                     name="account"
-                    size={24}/>)
+                    size={24} />)
         }
     },
     Bank: {
         screen: BankPage,
         navigationOptions: {
-            tabBarIcon: ({tintColor}) =>
+            tabBarIcon: ({ tintColor }) =>
                 (<IOIcon
                     color={tintColor}
                     name="ios-cash-outline"
-                    size={24}/>)
+                    size={24} />)
         }
     }
 }, {
-    tabBarPosition: 'bottom',
-    tabBarOptions: {
-        activeTintColor: colors.BLUE,
-        inactiveTintColor: colors.DARKER_GREY,
-        indicatorStyle: {
-            backgroundColor: 'transparent'
-        },
-        swipeEnabled: true,
-        showLabel: false,
-        showIcon: true,
-        style: {
-            borderWidth: 1,
-            backgroundColor: 'white',
-            height: 48,
-            borderColor: colors.LIST_BOTTOM_BORDER
-        }
+        tabBarPosition: 'bottom',
+        tabBarOptions: {
+            activeTintColor: colors.BLUE,
+            inactiveTintColor: colors.DARKER_GREY,
+            indicatorStyle: {
+                backgroundColor: 'transparent'
+            },
+            swipeEnabled: true,
+            showLabel: false,
+            showIcon: true,
+            style: {
+                borderWidth: 1,
+                backgroundColor: 'white',
+                height: 48,
+                borderColor: colors.LIST_BOTTOM_BORDER
+            }
 
-    }
-});
+        }
+    });
 
 const ContentComponent = DrawerNavigator({
-    Bottom: {screen: BottomRoute},
+    Bottom: { screen: BottomRoute },
 
 }, {
-    contentComponent: props => <Sidebar content={props}/>
-});
+        contentComponent: props => <Sidebar content={props} />
+    });
 
 class ContentPage extends Component {
 
@@ -137,8 +138,21 @@ class ContentPage extends Component {
     }
 
     render() {
-        return (<ContentComponent/>);
+        return (<ContentComponent />);
+    }
+
+    componentDidMount(prevProps, prevStates) {
+
     }
 }
 
-export default ContentPage;
+const mapStateToProps = (state) => ({
+    content: state.content
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    actions: bindActionCreators(actions, dispatch)
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContentPage);
