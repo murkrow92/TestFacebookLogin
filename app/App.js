@@ -5,7 +5,7 @@
 import React, { Component } from 'react';
 import configureStore from "./configureStore";
 import { Provider } from "react-redux";
-import AppRoute from "./Route";
+import AppRoute from "./route/Route";
 import OneSignal from 'react-native-onesignal';
 
 const store = configureStore();
