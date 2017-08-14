@@ -19,7 +19,6 @@ import LineDivider from "../Commons/LineDivider";
 import ChatBox from "../Commons/ChatBox/index";
 import Pusher from 'pusher-js/react-native';
 
-const md5 = require('md5');
 const lodash = require('lodash');
 const MIN_HEIGHT = 56;
 

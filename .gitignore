@@ -52,3 +52,4 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 android/app/oizkeystore.jks
+app/lib/Environment.js

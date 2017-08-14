@@ -16,11 +16,9 @@ import addFriendReducer from "./components/FriendPage/AddFriendPage/AddFriendRed
 import bankReducer from "./components/BankPage/BankReducer";
 import loginReducer from "./components/LoginPage/LoginReducer";
 import conversationReducer from "./components/ConversationPage/ConversationReducer";
-import contentReducer from "./route/ContentReducer";
 
 export default combineReducers({
     app: appReducer,
-    content: contentReducer,
     profile: profileReducer,
     home: homeReducer,
     sidebar: sidebarReducer,

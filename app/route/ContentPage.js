@@ -24,6 +24,9 @@ import ConversationPage from "../components/ConversationPage/index";
 import * as actions from "./ContentActions";
 import { APP_CLUSTER, APP_AUTH_ENDPOINT, APP_KEY } from "../lib/Environment";
 import Pusher from 'pusher-js/react-native';
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import md5 from "md5";
 
 const pusher = new Pusher(APP_KEY, {
     cluster: APP_CLUSTER,
@@ -141,6 +144,7 @@ const ContentComponent = DrawerNavigator({
         contentComponent: props => <Sidebar content={props} />
     });
 
+
 class ContentPage extends Component {
 
     constructor(props) {
@@ -173,7 +177,6 @@ class ContentPage extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    content: state.content,
     profile: state.profile
 });
 
@@ -183,3 +186,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContentPage);
+
