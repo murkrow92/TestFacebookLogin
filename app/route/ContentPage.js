@@ -138,7 +138,7 @@ const BottomRoute = TabNavigator({
     });
 
 const ContentComponent = DrawerNavigator({
-    Bottom: { screen: BottomRoute },
+    // Bottom: { screen: BottomRoute },
 
 }, {
         contentComponent: props => <Sidebar content={props} />
