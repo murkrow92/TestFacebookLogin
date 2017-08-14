@@ -22,17 +22,6 @@ import Pusher from 'pusher-js/react-native';
 const md5 = require('md5');
 const lodash = require('lodash');
 const MIN_HEIGHT = 56;
-const APP_KEY = '4f086a0de734aa6e0a2e';
-const APP_AUTH_ENDPOINT = "http://api.vnastro.com/1.0/notify/auth";
-const APP_CLUSTER = 'ap1';
-
-const pusher = new Pusher(APP_KEY, {
-    cluster: APP_CLUSTER,
-    encrypted: true,
-    authEndpoint: APP_AUTH_ENDPOINT
-});
-
-Pusher.logToConsole = true;
 
 class ChatPage extends Component {
 
@@ -127,22 +116,6 @@ class ChatPage extends Component {
     }
 
     componentDidMount() {
-        this.registerChannel();
-        this.fetchConversation();
-    }
-
-    registerChannel() {
-        const { id } = this.props.profile.data;
-        if (!id) {
-            return;
-        }
-        const encrypted = md5("vnAstro" + id);
-        const channel = pusher.subscribe("private-" + encrypted);
-        channel.bind('chat', this.pusherCallback.bind(this));
-    }
-
-    pusherCallback(data) {
-        console.log(data);
         this.fetchConversation();
     }
 

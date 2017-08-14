@@ -22,6 +22,16 @@ import colors from "../styles/colors";
 import AddFriendPage from "../components/FriendPage/AddFriendPage/index";
 import ConversationPage from "../components/ConversationPage/index";
 import * as actions from "./ContentActions";
+import { APP_CLUSTER, APP_AUTH_ENDPOINT, APP_KEY } from "../lib/Environment";
+import Pusher from 'pusher-js/react-native';
+
+const pusher = new Pusher(APP_KEY, {
+    cluster: APP_CLUSTER,
+    encrypted: true,
+    authEndpoint: APP_AUTH_ENDPOINT
+});
+
+Pusher.logToConsole = true;
 
 const PayRoute = StackNavigator({
     Payment: {
@@ -142,12 +152,29 @@ class ContentPage extends Component {
     }
 
     componentDidMount(prevProps, prevStates) {
+        this.registerChannel();
+    }
 
+    registerChannel() {
+        const { id } = this.props.profile.data;
+        if (!id) {
+            return;
+        }
+        const encrypted = md5("vnAstro" + id);
+        const channel = pusher.subscribe("private-" + encrypted);
+        channel.bind('chat', this.pusherCallback.bind(this));
+    }
+
+    pusherCallback(data) {
+        console.log(data);
+        const { actions } = this.props;
+        actions.updateConversation();
     }
 }
 
 const mapStateToProps = (state) => ({
-    content: state.content
+    content: state.content,
+    profile: state.profile
 });
 
 const mapDispatchToProps = (dispatch) => ({
