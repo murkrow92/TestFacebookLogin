@@ -3,7 +3,7 @@
  */
 
 const queryString = require("query-string");
-const lodash = require('lodash');
+const lodash = require("lodash");
 
 const RESPONSE_CODE_SUCCESS = 200;
 const API_ENDPOINT = "http://api.vnastro.com/1.0";
@@ -19,7 +19,9 @@ const checkStatus = response => {
 };
 
 const postRequest = (url, body, headers) =>
-    fetch(url, { method: "POST", body, headers }).then(checkStatus).catch(error => console.log(error));
+    fetch(url, { method: "POST", body, headers })
+        .then(checkStatus)
+        .catch(error => console.log(error));
 
 const getRequest = (url, headers) => fetch(url, { headers }).then(checkStatus);
 
@@ -27,15 +29,13 @@ const putRequest = (url, body, headers) =>
     fetch(url, { method: "PUT", body, headers }).then(checkStatus);
 
 export class API {
-
     static ACCESS_TOKEN = "";
 
     static header() {
         return new Headers({
-            "Authorization": API.ACCESS_TOKEN
+            Authorization: API.ACCESS_TOKEN
         });
     }
-
 
     constructor() {
         this.API_ENDPOINT = API_ENDPOINT;
@@ -63,7 +63,7 @@ export class API {
     }
 
     fetchConversation(conversationId) {
-        if (conversationId === '0') {
+        if (conversationId === "0") {
             conversationId = 1;
         }
         let query = queryString.stringify({
@@ -75,7 +75,7 @@ export class API {
 
     fetchDetailCombo(combo) {
         const body = new FormData();
-        lodash.forEach(combo, function (value, key) {
+        lodash.forEach(combo, function(value, key) {
             body.append(key, value);
         });
 
@@ -89,7 +89,7 @@ export class API {
 
     addFriend(profile, friend) {
         const body = new FormData();
-        lodash.forEach(friend, function (value, key) {
+        lodash.forEach(friend, function(value, key) {
             body.append(key, value);
         });
         body.append("user_id", profile.id);
@@ -109,8 +109,17 @@ export class API {
 
     saveProfile(profile) {
         const body = new FormData();
-        const keys = ["id", "email", "day", "month", "hour", "minute", "phone", "year"];
-        lodash.forEach(keys, function (value, key) {
+        const keys = [
+            "id",
+            "email",
+            "day",
+            "month",
+            "hour",
+            "minute",
+            "phone",
+            "year"
+        ];
+        lodash.forEach(keys, function(value, key) {
             if (value === "id") {
                 value = "user_id";
             }
@@ -145,10 +154,8 @@ export class API {
     addMessage(conversationId, message) {
         const url = `${this.API_ENDPOINT}/conversation/addMessage`;
         const body = new FormData();
-        body.append('conversation_id', conversationId);
-        body.append('message', message);
+        body.append("conversation_id", conversationId);
+        body.append("message", message);
         return postRequest(url, body, API.header());
     }
-
 }
-
