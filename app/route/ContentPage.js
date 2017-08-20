@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import {
-    DrawerNavigator,
-    StackNavigator,
-    TabNavigator
+	DrawerNavigator,
+	StackNavigator,
+	TabNavigator
 } from "react-navigation";
 import AboutPage from "../components/AboutPage/index";
 import ChatPage from "../components/ChatPage/index";
@@ -34,177 +34,165 @@ import md5 from "md5";
 import InAppBilling from "react-native-billing";
 
 const pusher = new Pusher(APP_KEY, {
-    cluster: APP_CLUSTER,
-    encrypted: true,
-    authEndpoint: APP_AUTH_ENDPOINT
+	cluster: APP_CLUSTER,
+	encrypted: true,
+	authEndpoint: APP_AUTH_ENDPOINT
 });
 
 Pusher.logToConsole = true;
 
 const PayRoute = StackNavigator(
-    {
-        Bank: {
-            screen: BankPage
-        },
+	{
+		Bank: {
+			screen: BankPage
+		},
 
-        Payment: {
-            screen: PaymentPage
-        },
-        MethodTransfer: {
-            screen: MethodTransferPage
-        }
-    },
-    {
-        headerMode: "none"
-    }
+		Payment: {
+			screen: PaymentPage
+		},
+		MethodTransfer: {
+			screen: MethodTransferPage
+		}
+	},
+	{
+		headerMode: "none"
+	}
 );
 
 const NotificationRoute = StackNavigator(
-    {
-        Notification: {
-            screen: NotificationPage
-        },
-        Conversation: {
-            screen: ConversationPage
-        },
+	{
+		Notification: {
+			screen: NotificationPage
+		},
+		Conversation: {
+			screen: ConversationPage
+		},
 
-        Chat: {
-            screen: ChatPage
-        }
-    },
-    {
-        headerMode: "none"
-    }
+		Chat: {
+			screen: ChatPage
+		}
+	},
+	{
+		headerMode: "none"
+	}
 );
 
 const HomeRoute = StackNavigator(
-    {
-        Home: { screen: HomePage },
-        Detail: { screen: DetailPage },
-        Chart: { screen: ChartPage },
-        Friend: { screen: FriendPage },
-        AddFriend: { screen: AddFriendPage },
-        Astro: { screen: AstroPage }
-    },
-    {
-        headerMode: "none"
-    }
+	{
+		Home: { screen: HomePage },
+		Detail: { screen: DetailPage },
+		Chart: { screen: ChartPage },
+		Friend: { screen: FriendPage },
+		AddFriend: { screen: AddFriendPage },
+		Astro: { screen: AstroPage }
+	},
+	{
+		headerMode: "none"
+	}
 );
 
 const BottomRoute = TabNavigator(
-    {
-        Home: {
-            screen: HomeRoute,
-            navigationOptions: {
-                tabBarIcon: ({ tintColor }) =>
-                    <AwesomeIcon color={tintColor} name="home" size={24} />
-            }
-        },
-        Notification: {
-            screen: NotificationRoute,
-            navigationOptions: {
-                tabBarIcon: ({ tintColor }) =>
-                    <MaterialCommunityIcon
-                        color={tintColor}
-                        name="earth"
-                        size={24}
-                    />
-            }
-        },
-        Profile: {
-            screen: ProfilePage,
-            navigationOptions: {
-                tabBarIcon: ({ tintColor }) =>
-                    <MaterialCommunityIcon
-                        color={tintColor}
-                        name="account"
-                        size={24}
-                    />
-            }
-        },
-        Bank: {
-            screen: PayRoute,
-            navigationOptions: {
-                tabBarIcon: ({ tintColor }) =>
-                    <IOIcon
-                        color={tintColor}
-                        name="ios-cash-outline"
-                        size={24}
-                    />
-            }
-        }
-    },
-    {
-        tabBarPosition: "bottom",
-        tabBarOptions: {
-            activeTintColor: colors.BLUE,
-            inactiveTintColor: colors.DARKER_GREY,
-            indicatorStyle: {
-                backgroundColor: "transparent"
-            },
-            swipeEnabled: true,
-            showLabel: false,
-            showIcon: true,
-            style: {
-                borderWidth: 1,
-                backgroundColor: "white",
-                height: 48,
-                borderColor: colors.LIST_BOTTOM_BORDER
-            }
-        }
-    }
+	{
+		Home: {
+			screen: HomeRoute,
+			navigationOptions: {
+				tabBarIcon: ({ tintColor }) =>
+					<AwesomeIcon color={tintColor} name="home" size={24} />
+			}
+		},
+		Notification: {
+			screen: NotificationRoute,
+			navigationOptions: {
+				tabBarIcon: ({ tintColor }) =>
+					<MaterialCommunityIcon color={tintColor} name="earth" size={24} />
+			}
+		},
+		Profile: {
+			screen: ProfilePage,
+			navigationOptions: {
+				tabBarIcon: ({ tintColor }) =>
+					<MaterialCommunityIcon color={tintColor} name="account" size={24} />
+			}
+		},
+		Bank: {
+			screen: PayRoute,
+			navigationOptions: {
+				tabBarIcon: ({ tintColor }) =>
+					<IOIcon color={tintColor} name="ios-cash-outline" size={24} />
+			}
+		}
+	},
+	{
+		tabBarPosition: "bottom",
+		tabBarOptions: {
+			activeTintColor: colors.BLUE,
+			inactiveTintColor: colors.DARKER_GREY,
+			indicatorStyle: {
+				backgroundColor: "transparent"
+			},
+			swipeEnabled: true,
+			showLabel: false,
+			showIcon: true,
+			style: {
+				borderWidth: 1,
+				backgroundColor: "white",
+				height: 48,
+				borderColor: colors.LIST_BOTTOM_BORDER
+			}
+		}
+	}
 );
 
 const ContentComponent = DrawerNavigator(
-    {
-        Bottom: { screen: BottomRoute }
-    },
-    {
-        contentComponent: props => <Sidebar content={props} />
-    }
+	{
+		Bottom: { screen: BottomRoute }
+	},
+	{
+		contentComponent: props => <Sidebar content={props} />
+	}
 );
 
 class ContentPage extends Component {
-    constructor(props) {
-        super(props);
-    }
+	constructor(props) {
+		super(props);
+	}
 
-    render() {
-        return <ContentComponent />;
-    }
+	render() {
+		return <ContentComponent />;
+	}
 
-    componentDidMount(prevProps, prevStates) {
-        this.registerChannel();
-        this.initInAppBilling();
-    }
+	componentDidMount(prevProps, prevStates) {
+		this.registerChannel();
+		this.initInAppBilling();
+	}
 
-    registerChannel() {
-        const { id } = this.props.profile.data;
-        if (!id) {
-            return;
-        }
-        const encrypted = md5("vnAstro" + id);
-        const channel = pusher.subscribe("private-" + encrypted);
-        channel.bind("chat", this.pusherCallback.bind(this));
-    }
+	registerChannel() {
+		const { id } = this.props.profile.data;
+		if (!id) {
+			return;
+		}
+		const encrypted = md5("vnAstro" + id);
+		const channel = pusher.subscribe("private-" + encrypted);
+		channel.bind("chat", this.pusherCallback.bind(this));
+	}
 
-    pusherCallback(data) {
-        console.log(data);
-        const { actions } = this.props;
-        actions.updateConversation();
-    }
+	pusherCallback(data) {
+		console.log(data);
+		const { actions } = this.props;
+		actions.updateConversation();
+	}
 
-    initInAppBilling() {
-        InAppBilling.open().then(() => console.log("IAP pursechase opened"));
-    }
+	initInAppBilling() {
+		InAppBilling.open().then(() => console.log("IAP pursechase opened"));
+	}
 }
 
 const mapStateToProps = state => ({
-    profile: state.profile
+	profile: state.profile
 });
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(actions, dispatch)
+	actions: bindActionCreators(actions, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContentPage);

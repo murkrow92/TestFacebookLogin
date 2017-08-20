@@ -2,42 +2,56 @@
  * Created by murkrow on 6/10/17.
  */
 
-import {ListView, View} from "react-native";
-import React, {Component, PropTypes} from "react";
+import { ListView, View } from "react-native";
+import React, { Component, PropTypes } from "react";
 import PaymentMethodItem from "./PaymentMethodItem";
 
-export default class ListLog extends Component {
+export default class ListPaymentMethod extends Component {
+	constructor(props) {
+		super(props);
+		const { navigate } = this.props;
+		let item1 = {
+			methodName: "Nạp tiền bằng thẻ VISA/Master ",
+			icon: "truck",
+			onPress: () => {
+				navigate("MethodTransfer");
+			}
+		};
+		let item2 = {
+			methodName: "Chuyển khoản",
+			icon: "cart-plus",
+			onPress: () => {
+				navigate("MethodTransfer");
+			}
+		};
 
-    static propTypes = {
-        items: PropTypes.array.isRequired
-    };
+		let items = [item1, item2];
+		this.state = {
+			items: items
+		};
+	}
 
-    constructor(props) {
-        super(props);
-        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        this.state = {
-            dataSource: ds.cloneWithRows(this.props.items),
-        };
-    }
+	render() {
+		const ds = new ListView.DataSource({
+			rowHasChanged: (r1, r2) => r1 !== r2
+		});
+		const dataSource = ds.cloneWithRows(this.state.items);
 
-    render() {
-        return (
-            <View style={styles.container}>
-                <ListView
-                    dataSource={this.state.dataSource}
-                    renderRow={(rowData) => renderRow(rowData)}
-                />
-            </View>
-        );
-    }
+		return (
+			<View style={styles.container}>
+				<ListView
+					dataSource={dataSource}
+					renderRow={rowData => renderRow(rowData)}
+				/>
+			</View>
+		);
+	}
 }
 
-const renderRow = (rowData) => {
-    return (<PaymentMethodItem data={rowData}/>)
+const renderRow = rowData => {
+	return <PaymentMethodItem data={rowData} />;
 };
 
 const styles = {
-    container: {
-
-    }
+	container: {}
 };
