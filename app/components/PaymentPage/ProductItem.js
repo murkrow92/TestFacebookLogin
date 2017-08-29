@@ -34,7 +34,9 @@ export default class ProductItem extends Component {
 
 	purchase() {
 		const { data } = this.props;
-		InAppBilling.subscribe(data.productId);
+		InAppBilling.purchase(data.productId)
+			.then(response => console.log(response), error => console.log(error))
+			.catch(error => console.log(error));
 	}
 }
 
