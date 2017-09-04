@@ -4,16 +4,13 @@ import {
     StackNavigator,
     TabNavigator
 } from "react-navigation";
-import AboutPage from "../components/AboutPage/index";
 import ChatPage from "../components/ChatPage/index";
-import PurchasePage from "../components/PurchasePage/index";
 import ProfilePage from "../components/ProfilePage/index";
 import HomePage from "../components/HomePage/index";
 import BankPage from "../components/BankPage/index";
 import PaymentPage from "../components/PaymentPage/index";
 import MethodTransferPage from "../components/PaymentPage/MethodTransferPage/index";
 import DetailPage from "../components/DetailPage/index";
-import QuestionPage from "../components/QuestionPage/index";
 import FriendPage from "../components/FriendPage/index";
 import NotificationPage from "../components/NotificationPage/index";
 import AstroPage from "../components/AstroPage/index";
